@@ -1,0 +1,45 @@
+{
+    "name": "menarasolutions/geographer",
+    "type": "library",
+    "description": "A PHP library that knows how any country, state or city is called in any language",
+    "keywords": ["geolocation","localization","geonames","geo"],
+    "homepage": "https://github.com/MenaraSolutions/geographer",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Denis Mysenko",
+            "email": "denis@menara.com.au",
+            "homepage": "https://www.menara.com.au"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "menarasolutions/geographer-data": "^0.1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0",
+        "illuminate/support": "5.*|6.*|7.*|8.*|9.*",
+        "menarasolutions/geographer-da": "0.*",
+        "menarasolutions/geographer-de": "0.*",
+        "menarasolutions/geographer-ru": "0.*",
+        "menarasolutions/geographer-nl": "0.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "MenaraSolutions\\Geographer\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MenaraSolutions\\Geographer\\": "src/",
+            "Tests\\": "tests/Geographer/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.4-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

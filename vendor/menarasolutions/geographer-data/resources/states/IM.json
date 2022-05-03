@@ -1,0 +1,242 @@
+[
+    {
+        "parent": "IM",
+        "ids": {
+            "fips": false,
+            "geonames": 9782164
+        },
+        "long": {
+            "default": "Andreas"
+        }
+    },
+    {
+        "parent": "IM",
+        "ids": {
+            "fips": false,
+            "geonames": 9782165
+        },
+        "long": {
+            "default": "Arbory"
+        }
+    },
+    {
+        "parent": "IM",
+        "ids": {
+            "fips": false,
+            "geonames": 9782166
+        },
+        "long": {
+            "default": "Ballaugh"
+        }
+    },
+    {
+        "parent": "IM",
+        "ids": {
+            "fips": false,
+            "geonames": 9782167
+        },
+        "long": {
+            "default": "Braddan"
+        }
+    },
+    {
+        "parent": "IM",
+        "ids": {
+            "fips": false,
+            "geonames": 9782168
+        },
+        "long": {
+            "default": "Bride"
+        }
+    },
+    {
+        "parent": "IM",
+        "ids": {
+            "fips": false,
+            "geonames": 9782169
+        },
+        "long": {
+            "default": "Castletown"
+        }
+    },
+    {
+        "parent": "IM",
+        "ids": {
+            "fips": false,
+            "geonames": 9782170
+        },
+        "long": {
+            "default": "Douglas"
+        }
+    },
+    {
+        "parent": "IM",
+        "ids": {
+            "fips": false,
+            "geonames": 9782171
+        },
+        "long": {
+            "default": "German"
+        }
+    },
+    {
+        "parent": "IM",
+        "ids": {
+            "fips": false,
+            "geonames": 9782172
+        },
+        "long": {
+            "default": "Jurby"
+        }
+    },
+    {
+        "parent": "IM",
+        "ids": {
+            "fips": false,
+            "geonames": 9782173
+        },
+        "long": {
+            "default": "Laxey"
+        }
+    },
+    {
+        "parent": "IM",
+        "ids": {
+            "fips": false,
+            "geonames": 9782176
+        },
+        "long": {
+            "default": "Lezayre"
+        }
+    },
+    {
+        "parent": "IM",
+        "ids": {
+            "fips": false,
+            "geonames": 9782180
+        },
+        "long": {
+            "default": "Lonan"
+        }
+    },
+    {
+        "parent": "IM",
+        "ids": {
+            "fips": false,
+            "geonames": 9782182
+        },
+        "long": {
+            "default": "Malew"
+        }
+    },
+    {
+        "parent": "IM",
+        "ids": {
+            "fips": false,
+            "geonames": 9782183
+        },
+        "long": {
+            "default": "Marown"
+        }
+    },
+    {
+        "parent": "IM",
+        "ids": {
+            "fips": false,
+            "geonames": 9782184
+        },
+        "long": {
+            "default": "Maughold"
+        }
+    },
+    {
+        "parent": "IM",
+        "ids": {
+            "fips": false,
+            "geonames": 9782185
+        },
+        "long": {
+            "default": "Michael"
+        }
+    },
+    {
+        "parent": "IM",
+        "ids": {
+            "fips": false,
+            "geonames": 9782186
+        },
+        "long": {
+            "default": "Onchan"
+        }
+    },
+    {
+        "parent": "IM",
+        "ids": {
+            "fips": false,
+            "geonames": 9782187
+        },
+        "long": {
+            "default": "Patrick"
+        }
+    },
+    {
+        "parent": "IM",
+        "ids": {
+            "fips": false,
+            "geonames": 9782188
+        },
+        "long": {
+            "default": "Peel"
+        }
+    },
+    {
+        "parent": "IM",
+        "ids": {
+            "fips": false,
+            "geonames": 9782189
+        },
+        "long": {
+            "default": "Port Erin"
+        }
+    },
+    {
+        "parent": "IM",
+        "ids": {
+            "fips": false,
+            "geonames": 9782190
+        },
+        "long": {
+            "default": "Port St Mary"
+        }
+    },
+    {
+        "parent": "IM",
+        "ids": {
+            "fips": false,
+            "geonames": 9782191
+        },
+        "long": {
+            "default": "Ramsey"
+        }
+    },
+    {
+        "parent": "IM",
+        "ids": {
+            "fips": false,
+            "geonames": 9782192
+        },
+        "long": {
+            "default": "Rushen"
+        }
+    },
+    {
+        "parent": "IM",
+        "ids": {
+            "fips": false,
+            "geonames": 9782193
+        },
+        "long": {
+            "default": "Santon"
+        }
+    }
+]

@@ -1,0 +1,194 @@
+[
+    {
+        "parent": "TT",
+        "ids": {
+            "fips": "TD11",
+            "geonames": 3573606,
+            "iso_3166_2": "TT-TOB"
+        },
+        "long": {
+            "default": "Tobago"
+        },
+        "timezone": "America/Port_of_Spain"
+    },
+    {
+        "parent": "TT",
+        "ids": {
+            "fips": "TD10",
+            "geonames": 3573739,
+            "iso_3166_2": "TT-SFO"
+        },
+        "long": {
+            "default": "San Fernando"
+        },
+        "timezone": "America/Port_of_Spain"
+    },
+    {
+        "parent": "TT",
+        "ids": {
+            "fips": "TD05",
+            "geonames": 3573891,
+            "iso_3166_2": "TT-POS"
+        },
+        "long": {
+            "default": "Port of Spain"
+        },
+        "timezone": "America/Port_of_Spain"
+    },
+    {
+        "parent": "TT",
+        "ids": {
+            "fips": "TD03",
+            "geonames": 3574155,
+            "iso_3166_2": "TT-MRC"
+        },
+        "long": {
+            "default": "Mayaro-Rio Claro"
+        },
+        "timezone": "America/Port_of_Spain"
+    },
+    {
+        "parent": "TT",
+        "ids": {
+            "fips": "TD01",
+            "geonames": 3575052,
+            "iso_3166_2": "TT-ARI"
+        },
+        "long": {
+            "default": "Arima"
+        },
+        "timezone": "America/Port_of_Spain"
+    },
+    {
+        "parent": "TT",
+        "ids": {
+            "fips": false,
+            "geonames": 7521937,
+            "iso_3166_2": "TT-CHA"
+        },
+        "long": {
+            "default": "Chaguanas"
+        },
+        "timezone": "America/Port_of_Spain"
+    },
+    {
+        "parent": "TT",
+        "ids": {
+            "fips": false,
+            "geonames": 7521938,
+            "iso_3166_2": "TT-CTT"
+        },
+        "long": {
+            "default": "Couva-Tabaquite-Talparo"
+        },
+        "timezone": "America/Port_of_Spain"
+    },
+    {
+        "parent": "TT",
+        "ids": {
+            "fips": false,
+            "geonames": 7521939,
+            "iso_3166_2": "TT-DMN"
+        },
+        "long": {
+            "default": "Diego Martin"
+        },
+        "timezone": "America/Port_of_Spain"
+    },
+    {
+        "parent": "TT",
+        "ids": {
+            "fips": false,
+            "geonames": 7521940,
+            "iso_3166_2": false
+        },
+        "long": {
+            "default": "Eastern Tobago"
+        },
+        "timezone": "America/Port_of_Spain"
+    },
+    {
+        "parent": "TT",
+        "ids": {
+            "fips": false,
+            "geonames": 7521941,
+            "iso_3166_2": "TT-PED"
+        },
+        "long": {
+            "default": "Penal-Debe"
+        },
+        "timezone": "America/Port_of_Spain"
+    },
+    {
+        "parent": "TT",
+        "ids": {
+            "fips": false,
+            "geonames": 7521942,
+            "iso_3166_2": "TT-PRT"
+        },
+        "long": {
+            "default": "Princes Town"
+        },
+        "timezone": "America/Port_of_Spain"
+    },
+    {
+        "parent": "TT",
+        "ids": {
+            "fips": false,
+            "geonames": 7521943,
+            "iso_3166_2": "TT-PTF"
+        },
+        "long": {
+            "default": "Point Fortin"
+        },
+        "timezone": "America/Port_of_Spain"
+    },
+    {
+        "parent": "TT",
+        "ids": {
+            "fips": false,
+            "geonames": 7521944,
+            "iso_3166_2": "TT-SGE"
+        },
+        "long": {
+            "default": "Sangre Grande"
+        },
+        "timezone": "America/Port_of_Spain"
+    },
+    {
+        "parent": "TT",
+        "ids": {
+            "fips": false,
+            "geonames": 7521945,
+            "iso_3166_2": "TT-SIP"
+        },
+        "long": {
+            "default": "Siparia"
+        },
+        "timezone": "America/Port_of_Spain"
+    },
+    {
+        "parent": "TT",
+        "ids": {
+            "fips": false,
+            "geonames": 7521946,
+            "iso_3166_2": "TT-SJL"
+        },
+        "long": {
+            "default": "San Juan-Laventille"
+        },
+        "timezone": "America/Port_of_Spain"
+    },
+    {
+        "parent": "TT",
+        "ids": {
+            "fips": false,
+            "geonames": 7521947,
+            "iso_3166_2": "TT-TUP"
+        },
+        "long": {
+            "default": "Tunapuna-Piarco"
+        },
+        "timezone": "America/Port_of_Spain"
+    }
+]

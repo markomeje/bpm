@@ -1,0 +1,613 @@
+[
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US05",
+            "geonames": 4099753,
+            "iso_3166_2": "US-AR"
+        },
+        "long": {
+            "default": "Arkansas"
+        },
+        "timezone": "America/Chicago"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US11",
+            "geonames": 4138106,
+            "iso_3166_2": "US-DC"
+        },
+        "long": {
+            "default": "Washington, D.C."
+        },
+        "timezone": "America/New_York"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US10",
+            "geonames": 4142224,
+            "iso_3166_2": "US-DE"
+        },
+        "long": {
+            "default": "Delaware"
+        },
+        "timezone": "America/New_York"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US12",
+            "geonames": 4155751,
+            "iso_3166_2": "US-FL"
+        },
+        "long": {
+            "default": "Florida"
+        },
+        "timezone": "America/New_York"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US13",
+            "geonames": 4197000,
+            "iso_3166_2": "US-GA"
+        },
+        "long": {
+            "default": "Georgia"
+        },
+        "timezone": "America/New_York"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US20",
+            "geonames": 4273857,
+            "iso_3166_2": "US-KS"
+        },
+        "long": {
+            "default": "Kansas"
+        },
+        "timezone": "America/Chicago"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US22",
+            "geonames": 4331987,
+            "iso_3166_2": "US-LA"
+        },
+        "long": {
+            "default": "Louisiana"
+        },
+        "timezone": "America/Chicago"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US24",
+            "geonames": 4361885,
+            "iso_3166_2": "US-MD"
+        },
+        "long": {
+            "default": "Maryland"
+        },
+        "timezone": "America/New_York"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US29",
+            "geonames": 4398678,
+            "iso_3166_2": "US-MO"
+        },
+        "long": {
+            "default": "Missouri"
+        },
+        "timezone": "America/Chicago"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US28",
+            "geonames": 4436296,
+            "iso_3166_2": "US-MS"
+        },
+        "long": {
+            "default": "Mississippi"
+        },
+        "timezone": "America/Chicago"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US37",
+            "geonames": 4482348,
+            "iso_3166_2": "US-NC"
+        },
+        "long": {
+            "default": "North Carolina"
+        },
+        "timezone": "America/New_York"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US40",
+            "geonames": 4544379,
+            "iso_3166_2": "US-OK"
+        },
+        "long": {
+            "default": "Oklahoma"
+        },
+        "timezone": "America/Chicago"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US45",
+            "geonames": 4597040,
+            "iso_3166_2": "US-SC"
+        },
+        "long": {
+            "default": "South Carolina"
+        },
+        "timezone": "America/New_York"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US47",
+            "geonames": 4662168,
+            "iso_3166_2": "US-TN"
+        },
+        "long": {
+            "default": "Tennessee"
+        },
+        "timezone": "America/Chicago"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US48",
+            "geonames": 4736286,
+            "iso_3166_2": "US-TX"
+        },
+        "long": {
+            "default": "Texas"
+        },
+        "timezone": "America/Chicago"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US54",
+            "geonames": 4826850,
+            "iso_3166_2": "US-WV"
+        },
+        "long": {
+            "default": "West Virginia"
+        }
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US01",
+            "geonames": 4829764,
+            "iso_3166_2": "US-AL"
+        },
+        "long": {
+            "default": "Alabama"
+        },
+        "timezone": "America/Chicago"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US09",
+            "geonames": 4831725,
+            "iso_3166_2": "US-CT"
+        },
+        "long": {
+            "default": "Connecticut"
+        },
+        "timezone": "America/New_York"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US19",
+            "geonames": 4862182,
+            "iso_3166_2": "US-IA"
+        },
+        "long": {
+            "default": "Iowa"
+        },
+        "timezone": "America/Chicago"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US17",
+            "geonames": 4896861,
+            "iso_3166_2": "US-IL"
+        },
+        "long": {
+            "default": "Illinois"
+        },
+        "timezone": "America/Chicago"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US18",
+            "geonames": 4921868,
+            "iso_3166_2": "US-IN"
+        },
+        "long": {
+            "default": "Indiana"
+        },
+        "timezone": "America/New_York"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US23",
+            "geonames": 4971068,
+            "iso_3166_2": "US-ME"
+        },
+        "long": {
+            "default": "Maine"
+        },
+        "timezone": "America/New_York"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US26",
+            "geonames": 5001836,
+            "iso_3166_2": "US-MI"
+        },
+        "long": {
+            "default": "Michigan"
+        },
+        "timezone": "America/New_York"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US27",
+            "geonames": 5037779,
+            "iso_3166_2": "US-MN"
+        },
+        "long": {
+            "default": "Minnesota"
+        },
+        "timezone": "America/Chicago"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US31",
+            "geonames": 5073708,
+            "iso_3166_2": "US-NE"
+        },
+        "long": {
+            "default": "Nebraska"
+        },
+        "timezone": "America/Chicago"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US33",
+            "geonames": 5090174,
+            "iso_3166_2": "US-NH"
+        },
+        "long": {
+            "default": "New Hampshire"
+        },
+        "timezone": "America/New_York"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US34",
+            "geonames": 5101760,
+            "iso_3166_2": "US-NJ"
+        },
+        "long": {
+            "default": "New Jersey"
+        },
+        "timezone": "America/New_York"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US36",
+            "geonames": 5128638,
+            "iso_3166_2": "US-NY"
+        },
+        "long": {
+            "default": "New York"
+        },
+        "timezone": "America/New_York"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US39",
+            "geonames": 5165418,
+            "iso_3166_2": "US-OH"
+        },
+        "long": {
+            "default": "Ohio"
+        },
+        "timezone": "America/New_York"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US44",
+            "geonames": 5224323,
+            "iso_3166_2": "US-RI"
+        },
+        "long": {
+            "default": "Rhode Island"
+        },
+        "timezone": "America/New_York"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US50",
+            "geonames": 5242283,
+            "iso_3166_2": "US-VT"
+        },
+        "long": {
+            "default": "Vermont"
+        },
+        "timezone": "America/New_York"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US55",
+            "geonames": 5279468,
+            "iso_3166_2": "US-WI"
+        },
+        "long": {
+            "default": "Wisconsin"
+        },
+        "timezone": "America/Chicago"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US06",
+            "geonames": 5332921,
+            "iso_3166_2": "US-CA"
+        },
+        "long": {
+            "default": "California"
+        },
+        "timezone": "America/Los_Angeles"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US08",
+            "geonames": 5417618,
+            "iso_3166_2": "US-CO"
+        },
+        "long": {
+            "default": "Colorado"
+        },
+        "timezone": "America/Denver"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US35",
+            "geonames": 5481136,
+            "iso_3166_2": "US-NM"
+        },
+        "long": {
+            "default": "New Mexico"
+        },
+        "timezone": "America/Denver"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US32",
+            "geonames": 5509151,
+            "iso_3166_2": "US-NV"
+        },
+        "long": {
+            "default": "Nevada"
+        },
+        "timezone": "America/Los_Angeles"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US49",
+            "geonames": 5549030,
+            "iso_3166_2": "US-UT"
+        },
+        "long": {
+            "default": "Utah"
+        },
+        "timezone": "America/Denver"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US04",
+            "geonames": 5551752,
+            "iso_3166_2": "US-AZ"
+        },
+        "long": {
+            "default": "Arizona"
+        },
+        "timezone": "America/Denver"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US16",
+            "geonames": 5596512,
+            "iso_3166_2": "US-ID"
+        },
+        "long": {
+            "default": "Idaho"
+        },
+        "timezone": "America/Denver"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US30",
+            "geonames": 5667009,
+            "iso_3166_2": "US-MT"
+        },
+        "long": {
+            "default": "Montana"
+        },
+        "timezone": "America/Denver"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US38",
+            "geonames": 5690763,
+            "iso_3166_2": "US-ND"
+        },
+        "long": {
+            "default": "North Dakota"
+        },
+        "timezone": "America/Chicago"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US41",
+            "geonames": 5744337,
+            "iso_3166_2": "US-OR"
+        },
+        "long": {
+            "default": "Oregon"
+        },
+        "timezone": "America/Los_Angeles"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US46",
+            "geonames": 5769223,
+            "iso_3166_2": "US-SD"
+        },
+        "long": {
+            "default": "South Dakota"
+        },
+        "timezone": "America/Denver"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US53",
+            "geonames": 5815135,
+            "iso_3166_2": "US-WA"
+        },
+        "long": {
+            "default": "Washington"
+        },
+        "timezone": "America/Los_Angeles"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US56",
+            "geonames": 5843591,
+            "iso_3166_2": "US-WY"
+        },
+        "long": {
+            "default": "Wyoming"
+        },
+        "timezone": "America/Denver"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US15",
+            "geonames": 5855797,
+            "iso_3166_2": "US-HI"
+        },
+        "long": {
+            "default": "Hawaii"
+        },
+        "timezone": "Pacific/Honolulu"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US02",
+            "geonames": 5879092,
+            "iso_3166_2": "US-AK"
+        },
+        "long": {
+            "default": "Alaska"
+        },
+        "timezone": "America/Anchorage"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US21",
+            "geonames": 6254925,
+            "iso_3166_2": "US-KY"
+        },
+        "long": {
+            "default": "Kentucky"
+        },
+        "timezone": "America/New_York"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US25",
+            "geonames": 6254926,
+            "iso_3166_2": "US-MA"
+        },
+        "long": {
+            "default": "Massachusetts"
+        },
+        "timezone": "America/New_York"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US42",
+            "geonames": 6254927,
+            "iso_3166_2": "US-PA"
+        },
+        "long": {
+            "default": "Pennsylvania"
+        },
+        "timezone": "America/New_York"
+    },
+    {
+        "parent": "US",
+        "ids": {
+            "fips": "US51",
+            "geonames": 6254928,
+            "iso_3166_2": "US-VA"
+        },
+        "long": {
+            "default": "Virginia"
+        },
+        "timezone": "America/New_York"
+    }
+]

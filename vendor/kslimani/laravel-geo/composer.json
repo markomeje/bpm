@@ -1,0 +1,53 @@
+{
+    "name": "kslimani/laravel-geo",
+    "description": "Laravel Geo.",
+    "keywords": ["country", "currency", "geo", "laravel", "locale"],
+    "license": "MIT",
+    "require": {
+        "php": ">=7.2",
+        "florianv/laravel-swap": "^2.2",
+        "kslimani/geo-list": "^1.0",
+        "maxmind-db/reader": "^1.8",
+        "moneyphp/money": "^3.3"
+    },
+    "require-dev": {
+        "ext-intl": "*",
+        "friendsofphp/php-cs-fixer": "^2.17",
+        "nyholm/psr7": "^1.3",
+        "orchestra/testbench": "^6.7",
+        "php-http/curl-client": "^2.2",
+        "php-http/message": "^1.10",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sk\\Geo\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Sk\\Geo\\GeoServiceProvider"
+            ],
+            "aliases": {
+                "Geo": "Sk\\Geo\\Facades\\Geo"
+            }
+        }
+    },
+    "scripts": {
+        "lint": [
+            "vendor/bin/php-cs-fixer fix --diff --diff-format=udiff --using-cache=no --dry-run src",
+            "vendor/bin/php-cs-fixer fix --diff --diff-format=udiff --using-cache=no --dry-run tests"
+        ],
+        "test": "phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "prefer-stable": true
+}

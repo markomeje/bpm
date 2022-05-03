@@ -1,0 +1,127 @@
+[
+    {
+        "parent": "AU",
+        "ids": {
+            "fips": "AS08",
+            "geonames": 2058645,
+            "iso_3166_2": "AU-WA"
+        },
+        "long": {
+            "default": "Western Australia"
+        },
+        "postcodes": [
+            "/^6\\d{3}$/"
+        ],
+        "timezone": "Australia/Perth"
+    },
+    {
+        "parent": "AU",
+        "ids": {
+            "fips": "AS05",
+            "geonames": 2061327,
+            "iso_3166_2": "AU-SA"
+        },
+        "long": {
+            "default": "South Australia"
+        },
+        "postcodes": [
+            "/^5\\d{3}$/"
+        ],
+        "timezone": "Australia/Adelaide"
+    },
+    {
+        "parent": "AU",
+        "ids": {
+            "fips": "AS03",
+            "geonames": 2064513,
+            "iso_3166_2": "AU-NT"
+        },
+        "long": {
+            "default": "Northern Territory"
+        },
+        "postcodes": [
+            "/^0{0,1}(8|9)\\d{2}$/"
+        ],
+        "timezone": "Australia/Darwin"
+    },
+    {
+        "parent": "AU",
+        "ids": {
+            "fips": "AS07",
+            "geonames": 2145234,
+            "iso_3166_2": "AU-VIC"
+        },
+        "long": {
+            "default": "Victoria"
+        },
+        "postcodes": [
+            "/^(3|8)\\d{3}$/"
+        ],
+        "timezone": "Australia/Melbourne"
+    },
+    {
+        "parent": "AU",
+        "ids": {
+            "fips": "AS06",
+            "geonames": 2147291,
+            "iso_3166_2": "AU-TAS"
+        },
+        "long": {
+            "default": "Tasmania"
+        },
+        "postcodes": [
+            "/^7\\d{3}$/"
+        ],
+        "timezone": "Australia/Hobart"
+    },
+    {
+        "parent": "AU",
+        "ids": {
+            "fips": "AS04",
+            "geonames": 2152274,
+            "iso_3166_2": "AU-QLD"
+        },
+        "long": {
+            "default": "Queensland"
+        },
+        "postcodes": [
+            "/^(4|9)\\d{3}$/"
+        ],
+        "timezone": "Australia/Brisbane"
+    },
+    {
+        "parent": "AU",
+        "ids": {
+            "fips": "AS02",
+            "geonames": 2155400,
+            "iso_3166_2": "AU-NSW"
+        },
+        "long": {
+            "default": "New South Wales"
+        },
+        "postcodes": [
+            "/^1\\d{3}$/",
+            "/^2[0-5]\\d{2}$/",
+            "/^(2619)|(2[6-8]\\d{2})$/",
+            "/^(292[1-9])|(29[3-9]\\d{1})$/"
+        ],
+        "timezone": "Australia/Sydney"
+    },
+    {
+        "parent": "AU",
+        "ids": {
+            "fips": "AS01",
+            "geonames": 2177478,
+            "iso_3166_2": "AU-ACT"
+        },
+        "long": {
+            "default": "Australian Capital Territory"
+        },
+        "postcodes": [
+            "/^0{0,1}2\\d{2}$/",
+            "/^(260\\d)|(261[0-8])$/",
+            "/^(29[0-1]\\d)|(2920)$/"
+        ],
+        "timezone": "Australia/Canberra"
+    }
+]

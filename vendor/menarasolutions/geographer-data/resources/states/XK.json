@@ -1,0 +1,79 @@
+[
+    {
+        "parent": "XK",
+        "ids": {
+            "fips": "10096138",
+            "geonames": 10096138
+        },
+        "long": {
+            "default": "Ferizaj"
+        },
+        "timezone": "Europe/Belgrade"
+    },
+    {
+        "parent": "XK",
+        "ids": {
+            "fips": "10096859",
+            "geonames": 10096859
+        },
+        "long": {
+            "default": "Gjakova"
+        },
+        "timezone": "Europe/Belgrade"
+    },
+    {
+        "parent": "XK",
+        "ids": {
+            "fips": "10097357",
+            "geonames": 10097357
+        },
+        "long": {
+            "default": "Gjilan"
+        },
+        "timezone": "Europe/Belgrade"
+    },
+    {
+        "parent": "XK",
+        "ids": {
+            "fips": "10097358",
+            "geonames": 10097358
+        },
+        "long": {
+            "default": "Mitrovica"
+        },
+        "timezone": "Europe/Belgrade"
+    },
+    {
+        "parent": "XK",
+        "ids": {
+            "fips": "10097359",
+            "geonames": 10097359
+        },
+        "long": {
+            "default": "Pec"
+        },
+        "timezone": "Europe/Belgrade"
+    },
+    {
+        "parent": "XK",
+        "ids": {
+            "fips": "10097360",
+            "geonames": 10097360
+        },
+        "long": {
+            "default": "Pristina"
+        },
+        "timezone": "Europe/Belgrade"
+    },
+    {
+        "parent": "XK",
+        "ids": {
+            "fips": "10097361",
+            "geonames": 10097361
+        },
+        "long": {
+            "default": "Prizren"
+        },
+        "timezone": "Europe/Belgrade"
+    }
+]

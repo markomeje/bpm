@@ -1,0 +1,122 @@
+[
+    {
+        "parent": "ZW",
+        "ids": {
+            "fips": "ZI02",
+            "geonames": 886119,
+            "iso_3166_2": "ZW-MI"
+        },
+        "long": {
+            "default": "Midlands"
+        },
+        "timezone": "Africa/Harare"
+    },
+    {
+        "parent": "ZW",
+        "ids": {
+            "fips": "ZI07",
+            "geonames": 886747,
+            "iso_3166_2": "ZW-MS"
+        },
+        "long": {
+            "default": "Matabeleland South"
+        },
+        "timezone": "Africa/Harare"
+    },
+    {
+        "parent": "ZW",
+        "ids": {
+            "fips": "ZI06",
+            "geonames": 886748,
+            "iso_3166_2": "ZW-MN"
+        },
+        "long": {
+            "default": "Matabeleland North"
+        },
+        "timezone": "Africa/Harare"
+    },
+    {
+        "parent": "ZW",
+        "ids": {
+            "fips": "ZI08",
+            "geonames": 886761,
+            "iso_3166_2": "ZW-MV"
+        },
+        "long": {
+            "default": "Masvingo"
+        },
+        "timezone": "Africa/Harare"
+    },
+    {
+        "parent": "ZW",
+        "ids": {
+            "fips": "ZI05",
+            "geonames": 886841,
+            "iso_3166_2": "ZW-MW"
+        },
+        "long": {
+            "default": "Mashonaland West"
+        },
+        "timezone": "Africa/Harare"
+    },
+    {
+        "parent": "ZW",
+        "ids": {
+            "fips": "ZI04",
+            "geonames": 886842,
+            "iso_3166_2": "ZW-ME"
+        },
+        "long": {
+            "default": "Mashonaland East"
+        },
+        "timezone": "Africa/Harare"
+    },
+    {
+        "parent": "ZW",
+        "ids": {
+            "fips": "ZI03",
+            "geonames": 886843,
+            "iso_3166_2": "ZW-MC"
+        },
+        "long": {
+            "default": "Mashonaland Central"
+        },
+        "timezone": "Africa/Harare"
+    },
+    {
+        "parent": "ZW",
+        "ids": {
+            "fips": "ZI01",
+            "geonames": 887358,
+            "iso_3166_2": "ZW-MA"
+        },
+        "long": {
+            "default": "Manicaland"
+        },
+        "timezone": "Africa/Harare"
+    },
+    {
+        "parent": "ZW",
+        "ids": {
+            "fips": "ZI09",
+            "geonames": 1105843,
+            "iso_3166_2": "ZW-BU"
+        },
+        "long": {
+            "default": "Bulawayo"
+        },
+        "timezone": "Africa/Harare"
+    },
+    {
+        "parent": "ZW",
+        "ids": {
+            "fips": "ZI10",
+            "geonames": 1105844,
+            "iso_3166_2": "ZW-HA"
+        },
+        "long": {
+            "default": "Harare"
+        },
+        "timezone": "Africa/Harare"
+    }
+]

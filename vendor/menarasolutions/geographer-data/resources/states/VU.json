@@ -1,0 +1,74 @@
+[
+    {
+        "parent": "VU",
+        "ids": {
+            "fips": "NH15",
+            "geonames": 2134739,
+            "iso_3166_2": "VU-TAE"
+        },
+        "long": {
+            "default": "Tafea"
+        },
+        "timezone": "Pacific/Efate"
+    },
+    {
+        "parent": "VU",
+        "ids": {
+            "fips": "NH13",
+            "geonames": 2134898,
+            "iso_3166_2": "VU-SAM"
+        },
+        "long": {
+            "default": "Sanma"
+        },
+        "timezone": "Pacific/Efate"
+    },
+    {
+        "parent": "VU",
+        "ids": {
+            "fips": "NH07",
+            "geonames": 2137421,
+            "iso_3166_2": "VU-TOB"
+        },
+        "long": {
+            "default": "Torba"
+        },
+        "timezone": "Pacific/Efate"
+    },
+    {
+        "parent": "VU",
+        "ids": {
+            "fips": "NH16",
+            "geonames": 2208265,
+            "iso_3166_2": "VU-MAP"
+        },
+        "long": {
+            "default": "Malampa"
+        },
+        "timezone": "Pacific/Efate"
+    },
+    {
+        "parent": "VU",
+        "ids": {
+            "fips": "NH17",
+            "geonames": 2208266,
+            "iso_3166_2": "VU-PAM"
+        },
+        "long": {
+            "default": "Penama"
+        },
+        "timezone": "Pacific/Efate"
+    },
+    {
+        "parent": "VU",
+        "ids": {
+            "fips": "NH18",
+            "geonames": 2208267,
+            "iso_3166_2": "VU-SEE"
+        },
+        "long": {
+            "default": "Shefa"
+        },
+        "timezone": "Pacific/Efate"
+    }
+]

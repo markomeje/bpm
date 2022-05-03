@@ -1,0 +1,117 @@
+:root {
+    --theme-color: #a00f0f;
+    --main-dark: #0a090b;
+    --main-ash: #F0F2E3;
+    --pink-color: #f1416c;
+    --blue-primary: #0095E8;
+    --orange-color: #f45b0f;
+}
+
+.bg-theme-color {
+    background-color: var(--theme-color);
+}
+
+.border-theme-color {
+    border:  1px solid var(--theme-color);
+}
+
+.lg-circle {
+    width: 50px !important;
+    height: 50px !important;
+    line-height: 36px !important;
+}
+
+.md-circle {
+    width: 36px !important;
+    height: 36px !important;
+    line-height: 30px !important;
+}
+
+.sm-circle {
+    width: 24px !important;
+    height: 24px !important;
+    line-height: 18px !important;
+}
+
+.bg-blue {
+    background-color: var(--blue-primary);
+}
+
+.bg-orange {
+    background-color: var(--orange-color);
+}
+
+.progress-bar-height {
+    height: 7.5px;
+}
+
+.bg-pink {
+    background-color: var(--pink-color) !important;
+}
+
+.text-shadow-white {
+    text-shadow: white 0.1em 0.1em 0.2em;
+}
+
+.border-white {
+    border:  1px solid #fff;
+}
+
+.center-element {
+    top: 50%;
+    transform: translateY(-50%);
+    transform: translateX(-50%);
+    margin: 0;
+}
+
+.text-shadow-dark {
+    text-shadow: var(--main-dark) 0.1em 0.1em 0.2em;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.card-raduis {
+    border-radius: 20px !important;
+}
+
+.icon-raduis {
+    border-radius: 10px !important;
+}
+
+.border-main-dark {
+    border: 1px solid var(--main-dark);
+}
+
+.border-theme-color {
+    border: 1px solid var(--theme-color);
+}
+
+.text-theme-color {
+    color: var(--theme-color);
+}
+
+.text-underline {
+    text-decoration: underline !important;
+}
+
+.text-main-dark {
+    color: var(--main-dark);
+}
+
+.object-cover {
+    object-fit: cover;
+}
+
+.bg-main-dark {
+    background-color: var(--main-dark);
+}
+
+.bg-main-ash {
+    background-color: var(--main-ash);
+}
+
+.text-main-ash {
+    color: var(--main-dark);
+}
