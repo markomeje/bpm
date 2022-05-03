@@ -62,13 +62,6 @@
 							<p class="text-theme-color">Branch Office</p>
 							<div class="text-white">Geohomes House, 26 Moorehouse Ogui Enugu Enugu state, Nigeria.</div>
 						</div>
-						<div class="row">
-							<div class="col-12 mb-4">
-								<div class="w-100 border" id="contactmap">
-									<iframe width="100%" src="https://maps.google.com/maps?q=Suit%20E01b,%20The%20statement%20Complex,%20Plot%201002,%20First%20Avenue,%20CBD,%20Abuja.&t=k&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>

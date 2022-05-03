@@ -1,3 +1,6 @@
+<div class="w-100 border" id="contactmap" style="height: 320px;">
+	<iframe width="100%" height="100%" src="https://maps.google.com/maps?q=Suit%20E01b,%20The%20statement%20Complex,%20Plot%201002,%20First%20Avenue,%20CBD,%20Abuja.&t=k&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+</div>
 <footer class="position-relative">
 	<section class="bottom-section position-relative">
 		<div class="container-fluid">
@@ -155,9 +158,6 @@
 						        Subscribe
 						    </button>
 						</form>
-					</div>
-					<div class="w-100 border" id="contactmap">
-						<iframe width="100%" src="https://maps.google.com/maps?q=Suit%20E01b,%20The%20statement%20Complex,%20Plot%201002,%20First%20Avenue,%20CBD,%20Abuja.&t=k&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
 					</div>
 				</div>
 			</div>
