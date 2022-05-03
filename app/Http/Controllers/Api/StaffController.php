@@ -50,7 +50,7 @@ class StaffController extends Controller
                 'email' => $data['email'],
                 'phone' => $data['phone'],
                 'password' => Hash::make($reference),
-                'role' => 'admin',
+                'role' => $data['role'],
                 'name' => $data['fullname'],
             ]);
 
