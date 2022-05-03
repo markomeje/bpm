@@ -38,7 +38,7 @@
                             </small>
                         </div>
                     @else
-                        <img src="{{ $user->profile->image }}" class="img-fluid object-cover rounded-circle w-100 h-100 border">
+                        <img src="{{ $user->profile->image->link }}" class="img-fluid object-cover rounded-circle w-100 h-100 border">
                     @endif
                 </div>
             </div>
