@@ -1,7 +1,7 @@
 <div class="bg-transparent p-0 card-raduis border-0 m-0 position-relative">
 	<div class="position-relative" style="height: 160px;">
 		<a href="{{ route('account.profile', ['id' => $artisan->id, 'name' => \Str::slug($artisan->user->name)]) }}">
-			<img src="{{ empty($artisan->image) ? '/images/banners/avatar.png' : $artisan->image }}" class="img-fluid border object-cover h-100 w-100">
+			<img src="{{ empty($artisan->image) ? '/images/banners/placeholder.png' : $artisan->image->link }}" class="img-fluid border object-cover h-100 w-100">
 		</a>
 	</div>
 	<div class="position-relative card-body py-0" style="top: -40px">

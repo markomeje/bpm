@@ -72,11 +72,6 @@
                             <small class="text-main-dark">Blog</small>
                         </a>
                     </li>
-                    <li class="mr-3">
-                        <a href="{{ route('membership') }}" class="text-decoration-none">
-                            <small class="text-main-dark">Membership</small>
-                        </a>
-                    </li>
                     <li class="dropdown mr-3">
                         <a class="text-decoration-none" href="javascript:;" id="nav-products" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="0, 39">
                            <small class="">
@@ -299,9 +294,6 @@
             </div>
             <a href="{{ route('news') }}" class="d-block bg-main-ash text-decoration-none text-main-dark px-3 py-3 icon-raduis mb-3">
                 <small class="text-main-dark">News</small>
-            </a>
-            <a href="{{ route('membership') }}" class="d-block bg-main-ash text-decoration-none text-main-dark px-3 py-3 icon-raduis mb-3">
-                <small class="text-main-dark">Membership</small>
             </a>
             <div class="mb-3">
                 <div class="">

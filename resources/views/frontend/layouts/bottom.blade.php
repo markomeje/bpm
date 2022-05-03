@@ -116,7 +116,6 @@
 		                </div>
 		            </div>
 		            <a href="https://geoprecisegroup.com" class="mb-3 p-3 text-decoration-none d-block bg-main-ash text-main-dark" target="_blank">Surveying</a>
-					<a href="{{ route('membership') }}" class="mb-3 p-3 text-decoration-none d-block bg-main-ash text-main-dark">Membership</a>
 					<a href="{{ route('blog') }}" class="mb-3 p-3 text-decoration-none d-block bg-main-ash text-main-dark">Blog</a>
 					<div class="mb-3">
 		                <div class="">
