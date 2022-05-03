@@ -115,7 +115,7 @@
             <div class="ml-2">
                 <a href="{{ route('account.profile', ['id' => $property->user->profile->id ?? 0, 'name' => \Str::slug($property->user->name)]) }}" class="text-decoration-none d-block">
                     <small class="text-main-dark">
-                        {{ $property->user ? \Str::limit(ucwords($property->user->name), 12) : 'Our Agent' }}
+                        {{ $property->user ? \Str::limit(ucwords($property->user->name), 10) : 'Our Agent' }}
                     </small>
                 </a>
                 <small class="text-muted">
@@ -124,15 +124,15 @@
             </div>      
         </div>
         <div class="d-flex align-items-center">
-            <a href="{{ empty($property->user->email) ? 'javascript:;' : 'mailto:'.$property->user->email }}" class="text-theme-color text-decoration-none d-block sm-circle rounded-circle border-theme-color text-center mr-2">
-                <small class="tiny-font mt-1">
+            <a href="{{ empty($property->user->email) ? 'javascript:;' : 'mailto:'.$property->user->email }}" class="text-theme-color text-decoration-none d-block md-circle rounded-circle border-theme-color text-center mr-3">
+                <div class="" style="margin-top: 2px;">
                     <i class="icofont-email"></i>
-                </small>
+                </div>
             </a>
-            <a href="{{ $property->user ? 'tel:'.$property->user->phone : 'javascript:;' }}" class="text-theme-color text-decoration-none d-block sm-circle rounded-circle border-theme-color text-center">
-                <small class="tiny-font mt-1">
+            <a href="{{ $property->user ? 'tel:'.$property->user->phone : 'javascript:;' }}" class="text-theme-color text-decoration-none d-block md-circle rounded-circle border-theme-color text-center">
+                <div class="" style="margin-top: 2px;">
                     <i class="icofont-phone"></i>
-                </small>
+                </div>
             </a>
         </div>
     </div>
