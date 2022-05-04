@@ -54,15 +54,6 @@ class StaffController extends Controller
                 'name' => $data['fullname'],
             ]);
 
-            Staff::create([
-                'role' => $data['role'],
-                'user_id' => $user->id,
-                'created_by' => auth()->id(),
-                'description' => $data['description'],
-                'status' => 'inactive',
-                'verified' => false,
-            ]);
-
             $otp = random_int(100000, 999999);
             $verify = Verify::create([
                 'otp' => $otp,

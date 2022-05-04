@@ -33,13 +33,6 @@
                             <small class="invalid-feedback role-error"></small>
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group col-12">
-                            <label class="text-main-dark">Description</label>
-                            <textarea class="form-control description" name="description" placeholder="Enter a description of this role" rows="4"></textarea>
-                            <small class="invalid-feedback description-error"></small>
-                        </div>
-                    </div>
                     <div class="alert mb-3 add-staff-message d-none"></div>
                     <div class="d-flex justify-content-right mb-3 mt-1">
                         <button type="submit" class="btn btn-info btn-lg text-white add-staff-button px-4">
