@@ -12,19 +12,19 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label class="text-main-dark">Email</label>
-                            <input type="email" class="form-control email" name="email" placeholder="e.g., email@email.com" value="{{ $staff->user->email }}">
+                            <input type="email" class="form-control email" name="email" placeholder="e.g., email@email.com" value="{{ $staff->email }}">
                             <small class="invalid-feedback email-error"></small>
                         </div>
                         <div class="form-group col-md-6">
                             <label class="text-main-dark">Fullname</label>
-                            <input type="text" class="form-control fullname" name="fullname" placeholder="e.g., John Rel" value="{{ $staff->user->name }}">
+                            <input type="text" class="form-control fullname" name="fullname" placeholder="e.g., John Rel" value="{{ $staff->name }}">
                             <small class="invalid-feedback fullname-error"></small>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label class="text-main-dark">Phone</label>
-                            <input type="text" class="form-control phone" name="phone" placeholder="e.g., 08138982100" value="{{ $staff->user->phone }}">
+                            <input type="text" class="form-control phone" name="phone" placeholder="e.g., 08138982100" value="{{ $staff->phone }}">
                             <small class="invalid-feedback phone-error"></small>
                         </div>
                         <div class="form-group col-md-6">

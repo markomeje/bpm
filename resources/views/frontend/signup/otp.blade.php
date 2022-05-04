@@ -2,9 +2,9 @@
 	<div class="min-vh-100">
 		<div class="container">
 			<div class="d-flex justify-content-md-center justify-content-sm-start mb-4">
-				<div class="mb-4 w-100" style="height: 49px;">
-					<a href="{{ route('home') }}">
-						<img src="/images/logos/logo.png" class="img-fluid w-100">
+				<div class="" style="width: 220px; height: 49px;">
+					<a href="{{ route('home') }}" class="">
+						<img src="/images/assets/logo.png" class="img-fluid w-100">
 					</a>
 				</div>
 			</div>

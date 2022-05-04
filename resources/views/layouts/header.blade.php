@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="keywords" content="Buy, Sell, Shop, Explore products and services, properties, Advertize, Lands, Houses, Rent, Lease" />
-        <meta name="image" content="/images/logos/logo.png" />
+        <meta name="image" content="/images/assets/logo.png" />
 
         <meta name="og:site_name" content="{{ env('APP_NAME') }}" />
         <meta name="og:locale" content="en_US" />
@@ -29,18 +29,18 @@
         <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="public/assets/wlwmanifest.xml">
 
         <!-- Facebook Open Graph -->
-        <meta property="og:image" content="/images/logos/logo.png" />
+        <meta property="og:image" content="/images/assets/logo.png" />
         <meta property="og:url" content="https://geohomesgroup.com//" />
         <meta property="og:type" content="Real Estate" />
         <meta property="og:title" content="Geohomes Services Limited" />
         <meta property="og:description" content="Buy, Sell, Shop, Explore products and services, properties, Advertize, Lands, Houses, Rent, Lease" />
 
         <!--Twitter Share-->
-        <meta name="twitter:image:src" content="/images/logos/logo.png" />
-        <meta property="twitter:image" content="/images/logos/logo.png" />
+        <meta name="twitter:image:src" content="/images/assets/logo.png" />
+        <meta property="twitter:image" content="/images/assets/logo.png" />
         <meta property="twitter:title" content="{{ env('APP_NAME') }}" />
         <meta property="twitter:card" content="summary_large_card" />
-        <meta property="twitter:site" content="https://www.bestpropertymarket.com/" />
+        <meta property="twitter:site" content="{{ env('APP_URL') }}" />
         <meta property="twitter:site_name" content="{{ env('APP_NAME') }}"/>
         <meta property="twitter:description" content="Buy, Sell, Shop, Explore products and services, properties, Advertize, Lands, Houses, Rent, Lease" />
 

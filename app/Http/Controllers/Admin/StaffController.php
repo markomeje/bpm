@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Models\Staff;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 
 class StaffController extends Controller
@@ -11,7 +11,7 @@ class StaffController extends Controller
      */
     public function index()
     {
-        return view('admin.staff.index')->with(['staffs' => Staff::paginate(24)]);
+        return view('admin.staff.index')->with(['staffs' => User::where('role', '!=', 'user')->get()]);
     }
 
 }

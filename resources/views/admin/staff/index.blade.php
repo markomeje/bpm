@@ -26,7 +26,6 @@
                             @include('admin.staff.partials.edit')
                         @endforeach
                     </div>
-                    {{ $staffs->links('vendor.pagination.default') }}
                 @endif
             </div>
         </div>

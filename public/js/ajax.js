@@ -20,6 +20,10 @@
         });    
     });
 
+    $('.delete-staff').on('click', function() {
+        handleAjax({that: $(this), button: 'staff-button', spinner: 'staff-spinner'});    
+    });
+
     $('.delete-property').on('click', function() {
         handleAjax({that: $(this), button: 'property-button', spinner: 'property-spinner'});    
     });

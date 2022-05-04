@@ -5,11 +5,10 @@
 				<div class="row min-vh-100 justify-content-center align-items-center">
 					<div class="login-right col-12 col-md-4 mb-4">
 						<section class="pt-5">
-							<div class="w-100 mb-4 pb-4" style="max-width: 350px; border-bottom: 1px solid var(--main-dark);">
+							<div class="" style="width: 220px; height: 49px;">
 								<a href="{{ route('home') }}" class="">
-									<img src="/images/logos/logo.png" class="img-fluid w-100">
+									<img src="/images/assets/logo.png" class="img-fluid w-100">
 								</a>
-								<h1 class="text-white font-weight-bolder m-0 p-0">Services Limited</h1>
 							</div>
 						</section>
 						<section class="">

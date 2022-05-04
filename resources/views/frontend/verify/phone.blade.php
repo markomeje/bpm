@@ -3,12 +3,10 @@
 		<div class="container">
 			<div class="row justify-content-md-center justify-content-sm-start py-5">
 				<div class="col-12 col-md-6 col-lg-4">
-					<div class="">
-						<div class="mb-3 w-100" style="height: 40px;">
-							<a href="{{ route('home') }}">
-								<img src="/images/logos/logo.png" class="img-fluid w-75 h-100 object-cover">
-							</a>
-						</div>
+					<div class="mb-2" style="width: 220px; height: 49px;">
+						<a href="{{ route('home') }}" class="">
+							<img src="/images/assets/logo.png" class="img-fluid w-100">
+						</a>
 					</div>
 					<section class="">
 						<div class="alert alert-warning mb-4">Enter the code sent to your phone for verification.</div>

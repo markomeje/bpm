@@ -4,9 +4,9 @@
 			<div class="row justify-content-center align-items-center">
 				<div class="col-12 col-md-8 col-lg-6 mb-4">
 					<div class="d-flex justify-content-md-center justify-content-sm-start">
-						<div class="mb-3" style="width: 220px; height: 49px;">
+						<div class="" style="width: 220px; height: 49px;">
 							<a href="{{ route('home') }}" class="">
-								<img src="/images/logos/logo.png" class="img-fluid w-100">
+								<img src="/images/assets/logo.png" class="img-fluid w-100">
 							</a>
 						</div>
 					</div>
@@ -16,7 +16,7 @@
 						</div>
 					</div>
 					<section class="">
-						<form action="javascript:;" method="post" class="signup-form mb-4 p-4 border card-raduis" data-action="{{ route('signup.process') }}" autocomplete="off">
+						<form action="javascript:;" method="post" class="signup-form mb-4 p-4 border card-raduis" data-action="{{ route('auth.signup') }}" autocomplete="off">
 						    <div class="form-row">
 						     	<div class="form-group col-md-6">
 						            <label class="text-muted">Email</label>

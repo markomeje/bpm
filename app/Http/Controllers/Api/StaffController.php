@@ -34,12 +34,12 @@ class StaffController extends Controller
             ]);
         }
 
-        $whitelisted = ['superadmin', 'manager'];
+        $whitelisted = ['superadmin'];
         if (in_array($data['role'], $whitelisted)) {
             $role = ucfirst($data['role']);
             return response()->json([
                 'status' => 0,
-                'info' => "{$role} role not allowed",
+                'info' => 'The role entered is not allowed',
             ]);
         }
 
@@ -124,25 +124,21 @@ class StaffController extends Controller
             ]);
         }
 
-        $whitelisted = ['superadmin', 'manager'];
+        $whitelisted = ['superadmin'];
         if (in_array($data['role'], $whitelisted)) {
             $role = ucfirst($data['role']);
             return response()->json([
                 'status' => 0,
-                'info' => "{$role} role not allowed",
+                'info' => 'The role entered is not allowed',
             ]);
         }
 
-        $staff = Staff::find($id);
-        $staff->description = $data['description'];
-        $staff->role = $data['role'];
-        $staff->update();
-
-        $staff = User::find($staff->user->id);
-        $staff->email = $data['email'];
-        $staff->phone = $data['phone'];
-        $staff->name = $data['fullname'];
-        $staff->update();
+        $user = User::find($id);
+        $user->email = $data['email'];
+        $user->phone = $data['phone'];
+        $user->name = $data['fullname'];
+        $user->role = $data['role'];
+        $user->update();
 
         return response()->json([
             'status' => 1,
@@ -153,16 +149,33 @@ class StaffController extends Controller
 
     public function delete($id)
     {
-        Staff::find($id)->delete();
+        $user = User::find($id);
+        if (!empty($user)) {
+            if ($user->id == auth()->id()) {
+                return response()->json([
+                    'status' => 0,
+                    'info' => 'Operation not allowed'
+                ]);
+            }
+
+            $user->delete();
+            return response()->json([
+                'status' => 1,
+                'info' => 'Operation successful',
+                'redirect' => ''
+            ]);
+        }
+        
         return response()->json([
-            'status' => 1,
-            'info' => 'Operation successful'
-        ]);
+            'status' => 0,
+            'info' => 'Operation failed'
+        ]);  
+            
     }
 
     public function status($id, $status = '')
     {
-        $staff = Staff::find($id);
+        $staff = User::find($id);
         $staff->status = $status;
         $staff->update();
         return response()->json([

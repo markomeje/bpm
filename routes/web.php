@@ -28,7 +28,7 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
 
     Route::group(['prefix' => 'signup', 'middleware' => 'guest'], function () {
         Route::get('/', [\App\Http\Controllers\SignupController::class, 'index'])->name('signup');
-        Route::post('/process', [\App\Http\Controllers\SignupController::class, 'signup'])->name('signup.process');
+        Route::post('/signup', [\App\Http\Controllers\Api\AuthController::class, 'signup'])->name('auth.signup');
         Route::get('/success', [\App\Http\Controllers\SignupController::class, 'success'])->name('signup.success');
     });
 
@@ -260,6 +260,7 @@ Route::middleware(['web', 'auth', 'user', 'revalidate', 'profile.setup'])->domai
 
         Route::post('/activate/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'activate'])->name('user.advert.activate');
         Route::post('/delete/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'delete'])->name('user.advert.delete');
+        Route::post('/renew/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'renew'])->name('user.advert.renew');
 
     });
 
