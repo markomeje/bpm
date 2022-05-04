@@ -172,7 +172,7 @@
                     <h5 class="text-theme-color">Global Realtors</h5>
                     <h2 class="text-main-dark">Meet Our Realtors</h2>
                 </div>
-                @set('realtors', \App\Models\Profile::where(['role' => 'realtor'])->take(4)->inRandomOrder()->get())
+                @set('realtors', \App\Models\Profile::orderBy('created_at', 'DESC')->where(['role' => 'realtor'])->take(5)->get())
                 @if(empty($realtors))
                     <div class="alert alert-danger">No Realtors Yet</div>
                 @else
