@@ -2,14 +2,14 @@
 
 	'use strict';
 
-    $('.edit-staff-form').submit(function(event){
-        event.preventDefault();
-        handleForm({form: $(this), button: 'edit-staff-button', spinner: 'edit-staff-spinner', message: 'edit-staff-message'});
-    });
-
     $('.contact-form').submit(function(event){
         event.preventDefault();
         handleForm({form: $(this), button: 'contact-button', spinner: 'contact-spinner', message: 'contact-message'});
+    });
+
+    $('.edit-staff-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'edit-staff-button', spinner: 'edit-staff-spinner', message: 'edit-staff-message'});
     });
 
     $('.create-service-form').submit(function(event){
