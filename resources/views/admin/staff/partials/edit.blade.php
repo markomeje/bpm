@@ -1,7 +1,7 @@
 <div class="modal fade" id="edit-staff-{{ $staff->id }}" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content card-raduis border-0">
-            <form method="post" action="javascript:;" class="edit-staff-form" data-action="{{ route('admin.staff.add') }}" autocomplete="off">
+            <form method="post" action="javascript:;" class="edit-staff-form" data-action="{{ route('admin.staff.edit', ['id' => $staff->id]) }}" autocomplete="off">
                 <div class="modal-body p-4">
                     <div class="d-flex justify-content-between pb-3 mb-3 border-bottom">
                         <div class="text-main-dark mb-0 font-weight-bold">Edit Staff</div>

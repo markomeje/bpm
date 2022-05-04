@@ -111,8 +111,8 @@ class StaffController extends Controller
     {
         $data = request()->all();
         $validator = Validator::make($data, [
-            'email' => ['required', 'email', 'unique:users'], 
-            'phone' => ['required', 'unique:users'],
+            'email' => ['required', 'email'], 
+            'phone' => ['required'],
             'role' => ['required', 'string'],
             'fullname' => ['required', 'string'],
         ]);
