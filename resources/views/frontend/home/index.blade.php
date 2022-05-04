@@ -172,21 +172,23 @@
                     <h5 class="text-theme-color">Global Realtors</h5>
                     <h2 class="text-main-dark">Meet Our Realtors</h2>
                 </div>
-                @set('realtors', \App\Models\Profile::where(['role' => 'realtor'])->take(4)->inRandomOrder()->get())
+                @set('realtors', \App\Models\Profile::latest()->where(['role' => 'realtor'])->take(4)->get())
                 @if(empty($realtors))
                     <div class="alert alert-danger">No Realtors Yet</div>
                 @else
                     <div class="row">
                         @foreach($realtors as $realtor)
-                            <div class="col-12 col-md-4 col-lg-3 mb-4">
-                                @include('frontend.realtors.partials.card')
-                            </div>
+                            @if($realtor->user->properties()->count() > 0)
+                                <div class="col-12 col-md-4 col-lg-3 mb-4">
+                                    @include('frontend.realtors.partials.card')
+                                </div>
+                            @endif
                         @endforeach
                     </div>  
                 @endif
             </div>
         </div>
-        <div class="home-statistics position-relative">
+        {{-- <div class="home-statistics position-relative">
             <div class="container-fluid">
                 <div class="row text-center">
                     <div class="col-12 col-md-4 col-lg-3 mb-4">
@@ -218,7 +220,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
     @include('frontend.layouts.bottom')
 @include('layouts.footer')

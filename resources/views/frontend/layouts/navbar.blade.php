@@ -31,7 +31,7 @@
                                 <small class="text-theme-color mr-1">
                                     <i class="icofont-users"></i>
                                 </small>
-                                <small class="text-main-dark">Artisans</small>
+                                <small class="text-main-dark">Services</small>
                             </a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('realtors') }}">
@@ -45,7 +45,7 @@
                                 <small class="text-theme-color mr-1">
                                     <i class="icofont-users"></i>
                                 </small>
-                                <small class="text-main-dark">Dealers</small>
+                                <small class="text-main-dark">Building Materials</small>
                             </a>
                         </div>
                     </li>
@@ -262,7 +262,7 @@
                 <div class="collapse" id="services-nav-collapse">
                     <div class="card card-body">
                         <a href="{{ route('artisans') }}" class="d-flex justify-content-between">
-                            <small class="text-main-dark">Artisans</small>
+                            <small class="text-main-dark">Services</small>
                             <small class="bg-danger rounded-pill px-3">
                                 <small class="text-white mb-2 tiny-font position-relative" style="top: -1px;">
                                     +{{ \App\Models\Profile::where(['role' => 'artisan'])->count() }}
@@ -282,7 +282,7 @@
                     </div>
                     <div class="card card-body">
                         <a href="{{ route('dealers') }}" class="d-flex justify-content-between">
-                            <small class="text-main-dark">Dealers</small>
+                            <small class="text-main-dark">Building Materials</small>
                             <small class="bg-danger rounded-pill px-3">
                                 <small class="text-white mb-2 tiny-font position-relative" style="top: -1px;">
                                     +{{ \App\Models\Profile::where(['role' => 'dealer'])->count() }}

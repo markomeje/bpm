@@ -65,7 +65,7 @@
 		                <div class="collapse" id="services-nav-collapse">
 		                    <div class="card card-body">
 		                        <a href="{{ route('artisans') }}" class="d-flex justify-content-between text-decoration-none">
-		                            <small class="text-main-dark">Artisans</small>
+		                            <small class="text-main-dark">Services</small>
 		                            <small class="bg-danger rounded-pill px-3">
 		                                <small class="text-white mb-2 tiny-font position-relative" style="top: -1px;">
 		                                    +{{ \App\Models\Profile::where(['role' => 'artisan'])->count() }}
@@ -85,7 +85,7 @@
 		                    </div>
 		                    <div class="card card-body">
 		                        <a href="{{ route('dealers') }}" class="d-flex justify-content-between text-decoration-none">
-		                            <small class="text-main-dark">Dealers</small>
+		                            <small class="text-main-dark">Building Materials</small>
 		                            <small class="bg-danger rounded-pill px-3">
 		                                <small class="text-white mb-2 tiny-font position-relative" style="top: -1px;">
 		                                    +{{ \App\Models\Profile::where(['role' => 'dealer'])->count() }}
