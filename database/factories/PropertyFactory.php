@@ -30,6 +30,7 @@ class PropertyFactory extends Factory
             'toilets' => $faker->numberBetween(4, 11),
             'bathrooms' => $faker->numberBetween(3, 15),
             'category' => $faker->randomElement(array_keys(Property::$categories)),
+            'group' => $faker->randomElement(['dulplex', 'bungalow', 'Land', 'Flat', 'Self-Contain', 'Auditorium', 'Terrace', 'Event Center', 'Shop']),
             'currency_id' => $faker->numberBetween(1, Currency::count()),
             'reference' => \Str::random(64),
             'measurement' => $faker->numberBetween(500, 6500),

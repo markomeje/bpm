@@ -66,17 +66,18 @@ class Property extends Model
         'land' => [
             'name' => 'Landed Property', 
             'groups' => [
-                'Empty Land',
-                'Fenced Land',
+                'Land',
             ],
         ],
 
         'commercial' => [
             'name' => 'Commercial Property', 
             'groups' => [
+                'Sky Scrapper',
                 'Shop',
                 'Warehouse',
                 'Event center',
+                'Auditorium',
             ],
         ],
 
@@ -93,9 +94,9 @@ class Property extends Model
                 'Duplex',
                 'Flat',
                 'One Room',
-                'Semi-Detached Duplex',
+                'Semi Detached Duplex',
                 'Bungalow',
-                'Self-Contain',
+                'Self Contain',
                 'Terrace',
             ],
         ],

@@ -66,7 +66,7 @@
 		                    <div class="card card-body">
 		                        <a href="{{ route('artisans') }}" class="d-flex justify-content-between text-decoration-none">
 		                            <small class="text-main-dark">Services</small>
-		                            <small class="bg-danger rounded-pill px-3">
+		                            <small class="bg-theme-color text-center rounded-pill px-3">
 		                                <small class="text-white mb-2 tiny-font position-relative" style="top: -1px;">
 		                                    +{{ \App\Models\Profile::where(['role' => 'artisan'])->count() }}
 		                                </small>
@@ -76,7 +76,7 @@
 		                    <div class="card card-body">
 		                        <a href="{{ route('realtors') }}" class="d-flex justify-content-between text-decoration-none">
 		                            <small class="text-main-dark">Realtors</small>
-		                            <small class="bg-danger rounded-pill px-3">
+		                            <small class="bg-theme-color text-center rounded-pill px-3">
 		                                <small class="text-white mb-2 tiny-font position-relative" style="top: -1px;">
 		                                    +{{ \App\Models\Profile::where(['role' => 'realtor'])->count() }}
 		                                </small>
@@ -86,7 +86,7 @@
 		                    <div class="card card-body">
 		                        <a href="{{ route('dealers') }}" class="d-flex justify-content-between text-decoration-none">
 		                            <small class="text-main-dark">Building Materials</small>
-		                            <small class="bg-danger rounded-pill px-3">
+		                            <small class="bg-theme-color text-center rounded-pill px-3">
 		                                <small class="text-white mb-2 tiny-font position-relative" style="top: -1px;">
 		                                    +{{ \App\Models\Profile::where(['role' => 'dealer'])->count() }}
 		                                </small>
@@ -108,14 +108,33 @@
 		                <div class="collapse" id="property-nav-collapse">
 		                    <div class="card card-body">
 		                        <a href="{{ route('properties') }}" class="d-flex justify-content-between">
-		                            <small class="text-main-dark">Properties</small>
-		                            <small class="bg-danger rounded-pill px-3">
+		                            <small class="text-main-dark">All Properties</small>
+		                            <div class="bg-theme-color text-center rounded-pill" style="width: 60px;">
 		                                <small class="text-white mb-2 tiny-font position-relative" style="top: -1px;">
 		                                    +{{ \App\Models\Property::count() }}
 		                                </small>
-		                            </small>
+		                            </div>
 		                        </a>
 		                    </div>
+		                    @set('groups', \App\Models\Property::where(['status' => 'active'])->distinct()->pluck('group'))
+		                    @if($groups->count() > 0)
+		                        @foreach($groups as $group)
+		                            @if(is_string($group) && $group !== '')
+		                                <div class="card card-body">
+		                                    <a href="{{ route('properties.group', ['group' => \Str::slug(strtolower($group))]) }}" class="d-flex justify-content-between">
+		                                        <small class="text-main-dark">
+		                                            {{ \Str::plural(ucwords($group)) }}
+		                                        </small>
+		                                        <div class="bg-theme-color text-center rounded-pill" style="width: 60px;">
+		                                            <small class="text-white mb-2 tiny-font position-relative" style="top: -1px;">
+		                                                +{{ \App\Models\Property::where(['group' => $group])->count() }}
+		                                            </small>
+		                                        </div>
+		                                    </a>
+		                                </div>
+		                            @endif
+		                        @endforeach
+		                    @endif
 		                </div>
 		            </div>
 		            <a href="https://geoprecisegroup.com" class="mb-3 p-3 text-decoration-none d-block bg-main-ash text-main-dark" target="_blank">Surveying</a>
@@ -133,7 +152,7 @@
 		                    <div class="card card-body">
 		                        <a href="{{ route('materials') }}" class="d-flex justify-content-between">
 		                            <small class="text-main-dark">Building Materials</small>
-		                            <small class="bg-danger rounded-pill px-3">
+		                            <small class="bg-theme-color text-center rounded-pill px-3">
 		                                <small class="text-white mb-2 tiny-font position-relative" style="top: -1px;">
 		                                    +{{ \App\Models\Material::count() }}
 		                                </small>

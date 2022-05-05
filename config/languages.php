@@ -7,6 +7,11 @@ return [
         'code' => 'us',
     ],
 
+    'zh' => [
+        'name' => 'China',
+        'code' => 'cn',
+    ],
+
     'fr' => [
         'name' => 'Français',
         'code' => 'fr',
@@ -17,9 +22,9 @@ return [
         'code' => 'es',
     ],
 
-    'de' => [
-        'name' => 'German',
-        'code' => 'de',
+    'nl' => [
+        'name' => 'Dutch',
+        'code' => 'nl',
     ],
 
     'ru' => [

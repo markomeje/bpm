@@ -127,7 +127,7 @@
                         {{ $property->user ? \Str::limit(ucwords($property->user->name), 10) : 'Our Agent' }}
                     </small>
                 </a>
-                <small class="text-muted">
+                <small class="text-muted tiny-font">
                     {{ $property->created_at->diffForHumans() }}
                 </small>
             </div>      

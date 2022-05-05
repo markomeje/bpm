@@ -64,4 +64,14 @@ class PropertiesController extends Controller
         return view('frontend.properties.action')->with(['properties' => $properties]);
     }
 
+    /**
+     * Find Properties by group e.g., duplex, bungalow etc
+     */
+    public function group($group = '')
+    {
+        $group = Str::headline($group);
+        $properties =  Property::where(['group' => $group])->paginate(16);
+        return view('frontend.properties.group')->with(['properties' => $properties, 'group' => $group]);
+    }
+
 }

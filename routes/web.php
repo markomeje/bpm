@@ -60,6 +60,8 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
 
         Route::get('/search', [\App\Http\Controllers\PropertiesController::class, 'search'])->name('properties.search');
         Route::get('/action/{action}', [\App\Http\Controllers\PropertiesController::class, 'action'])->name('properties.action');
+
+        Route::get('/group/{group}', [\App\Http\Controllers\PropertiesController::class, 'group'])->name('properties.group');
     });
 
     Route::prefix('news')->group(function () {
