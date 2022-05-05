@@ -24,14 +24,23 @@ class Controller extends BaseController
     public function __construct()
     {
         Request::macro('subdomain', function () {
-            return current(explode('.', $this->getHost()));
+            $subdomain = current(explode('.', $this->getHost()));
+            if (env('APP_ENV') == 'review') {
+                switch ($subdomain) {
+                    case 'reviewuser':
+                        $subdomain = 'user';
+                        break;
+                    case 'reviewadmin':
+                        $subdomain = 'admin';
+                        break;
+                    default:
+                        $subdomain = 'review';
+                        break;
+                }
+            }
+
+            return $subdomain;
         });
-
-        //dd(request()->cookie());
-
-        // $visitor = Visitor::lookup();
-        // dd($visitor);
-        //echo gettype(geoip());
     }
     
 }
