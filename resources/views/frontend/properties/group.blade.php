@@ -9,7 +9,7 @@
 					<div class="row">
 						<div class="col-12 col-md-7 col-lg-9">
 							<div class="alert alert-info mb-4">
-								{{ ucwords($group) }} ({{ $properties->total() }})
+								+{{ $properties->total() }} {{ \Str::plural(ucwords($group)) }} Found
 							</div>
 							<div class="row">
 								@foreach($properties as $property)

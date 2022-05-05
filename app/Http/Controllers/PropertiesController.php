@@ -11,7 +11,7 @@ class PropertiesController extends Controller
      */
     public function index()
     {
-        return view('frontend.properties.index')->with(['properties' => Property::latest('created_at')->where('action', '!=', 'sold')->paginate(15),]);
+        return view('frontend.properties.index')->with(['properties' => Property::latest('created_at')->where('action', '!=', 'sold')->where(['status' => 'active'])->paginate(15),]);
     }
 
     /**
@@ -60,8 +60,8 @@ class PropertiesController extends Controller
      */
     public function action($action = 'lease')
     {
-        $properties =  Property::where(['action' => $action])->paginate(16);
-        return view('frontend.properties.action')->with(['properties' => $properties]);
+        $properties =  Property::where(['action' => $action, 'status' => 'active'])->paginate(16);
+        return view('frontend.properties.action')->with(['title' => Str::headline($action), 'properties' => $properties]);
     }
 
     /**
@@ -69,9 +69,9 @@ class PropertiesController extends Controller
      */
     public function group($group = '')
     {
-        $group = Str::headline($group);
-        $properties =  Property::where(['group' => $group])->paginate(16);
-        return view('frontend.properties.group')->with(['properties' => $properties, 'group' => $group]);
+        $group = ucwords(Str::headline($group));
+        $properties =  Property::where(['group' => $group, 'status' => 'active'])->paginate(16);
+        return view('frontend.properties.group')->with(['title' => Str::headline($group), 'properties' => $properties, 'group' => $group]);
     }
 
 }
