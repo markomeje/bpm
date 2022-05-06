@@ -12,7 +12,7 @@ if (!function_exists('retitle')) {
         $action = $property->action ? Property::$actions[$property->action] : '';
         switch ($property->category) {
             case 'land':
-                return (empty($property->group) ? $category['name'] : $property->group.' land') .' '. $action.' located at '. $property->address ?? '';
+                return (empty($property->group) ? $category['name'] : $property->group) .' '. $action.' located at '. $property->address ?? '';
                 break;
             case 'residential':
                 return (empty($property->bedrooms) ? '' : $property->bedrooms.' Bedroom').' '.(empty($property->group) ? $category['name'] : $property->group).' '.$action.' located at '.$property->address ?? '';

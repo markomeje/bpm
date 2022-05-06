@@ -21,49 +21,6 @@ class LoginController extends Controller
         return view('frontend.login.index')->with(['title' => 'Login | Best Property Market']);
     }
 
-    /**
-     * Ajax Login
-     * 
-     */
-    public function auth()
-    {
-        $data = request()->only(['login', 'password']);
-        $validator = Validator::make($data, [
-            'login' => ['required'], 
-            'password' => ['required']
-        ], ['login.required' => 'Enter your email or phone number.']);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 0,
-                'error' => $validator->errors()
-            ]);
-        }
-
-        $user = User::where(['email' => $data['login']])->first() || User::where(['phone' => $data['login']])->first();
-        if (empty($user)) {
-            return response()->json([
-                'status' => 0,
-                'info' => 'Invalid login details.'
-            ]);
-        }
-
-        if (auth()->attempt(['email' => $data['login'], 'password' => $data['password']]) || auth()->attempt(['phone' => $data['login'], 'password' => $data['password']])) {
-            request()->session()->regenerate();
-
-            return response()->json([
-                'status' => 1,
-                'info' => 'Operation successful.', 
-                'redirect' => route('dashboard'),
-            ]);
-        }
-
-        return response()->json([
-            'status' => 0,
-            'info' => 'Invalid login details'
-        ]);
-    }
-
     public function logout()
     {
         auth()->logout();

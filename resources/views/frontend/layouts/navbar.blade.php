@@ -1,5 +1,8 @@
 <div class="fixed-top bg-white border-bottom">
     <div class="">
+        @if(env('APP_ENV') !== 'production')
+            <div class="bg-danger tiny-font text-center text-white">You're on the review website.</div>
+        @endif
         <div class="container-fluid">
             <div class="navbar-items py-4 px-0 d-flex align-items-center justify-content-between">
                 <a href="{{ route('home') }}" class="logo-wrapper">
@@ -18,7 +21,7 @@
                         </a>
                     </li>
                     <li class="dropdown mr-3">
-                        <a class="text-decoration-none" href="javascript:;" id="nav-services" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="0, 39">
+                        <a class="text-decoration-none" href="javascript:;" id="nav-services" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="0, 30">
                            <small class="">
                                 <span class="text-main-dark">Services</span>
                                 <span class="text-theme-color position-relative" style="top: 1px;">
@@ -50,7 +53,7 @@
                         </div>
                     </li>
                     <li class="dropdown mr-3">
-                        <a class="text-decoration-none" href="javascript:;" id="nav-products" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="0, 39">
+                        <a class="text-decoration-none" href="javascript:;" id="nav-products" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="0, 30">
                            <small class="">
                                 <span class="text-main-dark">Properties</span>
                                 <span class="text-theme-color position-relative" style="top: 1px;">
@@ -90,7 +93,7 @@
                         </a>
                     </li>
                     <li class="dropdown mr-3">
-                        <a class="text-decoration-none" href="javascript:;" id="nav-products" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="0, 39">
+                        <a class="text-decoration-none" href="javascript:;" id="nav-products" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="0, 30">
                            <small class="">
                                 <span class="text-main-dark">Products</span>
                                 <span class="text-theme-color position-relative" style="top: 1px;">
@@ -121,12 +124,11 @@
                 <div class="d-flex align-items-center navbar-right">
                     <div class="dropdown text-main-ash cursor-pointer mr-3">
                         <?php $languages = config()->get('languages'); ?>
-                        <div class="d-flex align-items-center" id="global-languages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="0, 36">
+                        <div class="d-flex align-items-center" id="global-languages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="0, 28">
                             <span class="mr-1 text-theme-color">
-                                <img src="{{ env('COUNTRY_FLAG_URL') }}/{{ $languages[app()->getLocale()]['code'] }}.svg" height="13" width="20">
-                                {{-- <i class="icofont-web"></i> --}}
+                                <img src="{{ env('COUNTRY_FLAG_URL') }}/{{ $languages[app()->getLocale()]['code'] }}.svg" height="14" width="20">
                             </span> 
-                            <small class="">
+                            <small class="text-main-dark">
                                 {{ $languages[app()->getLocale()]['name'] }}
                             </small>
                         </div>
@@ -141,23 +143,28 @@
                                             {{ $language['name'] }}
                                         </small>
                                     </a>
-                                    @if($language !== end($languages))
-                                        <div class="dropdown-divider"></div>
-                                    @endif
                                 @endif
                             @endforeach
                         </div>
                     </div>
+                </div>
+                <div class="d-flex align-items-center">
                     @if(auth()->check())
-                        <div class="dropdown cursor-pointer rounded-circle bg-theme-color" style="width: 30px; height: 30px; line-height: 30px;">
-                            <div class="text-center" id="website-user-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="0, 32">
-                                <small class="text-white">
-                                    @if(empty(auth()->user()->name))
-                                        <i class="icofont-ui-user"></i>
-                                    @else
-                                        {{ ucfirst(substr(auth()->user()->name, 0, 1)) }}
-                                    @endif
-                                </small>
+                        <div class="dropdown cursor-pointer ml-3">
+                            <div class="text-center rounded-circle" id="website-user-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="0, 24" style="width: 28px; height: 28px;">
+                                @if(empty(auth()->user()->profile->image))
+                                    <small class="text-white tiny-font bg-theme-color w-100 h-100">
+                                        @if(empty(auth()->user()->name))
+                                            <i class="icofont-ui-user"></i>
+                                        @else
+                                            {{ ucfirst(substr(auth()->user()->name, 0, 1)) }}
+                                        @endif
+                                    </small>
+                                @else
+                                    <div class="position-relative border w-100 h-100 d-block rounded-circle">
+                                        <img src="{{ auth()->user()->profile->image->link }}" class="img-fluid w-100 h-100 object-cover rounded-circle">
+                                    </div>
+                                @endif
                             </div>
                             <div class="dropdown-menu border-0 shadow dropdown-menu-right" aria-labelledby="website-user-icon">
                                 <a class="dropdown-item" href="{{ route('dashboard') }}">
@@ -175,18 +182,11 @@
                                 </a>
                             </div>
                         </div>
-                    @else
-                        <a class="d-flex mr-3" href="{{ route('login') }}">
-                            <small class="text-main-dark">Login</small>
-                        </a>
-                        <div class="">
-                            <a href="{{ route('signup') }}" class="btn px-4 text-white bg-theme-color">Signup</a>
-                        </div>
                     @endif
-                </div>
-                <div class="hanburger-icon ml-3 position-relative justify-content-center m-0 p-0 align-items-center cursor-pointer">
-                    <div class="icon-lines"></div>
-                </div>
+                    <div class="hanburger-icon ml-3 position-relative justify-content-center m-0 p-0 align-items-center cursor-pointer">
+                        <div class="icon-lines"></div>
+                    </div>
+                </div> 
             </div>
         </div>
     </div>

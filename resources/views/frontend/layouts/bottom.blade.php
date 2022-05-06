@@ -6,7 +6,7 @@
 		<div class="container-fluid">
 			<div class="row pb-3">
 				<div class="col-12 col-md-7 col-lg-5 mb-4">
-					<a href="{{ route('home') }}" class="d-block mb-3" style="width: 210px;">
+					<a href="{{ route('home') }}" class="d-block mb-3 logo-wrapper">
 	                    <img src="/images/assets/logo.png" class="img-fluid object-cover" alt="Best Property Market">
 	                </a>
 					<div class="text-main-dark mb-4">

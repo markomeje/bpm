@@ -272,23 +272,6 @@ p {
     padding: 140px 0 60px;
 }
 
-.bg-green {
-    background-color: var(--theme-color);
-}
-
-.preloader {
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    z-index: 999999;
-    background-color: #070217;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-image: url('/images/grid.svg');
-}
-
 .signup-banner,
 .login-banner {
     padding-top: 50px;
@@ -568,7 +551,7 @@ a:hover, button:hover {
     overflow-y: scroll;
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
     scrollbar-width: none;  /* Firefox */
-    padding-top: 94px;
+    padding-top: 92px;
 }
 
 .navbar-toggle {
@@ -582,15 +565,7 @@ a:hover, button:hover {
     display: none !important;  /* Safari and Chrome */
 }
 
-.navbar .profile-icon {
-    width: 37.5px; 
-    height: 37.5px; 
-    line-height: 37.5px;
-}
-
 .hanburger-icon {
-    width: 38px;
-    height: 38px;
     -webkit-transition: 0.8s;
     -o-transition: 0.8s;
     transition: 0.8s;
@@ -637,15 +612,15 @@ a:hover, button:hover {
 }
 
 .hanburger-icon .icon-lines::before {
-    -webkit-transform: translateY(-10px);
-        -ms-transform: translateY(-10px);
-            transform: translateY(-10px);
+    -webkit-transform: translateY(-8px);
+        -ms-transform: translateY(-8px);
+            transform: translateY(-8px);
 }
 
 .hanburger-icon .icon-lines::after {
-    -webkit-transform: translateY(10px);
-        -ms-transform: translateY(10px);
-            transform: translateY(10px);
+    -webkit-transform: translateY(8px);
+        -ms-transform: translateY(8px);
+            transform: translateY(8px);
 }
 
 @media (max-width: 1024px) {
@@ -657,9 +632,9 @@ a:hover, button:hover {
 /*Small devices (landscape phones, less than 768px)*/
 @media (max-width: 768px) {
 
-    .logo-wrapper {
+    /*.logo-wrapper {
         width: 194px !important;
-    }
+    }*/
 
     .navbar-menu {
         width: 40vw;
@@ -704,7 +679,7 @@ a:hover, button:hover {
 /*Medium devices (tablets, less than 992px)*/
 @media (max-width: 991.98px) and (min-width: 768.98px) {
     .navbar-menu {
-        width: 32vw;
+        width: 34vw;
     }
 
     #property-chart-wrapper {
@@ -732,26 +707,6 @@ a:hover, button:hover {
 
     .home-banner h1 {
         font-size: 60px;
-    }
-
-    .logo-wrapper {
-        width: 188px !important;
-    }
-
-    .hanburger-icon {
-        width: 38px;
-        height: 35px;
-    }
-
-    .hanburger-icon .icon-lines {
-        width: 38px;
-        height: 2px;
-    }
-
-    .hanburger-icon .icon-lines::before,
-    .hanburger-icon .icon-lines::after {
-        width: 40px;
-        height: 2px;
     }
 
     .hanburger-icon .icon-lines::before {

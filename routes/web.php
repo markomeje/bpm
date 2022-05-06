@@ -20,7 +20,7 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
     Route::get('/about', [\App\Http\Controllers\AboutController::class, 'index'])->name('about');
 
     Route::get('/logout', [\App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
-    Route::post('/auth', [\App\Http\Controllers\LoginController::class, 'auth'])->name('auth.login');
+    Route::post('/login', [\App\Http\Controllers\Api\AuthController::class, 'login'])->name('auth.login');
     
     Route::group(['prefix' => 'login', 'middleware' => 'guest'], function () {
         Route::get('/', [\App\Http\Controllers\LoginController::class, 'index'])->name('login');

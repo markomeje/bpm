@@ -5,7 +5,7 @@
         @foreach($categories as $category => $description)
             <a class="text-decoration-none rounded bg-main-ash d-flex justify-content-between mb-4 p-4" href="{{ route('properties.category', ['category' => $category]) }}">
                 <small class="text-main-dark">
-                    {{ ucfirst($description['name'] ?? 'Properties') }}
+                    {{ \Str::plural(ucfirst($description['name'] ?? 'Properties')) }}
                 </small>
                 <small class="">
                     ({{ \App\Models\Property::where(['category' => $category])->get()->count() }})

@@ -11,7 +11,7 @@ class RealtorsController extends Controller
      */
     public function index()
     {
-        return view('frontend.realtors.index')->with(['realtors' => Profile::where(['role' => 'realtor'])->paginate(24)]);
+        return view('frontend.realtors.index')->with(['realtors' => Profile::latest()->where(['role' => 'realtor'])->paginate(24)]);
     }
 
 }

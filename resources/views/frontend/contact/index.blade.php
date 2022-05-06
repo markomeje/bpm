@@ -2,7 +2,7 @@
     @include('frontend.layouts.navbar')
     <div class="position-relative">
     	<section class="contact-banner">
-			<div class="container">
+			<div class="container-fluid">
 				<div class="row">
 					<div class="col-12 col-lg-7 mb-4">
 						@if(empty(request()->get('success')))

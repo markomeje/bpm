@@ -28,14 +28,14 @@
                         <div class="">
                             <h4 class="text-main-dark mb-4">Global Properties</h4>
                             <ul class="nav nav-pills " id="" role="tablist">
-                                @set('actions', \App\Models\Property::$actions)
+                                @set('actions', \App\Models\Property::distinct()->pluck('action'))
                                 @if(!empty($actions))
-                                    @foreach($actions as $action => $value)
+                                    @foreach($actions as $key => $action)
                                         @if($action !== 'sold')
                                             <li class="nav-item" role="presentation">
                                                 <a class="nav-link border-theme-color mr-3 mb-4 py-1 text-main-dark px-4 {{ $action == 'sale' ? 'active' : '' }}" id="pills-{{ $action }}-tab" data-toggle="pill" href="#pills-{{ $action }}" role="tab" aria-controls="pills-{{ $action }}" aria-selected="true">
-                                                    <small class="position-relative" style="top: -2.5px;">
-                                                        <small>{{ ucwords($value) }}</small>
+                                                    <small class="position-relative">
+                                                        {{ ucwords(\App\Models\Property::$actions[$action]) }}
                                                     </small>
                                                 </a>
                                             </li>
@@ -44,39 +44,13 @@
                                 @endif
                             </ul>
                         </div>
-                        <div class="d-flex">
-                            <a href="{{ route('properties') }}" class="btn text-white btn-sm bg-theme-color d-block mb-4 px-3">
-                                All
-                            </a>
-                            @set('categories', \App\Models\Property::$categories)
-                            @if(!empty($categories))
-                                <div class="dropdown ml-3">
-                                    <a class="btn btn-sm px-3 border-theme-color text-main-dark text-decoration-none" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-                                        Categories <i class="icofont-caret-down"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right border-0 shadow-sm icon-raduis" aria-labelledby="dropdownMenuButton" style="width: 210px;">
-                                        @foreach($categories as $category => $values)
-                                            <a class="dropdown-item d-flex justify-content-between align-items-center" href="{{ route('properties.category', ['category' => $category]) }}">
-                                                <div class="text-main-dark">
-                                                    {{ ucfirst($category) }}s
-                                                </div>
-                                                <div class="tiny-font px-2 bg-theme-color text-white rounded-pill">
-                                                    {{ \App\Models\Property::where(['category' => $category])->get()->count() }}
-                                                </div>
-                                            </a>
-                                            <div class="dropdown-divider"></div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            @endif
-                        </div>
                     </div> 
                     <div class="tab-content" id="">
                         @if(empty($properties->count()))
                             <div class="alert-info alert">No Properties Yet</div>
                         @else
                             @if(!empty($actions))
-                                @foreach($actions as $action => $value)
+                                @foreach($actions as $key => $action)
                                     @if($action !== 'sold')
                                         <div class="tab-pane fade show {{ $action == 'sale' ? 'active' : '' }}" id="pills-{{ $action }}" role="tabpanel" aria-labelledby="pills-{{ $action }}-tab">
                                             <div class="row">
@@ -172,55 +146,20 @@
                     <h5 class="text-theme-color">Global Realtors</h5>
                     <h2 class="text-main-dark">Meet Our Realtors</h2>
                 </div>
-                @set('realtors', \App\Models\Profile::orderBy('created_at', 'DESC')->where(['role' => 'realtor'])->take(5)->get())
+                @set('realtors', \App\Models\Profile::latest()->where(['role' => 'realtor'])->take(4)->get())
                 @if(empty($realtors))
                     <div class="alert alert-danger">No Realtors Yet</div>
                 @else
                     <div class="row">
                         @foreach($realtors as $realtor)
-                            @if($realtor->user->properties()->count() > 0)
-                                <div class="col-12 col-md-4 col-lg-3 mb-4">
-                                    @include('frontend.realtors.partials.card')
-                                </div>
-                            @endif
+                            <div class="col-12 col-md-4 col-lg-3 mb-4">
+                                @include('frontend.realtors.partials.card')
+                            </div>
                         @endforeach
                     </div>  
                 @endif
             </div>
         </div>
-        {{-- <div class="home-statistics position-relative">
-            <div class="container-fluid">
-                <div class="row text-center">
-                    <div class="col-12 col-md-4 col-lg-3 mb-4">
-                        <h1 class="mb-3 text-white counter">
-                            {{ '190' }}
-                        </h1>
-                        <div class="text-white">Total Realtors</div>
-                        
-                    </div>
-                    <div class="col-12 col-md-4 col-lg-3 mb-4">
-                        <h1 class="mb-3 text-white counter">
-                            {{ '3409' }}
-                        </h1>
-                        <div class="text-white">Yearly Customers</div>
-                        
-                    </div>
-                    <div class="col-12 col-md-4 col-lg-3 mb-4">
-                        <h1 class="mb-3 text-white counter">
-                            {{ '598' }}
-                        </h1>
-                        <div class="text-white">Weekly Listing</div>
-                        
-                    </div>
-                    <div class="col-12 col-md-4 col-lg-3 mb-4">
-                        <h1 class="mb-3 text-white counter">
-                            {{ '1045' }}
-                        </h1>
-                        <div class="text-white">Monthly Visitors</div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
     </div>
     @include('frontend.layouts.bottom')
 @include('layouts.footer')
