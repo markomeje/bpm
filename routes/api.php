@@ -21,6 +21,8 @@ Route::domain(env('API_URL'))->group(function() {
 
     Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::prefix('properties')->group(function () {
+            Route::post('/all', [\App\Http\Controllers\Api\PropertiesController::class, 'all'])->name('api.property.all');
+
             Route::post('/add', [\App\Http\Controllers\Api\PropertiesController::class, 'add'])->name('api.property.add');
 
             Route::post('/action/change/{id}', [\App\Http\Controllers\Api\PropertiesController::class, 'action'])->name('api.property.action.change');

@@ -21,7 +21,7 @@ class PropertyFactory extends Factory
             'condition' => $faker->randomElement(Property::$conditions),
             'user_id' => $faker->numberBetween(1, User::count()),
             'address' => $faker->address(),
-            'price' => $faker->numberBetween(2000, 11000),
+            'price' => $faker->numberBetween(10000000, 9000000000),
             'action' => $faker->randomElement(array_keys(Property::$actions)),
             'country_id' => $faker->numberBetween(1, Country::count()),
             'bedrooms' => $faker->numberBetween(3, 5),

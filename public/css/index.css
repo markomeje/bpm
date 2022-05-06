@@ -34,7 +34,7 @@ body {
 }
 
 .user-content {
-    padding-top: 95px;
+    padding-top: 98px;
 }
 
 .top-countries {
@@ -632,9 +632,9 @@ a:hover, button:hover {
 /*Small devices (landscape phones, less than 768px)*/
 @media (max-width: 768px) {
 
-    /*.logo-wrapper {
+    .logo-wrapper {
         width: 194px !important;
-    }*/
+    }
 
     .navbar-menu {
         width: 40vw;
