@@ -1,8 +1,5 @@
 <div class="fixed-top bg-white border-bottom">
     <div class="">
-        @if(env('APP_ENV') !== 'production')
-            <div class="bg-danger tiny-font text-center text-white">You're on the review website.</div>
-        @endif
         <div class="container-fluid">
             <div class="navbar-items py-4 px-0 d-flex align-items-center justify-content-between">
                 <a href="{{ route('home') }}" class="logo-wrapper">
