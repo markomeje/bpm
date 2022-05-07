@@ -94,7 +94,7 @@ class Property extends Model
                 'Duplex',
                 'Flat',
                 'One Room',
-                'Semi-Detached Duplex',
+                'Semi Detached Duplex',
                 'Bungalow',
                 'Self Contain',
                 'Terrace',

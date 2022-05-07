@@ -23,6 +23,12 @@ class Controller extends BaseController
 
     public function __construct()
     {
+        $properties = \App\Models\Property::where(['group' => 'Semi-Detached Duplex'])->get();
+        foreach($properties as $property) {
+            $property->group = str_replace('-', ' ', $property->group);
+            $property->update();
+        }
+        
         Request::macro('subdomain', function () {
             $subdomain = current(explode('.', $this->getHost()));
             if (env('APP_ENV') == 'review') {
