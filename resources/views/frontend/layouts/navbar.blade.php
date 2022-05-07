@@ -151,15 +151,15 @@
                 <div class="d-flex align-items-center">
                     @if(auth()->check())
                         <div class="dropdown cursor-pointer ml-3">
-                            <div class="text-center rounded-circle" id="website-user-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="0, 24" style="width: 28px; height: 28px;">
+                            <div class="text-center rounded-circle" id="website-user-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="0, 24" style="width: 28px; height: 28px; line-height: 28px;">
                                 @if(empty(auth()->user()->profile->image))
-                                    <small class="text-white tiny-font bg-theme-color w-100 h-100">
+                                    <div class="text-white tiny-font rounded-circle bg-theme-color w-100 h-100">
                                         @if(empty(auth()->user()->name))
                                             <i class="icofont-ui-user"></i>
                                         @else
                                             {{ ucfirst(substr(auth()->user()->name, 0, 1)) }}
                                         @endif
-                                    </small>
+                                    </div>
                                 @else
                                     <div class="position-relative border w-100 h-100 d-block rounded-circle">
                                         <img src="{{ auth()->user()->profile->image->link }}" class="img-fluid w-100 h-100 object-cover rounded-circle">
