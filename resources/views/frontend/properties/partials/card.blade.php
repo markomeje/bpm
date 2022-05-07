@@ -1,14 +1,5 @@
 <?php $title = ucfirst(retitle($property)); ?>
 <div class="card border-0 bg-white w-100 card-raduis position-relative">
-    @if($property->images()->exists())
-        @foreach($property->images as $image)
-            @if($image->role == 'main')
-                @set('imagelink', $image->link)
-            @endif
-        @endforeach
-    @else
-        @set('imagelink', '/images/banners/placeholder.png')
-    @endif
     <div class="position-absolute w-100 px-4 mt-4" style="z-index: 2;">
         <div class="d-flex justify-content-between">
             <div class="">
@@ -45,7 +36,7 @@
                                 @set('categories', \App\Models\Property::$categories)
                                 @set('last', array_values($socials))
                                 @foreach($socials as $social)
-                                    <div class="p-2 cursor-pointer {{ end($last) == $social ? '' : 'mr-2' }} border-theme-color text-decoration-none  text-theme-color" data-sharer="{{ $social }}" data-title="Checkout this {{ $categories[$property->category]['name'] }}" data-hashtags="bestpropertymarket,realestate,globalproperties,lands,buildings,estates" data-url="{{ route('property.category.id.slug', ['category' => $property->category, 'id' => $property->id ?? 0, 'slug' => \Str::slug($title)]) }}" data-image="{{ $imagelink }}">
+                                    <div class="p-2 cursor-pointer {{ end($last) == $social ? '' : 'mr-2' }} border-theme-color text-decoration-none  text-theme-color" data-sharer="{{ $social }}" data-title="Checkout this {{ $categories[$property->category]['name'] }}" data-hashtags="bestpropertymarket,realestate,globalproperties,lands,buildings,estates" data-url="{{ route('property.category.id.slug', ['category' => $property->category, 'id' => $property->id ?? 0, 'slug' => \Str::slug($title)]) }}">
                                         <div class="">
                                             <i class="icofont-{{ $social }}"></i>
                                         </div>
@@ -61,10 +52,8 @@
     <div class="position-relative" style="height: 280px; line-height: 280px;">
         <a href="{{ route('property.category.id.slug', ['category' => $property->category, 'id' => $property->id ?? 0, 'slug' => \Str::slug($title)]) }}" class="text-decoration-none rounded-top">
             @if($property->images()->exists())
-                @foreach($property->images as $image)
-                    @if($image->role == 'main')
-                        <img src="{{ $image->link }}" class="img-fluid w-100 h-100 object-cover">
-                    @endif
+                @foreach($property->images()->where(['role' => 'main'])->take(1)->get() as $image)
+                    <img src="{{ $image->link }}" class="img-fluid w-100 h-100 object-cover" data-role="{{ $image->role }}">
                 @endforeach
             @else
                 <img src="/images/banners/placeholder.png" class="img-fluid w-100 h-100 object-cover">

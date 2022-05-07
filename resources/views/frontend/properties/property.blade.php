@@ -57,12 +57,10 @@
 								            </div>
 								        </div>
 								        @if($property->images()->exists())
-									        @foreach($property->images as $image)
-									        	@if($image->role == 'main')
-											        <a href="{{ $image->link }}" style="height: 340px;" class="mb-4 d-block">
-														<img src="{{ $image->link }}" class="img-fluid w-100 h-100 border object-cover">
-											        </a>
-										        @endif
+									        @foreach($property->images()->where(['role' => 'main'])->take(1)->get() as $image)
+										       <a href="{{ $image->link }}" style="height: 340px;" class="mb-4 d-block">
+													<img src="{{ $image->link }}" class="img-fluid w-100 h-100 border object-cover" data-role="{{ $image->role }}">
+										        </a>
 									        @endforeach
 									    @else
 									    	<a href="/images/banners/placeholder.png" style="height: 340px;" class="mb-4 d-block">
@@ -72,14 +70,12 @@
 									</div>
 									@if($property->images()->exists())
 							        	<div class="row">
-							        		@foreach($property->images as $image)
-							        			@if($image->role !== 'main')
-								        			<div class="col-6 col-md-3 mb-4">
-								        				<a href="{{ $image->link }}" style="height: 160px;">
-								        					<img src="{{ $image->link }}" class="img-fluid w-100 h-100 border">
-								        				</a>
-								        			</div>
-							        			@endif
+							        		@foreach($property->images()->where(['role' => 'others'])->take(4)->get() as $image)
+							        			<div class="col-6 col-md-3 mb-4">
+							        				<a href="{{ $image->link }}" style="height: 160px;">
+							        					<img src="{{ $image->link }}" class="img-fluid w-100 h-100 border" data-role="{{ $image->role }}">
+							        				</a>
+							        			</div>
 							        		@endforeach
 							        	</div>
 							        @endif
