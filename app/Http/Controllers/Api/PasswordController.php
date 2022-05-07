@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-use App\Models\{User};
+use App\Models\{User, Password};
 use App\Http\Controllers\Controller;
 use \Exception;
 use Validator;
@@ -10,55 +10,53 @@ class PasswordController extends Controller
 {
 
     /**
-     * Api [post] edit Material
+     * Api [post] Update password
      */
-    public function update($id = 0)
+    public function update()
     {
-        $data = request()->all();
+        $data = request()->only('password', 'confirmpassword', 'email');
         $validator = Validator::make($data, [
-            'name' => ['required', 'string', 'max:300'],
-            'country' => ['required', 'integer'],
-            'state' => ['required', 'string'],
-            'address' => ['required', 'string'],
-            'city' => ['required', 'string'],
-            'currency' => ['required', 'integer'],
-            'additional' => ['required', 'string', 'max:500'],
+            'password' => ['required', 'min:8'],
+            'confirmpassword' => ['required'],
         ]);
 
-        if ($validator->fails()) {
+        if (!$validator->passes()) {
             return response()->json([
-                'status' => 0, 
+                'status' => 0,
                 'error' => $validator->errors()
             ]);
         }
 
-        $material = User::find($id);
-        $material->name = $data['name'];
-        $material->country_id = $data['country'];
-        $material->state = $data['state'];
-        $material->address = $data['address'];
-        $material->city = $data['city'];
-        $material->quantity = $data['quantity'];
-        $material->additional = $data['additional'];
-        $material->price = $data['price'];
-        $material->currency_id = $data['currency'] ?? 0;
-        $updated = $material->update();
-
-        if ($updated) {
+        if ($data['password'] !== $data['confirmpassword']) {
             return response()->json([
-                'status' => 1, 
-                'info' => 'Operation successful',
-                'redirect' => route("{$this->subdomain}.material.edit", [
-                    'id' => $material->id, 
-                ]),
-            ]);
-        }else {
-            return response()->json([
-                'status' => 0, 
-                'info' => 'Operation failed',
+                'status' => 0,
+                'info' => 'Passwords do not match.'
             ]);
         }
 
+        $email = $data['email'] ?? null;
+        if (empty($email)) {
+            return response()->json([
+                'status' => 0,
+                'info' => 'Invalid Operation. Try Again Later.'
+            ]);
+        }
+
+        $user = User::where(['email' => $email])->first();
+        $user->password = Hash::make($data['password']);
+        if($user->update()) {
+            Password::where(['email' => $email])->delete();
+            return response()->json([
+                'status' => 1,
+                'info' => 'Operation Successful',
+                'redirect' => route('logout')
+            ]);
+        }
+
+        return response()->json([
+            'status' => 0,
+            'info' => 'Operation Failed. Try Again.',
+        ]);
             
     }
 

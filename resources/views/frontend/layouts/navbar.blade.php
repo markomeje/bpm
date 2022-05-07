@@ -182,6 +182,11 @@
                                 </a>
                             </div>
                         </div>
+                    @else
+                        <div class="d-flex desktop-signlog align-items-center">
+                            <a href="{{ route('signup') }}" class="text-main-dark mr-3">Signup</a>
+                            <a href="{{ route('login') }}" class="btn bg-theme-color px-4 text-white">Login</a>
+                        </div>
                     @endif
                     <div class="hanburger-icon ml-3 position-relative justify-content-center m-0 p-0 align-items-center cursor-pointer">
                         <div class="icon-lines"></div>

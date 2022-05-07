@@ -636,6 +636,10 @@ a:hover, button:hover {
         width: 194px !important;
     }
 
+    .desktop-signlog {
+        display: none !important;
+    }
+
     .navbar-menu {
         width: 40vw;
     }

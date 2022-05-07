@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::domain(env('API_URL'))->group(function() {
     Route::post('/signup', [\App\Http\Controllers\Api\AuthController::class, 'signup'])->name('api.signup');
     Route::post('/login', [\App\Http\Controllers\Api\AuthController::class, 'login'])->name('api.login');
-    Route::post('/password', [\App\Http\Controllers\Api\PasswordController::class, 'update'])->name('api.password.update');
+    Route::post('/password/update', [\App\Http\Controllers\Api\PasswordController::class, 'update'])->name('api.password.update');
 
     Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::prefix('properties')->group(function () {
