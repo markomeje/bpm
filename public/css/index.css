@@ -551,7 +551,7 @@ a:hover, button:hover {
     overflow-y: scroll;
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
     scrollbar-width: none;  /* Firefox */
-    padding-top: 92px;
+    padding-top: 77px;
 }
 
 .navbar-toggle {
