@@ -15,8 +15,8 @@
 		<section class="position-relative" style="top: -80px;">
 			<div class="container-fluid">
 				<div class="">
-                        @if(empty($blogs->count()))
-                            <div class="alert-info alert">No Blogs Yet</div>
+                        @if(!empty($blogs->count()))
+                            <div class="alert-info alert m-0">No Blogs Yet</div>
                         @else
                             <div class="row">
                                 @foreach($blogs as $blog)

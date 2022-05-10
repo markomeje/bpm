@@ -4,9 +4,10 @@
         <section class="about-banner">
             <div class="container-fluid">
                 <div class="row align-items-center">
-                    <div class="col-12 col-md-10 col-lg-8">
+                    <div class="col-12 col-md-10 col-lg-9">
                         <h1 class="text-white">About Us</h1>
-                        <div class="text-white">We are the Best Property Market, strategically positioned to solve the biggest problem when it comes to property transactions in the global real estate industry. <br><br> Under this governing umbrella we offer property listings, property management, sales and marketing, brokerage, and other professional services.</div>
+                        <div class="text-white mb-4">World Best Property Market is a global real estate property listing, search, and match engine company leveraging new innovative technologies. We are strategically positioned to solve multiple property transaction problems in the global real estate market.</div>
+                        <div class="text-white mb-4">With a team of smart, innovative, and talented professionals, our goal is to connect individuals, organizations, developers, brokerage, property management, professional and non-professional service providers to the worldwide property industry.</div>
                     </div>
                 </div>
             </div>
@@ -15,15 +16,46 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12 col-md-7 mb-4">
-                        <h1 class="text-white">Our Vision</h1>
-                        <div class="text-white">Our vision is to become the number one online market place for property transactions and be recognized among the top real estate service providers in the global market.</div>
+                        <h1 class="text-white">Our Mission</h1>
+                        <div class="text-white mb-4">Our Mission is to make Real Estate transactions hurdle free, transparent, easy, and secure. Real Estate transactions, over time, have been tarnished by frustration associated with the listing, buying, selling, and renting as much as ease the transition between reaching experienced skilled men, quality construction equipment, and materials.</div>
+                        <div class="text-white">With a smart combination of data analytics, experienced professionals, and 25 years of experience in this industry, our services provide the most seamless approach to all transactions in the global market.</div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 col-md-7 mb-4">
-                        <h1 class="text-white">Our Mission</h1>
-                        <div class="text-white mb-4">Our mission is to provide an easy, fast, reliable and secure process as it concerns property transactions in the global real estate industry. Over time, property transactions have been marred with frustrations that accompany buying, listing, selling and renting of properties.</div>
-                        <div class="text-white">Our mission is to make property transactions hurdle free, transparent and as easy as the tap of a button. With the smart combination of data and analytics, alongside a team of trained professionals, coupled with our solid 25 years experience in the industry, today we provide the most seamless approach to property transactions in global market.</div>
+                        <h1 class="text-white mb-4">Core Values</h1>
+                        <div class="row">
+                            <div class="col-12 mb-4">
+                                <div class="pb-3" style="border-bottom: 1px solid #b53a3a;">
+                                    <h5 class="text-main-dark">Integrity</h5>
+                                </div>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <div class="pb-3" style="border-bottom: 1px solid #b53a3a;">
+                                    <h5 class="text-main-dark">Quality and Excellence Service delivery</h5>
+                                </div>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <div class="pb-3" style="border-bottom: 1px solid #b53a3a;">
+                                    <h5 class="text-main-dark">Customer Satisfaction</h5>
+                                </div>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <div class="pb-3" style="border-bottom: 1px solid #b53a3a;">
+                                    <h5 class="text-main-dark">Innovative</h5>
+                                </div>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <div class="pb-3" style="border-bottom: 1px solid #b53a3a;">
+                                    <h5 class="text-main-dark">Sustainability</h5>
+                                </div>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <div class="pb-3" style="border-bottom: 1px solid #b53a3a;">
+                                    <h5 class="text-main-dark">Trust</h5>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

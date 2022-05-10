@@ -85,57 +85,37 @@
         <div class="bg-white" style="padding: 160px 0;">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-12 col-md-5 mb-4">
+                    <div class="col-12 col-lg-6">
                         <div class="mb-4">
-                            <h2 class="text-main-dark">Why Choose Our Properties</h2>
+                            <h2 class="text-main-dark">Why Choose Our Platform</h2>
                         </div>
-                        <div class="">
-                            <div class="d-flex align-items-center mb-4">
-                                <div class="text-center">
-                                    <div class="lg-circle rounded-circle bg-theme-color text-white mr-3">
-                                        <div class="position-relative" style="top: 5px;">
-                                            <i class="icofont-live-support"></i>
-                                        </div>
-                                    </div>
+                        <div class="row">
+                            <div class="col-12 col-md-6 col-lg-12 mb-4">
+                                <div class="lg-circle text-center mb-3 rounded-circle bg-theme-color text-white">
+                                    <div style="line-height: 50px;">01</div>
                                 </div>
                                 <div class="">
-                                    <h4 class="text-main-dark">24/7 Tech Support</h4>
-                                    <div class="text-main-dark">Lorem ipsum dolor sit amet, consect</div>
+                                    <div class="text-main-dark">As a professional and non-professional service provider, we help you advertise your talent to the world by leveraging innovative technologies to get you connected in the market locally and globally.</div>
                                 </div>      
                             </div>
-                            <div class="d-flex align-items-center mb-4">
-                                <div class="text-center">
-                                    <div class="lg-circle rounded-circle bg-theme-color text-white mr-3">
-                                        <div class="position-relative" style="top: 5px;">
-                                            <i class="icofont-dashboard-web"></i>
-                                        </div>
-                                    </div>
+                            <div class="col-12 col-md-6 col-lg-12 mb-4">
+                                <div class="lg-circle text-center mb-3 rounded-circle bg-theme-color text-white">
+                                    <div style="line-height: 50px;">02</div>
                                 </div>
                                 <div class="">
-                                    <h4 class="text-main-dark">User Admin Panel</h4>
-                                    <div class="text-main-dark">Lorem ipsum dolor sit amet, consectetur</div>
-                                </div>      
-                            </div>
-                            <div class="d-flex align-items-center mb-4">
-                                <div class="text-center">
-                                    <div class="lg-circle rounded-circle bg-theme-color text-white mr-3">
-                                        <div class="position-relative" style="top: 5px;">
-                                            <i class="icofont-responsive"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="">
-                                    <h4 class="text-main-dark">Mobile Friendly</h4>
-                                    <div class="text-main-dark">Lorem ipsum dolor sit amet</div>
+                                    <div class="text-main-dark">As a Provider of quality construction equipment and building materials, our platform gives you direct access to retailers, distributors, whole-sellers, factory producers and buyers.</div>
                                 </div>      
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-7 mb-4">
+                    <div class="col-12 col-lg-6 h-100 mb-4">
                         <div class="position-relative">
-                            <img src="/images/banners/rin.jpg" class="img-fluid w-100 h-100 border">
-                            <div class="position-absolute"></div>
-                        </div>
+                            <div class="row">
+                                <div class="col-12 col-md-6 col-lg-12 mb-4">
+                                    <img src="/images/banners/rin.jpg" class="img-fluid w-100 h-100 border">
+                                </div>
+                            </div>
+                        </div>    
                     </div>
                 </div> 
             </div>  

@@ -2,16 +2,16 @@
 	<div class="login-banner min-vh-100">
 		<div class="container">
 			<div class="row justify-content-center align-items-center">
-				<div class="col-12 col-md-4 mb-4">
-					<div class="d-flex justify-content-md-center justify-content-sm-start mb-1">
-						<div class="" style="width: 220px; height: 49px;">
+				<div class="col-12 col-md-6 col-lg-4 mb-3">
+					<div class="d-flex justify-content-md-center justify-content-sm-start">
+						<div class="mb-3" style="width: 220px;">
 							<a href="{{ route('home') }}" class="">
 								<img src="/images/assets/logo.png" class="img-fluid w-100 object-cover">
 							</a>
 						</div>
 					</div>
 					<div class="text-sm-left text-md-center mb-4">
-						<div class="text-main-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</div>
+						<div class="text-main-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod ation ullamco laboris nisi ut aliquip ex ea commodo</div>
 					</div>
 					<section class="">
 						<form action="javascript:;" method="post" class="login-form p-4 card-raduis border mb-4" data-action="{{ route('auth.login') }}">

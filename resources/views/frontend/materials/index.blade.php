@@ -7,6 +7,7 @@
                     <div class="col-12">
                         <div class="mb-4">
                             <h1 class="text-white">Building Materials</h1>
+                            <div class="text-white">As a Provider of quality construction equipment and building materials, our platform gives you direct access to retailers, distributors, whole-sellers, factory producers and buyers etc. Our platform grants you free, and unlimited opportunities to be seen both locally and in the worldwide market.</div>
                         </div>
                         <div class="property-search p-3 icon-raduis border" style="background-color: rgba(255, 255, 255, 0.2);">
                             <div>

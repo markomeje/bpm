@@ -5,7 +5,7 @@
 	</div>
 	<div class="position-absolute dealer-position">
 		<a href="{{ route('account.profile', ['id' => $dealer->id, 'name' => \Str::slug($dealer->user->name)]) }}">
-			<img src="{{ empty($dealer->image) ? '/images/banners/avatar.png' : $dealer->image }}" class="rounded-circle border" style="width: 130px; height: 130px; z-index: 3;" >
+			<img src="{{ empty($dealer->image) ? '/images/banners/placeholder.png' : $dealer->image->link }}" class="rounded-circle border object-cover" style="width: 130px; height: 130px; z-index: 3;" >
 		</a>
 	</div>
 	<div class="card-body pt-0 bg-white">

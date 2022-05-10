@@ -83,6 +83,8 @@ class Profile extends Model
             ['name' => 'Real Estate Developer', 'code' => 'red'],
             ['name' => 'Realtor', 'code' => 'rel'],
             ['name' => 'Real Estate Dealer', 'code' => 'rea'],
+            ['name' => 'Real Estate Company', 'code' => 'rec'],
+            ['name' => 'Real Estate Firm', 'code' => 'ref'],
         ],
         'artisan' => [
             ['name' => 'Artisan', 'code' => 'ats'],

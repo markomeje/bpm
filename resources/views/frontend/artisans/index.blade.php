@@ -4,15 +4,15 @@
     	<section class="artisan-banner" style="padding: 140px 0;">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-12 col-md-6 col-lg-8">
-						<div class="mb-3">
-							<h4 class="text-main-dark">Global Artisans ({{ \App\Models\Profile::where(['role' => 'artisan'])->count() }})</h4>
-							<div class="text-main-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod laboris nisi ut aliquip ex ea commodo  Duis aute irure dolor in</div>
+					<div class="col-12">
+						<div class="mb-4">
+							<h4 class="text-main-dark">Global Services ({{ \App\Models\Profile::where(['role' => 'artisan'])->count() }})</h4>
+							<div class="text-main-dark">Join us for free today, showcase and market your skill to the world. As a professional and non-professional service provider, we help you advertise your talent to the world by leveraging innovative technologies to get you connected in the market locally and globally.</div>
 						</div>
 					</div>
 				</div>
 				@if(empty($artisans->count()))
-					<div class="alert alert-info">No artisans listed</div>
+					<div class="alert alert-info">No services listed</div>
 				@else
 					<div class="row">
 						@foreach ($artisans as $artisan)

@@ -4,11 +4,10 @@
     	<section class="dealers-banner" style="padding: 140px 0;">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="dealer-col col-12 col-md-6 col-lg-8">
+					<div class="dealer-col col-12">
 						<div class="mb-4">
-							<h3 class="text-main-dark">Dealers</h3>
-							<div class="text-main-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua.</div>
+							<h3 class="text-main-dark">Building Materials Dealers</h3>
+							<div class="text-main-dark">As a Provider of quality construction equipment and building materials, our platform gives you direct access to retailers, distributors, whole-sellers, factory producers and buyers etc. Our platform grants you free, and unlimited opportunities to be seen both locally and in the worldwide market.</div>
 						</div>
 					</div>
 				</div>
