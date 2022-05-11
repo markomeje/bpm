@@ -11,7 +11,7 @@
                         <div class="col-12 col-lg-9 mb-4">
                             <div class="alert alert-info d-flex align-items-center justify-content-between mb-4">Add Blog</div>
                             <div class="bg-white p-4 card-raduis shadow-sm">
-                                <form method="post" action="javascript:;" class="edit-blog-form" data-action="{{ route('blog.edit', ['id' => $blog->id]) }}" autocomplete="off">
+                                <form method="post" action="javascript:;" class="edit-blog-form" data-action="{{ route('admin.blog.edit', ['id' => $blog->id]) }}" autocomplete="off">
                                     <div class="form-row">
                                         <div class="form-group col-12">
                                             <label class="form-label text-muted">Title</label>

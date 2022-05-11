@@ -120,6 +120,7 @@ return array(
     'App\\Models\\Notification' => $baseDir . '/app/Models/Notification.php',
     'App\\Models\\Password' => $baseDir . '/app/Models/Password.php',
     'App\\Models\\Payment' => $baseDir . '/app/Models/Payment.php',
+    'App\\Models\\Permission' => $baseDir . '/app/Models/Permission.php',
     'App\\Models\\Product' => $baseDir . '/app/Models/Product.php',
     'App\\Models\\Profile' => $baseDir . '/app/Models/Profile.php',
     'App\\Models\\Promotion' => $baseDir . '/app/Models/Promotion.php',

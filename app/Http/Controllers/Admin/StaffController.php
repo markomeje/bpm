@@ -14,4 +14,12 @@ class StaffController extends Controller
         return view('admin.staff.index')->with(['staffs' => User::where('role', '!=', 'user')->get()]);
     }
 
+    /**
+     * Admin edit staff page
+     */
+    public function edit($id)
+    {
+        return view('admin.staff.edit')->with(['staff' => User::find($id)]);
+    }
+
 }

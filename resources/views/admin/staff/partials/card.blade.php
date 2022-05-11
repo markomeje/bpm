@@ -3,14 +3,14 @@
     <div class="card-body d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
             <div class="rounded-circle lg-circle mr-2">
-                <a href="javascript:;" class="w-100 h-100 d-block border rounded-circle text-center" style="background-color: {{ randomrgba() }};">
+                <a href="{{ $staff->role === 'superadmin' ? 'javascript:;' : route('admin.staff.edit', ['id' => $staff->id]) }}" class="w-100 h-100 d-block border rounded-circle text-center" style="background-color: {{ randomrgba() }};">
                     <small class="text-main-dark position-relative" style="top: 5px;">
                         {{ substr(strtoupper($staff->name), 0, 1) }}
                     </small>
                 </a>
             </div>
             <div class="">
-                <a href="javascript:;" class="text-main-dark d-block text-underline" data-toggle="modal" data-target="#edit-staff-{{ $staff->id }}">
+                <a href="{{ $staff->role === 'superadmin' ? 'javascript:;' : route('admin.staff.edit', ['id' => $staff->id]) }}" class="text-main-dark d-block text-underline">
                     {{ \Str::limit(ucfirst($staff->name), 12) }}
                 </a>
                 <small class="">

@@ -72,8 +72,15 @@ class BlogsController extends Controller
 
     }
 
-    public function edit($id = 0)
+    public function edit($id = 0, Blog $blog)
     {
+        if (request()->user()->cannot('update', $blog)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Sorry. Operation not allowed.'
+            ]);
+        }
+
         $data = request()->all();
         $validator = Validator::make($data, [
             'title' => ['required', 'string'],

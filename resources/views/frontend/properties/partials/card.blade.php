@@ -36,7 +36,7 @@
                                 @set('categories', \App\Models\Property::$categories)
                                 @set('last', array_values($socials))
                                 @foreach($socials as $social)
-                                    <div class="p-2 cursor-pointer {{ end($last) == $social ? '' : 'mr-2' }} border-theme-color text-decoration-none  text-theme-color" data-sharer="{{ $social }}" data-title="Checkout this {{ $categories[$property->category]['name'] }}" data-hashtags="bestpropertymarket,realestate,globalproperties,lands,buildings,estates" data-url="{{ route('property.category.id.slug', ['category' => $property->category, 'id' => $property->id ?? 0, 'slug' => \Str::slug($title)]) }}">
+                                    <div class="p-2 cursor-pointer {{ end($last) == $social ? '' : 'mr-2' }} border-theme-color text-decoration-none  text-theme-color" data-sharer="{{ $social }}" data-title="Checkout this {{ $title }}. {{ $property->description }} Please contact @ {{ $property->user->phone }}." data-hashtags="bestpropertymarket,realestate,globalproperties,lands,buildings,estates,properties" data-url="{{ route('property.category.id.slug', ['category' => $property->category, 'id' => $property->id ?? 0, 'slug' => \Str::slug($title)]) }}">
                                         <div class="">
                                             <i class="icofont-{{ $social }}"></i>
                                         </div>

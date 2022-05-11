@@ -142,7 +142,7 @@ class StaffController extends Controller
     {
         $user = User::find($id);
         if (!empty($user)) {
-            if ($user->id == auth()->id()) {
+            if ($user->id == auth()->id() || auth()->user()->role !== 'superadmin') {
                 return response()->json([
                     'status' => 0,
                     'info' => 'Operation not allowed'

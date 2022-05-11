@@ -44,12 +44,10 @@
 	</div>
 	<div class="position-relative" style="height: 160px; line-height: 160px;">
 		@if($property->images()->exists())
-			@foreach($property->images as $image)
-				@if($image->role == 'main')
-					<a href="{{ route('user.property.edit', ['category' => $property->category, 'id' => $property->id]) }}" class="text-decoration-none">
-						<img src="{{ $image->link }}" class="img-fluid border-0 w-100 h-100 object-cover">
-					</a>
-				@endif
+			@foreach($property->images()->where(['role' => 'main'])->take(1)->get() as $image)
+				<a href="{{ route('user.property.edit', ['category' => $property->category, 'id' => $property->id]) }}" class="text-decoration-none">
+					<img src="{{ $image->link }}" class="img-fluid border-0 w-100 h-100 object-cover">
+				</a>
 			@endforeach
 		@else
 			<a href="{{ route('user.property.edit', ['category' => $property->category, 'id' => $property->id]) }}" class="text-decoration-none">

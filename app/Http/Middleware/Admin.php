@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 use Illuminate\Http\Request;
+use App\Models\User;
 use Closure;
 
 class Admin
@@ -15,7 +16,8 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if ('admin' === auth()->user()->role) {
+        $roles = User::where('role', '!=', 'user')->pluck('role')->toArray();
+        if (in_array(auth()->user()->role, $roles)) {
             return $next($request);
         }
 

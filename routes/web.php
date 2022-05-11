@@ -109,6 +109,7 @@ Route::middleware(['web', 'auth', 'admin', 'revalidate'])->domain(env('ADMIN_URL
 
     Route::prefix('staff')->group(function () {
         Route::get('/', [\App\Http\Controllers\Admin\StaffController::class, 'index'])->name('admin.staff');
+        Route::get('/edit/{id}', [\App\Http\Controllers\Admin\StaffController::class, 'edit'])->name('admin.staff.edit');
 
         Route::post('/edit/{id}', [\App\Http\Controllers\Api\StaffController::class, 'edit'])->name('admin.staff.edit');
         Route::post('/delete/{id}', [\App\Http\Controllers\Api\StaffController::class, 'delete'])->name('admin.staff.delete');

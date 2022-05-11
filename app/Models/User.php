@@ -60,6 +60,14 @@ class User extends Authenticatable
     ];
 
     /**
+     * Any user may have many permissions
+     */
+    public function permissions()
+    {
+        return $this->hasMany(Permission::class);
+    }
+
+    /**
      * Any user may have many properties
      */
     public function properties()
