@@ -73,6 +73,6 @@
         <link rel="stylesheet" type="text/css" href="/fontawesome/css/all.min.css">
         <!-- summernote CSS -->
         <link rel="stylesheet" type="text/css" href="/summernote/summernote-lite.min.css">
-        google-site-verification: googleb4c26618acfa213d.html
+        <meta name="google-site-verification" content="TwsXgtckDSGB9NhyTYAHvQPIkJiMZ7F_DiRrY2CYs1k" />
     </head>
     <body>
