@@ -7,7 +7,7 @@
 				</div>
 			</div>
 			<h4 class="text-white cursor-pointer" data-toggle="modal" data-target="#edit-unit-{{ $unit->id }}">
-				{{ $unit->currency->symbol ?? '$' }} {{ $unit->price }}
+				{{ $unit->currency->symbol ?? 'NGN' }}{{ $unit->price }}
 			</h4>
 		</div>
 		<div class="d-flex flex-column">
@@ -45,7 +45,7 @@
 					For {{ $unit->duration }} Days
 				</div>
 			</div>
-			<div class="d-flex align-items-center justify-content-between bg-info card-raduis px-3 py-2">
+			<div class="d-flex align-items-center justify-content-between bg-info rounded px-3 py-2">
 				<div class="text-white">
 					{{ $unit->credits()->exists() ? $unit->credits()->count() : 0 }} Sold
 				</div>

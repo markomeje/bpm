@@ -4,9 +4,13 @@
     <div class="section-padding pb-4">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12">
-                    <div class="alert alert-info justify-content-between d-flex align-items-center mb-4">
-                        <div class="mr-2">({{ \App\Models\Staff::count() }}) Staff</div>
+                <div class="col-12 col-md-6 mb-4">
+                    <div class="alert alert-info justify-content-between d-flex align-items-center m-0">
+                        <div class="mr-2">({{ \App\Models\Staff::count() }}) Staff Members</div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 mb-4">
+                    <div class="alert alert-info justify-content-between d-flex align-items-center m-0">
                         <a href="javascript:;" class="text-decoration-none" data-toggle="modal" data-target="#add-staff">
                             <i class="icofont-plus"></i>
                         </a>

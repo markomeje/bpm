@@ -41,4 +41,12 @@ class Unit extends Model
     {
         return $this->hasMany(Credit::class);
     }
+
+    /**
+     * A unit belongs to a currency
+     */
+    public function currency()
+    {
+        return $this->belongsTo(Currency::class);
+    }
 }

@@ -16,25 +16,7 @@ class UsersSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        if(env('APP_ENV') === 'production') {
-            $user = User::create([
-                'name' => 'Super Admin', 
-                'phone' => '08060545860', 
-                'email' => 'nnam.ug@gmail.com', 
-                'role' => 'admin', 
-                'password' => Hash::make('!nnam.ug.360!.'), 
-                'status' => 'active',
-                'type' => 'staff',
-            ]);
-
-            Staff::create([
-                'user_id' => $user->id,
-                'type' => 'main',
-                'role' => 'superadmin',
-                'verified' => true,
-                'status' => 'active',
-            ]);
-        }else {
+        if(env('APP_ENV') !== 'production') {
             $users = [
                 ['name' => $faker->name(), 'phone' => $faker->phoneNumber(), 'email' => 'admin@admin.io', 'role' => 'admin', 'password' => Hash::make('1234'), 'status' => 'active'],
                 ['name' => $faker->name(), 'phone' => $faker->phoneNumber(), 'email' => 'user@user.io', 'role' => 'user', 'password' => Hash::make('1234'), 'status' => 'active'],

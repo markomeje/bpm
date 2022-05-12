@@ -107,7 +107,7 @@ Route::middleware(['web', 'auth', 'admin', 'revalidate'])->domain(env('ADMIN_URL
     Route::get('/', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/countries', [\App\Http\Controllers\Admin\CountriesController::class, 'index'])->name('admin.countries');
 
-    Route::prefix('staff')->group(function () {
+    Route::prefix('staffs')->group(function () {
         Route::get('/', [\App\Http\Controllers\Admin\StaffController::class, 'index'])->name('admin.staff');
         Route::get('/edit/{id}', [\App\Http\Controllers\Admin\StaffController::class, 'edit'])->name('admin.staff.edit');
 
