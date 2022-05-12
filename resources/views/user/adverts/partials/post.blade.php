@@ -47,7 +47,7 @@
                                 @if(empty($sizes))
                                     <option value="">-- You sizes listed --</option>
                                 @else
-                                    @foreach ($sizes as $size)
+                                    @foreach ($sizes as $key => $size)
                                         <option value="{{ $size['code'] }}">
                                             {{ $size['name'] }}
                                         </option>
