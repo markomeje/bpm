@@ -33,47 +33,45 @@
 							<i class="icofont-notification"></i>
 						</div>
 					</div> --}}
-				    <a href="{{ route('logout'); }}" class="text-decoration-none text-center">
+				    <a href="{{ route('logout') }}" class="text-decoration-none text-center">
 				    	<i class="icofont-power text-danger"></i>
 				    </a>
-				    @if(auth()->user()->role == 'admin')
-					    <div class="dropdown ml-3">
-		                    <a href="javascript:;" class="text-decoration-none d-block cursor-pointer" id="user-{{ auth()->id() }}" data-toggle="dropdown" data-offset="0, 15">
-		                        <small class="text-main-dark">
-		                            <i class="icofont-navigation-menu"></i>
-		                        </small>
-		                    </a>
-		                    <div class="dropdown-menu border-0 icon-raduis shadow dropdown-menu-right" aria-labelledby="user-{{ auth()->id() }}" style="width: 280px !important; max-height: 480px; overflow-y: scroll;">
-		                    	<a href="{{ route('admin.payments') }}" class="dropdown-item d-flex justify-content-between align-items-center">
-		                            <span class="text-main-dark">Payments</span>
-		                            <small class="text-theme-color">
-		                            	<i class="icofont-long-arrow-right"></i>
-		                            </small>
-		                        </a>
-		                        <div class="dropdown-divider"></div>
-		                        <a href="{{ route('admin.countries') }}" class="dropdown-item d-flex justify-content-between align-items-center">
-		                            <span class="text-main-dark">Countries</span>
-		                            <small class="text-theme-color">
-		                            	<i class="icofont-long-arrow-right"></i>
-		                            </small>
-		                        </a>
-		                        <div class="dropdown-divider"></div>
-		                        <a href="{{ route('admin.reviews') }}" class="dropdown-item d-flex justify-content-between align-items-center">
-		                            <span class="text-main-dark">Users</span>
-		                            <small class="text-theme-color">
-		                            	<i class="icofont-long-arrow-right"></i>
-		                            </small>
-		                        </a>
-		                        <div class="dropdown-divider"></div>
-		                        <a href="{{ route('admin.properties') }}" class="dropdown-item d-flex justify-content-between align-items-center">
-	                                <span class="text-main-dark">Properties</span>
-	                                <small class="text-theme-color">
-		                            	<i class="icofont-long-arrow-right"></i>
-		                            </small>
-	                            </a>
-		                    </div>
-		                </div>
-	                @endif
+				    <div class="dropdown ml-3">
+	                    <a href="javascript:;" class="text-decoration-none d-block cursor-pointer" id="user-{{ auth()->id() }}" data-toggle="dropdown" data-offset="0, 15">
+	                        <small class="text-main-dark">
+	                            <i class="icofont-navigation-menu"></i>
+	                        </small>
+	                    </a>
+	                    <div class="dropdown-menu border-0 icon-raduis shadow dropdown-menu-right" aria-labelledby="user-{{ auth()->id() }}" style="width: 280px !important; max-height: 480px; overflow-y: scroll;">
+	                    	<a href="{{ route('admin.payments') }}" class="dropdown-item d-flex justify-content-between align-items-center">
+	                            <span class="text-main-dark">Payments</span>
+	                            <small class="text-theme-color">
+	                            	<i class="icofont-long-arrow-right"></i>
+	                            </small>
+	                        </a>
+	                        <div class="dropdown-divider"></div>
+	                        <a href="{{ route('admin.countries') }}" class="dropdown-item d-flex justify-content-between align-items-center">
+	                            <span class="text-main-dark">Countries</span>
+	                            <small class="text-theme-color">
+	                            	<i class="icofont-long-arrow-right"></i>
+	                            </small>
+	                        </a>
+	                        <div class="dropdown-divider"></div>
+	                        <a href="{{ route('admin.reviews') }}" class="dropdown-item d-flex justify-content-between align-items-center">
+	                            <span class="text-main-dark">Users</span>
+	                            <small class="text-theme-color">
+	                            	<i class="icofont-long-arrow-right"></i>
+	                            </small>
+	                        </a>
+	                        <div class="dropdown-divider"></div>
+	                        <a href="{{ route('admin.properties') }}" class="dropdown-item d-flex justify-content-between align-items-center">
+                                <span class="text-main-dark">Properties</span>
+                                <small class="text-theme-color">
+	                            	<i class="icofont-long-arrow-right"></i>
+	                            </small>
+                            </a>
+	                    </div>
+	                </div>
 				</ul>
 			</div>
 		</div>

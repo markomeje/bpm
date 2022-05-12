@@ -164,9 +164,10 @@ class StaffController extends Controller
             
     }
 
-    public function status($id, $status = '')
+    public function status($id)
     {
         $staff = User::find($id);
+        $status = $staff->status == 'active' ? 'inactive' : 'active';
         $staff->status = $status;
         $staff->update();
         return response()->json([

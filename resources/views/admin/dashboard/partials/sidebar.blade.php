@@ -25,7 +25,7 @@
                             </div>
                         @else
                             <div class="border rounded-circle" style="height: 35px; width: 35px;">
-                                <img src="{{ $user->profile->image }}" class="img-fluid rounded-circle w-100 h-100">
+                                <img src="{{ $user->profile->image->link }}" class="img-fluid rounded-circle w-100 h-100">
                             </div>  
                         @endif
                     </div> 

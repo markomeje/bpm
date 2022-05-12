@@ -21,7 +21,7 @@
         <form class="d-inline" action="javascript:;" method="post">
             <div class="form-group">
                 <div class="custom-control custom-switch m-0">
-                    <input type="checkbox" value="{{ $staff->status }}" name="status" class="custom-control-input status toggle-staff-status" id="status-{{ $staff->id }}" {{ $staff->status == 'active' ? 'checked' : '' }} data-url="{{ route('admin.staff.toggle.status', ['id' => $staff->id, 'status' => $staff->status == 'active' ? 'inactive' : 'active']) }}">
+                    <input type="checkbox" value="{{ $staff->status }}" name="status" class="custom-control-input status staff-status" id="status-{{ $staff->id }}" {{ $staff->status == 'active' ? 'checked' : '' }} data-url="{{ route('admin.staff.status', ['id' => $staff->id]) }}">
                     <label class="custom-control-label text-main-dark cursor-pointer" for="status-{{ $staff->id }}"></label>
                 </div>
             </div>

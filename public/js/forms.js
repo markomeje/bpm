@@ -2,6 +2,16 @@
 
 	'use strict';
 
+    $('.assign-permission-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'assign-permission-button', spinner: 'assign-permission-spinner', message: 'assign-permission-message'});
+    });
+
+    $('.remove-permission-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'remove-permission-button', spinner: 'remove-permission-spinner', message: 'remove-permission-message'});
+    });
+
     $('.contact-form').submit(function(event){
         event.preventDefault();
         handleForm({form: $(this), button: 'contact-button', spinner: 'contact-spinner', message: 'contact-message'});

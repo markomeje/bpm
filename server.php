@@ -15,6 +15,9 @@ Delete Posted property after 6months of dormancy
 Username: administrator
 Pass: email@admin
 
+Truth home and shelters
+12 properties
+
 1000GB = TB
 1GB = $0.023
 50TB * 1000 = 50000GB

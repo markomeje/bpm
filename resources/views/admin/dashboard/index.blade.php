@@ -22,59 +22,11 @@
                         <div class="col-12 col-lg-6 mb-4">
                             <div class="card-raduis alert alert-info">
                                 <div class="">
-                                    @set('total_subscriptions', \App\Models\Subscription::count())
-                                    @set('total_adverts', \App\Models\Advert::count())
+                                    @set('advertscount', \App\Models\Advert::count())
                                     <div class="d-flex align-items-center justify-content-between mb-4">
                                         <div class="">
                                             <h4 class="text-main-dark">
-                                                {{ number_format($total_subscriptions) }}
-                                            </h4>
-                                            <a href="{{ route('admin.subscriptions') }}" class="text-main-dark">Subscriptions</a>
-                                        </div>
-                                        <small class="px-3 bg-warning rounded-pill">
-                                            <small class="tiny-font text-main-dark">0%</small>
-                                        </small>
-                                    </div>
-                                    <?php $subscription_percentages = [
-                                        'active' => ['count' => \App\Models\Subscription::where(['status' => 'active'])->count(), 'color' => 'success'],
-                                        'cancelled' => ['count' => \App\Models\Subscription::where(['status' => 'cancelled'])->count(), 'color' => 'warning'], 
-                                        'expired' => ['count' => \App\Models\Subscription::where(['status' => 'expired'])->count(), 'color' => 'danger'],
-                                        'renewed' => ['count' => \App\Models\Subscription::where(['status' => 'renewed'])->count(), 'color' => 'info']
-                                    ]; ?>
-                                    <div class="row">
-                                        @foreach($subscription_percentages as $name => $percentage)
-                                            <div class="col-12 col-md-6 mb-4">
-                                                <div class="bg-white p-3 shadow-sm d-flex justify-content-between align-items-center icon-raduis">
-                                                    <div class="">
-                                                        <div class="">
-                                                            {{ $percentage['count'] }}
-                                                        </div>
-                                                        <a href="{{ route('admin.subscriptions', ['status' => $name]) }}" class="text-decoration-none">
-                                                            <small class="text-main-dark">
-                                                                {{ ucfirst($name) }}
-                                                            </small>
-                                                        </a> 
-                                                    </div>
-                                                    <div class="border lg-circle rounded-circle border-{{ $percentage['color'] }} text-center">
-                                                        <small class="tiny-font position-relative" style="top: 4px;">
-                                                            {{ round(($percentage['count']/($total_subscriptions == 0 ? 1 : $total_subscriptions)) * 100) }}%
-                                                        </small>
-                                                    </div>  
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-6 mb-4">
-                            <div class="card-raduis alert alert-info">
-                                <div class="">
-                                    @set('total_adverts', \App\Models\Advert::count())
-                                    <div class="d-flex align-items-center justify-content-between mb-4">
-                                        <div class="">
-                                            <h4 class="text-main-dark">
-                                                {{ number_format($total_adverts) }}
+                                                {{ number_format($advertscount) }}
                                             </h4>
                                             <a href="{{ route('admin.adverts') }}" class="text-main-dark">Adverts</a>
                                         </div>
@@ -82,14 +34,14 @@
                                             <small class="tiny-font text-main-dark">0%</small>
                                         </small>
                                     </div>
-                                    <?php $advert_percentages = [
+                                    <?php $advertpercentages = [
                                         'active' => ['count' => \App\Models\Advert::where(['status' => 'active'])->count(), 'color' => 'success'],
                                         'cancelled' => ['count' => \App\Models\Advert::where(['status' => 'cancelled'])->count(), 'color' => 'warning'], 
                                         'expired' => ['count' => \App\Models\Advert::where(['status' => 'expired'])->count(), 'color' => 'danger'],
                                         'paused' => ['count' => \App\Models\Advert::where(['status' => 'paused'])->count(), 'color' => 'info']
                                     ]; ?>
                                     <div class="row">
-                                        @foreach($advert_percentages as $name => $percentage)
+                                        @foreach($advertpercentages as $name => $percentage)
                                             <div class="col-12 col-md-6 mb-4">
                                                 <div class="bg-white p-3 shadow-sm d-flex justify-content-between align-items-center icon-raduis">
                                                     <div class="">
@@ -104,7 +56,7 @@
                                                     </div>
                                                     <div class="border lg-circle rounded-circle border-{{ $percentage['color'] }} text-center">
                                                         <small class="tiny-font position-relative" style="top: 4px;">
-                                                            {{ round(($percentage['count']/($total_adverts == 0 ? 1 : $total_adverts)) * 100) }}%
+                                                            {{ round(($percentage['count']/($advertscount == 0 ? 1 : $advertscount)) * 100) }}%
                                                         </small>
                                                     </div>  
                                                 </div>

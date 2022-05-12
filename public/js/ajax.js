@@ -2,22 +2,8 @@
 
 	'use strict';
 
-    $('.toggle-staff-status').on('change', function() {
-        $.ajax({
-            method: 'post',
-            url: $(this).attr('data-url'),
-            dataType: 'json',
-
-            success: function(response) {
-                if(response.status === 1) {
-                    console.log(response.info);
-                }
-            },
-
-            error: function() {
-                alert('Network error. Try again.');
-            },
-        });    
+    $('.staff-status').on('change', function() {
+        handleAjax({that: $(this), button: 'staff-button', spinner: 'staff-spinner'});    
     });
 
     $('.delete-staff').on('click', function() {
