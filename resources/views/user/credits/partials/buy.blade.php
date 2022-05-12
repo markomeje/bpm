@@ -19,7 +19,7 @@
                                 @else
                                     @foreach ($units as $unit)
                                         <option value="{{ $unit->id }}">
-                                            {{ $unit->units.'units for $'.$unit->price.'('.$unit->duration.'days)' }}
+                                            {{ $unit->units.'units for '.$unit->currency->symbol.$unit->price.'('.$unit->duration.'days)' }}
                                         </option>
                                     @endforeach
                                 @endif
