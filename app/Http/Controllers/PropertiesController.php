@@ -61,7 +61,7 @@ class PropertiesController extends Controller
     public function action($action = 'lease')
     {
         $properties =  Property::where(['action' => $action, 'status' => 'active'])->paginate(16);
-        return view('frontend.properties.action')->with(['title' => Str::headline($action), 'properties' => $properties, 'action' => $action]);
+        return view('frontend.properties.action')->with(['title' => Str::headline(Property::$actions[$action] ?? env('APP_NAME')), 'properties' => $properties, 'action' => $action]);
     }
 
     /**

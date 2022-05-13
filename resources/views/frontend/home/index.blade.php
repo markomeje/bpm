@@ -50,7 +50,7 @@
                                         @include('frontend.properties.partials.card')
                                     </div>
                                 @endforeach
-                                <div class="w-100 d-block">
+                                <div class="col-12">
                                     @include('frontend.adverts.partials.fullwidth')
                                 </div>
                                 @foreach($properties->skip(4)->take(4) as $property)
@@ -58,15 +58,12 @@
                                         @include('frontend.properties.partials.card')
                                     </div>
                                 @endforeach
-                                <div class="w-100 d-block">
+                                <div class="col-12">
                                     @include('frontend.adverts.partials.fullwidth')
                                 </div>
                             </div>
                         @endif
                     </div>
-                </div>
-                <div class="w-100 d-block">
-                    @include('frontend.adverts.partials.fullwidth')
                 </div>
             </div>
         </div>
