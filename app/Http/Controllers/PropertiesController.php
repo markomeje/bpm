@@ -11,7 +11,7 @@ class PropertiesController extends Controller
      */
     public function index()
     {
-        return view('frontend.properties.index')->with(['properties' => Property::latest('created_at')->where('action', '!=', 'sold')->where(['status' => 'active'])->paginate(8),]);
+        return view('frontend.properties.index')->with(['properties' => Property::latest('created_at')->where('action', '!=', 'sold')->where(['status' => 'active'])->paginate(9),]);
     }
 
     /**
@@ -28,7 +28,7 @@ class PropertiesController extends Controller
      */
     public function category($category = 'land')
     {
-        $properties = Property::latest('created_at')->where(['category' => $category, 'status' => 'active'])->where('action', '!=', 'sold')->paginate(16);
+        $properties = Property::latest('created_at')->where(['category' => $category, 'status' => 'active'])->where('action', '!=', 'sold')->paginate(18);
         return view('frontend.properties.category')->with(['title' => "$category Propertes | Best Property Market", 'properties' => $properties, 'name' => $category]);
     }
 
