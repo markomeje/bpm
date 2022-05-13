@@ -37,7 +37,7 @@
                 @else
                     <div class="row">
                         <div class="col-12 col-md-9 mb-4">
-                            <div class="alert alert-info mb-4">Global Properties ({{ \App\Models\Property::count() }})</div>
+                            <div class="alert alert-info mb-4">+{{ \App\Models\Property::count() }} Global Properties</div>
                             <div class="mb-4">
                                 <div class="row">
                                     @foreach($properties->take(3) as $property)
