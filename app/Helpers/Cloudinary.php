@@ -23,7 +23,7 @@ class Cloudinary
         if ($type == 'property') {
             $upload = $file->store('public');
             $image = Image::make(Storage::get($upload));
-            $image->insert(Storage::get('water.png'), 'center')->save(Storage::path($upload));
+            $image->insert(Storage::get('water.png'))->save(Storage::path($upload));
 
             $imagepath = $image->basePath();
         }else {

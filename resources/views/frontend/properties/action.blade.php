@@ -17,7 +17,7 @@
                                     @endforeach
                                 </div> 
                             @else
-                                <div class="alert-info alert mb-4"> +{{ $properties->total() }} Properties {{ \App\Models\Property::$actions[$action] ?? '' }} Found</div>
+                                <div class="alert-info alert mb-4"> +{{ $properties->total() }} Properties {{ \App\Models\Property::$actions[$action] ?? '' }} found</div>
                                 <div class="row">
                                     @foreach($properties->take(4) as $property)
                                         <div class="col-12 col-md-4 col-lg-3 mb-4">
