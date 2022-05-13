@@ -25,7 +25,7 @@ class AdvertFactory extends Factory
             'size' => $faker->randomElement(['fhb', 'ssb', 'svb']),
             'credit_id' => rand(1, Credit::count()),
             'reference' => Str::random(64),
-            'status' => $faker->randomElement(Advert::$status),
+            'status' => $faker->randomElement(['initialized', 'expired']),
         ];
     }
 }

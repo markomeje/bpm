@@ -203,7 +203,7 @@
 						@include('user.adverts.partials.delete')
 					</div>
 				</div>
-				<div class="row">
+				<div class="">
 	            	<?php  $timing = \App\Helpers\Timing::calculate($duration, $advert->expiry, $advert->started); ?>
 	            	<div class="progress progress-bar-height mb-3">
 	                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-dark" role="progressbar" aria-valuenow="{{ $timing->progress() }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $timing->progress() }}%"></div>

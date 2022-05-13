@@ -44,12 +44,12 @@
                         <div class="form-group col-12 col-md-6">
                             <label class="text-smoky">Advert Size</label>
                             <select class="form-control custom-select rounded-0 size" name="size">
-                                <option value="">-- Select size --</option>
+                                <option value="">Select size</option>
                                 <?php $sizes = \App\Models\Advert::$sizes; ?>
                                 @if(empty($sizes))
-                                    <option value="">-- You sizes listed --</option>
+                                    <option value="">No sizes listed</option>
                                 @else
-                                    @foreach ($sizes as $key => $size)
+                                    @foreach ($sizes as $size)
                                         <option value="{{ $size['code'] }}" {{ $advert->size == $size['code'] ? 'selected' : '' }}>
                                             {{ $size['name'] }}
                                         </option>

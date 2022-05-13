@@ -24,60 +24,48 @@
         <div class="home-properties">
             <div class="container-fluid">
                 <div class="">
-                    <div class="d-flex justify-content-between align-items-center flex-wrap">
-                        <div class="">
-                            <h4 class="text-main-dark mb-4">Global Properties</h4>
-                            <ul class="nav nav-pills " id="" role="tablist">
-                                @set('actions', \App\Models\Property::distinct()->pluck('action'))
-                                @if(!empty($actions))
-                                    @foreach($actions as $key => $action)
-                                        @if($action !== 'sold')
-                                            <li class="nav-item" role="presentation">
-                                                <a class="nav-link border-theme-color mr-3 mb-4 py-1 text-main-dark px-4 {{ $action == 'sale' ? 'active' : '' }}" id="pills-{{ $action }}-tab" data-toggle="pill" href="#pills-{{ $action }}" role="tab" aria-controls="pills-{{ $action }}" aria-selected="true">
-                                                    <small class="position-relative">
-                                                        {{ ucwords(\App\Models\Property::$actions[$action]) }}
-                                                    </small>
-                                                </a>
-                                            </li>
-                                        @endif
-                                    @endforeach
-                                @endif
-                            </ul>
-                        </div>
-                    </div> 
-                    <div class="tab-content" id="">
+                    <h4 class="text-main-dark">Global Properties</h4>
+                    <div class="text-main-dark mb-4 w-75">Find your dream property from our global list of lands, commercial, residential and industrial properties. To see more, <a href="">Click here</a> or to speak to with us, <a href="tel:{{ env('OFFICE_PHONE') }}">contact us</a> immediately.</div>
+                    <div class="bg-transparent">
+                        @set('actions', \App\Models\Property::distinct()->pluck('action'))
+                        @if(!empty($actions))
+                            <div class="d-flex align-items-center flex-wrap">
+                                @foreach($actions as $key => $action)
+                                    @if($action !== 'sold')
+                                        <a href="{{ route('properties.action', ['action' => $action]) }}" class="btn border-theme-color mr-3 mb-4 py-1 text-main-dark px-4" target="_blank">
+                                            {{ ucwords(\App\Models\Property::$actions[$action]) }}
+                                        </a>
+                                    @endif
+                                @endforeach
+                            </div>
+                        @endif
+                    </div>
+                    <div class="home-listing">
                         @if(empty($properties->count()))
                             <div class="alert-info alert">No Properties Yet</div>
                         @else
-                            @if(!empty($actions))
-                                @foreach($actions as $key => $action)
-                                    @if($action !== 'sold')
-                                        <div class="tab-pane fade show {{ $action == 'sale' ? 'active' : '' }}" id="pills-{{ $action }}" role="tabpanel" aria-labelledby="pills-{{ $action }}-tab">
-                                            <div class="row">
-                                                @foreach($properties as $property)
-                                                    @if($property->action == $action)
-                                                        <div class="col-12 col-md-4 col-lg-3 mb-4">
-                                                            @include('frontend.properties.partials.card')
-                                                        </div>
-                                                    @endif
-                                                @endforeach
-                                            </div>  
-                                        </div>
-                                    @endif
+                            <div class="row">
+                                @foreach($properties->take(4) as $property)
+                                    <div class="col-12 col-md-4 col-lg-3 mb-4">
+                                        @include('frontend.properties.partials.card')
+                                    </div>
                                 @endforeach
-                            @else
-                                <div class="row">
-                                    @foreach($properties as $property)
-                                        <div class="col-12 col-md-4 col-lg-3 mb-4">
-                                            @include('frontend.properties.partials.card')
-                                        </div>
-                                    @endforeach
-                                </div>  
-                            @endif
+                                <div class="w-100 d-block">
+                                    @include('frontend.adverts.partials.fullwidth')
+                                </div>
+                                @foreach($properties->skip(4)->take(4) as $property)
+                                    <div class="col-12 col-md-4 col-lg-3 mb-4">
+                                        @include('frontend.properties.partials.card')
+                                    </div>
+                                @endforeach
+                                <div class="w-100 d-block">
+                                    @include('frontend.adverts.partials.fullwidth')
+                                </div>
+                            </div>
                         @endif
                     </div>
                 </div>
-                <div class="">
+                <div class="w-100 d-block">
                     @include('frontend.adverts.partials.fullwidth')
                 </div>
             </div>

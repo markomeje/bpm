@@ -6,9 +6,9 @@
                 <div class="container-fluid">
                     <div class="">
                         <div class="">
-                            @if(empty($properties->count()))
-                                <div class="alert-info alert mb-4">No Properties Found for ({{ request()->get('query') }})</div>
-                                <?php $properties = \App\Models\Property::where('action', '!=', 'sold')->orderBy('id', 'desc')->take(400)->get()->random(25); ?>
+                            @if(!empty($properties->count()))
+                                <div class="alert-info alert mb-4">No Properties Found. View other properties</div>
+                                <?php $properties = \App\Models\Property::where('action', '!=', 'sold')->orderBy('id', 'desc')->take(400)->get()->random(24); ?>
                                 <div class="row">
                                     @foreach($properties as $property)
                                         <div class="col-12 col-md-6 col-lg-3 mb-4">
@@ -17,16 +17,30 @@
                                     @endforeach
                                 </div> 
                             @else
-                                <h4 class="text-main-dark mb-4"> ({{ $properties->total() }}) Propertie(s) found</h4>
+                                <div class="alert-info alert mb-4"> +{{ $properties->total() }} Properties {{ \App\Models\Property::$actions[$action] }} Found</div>
                                 <div class="row">
-                                    @foreach($properties as $property)
-                                        <div class="col-12 col-md-6 col-lg-3 mb-4">
+                                    @foreach($properties->take(4) as $property)
+                                        <div class="col-12 col-md-4 col-lg-3 mb-4">
                                             @include('frontend.properties.partials.card')
                                         </div>
                                     @endforeach
+                                    <div class="w-100 d-block">
+                                        @include('frontend.adverts.partials.fullwidth')
+                                    </div>
+                                    @foreach($properties->skip(4)->take(4) as $property)
+                                        <div class="col-12 col-md-4 col-lg-3 mb-4">
+                                            @include('frontend.properties.partials.card')
+                                        </div>
+                                    @endforeach
+                                    <div class="w-100 d-block">
+                                        @include('frontend.adverts.partials.fullwidth')
+                                    </div>
                                 </div> 
                                 {{ $properties->appends(request()->query())->links('vendor.pagination.default') }}
                             @endif
+                            <div class="w-100 d-block">
+                                @include('frontend.adverts.partials.fullwidth')
+                            </div>
                         </div>
                     </div>
                 </div>
