@@ -27,11 +27,13 @@
                     </div>
                     {{-- Advert section starts --}}
                     <div class="">
-                        <div class="d-flex justify-content-between alert alert-info mb-4 icon-raduis">
-                            <span class="">Adverts</span>
-                            <a href="javascript:;" class="text-decoration-none" data-toggle="modal" data-target="#post-advert">
-                                <i class="icofont-plus"></i>
-                            </a>
+                        <div class="d-flex justify-content-between align-items-center alert alert-info mb-4 icon-raduis">
+                            <span class="">Recent Adverts</span>
+                            <small class="">
+                                <a href="javascript:;" class="text-decoration-none" data-toggle="modal" data-target="#post-advert">
+                                    <i class="icofont-plus"></i>
+                                </a>
+                            </small>
                             @include('user.adverts.partials.post')
                         </div>
                         <?php $adverts = \App\Models\Advert::latest()->where(['user_id' => auth()->id()])->get(); ?>
@@ -61,76 +63,31 @@
                                 </div>
                             </div>
                         </div>
-                        @if(auth()->user()->profile)
-                            @if(auth()->user()->profile->role !== 'dealer')
-                                <div class="col-12 mb-4">
-                                    <div class="card bg-white card-raduis shadow-sm">
-                                        <div class="card-body">
-                                            <div class="">
-                                                <h5 class="text-main-dark mb-3">List Building Materials</h5>
-                                                <div class="mb-4">You have to signup for another account to continue.</div>
-                                                <a href="{{ route('logout', ['redirect' => 'signup']) }}" class="btn bg-theme-color text-white px-4">Get Started</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-                            @if(auth()->user()->profile->role !== 'realtor')
-                                <div class="col-12 mb-4">
-                                    <div class="card bg-white card-raduis shadow-sm">
-                                        <div class="card-body">
-                                            <div class="">
-                                                <h5 class="text-main-dark mb-3">List Your Properties</h5>
-                                                <div class="mb-4">You have to signup for another account to continue.</div>
-                                                <a href="{{ route('logout', ['redirect' => 'signup']) }}" class="btn bg-theme-color text-white px-4">Get Started</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-                            @if(auth()->user()->profile->role !== 'artisan')
-                                <div class="col-12 mb-4">
-                                    <div class="card bg-white card-raduis shadow-sm">
-                                        <div class="card-body">
-                                            <div class="">
-                                                <h5 class="text-main-dark mb-3">List Your Services</h5>
-                                                <div class="mb-4">You have to signup for another account to continue.</div>
-                                                <a href="{{ route('logout', ['redirect' => 'signup']) }}" class="btn bg-theme-color text-white px-4">Get Started</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-                        @endif
                     </div>
-                    @if(auth()->user()->profile)
-                        @if(auth()->user()->profile->role == 'realtor')
-                            <div class="">
-                                <div class="alert alert-info mb-4 d-flex justify-content-between align-items-center">
-                                    <div>Recent properties</div>
-                                    <small>
-                                        <a href="{{ route('user.property.add') }}" class="text-primary text-decoration-none">
-                                            <i class="icofont-plus"></i>
-                                        </a>
-                                    </small>
-                                </div>
-                                @if(empty($properties->count()))
-                                    <div class="alert alert-warning mb-4">No properties listed yet</div>
-                                @else
-                                    <div class="row">
-                                        @foreach($properties as $property)
-                                            <div class="col-12 col-md-4 col-lg-6 mb-4">
-                                                @include('user.properties.partials.card')
-                                            </div>
-                                        @endforeach
+                    <div class="">
+                        <div class="alert alert-info mb-4 d-flex justify-content-between align-items-center">
+                            <div class="">Recent properties</div>
+                            <small>
+                                <a href="{{ route('user.property.add') }}" class="text-primary text-decoration-none">
+                                    <i class="icofont-plus"></i>
+                                </a>
+                            </small>
+                        </div>
+                        @if(empty($properties->count()))
+                            <div class="alert alert-warning mb-4">No properties listed yet</div>
+                        @else
+                            <div class="row">
+                                @foreach($properties as $property)
+                                    <div class="col-12 col-md-4 col-lg-6 mb-4">
+                                        @include('user.properties.partials.card')
                                     </div>
-                                    @if($properties->total() > 4)
-                                        <a href="{{ route('user.properties') }}" class="alert alert-info mb-4 d-block">See all listed properties</a>
-                                    @endif
-                                @endif
-                            </div>   
+                                @endforeach
+                            </div>
+                            @if($properties->total() > 4)
+                                <a href="{{ route('user.properties') }}" class="alert alert-info mb-4 d-block">See all listed properties</a>
+                            @endif
                         @endif
-                    @endif
+                    </div>   
                 </div>
             </div>
         </div>

@@ -11,48 +11,42 @@
         </div>
     </div>
 </div>
-@if($role === 'realtor')
-    <div class="col-6 mb-4">
-        <div class="icon-raduis alert bg-info m-0">
-            <div class="py-2">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h5 class="text-main-dark text-shadow-white m-0">
-                        {{ number_format(auth()->user()->properties->count()) }}
-                    </h5>
-                </div>
-                <a href="{{ route('user.properties') }}" class="text-white">Properties</a>
+<div class="col-6 mb-4">
+    <div class="icon-raduis alert bg-info m-0">
+        <div class="py-2">
+            <div class="d-flex justify-content-between align-items-center">
+                <h5 class="text-main-dark text-shadow-white m-0">
+                    {{ number_format(auth()->user()->properties->count()) }}
+                </h5>
             </div>
+            <a href="{{ route('user.properties') }}" class="text-white">Properties</a>
         </div>
     </div>
-@endif
-@if($role === 'dealer')
-    <div class="col-6 mb-4">
-        <div class="icon-raduis position-relative alert bg-info m-0">
-            <div class="py-2">
-                <div class="d-flex justify-content-between align-items-center align-items-center">
-                    <h5 class="text-main-dark text-shadow-white m-0">
-                        {{ number_format(auth()->user()->materials->count()) }}
-                    </h5>
-                </div>
-                <a href="{{ route('user.materials') }}" class="text-white">Materials</a>
+</div>
+<div class="col-6 mb-4">
+    <div class="icon-raduis position-relative alert bg-info m-0">
+        <div class="py-2">
+            <div class="d-flex justify-content-between align-items-center align-items-center">
+                <h5 class="text-main-dark text-shadow-white m-0">
+                    {{ number_format(auth()->user()->materials->count()) }}
+                </h5>
             </div>
+            <a href="{{ route('user.materials') }}" class="text-white">Materials</a>
         </div>
     </div>
-@endif
-@if($role === 'artisan')
-    <div class="col-6 mb-4">
-        <div class="icon-raduis position-relative alert bg-info m-0">
-            <div class="py-2">
-                <div class="d-flex justify-content-between align-items-center align-items-center">
-                    <h5 class="text-main-dark text-shadow-white m-0">
-                        {{ number_format(auth()->user()->services->count()) }}
-                    </h5>
-                </div>
-                <a href="{{ route('user.services') }}" class="text-white">Services</a>
+</div>
+<div class="col-6 mb-4">
+    <div class="icon-raduis position-relative alert bg-info m-0">
+        <div class="py-2">
+            <div class="d-flex justify-content-between align-items-center align-items-center">
+                <h5 class="text-main-dark text-shadow-white m-0">
+                    {{ number_format(auth()->user()->services->count()) }}
+                </h5>
             </div>
+            <a href="{{ route('user.services') }}" class="text-white">Services</a>
         </div>
     </div>
-@endif
+</div>
 <div class="col-12 mb-4">
     <div class="icon-raduis bg-white shadow-sm p-4 border-0" >
         <div class="pb-0 position-relative">

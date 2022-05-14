@@ -44,7 +44,7 @@ class BlogPolicy
     public function update(User $user, Blog $blog)
     {
         $permissions = $user->permissions->where(['resource' => 'post'])->pluck('permission')->toArray();
-        return in_array('update', $permissions) && $user->role !== 'user';
+        return in_array('update', $permissions) || in_array($user->role, ['superadmin']);
     }
 
     /**

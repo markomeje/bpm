@@ -1,16 +1,10 @@
 <div class="p-4 bg-white shadow-sm d-flex justify-content-between mb-4 icon-raduis">
-    <div>Notifications</div>
+    <div class="text-main-dark">New Users</div>
     <div class="px-3 tiny-font py-1 bg-theme-color rounded-pill">
         <small class="text-white">+0</small> 
     </div>
 </div>
-<div class="alert alert-info border border-light icon-raduis">
-    <div class="bg-info p-3 d-flex my-4 align-items-center justify-content-between">
-        <div class="text-white">New Users</div>
-        <div class="px-3 tiny-font py-1 bg-theme-color rounded-pill">
-            <small class="text-white">+10</small> 
-        </div>
-    </div>
+<div class="alert alert-info pt-4 border border-light icon-raduis">
     @set('users', \App\Models\User::latest()->take(4)->get())
     @if(empty($users))
         <div class="alert alert-danger">No recent users</div>

@@ -25,7 +25,7 @@
             <div class="container-fluid">
                 <div class="">
                     <h4 class="text-main-dark">Global Properties</h4>
-                    <div class="text-main-dark mb-4 w-75">Find your dream property from our global list of lands, commercial, residential and industrial properties. To see more, <a href="">Click here</a> or to speak to with us, <a href="tel:{{ env('OFFICE_PHONE') }}">contact us</a> immediately.</div>
+                    <div class="text-main-dark mb-4 w-75">Find your dream property from our global list of lands, commercial, residential and industrial properties. To see more, <a href="">Click here</a> or to speak to us, <a href="tel:{{ env('OFFICE_PHONE') }}">contact us</a> immediately.</div>
                     <div class="bg-transparent">
                         @set('actions', \App\Models\Property::distinct()->pluck('action'))
                         @if(!empty($actions))

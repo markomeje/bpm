@@ -34,12 +34,12 @@ class StaffController extends Controller
             ]);
         }
 
-        $whitelisted = ['superadmin'];
+        $whitelisted = ['superadmin', 'user'];
         if (in_array($data['role'], $whitelisted)) {
             $role = ucfirst($data['role']);
             return response()->json([
                 'status' => 0,
-                'info' => 'The role entered is not allowed',
+                'info' => 'Role not allowed',
             ]);
         }
 

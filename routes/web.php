@@ -348,11 +348,11 @@ Route::middleware(['web', 'auth'])->get('/dashboard', function () {
         case 'blogger':
             $sudomain = 'blog';
             break;
-        case 'admin':
-            $sudomain = 'admin';
+        case 'user':
+            $sudomain = 'user';
             break;
         default:
-            $sudomain = 'user';
+            $sudomain = 'admin';
             break;
     }
 
