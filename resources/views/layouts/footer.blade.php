@@ -27,6 +27,14 @@
         <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
 
         <script type="text/javascript">
+            @if(!empty($staffs))
+                @foreach($staffs as $staff)
+                    $('.staff-status-{{ $staff->id }}').on('change', function() {
+                        handleAjax({that: $(this), button: 'staff-button-{{ $staff->id }}', spinner: 'staff-spinner-{{ $staff->id }}'});    
+                    });
+                @endforeach
+            @endif
+
             var description = $('#description');
             if (description) {
                 description.summernote({

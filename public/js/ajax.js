@@ -2,10 +2,6 @@
 
 	'use strict';
 
-    $('.staff-status').on('change', function() {
-        handleAjax({that: $(this), button: 'staff-button', spinner: 'staff-spinner'});    
-    });
-
     $('.delete-staff').on('click', function() {
         handleAjax({that: $(this), button: 'staff-button', spinner: 'staff-spinner'});    
     });

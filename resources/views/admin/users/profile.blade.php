@@ -20,7 +20,7 @@
                                             {{ ucwords($user->profile->role) }}
                                         </small>
                                     </div>
-                                    <div class="" style="height: 180px;">
+                                    <div class="border" style="height: 180px;">
                                         @if(empty($user->profile->image))
                                             <div class="w-100 h-100 text-center" style="background-color: {{ randomrgba() }}; line-height: 160px;">
                                                 <small class="text-main-dark">

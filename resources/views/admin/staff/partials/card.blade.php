@@ -3,14 +3,14 @@
     <div class="card-body d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
             <div class="rounded-circle lg-circle mr-2">
-                <a href="{{ $staff->role === 'superadmin' ? 'javascript:;' : route('admin.staff.edit', ['id' => $staff->id]) }}" class="w-100 h-100 d-block border rounded-circle text-center" style="background-color: {{ randomrgba() }};">
+                <a href="{{ route('admin.staff.edit', ['id' => $staff->id]) }}" class="w-100 h-100 d-block border rounded-circle text-center" style="background-color: {{ randomrgba() }};">
                     <small class="text-main-dark position-relative" style="top: 5px;">
                         {{ substr(strtoupper($staff->name), 0, 1) }}
                     </small>
                 </a>
             </div>
             <div class="">
-                <a href="{{ $staff->role === 'superadmin' ? 'javascript:;' : route('admin.staff.edit', ['id' => $staff->id]) }}" class="text-main-dark d-block text-underline">
+                <a href="{{ route('admin.staff.edit', ['id' => $staff->id]) }}" class="text-main-dark d-block text-underline">
                     {{ \Str::limit(ucfirst($staff->name), 12) }}
                 </a>
                 <small class="">
@@ -21,7 +21,7 @@
         <form class="d-inline" action="javascript:;" method="post">
             <div class="form-group">
                 <div class="custom-control custom-switch m-0">
-                    <input type="checkbox" value="{{ $staff->status }}" name="status" class="custom-control-input status staff-status" id="status-{{ $staff->id }}" {{ $staff->status == 'active' ? 'checked' : '' }} data-url="{{ route('admin.staff.status', ['id' => $staff->id]) }}">
+                    <input type="checkbox" value="{{ $staff->status }}" name="status" class="custom-control-input" id="status-{{ $staff->id }}" {{ $staff->status == 'active' ? 'checked' : '' }} data-url="{{ route('admin.staff.status', ['id' => $staff->id]) }}">
                     <label class="custom-control-label text-main-dark cursor-pointer" for="status-{{ $staff->id }}"></label>
                 </div>
             </div>

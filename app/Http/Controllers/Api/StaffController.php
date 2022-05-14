@@ -16,16 +16,23 @@ use Exception;
 
 class StaffController extends Controller
 {
+    /**
+     * Whitelisted role for staff
+     */
+    const NOT_ALLOWED_ROLES = ['superadmin', 'user'];
 
+    /**
+     * Add staff to as user and to staff table
+     */
     public function add()
     {
         $data = request()->all();
         $validator = Validator::make($data, [
             'email' => ['required', 'email', 'unique:users'], 
             'phone' => ['required', 'unique:users'],
-            'role' => ['required', 'string'],
+            'role' => ['required', 'string', 'max:15', 'alpha'],
             'fullname' => ['required', 'string'],
-        ]);
+        ], ['alpha' => 'Only letters without white spaces allowed.']);
 
         if (!$validator->passes()) {
             return response()->json([
@@ -34,9 +41,8 @@ class StaffController extends Controller
             ]);
         }
 
-        $whitelisted = ['superadmin', 'user'];
-        if (in_array($data['role'], $whitelisted)) {
-            $role = ucfirst($data['role']);
+        $role = strtolower($data['role'] ?? '');
+        if (in_array($role, self::NOT_ALLOWED_ROLES)) {
             return response()->json([
                 'status' => 0,
                 'info' => 'Role not allowed',
@@ -50,8 +56,18 @@ class StaffController extends Controller
                 'email' => $data['email'],
                 'phone' => $data['phone'],
                 'password' => Hash::make($reference),
-                'role' => $data['role'],
+                'role' => $role,
                 'name' => $data['fullname'],
+            ]);
+
+            Staff::create([
+                'user_id' => $user->id,
+                'role' => $role,
+                'created_by' => auth()->id(),
+                'description' => $data['description'] ?? '',
+                'code' => $data['code'] ?? '',
+                'status' => 'active',
+                'type' => 'staff'
             ]);
 
             $otp = random_int(100000, 999999);
@@ -104,9 +120,9 @@ class StaffController extends Controller
         $validator = Validator::make($data, [
             'email' => ['required', 'email'], 
             'phone' => ['required'],
-            'role' => ['required', 'string'],
+            'role' => ['required', 'string', 'max:15', 'alpha'],
             'fullname' => ['required', 'string'],
-        ]);
+        ], ['alpha' => 'Only letters without white spaces allowed.']);
 
         if (!$validator->passes()) {
             return response()->json([
@@ -115,9 +131,9 @@ class StaffController extends Controller
             ]);
         }
 
-        $whitelisted = ['superadmin'];
-        if (in_array($data['role'], $whitelisted)) {
-            $role = ucfirst($data['role']);
+        $role = strtolower($data['role'] ?? '');
+        if (in_array($role, self::NOT_ALLOWED_ROLES)) {
+            $role = ucfirst($role);
             return response()->json([
                 'status' => 0,
                 'info' => 'The role entered is not allowed',
@@ -126,10 +142,14 @@ class StaffController extends Controller
 
         $user = User::find($id);
         $user->email = $data['email'];
-        $user->phone = $data['phone'];
         $user->name = $data['fullname'];
-        $user->role = $data['role'];
+        $user->phone = $data['phone'];
+        $user->role = $role;
         $user->update();
+
+        $staff = Staff::where(['user_id' => $user->id])->first();
+        $staff->description = $data['description'];
+        $staff->update();
 
         return response()->json([
             'status' => 1,
@@ -142,7 +162,7 @@ class StaffController extends Controller
     {
         $user = User::find($id);
         if (!empty($user)) {
-            if ($user->id == auth()->id() || auth()->user()->role !== 'superadmin') {
+            if ($user->id == auth()->id()) {
                 return response()->json([
                     'status' => 0,
                     'info' => 'Operation not allowed'

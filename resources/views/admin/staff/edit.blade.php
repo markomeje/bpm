@@ -10,7 +10,7 @@
                     <div class="col-12 col-lg-6 mb-4">
                         <div class="alert alert-info mb-4">Edit staff details</div>
                         <div class="bg-white shadow-sm rounded p-4">
-                            <form class="edit-staff" action="javascript:;" method="post" data-action="{{ '' }}">
+                            <form class="edit-staff-form" action="javascript:;" method="post" data-action="{{ '' }}">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label class="text-main-dark">Email</label>
@@ -34,6 +34,18 @@
                                         <input type="text" class="form-control role" name="role" placeholder="e.g., admin" value="{{ $staff->role }}">
                                         <small class="invalid-feedback role-error"></small>
                                     </div>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="text-main-dark">Staff Description</label>
+                                    <textarea type="text" rows="4" class="form-control description" name="description" placeholder="Enter staff description">{{ $staff->description }}</textarea>
+                                    <small class="invalid-feedback description-error"></small>
+                                </div>
+                                <div class="alert mb-3 edit-staff-message d-none"></div>
+                                <div class="d-flex justify-content-right mb-3 mt-1">
+                                    <button type="submit" class="btn btn-info btn-lg text-white edit-staff-button px-4">
+                                        <img src="/images/spinner.svg" class="mr-2 d-none edit-staff-spinner mb-1">
+                                        Edit
+                                    </button>
                                 </div>
                             </form>
                         </div>
