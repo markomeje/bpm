@@ -72,10 +72,7 @@ class Advert extends Model
      */
     public function image()
     {
-        return $this->hasOne(Image::class, 'model_id')->where([
-            'type' => 'advert', 
-            'user_id' => auth()->id()
-        ]);
+        return $this->hasOne(Image::class, 'model_id')->where(['type' => 'advert']);
     }
 
 }
