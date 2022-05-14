@@ -19,6 +19,7 @@ class CreatePermissionsTable extends Migration
             $table->text('description')->nullable();
             $table->string('resource');
             $table->foreignId('user_id');
+            $table->foreignId('permitted_by')->nullable();
             $table->timestamps();
         });
     }

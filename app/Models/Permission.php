@@ -35,6 +35,7 @@ class Permission extends Model
         'resource', 
         'description',
         'permission',
+        'permitted_by'
     ];
 
     /**
