@@ -2,11 +2,13 @@
 @if(!empty($svbs))
 	<div class="row">
 		@foreach($svbs as $advert)
-			<div class="col-12 mb-4">
-				<a href="{{ $advert->link }}" target="_blank" class="w-100" style="height: 480px;">
-					<img src="{{ $advert->image->link }}" class="img-fluid border w-100 h-100 object-cover">
-				</a>
-			</div>
+			@if(!empty($advert->image->link))
+				<div class="col-12 mb-4">
+					<a href="{{ $advert->link }}" target="_blank" class="w-100" style="height: 480px;">
+						<img src="{{ $advert->image->link }}" class="img-fluid border w-100 h-100 object-cover">
+					</a>
+				</div>
+			@endif
 		@endforeach
 	</div>
 @endif
@@ -14,11 +16,13 @@
 @if(!empty($ssbs))
 	<div class="row">
 		@foreach($ssbs as $advert)
-			<div class="col-6 mb-4">
-				<a href="{{ $advert->link }}" target="_blank" class="w-100" style="height: 200px;">
-					<img src="{{ $advert->image->link }}" class="img-fluid border w-100 h-100 object-cover">
-				</a>
-			</div>
+			@if(!empty($advert->image->link))
+				<div class="col-6 mb-4">
+					<a href="{{ $advert->link }}" target="_blank" class="w-100" style="height: 200px;">
+						<img src="{{ $advert->image->link }}" class="img-fluid border w-100 h-100 object-cover">
+					</a>
+				</div>
+			@endif
 		@endforeach
 	</div>
 @endif
