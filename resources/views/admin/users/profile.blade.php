@@ -28,7 +28,7 @@
                                                 </small>
                                             </div>
                                         @else
-                                            <img src="{{ $user->profile->image }}" class="img-fluid object-cover w-100 h-100">
+                                            <img src="{{ $user->profile->image->link }}" class="img-fluid object-cover w-100 h-100">
                                         @endif
                                     </div>  
                                 </div>
@@ -45,7 +45,7 @@
                                     <h5 class="text-main-dark m-0">
                                         {{ ucwords($user->name) }}
                                     </h5>
-                                </div>s
+                                </div>
                             </div>
                             @if($role == 'artisan')
                                 @if(empty($user->services))
