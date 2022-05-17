@@ -24,8 +24,12 @@
         <div class="home-properties">
             <div class="container-fluid">
                 <div class="">
-                    <h4 class="text-main-dark">Global Properties</h4>
-                    <div class="text-main-dark mb-4 w-75">Find your dream property from our global list of lands, commercial, residential and industrial properties. To see more, <a href="">Click here</a> or to speak to us, <a href="tel:{{ env('OFFICE_PHONE') }}">contact us</a> immediately.</div>
+                    <div class="row">
+                        <div class="col-12 col-md-10 col-lg-8">
+                            <h4 class="text-main-dark">Global Properties</h4>
+                            <div class="text-main-dark mb-4 w-100">Find your dream property from our global list of lands, commercial, residential and industrial properties. To see more, <a href="">Click here</a> or to speak to us, <a href="tel:{{ env('OFFICE_PHONE') }}">contact us</a> immediately.</div>
+                        </div>
+                    </div> 
                     <div class="bg-transparent">
                         @set('actions', \App\Models\Property::distinct()->pluck('action'))
                         @if(!empty($actions))
@@ -46,7 +50,7 @@
                         @else
                             <div class="row">
                                 @foreach($properties->take(4) as $property)
-                                    <div class="col-12 col-md-4 col-lg-3 mb-4">
+                                    <div class="col-12 col-md-6 col-lg-3 mb-4">
                                         @include('frontend.properties.partials.card')
                                     </div>
                                 @endforeach
@@ -54,7 +58,7 @@
                                     @include('frontend.adverts.partials.fullwidth')
                                 </div>
                                 @foreach($properties->skip(4)->take(4) as $property)
-                                    <div class="col-12 col-md-4 col-lg-3 mb-4">
+                                    <div class="col-12 col-md-6 col-lg-3 mb-4">
                                         @include('frontend.properties.partials.card')
                                     </div>
                                 @endforeach

@@ -11,7 +11,7 @@
 					<div class="col-12 col-md-5">
 						<h3 class="text-main-dark mb-3">Enter Email</h3>
 						<div class="text-main-dark mb-3">Enter your account email and you will recieve a password reset link in your email.</div>
-						<form method="post" action="javascript:;" class="forgot-password-form p-4 shadow-sm icon-raduis bg-white" data-action="{{ route('password.email') }}" autocomplete="off">
+						<form method="post" action="javascript:;" class="forgot-password-form p-4 shadow-sm icon-raduis bg-white" data-action="{{ route('password.reset.process') }}" autocomplete="off">
 		                    <div class="form-group">
 		                        <label class="text-smoky font-weight-bold">Email</label>
 		                        <input type="email" class="form-control email rounded-0" name="email" placeholder="e.g., email@youremail.com">

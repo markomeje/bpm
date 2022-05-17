@@ -11,7 +11,7 @@
 						</div>
 					</div>
 					<div class="text-sm-left text-md-center mb-4">
-						<div class="text-main-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod ation ullamco laboris nisi ut aliquip ex ea commodo</div>
+						<div class="text-main-dark">Welcome back. Login into your dashboard and explore.</div>
 					</div>
 					<section class="">
 						<form action="javascript:;" method="post" class="login-form p-4 card-raduis border mb-4" data-action="{{ route('auth.login') }}">

@@ -113,7 +113,7 @@
             <div class="ml-2">
                 <a href="{{ route('account.profile', ['id' => $property->user->profile->id ?? 0, 'name' => \Str::slug($property->user->name)]) }}" class="text-decoration-none d-block">
                     <small class="text-main-dark">
-                        {{ $property->user ? \Str::limit(ucwords($property->user->name), 10) : 'Our Agent' }}
+                        {{ $property->user ? \Str::limit(ucwords($property->user->name), 7) : 'Our Agent' }}
                     </small>
                 </a>
                 <small class="text-muted tiny-font">

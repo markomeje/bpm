@@ -11,7 +11,7 @@ class PropertiesController extends Controller
      */
     public function index()
     {
-        return view('frontend.properties.index')->with(['properties' => Property::latest('created_at')->where('action', '!=', 'sold')->where(['status' => 'active'])->paginate(9),]);
+        return view('frontend.properties.index')->with(['properties' => Property::latest('created_at')->where('action', '!=', 'sold')->where(['status' => 'active'])->paginate(24),]);
     }
 
     /**

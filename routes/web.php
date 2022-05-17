@@ -33,12 +33,13 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
     });
 
     Route::group(['prefix' => 'verify'], function () {
-        Route::get('/phone/{reference}', [\App\Http\Controllers\VerifyController::class, 'phone'])->name('phone.verify');
-        Route::post('/otp/{reference}', [\App\Http\Controllers\VerifyController::class, 'otpverify'])->name('otp.verify');
-        Route::post('/resendotp/{reference}', [\App\Http\Controllers\VerifyController::class, 'resendotp'])->name('resend.otp');
+        Route::post('/otp/{reference}', [\App\Http\Controllers\Api\VerifyController::class, 'otpverify'])->name('otp.verify');
+        Route::post('/resendotp/{reference}', [\App\Http\Controllers\Api\VerifyController::class, 'resendotp'])->name('resend.otp');
+        Route::post('/resendtoken/{token}', [\App\Http\Controllers\Api\VerifyController::class, 'resendtoken'])->name('token.resend');
+
         Route::get('/email/{token}', [\App\Http\Controllers\VerifyController::class, 'email'])->name('verify.email');
-        Route::post('/resendtoken/{token}', [\App\Http\Controllers\VerifyController::class, 'resendtoken'])->name('token.resend');
         Route::get('/resent', [\App\Http\Controllers\VerifyController::class, 'resent'])->name('token.resent');
+        Route::get('/phone/{reference}', [\App\Http\Controllers\VerifyController::class, 'phone'])->name('phone.verify');
     });
 
     Route::prefix('contact')->group(function () {
@@ -84,9 +85,9 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
 
     Route::group(['prefix' => 'password', 'middleware' => 'guest'], function () {
         Route::get('/', [\App\Http\Controllers\PasswordController::class, 'index'])->name('forgot.password');
-        Route::post('/email', [\App\Http\Controllers\PasswordController::class, 'email'])->name('password.email');
+        Route::post('/reset/process', [\App\Http\Controllers\Api\PasswordController::class, 'process'])->name('password.reset.process');
         Route::get('/reset/{token}', [\App\Http\Controllers\PasswordController::class, 'verify'])->name('reset.verify');
-        Route::post('/reset', [\App\Http\Controllers\PasswordController::class, 'reset'])->name('password.reset');
+        Route::post('/reset', [\App\Http\Controllers\Api\PasswordController::class, 'reset'])->name('password.reset');
     });
 
     Route::prefix('materials')->group(function () {

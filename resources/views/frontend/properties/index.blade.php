@@ -40,7 +40,7 @@
                             <div class="alert alert-info mb-4">+{{ \App\Models\Property::count() }} Global Properties</div>
                             <div class="mb-4">
                                 <div class="row">
-                                    @foreach($properties->take(3) as $property)
+                                    @foreach($properties->take(6) as $property)
                                         <div class="col-12 col-md-6 col-lg-4 mb-4">
                                             @include('frontend.properties.partials.card')
                                         </div>
@@ -48,7 +48,7 @@
                                     <div class="col-12">
                                         @include('frontend.adverts.partials.fullwidth')
                                     </div>
-                                    @foreach($properties->skip(3)->take(3) as $property)
+                                    @foreach($properties->skip(6)->take(6) as $property)
                                         <div class="col-12 col-md-6 col-lg-4 mb-4">
                                             @include('frontend.properties.partials.card')
                                         </div>
@@ -56,7 +56,7 @@
                                     <div class="col-12">
                                         @include('frontend.adverts.partials.fullwidth')
                                     </div>
-                                    @foreach($properties->skip(6)->take(3) as $property)
+                                    @foreach($properties->skip(12)->take(6) as $property)
                                         <div class="col-12 col-md-6 col-lg-4 mb-4">
                                             @include('frontend.properties.partials.card')
                                         </div>

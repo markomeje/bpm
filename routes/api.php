@@ -17,7 +17,16 @@ use Illuminate\Support\Facades\Route;
 Route::domain(env('API_URL'))->group(function() {
     Route::post('/signup', [\App\Http\Controllers\Api\AuthController::class, 'signup'])->name('api.signup');
     Route::post('/login', [\App\Http\Controllers\Api\AuthController::class, 'login'])->name('api.login');
-    Route::post('/password/update', [\App\Http\Controllers\Api\PasswordController::class, 'update'])->name('api.password.update');
+
+    Route::post('/password/reset', [\App\Http\Controllers\Api\PasswordController::class, 'reset'])->name('api.password.reset');
+    Route::post('/reset/process', [\App\Http\Controllers\Api\PasswordController::class, 'process'])->name('api.reset.process');
+
+    Route::post('/otp/verify/{reference}', [\App\Http\Controllers\Api\VerifyController::class, 'otpverify'])->name('otp.verify');
+    Route::post('/otp/resend/{reference}', [\App\Http\Controllers\Api\VerifyController::class, 'resendotp'])->name('resend.otp');
+
+    Route::post('/token/resend', [\App\Http\Controllers\Api\VerifyController::class, 'resendtoken'])->name('token.resend');
+
+    Route::post('/email/verify/{token}', [\App\Http\Controllers\Api\VerifyController::class, 'verifyemail'])->name('verify.email');
 
     Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::prefix('properties')->group(function () {
