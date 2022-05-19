@@ -219,8 +219,6 @@
                                 </div>
                             </div>
                         </div>
-                    @else
-                        <div class="alert alert-info">No Permission to view section.</div>
                     @endcan    
                 </div>
                 <div class="col-12 col-md-4 col-lg-3">

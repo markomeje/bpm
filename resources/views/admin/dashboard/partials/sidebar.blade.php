@@ -44,6 +44,4 @@
             @endforeach
         @endif
     </div>
-@else
-    <div class="alert alert-info">No Permission to view users.</div>
 @endcan

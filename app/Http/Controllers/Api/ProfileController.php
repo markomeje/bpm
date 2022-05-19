@@ -10,46 +10,6 @@ use Validator;
 
 class ProfileController extends Controller
 {
-
-    /**
-     * Profile image upload
-     */
-    public function upload($id = 0)
-    {
-        $image = request()->file('image');
-        $validator = Validator::make(['image' => $image], [
-            'image' => ['required', 'image']
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 0, 
-                'error' => $validator->errors()
-            ]);
-        }
-
-        $extension = $image->getClientOriginalExtension();
-        $filename = Str::uuid().'.'.$extension;
-        $path = 'images/profiles';
-
-        $profile = Profile::find($id);
-        if (!empty($profile->image)) {
-            $prevfile = explode('/', $profile->image);
-            $previmage = end($prevfile);
-            $file = "{$path}/{$previmage}";
-            if (file_exists($file)) {
-                unlink($file);
-            }
-        }
-            
-        $profile->image = env('APP_URL')."/images/profiles/{$filename}";
-        $image->move($path, $filename);
-        $profile->update();
-        return response()->json([
-            'status' => 1, 
-            'info' => 'Profile image updated successfully'
-        ]);    
-    }
     /**
      * Api add Profile
      */
@@ -182,31 +142,6 @@ class ProfileController extends Controller
                 'info' => 'Operation failed. Try again.',
             ]);
         }    
-    }
-
-    /**
-     * Remove Profile image
-     */
-    public function remove($id)
-    {
-        $profile = Profile::find($id);
-        if (!empty($profile->image)) {
-            $prevfile = explode('/', $profile->image);
-            $previmage = end($prevfile);
-            $file = "images/profiles/{$previmage}";
-            if (file_exists($file)) {
-                unlink($file);
-            }
-        }
-
-        $profile->image = null;
-        $profile->update();
-
-        return response()->json([
-            'status' => 1, 
-            'info' => 'Operation successful',
-            'redirect' => '',
-        ]);    
     }
 
     /**
