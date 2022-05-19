@@ -56,7 +56,8 @@ class BlogPolicy
      */
     public function delete(User $user, Blog $blog)
     {
-        //
+        $permissions = $user->permissions->where(['resource' => 'post'])->pluck('permission')->toArray();
+        return in_array('delete', $permissions) || in_array($user->role, ['superadmin']);
     }
 
 }

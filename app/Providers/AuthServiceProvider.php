@@ -28,8 +28,19 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('view', function(User $user, $resource) {
-            $permissions = $user->permissions->where(['resource' => $resource])->pluck('permission')->toArray();
-            return (in_array('view', $permissions) || in_array($user->role, ['superadmin']));
+            if ($user->permissions()->exists()) {
+                $permissions = [];
+                foreach ($user->permissions as $access) {
+                    if ($resource == $access->resource) {
+                        $permissions[] = $access->permission;
+                    }
+                }
+
+                return in_array('view', $permissions) || in_array($user->role, ['superadmin']);
+            }
+
+            return false;
+                
         });
     }
 }

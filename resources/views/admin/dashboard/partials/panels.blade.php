@@ -39,7 +39,7 @@
         </div>
     </div>
 @endcan
-@can('view', ['blogs'])
+@if(Gate::check('view', ['users']))
     <div class="col-12 col-md-6 col-lg-3 mb-4">
         <div class="card card-raduis border-0 shadow-sm" >
             <div class="card-body">
@@ -57,7 +57,7 @@
             </div>
         </div>
     </div>
-@endcan
+@endif
 @can('view', ['units'])
     <div class="col-12 col-md-6 col-lg-3 mb-4">
         <div class="card card-raduis border-0 shadow-sm" >
