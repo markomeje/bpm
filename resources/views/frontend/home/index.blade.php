@@ -33,12 +33,16 @@
                     <div class="bg-transparent">
                         @set('actions', \App\Models\Property::distinct()->pluck('action'))
                         @if(!empty($actions))
-                            <div class="d-flex align-items-center flex-wrap">
+                            <div class="row">
                                 @foreach($actions as $key => $action)
                                     @if($action !== 'sold')
-                                        <a href="{{ route('properties.action', ['action' => $action]) }}" class="btn border-theme-color mr-3 mb-4 py-1 text-main-dark px-4" target="_blank">
-                                            {{ ucwords(\App\Models\Property::$actions[$action]) }}
-                                        </a>
+                                        <div class="col-6 col-md-3 col-lg-2 mb-4">
+                                            <a href="{{ route('properties.action', ['action' => $action]) }}" class="btn border-theme-color d-block">
+                                                <small class="text-main-dark">
+                                                    {{ ucwords(\App\Models\Property::$actions[$action]) }}
+                                                </small>
+                                            </a>
+                                        </div>
                                     @endif
                                 @endforeach
                             </div>

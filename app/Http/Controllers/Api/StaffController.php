@@ -148,9 +148,17 @@ class StaffController extends Controller
         $user->update();
 
         $staff = Staff::where(['user_id' => $user->id])->first();
-        $staff->description = $data['description'];
-        $staff->update();
+        if(!empty($staff)) {
+            $staff->description = $data['description'];
+            $staff->update();
 
+            return response()->json([
+                'status' => 1,
+                'info' => 'Operation successful',
+                'redirect' => ''
+            ]);
+        }
+            
         return response()->json([
             'status' => 1,
             'info' => 'Operation successful',
@@ -167,6 +175,11 @@ class StaffController extends Controller
                     'status' => 0,
                     'info' => 'Operation not allowed'
                 ]);
+            }
+
+            $staff = Staff::where(['user_id' => $user->id])->first();
+            if(!empty($staff)) {
+                $staff->delete();
             }
 
             $user->delete();

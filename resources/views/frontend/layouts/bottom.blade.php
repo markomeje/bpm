@@ -40,12 +40,12 @@
 					</div>
 					<div class="">
 						<div class="row">
-							<div class="col-6 col-md-6">
+							<div class="col-6 col-md-5 col-lg-4">
 								<a href="javascript:;" class="d-block w-100">
 									<img src="/images/assets/apple.png" class="img-fluid object-cover w-100">
 								</a>
 							</div>
-							<div class="col-6 col-md-6">
+							<div class="col-6 col-md-5 col-lg-4">
 								<a href="javascript:;" class="d-block w-100">
 									<img src="/images/assets/google.png" class="img-fluid object-cover w-100">
 								</a>

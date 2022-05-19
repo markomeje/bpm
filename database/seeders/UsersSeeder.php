@@ -20,7 +20,7 @@ class UsersSeeder extends Seeder
             $users = [
                 ['name' => $faker->name(), 'phone' => $faker->phoneNumber(), 'email' => 'admin@admin.io', 'role' => 'admin', 'password' => Hash::make('1234'), 'status' => 'active'],
                 ['name' => $faker->name(), 'phone' => $faker->phoneNumber(), 'email' => 'user@user.io', 'role' => 'user', 'password' => Hash::make('1234'), 'status' => 'active'],
-                ['name' => $faker->name(), 'phone' => $faker->phoneNumber(), 'email' => 'blogger@blogger.io', 'role' => 'blogger', 'password' => Hash::make('1234'), 'status' => 'active'],
+                ['name' => $faker->name(), 'phone' => $faker->phoneNumber(), 'email' => 'writer@writer.io', 'role' => 'writer', 'password' => Hash::make('1234'), 'status' => 'active'],
                 ['name' => $faker->name(), 'phone' => $faker->phoneNumber(), 'email' => 'super@super.io', 'role' => 'superadmin', 'password' => Hash::make('1234'), 'status' => 'active'],
             ];
 

@@ -37,7 +37,7 @@
 	                            </small>
 	                        </a>
 	                        <div class="dropdown-divider"></div>
-	                        <a href="{{ route('admin.reviews') }}" class="dropdown-item d-flex justify-content-between align-items-center">
+	                        <a href="{{ route('admin.users') }}" class="dropdown-item d-flex justify-content-between align-items-center">
 	                            <span class="text-main-dark">Users</span>
 	                            <small class="text-theme-color">
 	                            	<i class="icofont-long-arrow-right"></i>
