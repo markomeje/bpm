@@ -29,7 +29,7 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('view', function(User $user, $resource) {
             $permissions = $user->permissions->where(['resource' => $resource])->pluck('permission')->toArray();
-            return (in_array('view', $permissions) || in_array($user->role, ['superadmin']));
+            return in_array('view', $permissions) || in_array($user->role, ['superadmin']);
         });
     }
 }
