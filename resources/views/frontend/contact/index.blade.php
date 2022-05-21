@@ -5,10 +5,10 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-12 col-lg-7 mb-4">
+						<h3 class="text-theme-color mb-3">Contact <span class="text-white">Us</span></h3>
+						<div class="text-white mb-4">World best property page is not just a web design convenience but a source of connection between our prospective clients, users and our company. Our page is friendly and inviting. Contact us on what you need us to do for you and best believe, your satisfaction is a guarantee.</div>
 						@if(empty(request()->get('success')))
-							<h3 class="text-theme-color mb-3">Contact <span class="text-white">Us</span></h3>
-							<div class="text-white mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-							<form class="contact-form p-4 mb-4 rounded border" action="javascript:;" method="post" autocomplete="off">
+							<form class="contact-form p-4 mb-4 rounded border" action="javascript:;" method="post" autocomplete="off" data-action="{{ route('contact.send') }}">
 								<div class="form-row">
 							        <div class="form-group col-md-6">
 							            <label class="text-white">Fullname</label>
@@ -17,12 +17,12 @@
 							        </div>
 							        <div class="form-group col-md-6">
 							            <label class="text-white">Designation</label>
-							            <select class="custom-select form-control type">
+							            <select class="custom-select form-control designation" name="designation">
 							            	<option value="">Select Designation</option>
 							            	<option value="Company">Company</option>
 							            	<option value="Individual">Individual</option>
 							            </select>
-							            <small class="error password-error text-danger"></small>
+							            <small class="error designation-error text-danger"></small>
 							        </div>
 							    </div>
 							    <div class="form-row">
@@ -42,11 +42,11 @@
 							    	<textarea class="form-control message" name="message" rows="4" placeholder="Enter message here"></textarea>
 							    	<small class="error message-error text-danger"></small>
 							    </div>
-							    <button type="submit" class="btn btn-lg bg-theme-color px-4 text-white contact-form-button mb-4">
-							        <img src="/images/spinner.svg" class="mr-2 d-none contact-form-spinner mb-1">
+							    <button type="submit" class="btn btn-lg bg-theme-color px-4 text-white contact-button mb-4">
+							        <img src="/images/spinner.svg" class="mr-2 d-none contact-spinner mb-1">
 							        Send
 							    </button>
-							    <div class="alert px-3 contact-form-message d-none mb-3"></div>
+							    <div class="alert px-3 contact-message d-none mb-3"></div>
 							</form>
 						@else
 							<div class="alert alert-success mb-4">Thank you for contacting us. We would get back to you shortly.</div>
