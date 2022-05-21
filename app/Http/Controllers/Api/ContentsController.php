@@ -92,22 +92,6 @@ class ContentsController extends Controller
             ]);
         }
 
-        // $sections = Content::where([
-        //     'page' => $data['page'],
-        //     'section' => $data['section'],
-        // ])->get();
-
-        // foreach ($sections as $section) {
-        //     if (!empty($section) && $id !== $section->id) {
-        //         return response()->json([
-        //             'status' => 0, 
-        //             'info' => 'Page section already added.',
-        //             'redirect' => '',
-        //         ]);
-        //     }
-        // }
-            
-
         $content = Content::find($id);
         if (empty($content)) {
             return response()->json([
