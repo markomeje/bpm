@@ -71,17 +71,17 @@
                                                             <div class="col-12 col-md-4 mb-4">
                                                                 <div class="bg-main-dark icon-raduis rounded d-flex align-items-center justify-content-between p-4">
                                                                     <div class="dropdown">
-                                                                        <a href="javascript:;" class="text-white cursor-pointer text-underline" id="{{ rand(0, 109) }}" data-toggle="dropdown">
+                                                                        <a href="javascript:;" class="text-white cursor-pointer text-underline" id="{{ auth()->id() }}" data-toggle="dropdown">
                                                                             {{ ucfirst($action) }}
                                                                         </a>
-                                                                        <div class="dropdown-menu border-0 p-4 shadow dropdown-menu-left" aria-labelledby="{{ rand(0, 109) }}" style="width: 220px !important;">
+                                                                        <div class="dropdown-menu border-0 p-4 shadow dropdown-menu-left" aria-labelledby="{{ auth()->id() }}" style="width: 220px !important;">
                                                                             <div class="text-muted">
                                                                                 {{ ucfirst($detail) }}
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="dropdown">
-                                                                        <a href="javascript:;" class="text-white cursor-pointer text-decoration-none" id="{{ rand(0, 109) }}" data-toggle="dropdown">
+                                                                        <a href="javascript:;" class="text-white cursor-pointer text-decoration-none" id="{{ auth()->id() }}" data-toggle="dropdown">
                                                                             @if(empty($permission))
                                                                                 <div class="bg-danger sm-circle rounded-circle text-center text-white">
                                                                                     <div class="tiny-font position-relative" style="top: 3.2px;">
@@ -96,7 +96,7 @@
                                                                                 </div>
                                                                             @endif
                                                                         </a>
-                                                                        <div class="dropdown-menu border-0 p-4 shadow dropdown-menu-right" aria-labelledby="{{ rand(0, 109) }}" style="width: 220px !important;">
+                                                                        <div class="dropdown-menu border-0 p-4 shadow dropdown-menu-right" aria-labelledby="{{ auth()->id() }}" style="width: 220px !important;">
                                                                             @if(empty($permission))
                                                                                 <form method="post" class="assign-permission-form" action="javascript:;" data-action="{{ route('admin.permission.assign', ['resource' => $resource, 'permission' => $action, 'user_id' => $staff->id]) }}">
                                                                                     <button type="submit" class="btn btn-success btn-block assign-permission-button">

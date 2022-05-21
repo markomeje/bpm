@@ -42,24 +42,13 @@
 											@if($requestPage > 1)
 												<?php $nextPage = ($currentPage - 1); ?>
 												<a href="{{ $requestPage == 2 ? url('news') : url("news?page={$nextPage}") }}" class="mr-2 text-underline">
-													<i class="icofont-long-arrow-left"></i> <small>Previous</small>
+													<small class="text-main-dark">Previous</small>
 												</a>
 											@endif
-											{{-- @for($page = 1; $page <= ($totalPages > $requestPage ? $requestPage : 10); $page++)
-												@if($page == $currentPage)
-													<span class="text-muted mr-2">
-														{{ $page }}
-													</span>
-												@else
-													<a href="{{ $page == 1 ? url('news') : url("news?page={$page}") }}" class="mr-2 text-underline">
-														{{ $page }}
-													</a>
-												@endif
-											@endfor --}}
 											@if($totalPages >= $requestPage)
 												<?php $previousPage = ($currentPage + 1); ?>
 												<a href="{{ url("news?page={$previousPage}") }}" class="mr-2 text-underline">
-													<small class="">Next</small> <i class="icofont-long-arrow-right"></i>
+													<small class="text-main-dark">Next</small>
 												</a>
 											@endif
 										</div>

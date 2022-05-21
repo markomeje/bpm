@@ -4,7 +4,7 @@
             <form method="post" action="javascript:;" class="add-unit-form" data-action="{{ route('admin.unit.add') }}" autocomplete="off">
                 <div class="modal-body p-4">
                     <div class="d-flex justify-content-between pb-3 mb-3 border-bottom">
-                        <div class="text-main-dark mb-0 font-weight-bold">Edit Unit</div>
+                        <div class="text-main-dark mb-0 font-weight-bold">Create Unit</div>
                         <div class="cursor-pointer" data-dismiss="modal" aria-label="Close">
                             <i class="icofont-close text-danger"></i>
                         </div>

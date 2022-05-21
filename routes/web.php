@@ -344,20 +344,22 @@ Route::middleware(['web', 'auth', 'blogger', 'revalidate'])->domain(env('BLOG_UR
 });
 
 Route::middleware(['web', 'auth'])->get('/dashboard', function () {
-    $role = auth()->user()->role;
-    switch ($role) {
-        case 'blogger':
-            $sudomain = 'blog';
-            break;
-        case 'user':
-            $sudomain = 'user';
-            break;
-        default:
-            $sudomain = 'admin';
-            break;
+    if (auth()->check()) {
+        $role = auth()->user()->role;
+        switch ($role) {
+            case 'user':
+                $sudomain = 'user';
+                break;
+            default:
+                $sudomain = 'admin';
+                break;
+        }
+
+        return redirect()->route("{$sudomain}.dashboard");
     }
 
-    return redirect()->route("{$sudomain}.dashboard");
+    return redirect()->route('home');
+
 })->name('dashboard');
 
 Route::fallback(function () {

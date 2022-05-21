@@ -137,7 +137,6 @@
 		                    @endif
 		                </div>
 		            </div>
-		            <a href="https://geoprecisegroup.com" class="mb-3 p-3 text-decoration-none d-block bg-main-ash text-main-dark" target="_blank">Surveying</a>
 					<a href="{{ route('blog') }}" class="mb-3 p-3 text-decoration-none d-block bg-main-ash text-main-dark">Blog</a>
 					<div class="mb-3">
 		                <div class="">
@@ -162,6 +161,7 @@
 		                </div>
 		            </div>
 		            <a href="https://geohomesgroup.com" class="mb-3 p-3 text-decoration-none d-block bg-main-ash text-main-dark" target="_blank">Consultancy</a>
+		            <a href="https://geoprecisegroup.com" class="mb-3 p-3 text-decoration-none d-block bg-main-ash text-main-dark" target="_blank">Surveying</a>
 				</div>
 				<div class="col-12 col-md-12 col-lg-4 mb-4">
 					<div class="mb-4">
