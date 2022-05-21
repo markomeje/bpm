@@ -79,6 +79,27 @@
         </div>
     </div>
 @endcan
+@can('view', ['contents'])
+    <div class="col-12 col-md-6 col-lg-3 mb-4">
+        <div class="card card-raduis border-0 shadow-sm" >
+            <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <small class="px-3 tiny-font py-1 bg-success rounded-pill">
+                        <small class="text-white">+{{ number_format(\App\Models\Content::count()) }}</small>
+                    </small>
+                </div>
+                <div class="">
+                    <div class="text-main-dark">
+                        <span class="">
+                            {{ number_format(\App\Models\Content::count()) }}
+                        </span>
+                    </div>
+                    <a href="{{ route('admin.contents') }}" class="d-flex justify-content-between align-items-center text-main-dark text-decoration-none">Contents</a>
+                </div>
+            </div>
+        </div>
+    </div>
+@endcan
 @can('view', ['news'])
     <div class="col-12 col-md-6 col-lg-3 mb-4">
         <div class="card card-raduis border-0 shadow-sm" >

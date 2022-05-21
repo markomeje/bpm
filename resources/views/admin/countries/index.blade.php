@@ -5,7 +5,6 @@
         <div class="container-fluid">
             @can('view', ['countries'])
                 <div class="row">
-
                     <div class="col-12 col-md-6 mb-4">
                         <div class="alert alert-info m-0 d-flex align-items-center">
                             <span class="mr-2">All Countries ({{ \App\Models\Country::count() }})</span>

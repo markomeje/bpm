@@ -7,10 +7,6 @@
                 <div class="col-12 col-md-8 col-lg-9">
                     <div class="alert alert-info justify-content-between d-flex align-items-center mb-4">
                         <div class="mr-2">({{ \App\Models\Membership::count() }}) Membership Plans</div>
-                        {{-- <a href="javascript:;" class="text-decoration-none" data-toggle="modal" data-target="#add-membership">
-                            <i class="icofont-plus"></i>
-                        </a> --}}
-                        {{-- @include('admin.memberships.partials.add') --}}
                     </div>
                     <div class="">
                         @if(empty($memberships->count()))

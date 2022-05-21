@@ -40,7 +40,7 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('delete', function(User $user, $resource) {
             $permissions = \App\Helpers\Permissions::get($user, $resource);
-            return !in_array('delete', $permissions) || in_array($user->role, ['superadmin']);   
+            return in_array('delete', $permissions) || in_array($user->role, ['superadmin']);   
         });
 
     }
