@@ -15,6 +15,13 @@ class UnitsController extends Controller
      */
     public function add()
     {
+        if (request()->user()->cannot('create', ['units'])) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Sorry. You cannot perform this operation.'
+            ]);
+        }
+
         $data = request()->all();
         $validator = Validator::make($data, [
             'price' => ['required', 'string'],
@@ -50,6 +57,13 @@ class UnitsController extends Controller
      */
     public function edit($id = 0)
     {
+        if (request()->user()->cannot('update', ['units'])) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Sorry. Operation not allowed.'
+            ]);
+        }
+
         $data = request()->all();
         $validator = Validator::make($data, [
             'price' => ['required', 'string'],
@@ -65,6 +79,20 @@ class UnitsController extends Controller
         }
 
         $unit = Unit::find($id);
+        if (empty($unit)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Invalid operation'
+            ]);
+        }
+
+        if ($unit->credits()->exists()) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'The unit is already in use.'
+            ]);
+        }
+
         $unit->units = $data['units'];
         $unit->currency_id = $data['currency'];
         $unit->duration = $data['duration'];
@@ -83,6 +111,13 @@ class UnitsController extends Controller
      */
     public function delete($id = 0)
     {
+        if (request()->user()->cannot('delete', ['units'])) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Sorry. Operation not allowed.'
+            ]);
+        }
+
         $unit = Unit::find($id);
         if (empty($unit)) {
             return response()->json([

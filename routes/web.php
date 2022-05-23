@@ -142,6 +142,13 @@ Route::middleware(['web', 'auth', 'admin', 'revalidate'])->domain(env('ADMIN_URL
         Route::post('/add', [\App\Http\Controllers\Api\UnitsController::class, 'add'])->name('admin.unit.add');
     });
 
+    Route::prefix('contents')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Admin\ContentsController::class, 'index'])->name('admin.contents');
+        Route::post('/edit/{id}', [\App\Http\Controllers\Api\ContentsController::class, 'edit'])->name('admin.content.edit');
+        Route::post('/delete/{id}', [\App\Http\Controllers\Api\ContentsController::class, 'delete'])->name('admin.content.delete');
+        Route::post('/add', [\App\Http\Controllers\Api\ContentsController::class, 'add'])->name('admin.content.add');
+    });
+
     Route::prefix('plans')->group(function () {
         Route::post('/add', [\App\Http\Controllers\Admin\PlansController::class, 'add'])->name('admin.plan.add');
         Route::post('/edit/{id}', [\App\Http\Controllers\Admin\PlansController::class, 'edit'])->name('admin.plan.edit');
@@ -344,20 +351,22 @@ Route::middleware(['web', 'auth', 'blogger', 'revalidate'])->domain(env('BLOG_UR
 });
 
 Route::middleware(['web', 'auth'])->get('/dashboard', function () {
-    $role = auth()->user()->role;
-    switch ($role) {
-        case 'blogger':
-            $sudomain = 'blog';
-            break;
-        case 'user':
-            $sudomain = 'user';
-            break;
-        default:
-            $sudomain = 'admin';
-            break;
+    if (auth()->check()) {
+        $role = auth()->user()->role;
+        switch ($role) {
+            case 'user':
+                $sudomain = 'user';
+                break;
+            default:
+                $sudomain = 'admin';
+                break;
+        }
+
+        return redirect()->route("{$sudomain}.dashboard");
     }
 
-    return redirect()->route("{$sudomain}.dashboard");
+    return redirect()->route('home');
+
 })->name('dashboard');
 
 Route::fallback(function () {

@@ -76,16 +76,16 @@ class PlansController extends Controller
             ]);
         }
 
-        foreach(Plan::all()->toArray() as $plan) {
+        foreach(Membership::all()->toArray() as $plan) {
             if (($plan['name'] == $data['name']) && ($plan['duration'] == $data['duration']) && ($plan['id'] !== $id)) {
                 return response()->json([
                     'status' => 0,
-                    'info' => 'Plan already exists for the selected duration'
+                    'info' => 'Membership already exists for the selected duration'
                 ]);
             }
         }
 
-        $plan = Plan::find($id);
+        $plan = Membership::find($id);
         $plan->details = $data['details'];
         $plan->name = $data['name'];
         $plan->price = $data['price'];
@@ -102,6 +102,13 @@ class PlansController extends Controller
 
     public function delete($id)
     {
+        if (request()->user()->cannot('delete', ['plans'])) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Sorry. You cannot perform this operation.'
+            ]);
+        }
+
         Plan::find($id)->delete();
         return response()->json([
             'status' => 1,

@@ -33,6 +33,13 @@ class BlogsController extends Controller
 
     public function store()
     {
+        if (request()->user()->cannot('create', ['blogs'])) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Sorry. You cannot perform this operation.'
+            ]);
+        }
+
         $data = request()->all();
         $validator = Validator::make($data, [
             'title' => ['required', 'string'],
@@ -67,14 +74,14 @@ class BlogsController extends Controller
         return response()->json([
             'status' => 1, 
             'info' => 'Operation successful',
-            'redirect' => auth()->user()->role == 'admin' ? route('admin.blogs') : route('blog.dashboard')
+            'redirect' => route('admin.blogs'),
         ]);
 
     }
 
-    public function edit($id = 0, Blog $blog)
+    public function edit($id = 0)
     {
-        if (request()->user()->cannot('update', $blog)) {
+        if (request()->user()->cannot('update', ['blogs'])) {
             return response()->json([
                 'status' => 0, 
                 'info' => 'Sorry. Operation not allowed.'
@@ -105,7 +112,7 @@ class BlogsController extends Controller
         return response()->json([
             'status' => 1, 
             'info' => 'Operation Successful',
-            'redirect' => auth()->user()->role == 'admin' ? route('admin.blogs') : route('blog.dashboard')
+            'redirect' => route('admin.blogs'),
         ]);
 
     }

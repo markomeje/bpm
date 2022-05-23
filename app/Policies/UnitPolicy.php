@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Payment;
-use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use App\Models\Unit;
+use App\Models\User;
 
-class PaymentPolicy
+class UnitPolicy
 {
     use HandlesAuthorization;
 
@@ -14,13 +14,12 @@ class PaymentPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Payment  $payment
+     * @param  \App\Models\Unit  $unit
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user)
+    public function view(User $user, Unit $unit)
     {
-        $permissions = $user->permissions->where(['resource' => 'payments'])->pluck('permission')->toArray();
-        return in_array('update', $permissions) || in_array($user->role, ['superadmin']);
+        //
     }
 
     /**
@@ -38,23 +37,25 @@ class PaymentPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Payment  $payment
+     * @param  \App\Models\Unit  $unit
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Payment $payment)
+    public function update(User $user)
     {
-        //
+        $permissions = \App\Helpers\Permissions::get($user, 'units');
+        return in_array('update', $permissions) || in_array($user->role, ['superadmin']);
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Payment  $payment
+     * @param  \App\Models\Unit  $unit
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user)
+    public function delete(User $user, Unit $unit)
     {
         //
     }
+
 }

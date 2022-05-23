@@ -16,16 +16,16 @@ class ContactRequest extends Mailable
      *
      * @var array
      */
-    public $contact;
+    public $data;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($contact)
+    public function __construct($data)
     {
-        $this->contact = $contact;
+        $this->data = $data;
     }
 
     /**
@@ -35,6 +35,6 @@ class ContactRequest extends Mailable
      */
     public function build()
     {
-        return $this->from(env('HELLO_SUBREFILL_USERNAME'), 'Contact Form')->view('mails.contact');
+        return $this->markdown('emails.contact')->subject('Contact Request');
     }
 }
