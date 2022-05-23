@@ -1,6 +1,6 @@
 @include('layouts.header')
     @include('frontend.layouts.navbar')
-    <div class="bg-main-ash min-vh-100">
+    <div class="bg-main-ash">
         @set('banner', \App\Models\Content::where(['page' => 'about', 'section' => 1])->first())
         @if(!empty($banner))
             <section class="about-banner">

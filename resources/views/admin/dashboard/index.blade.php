@@ -4,18 +4,37 @@
     <div class="section-padding pb-4">
         <div class="container-fluid">
             <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
-                <p class="m-0 text-main-dark">Welcome {{ ucwords(auth()->user()->name) }}</p>
+                <p class="m-0 text-main-dark">Dashboard</p>
                 <div class="text-info">
-                    {{ date("F j, Y") }}
+                    Today's {{ date("F j, Y") }}
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-md-8 col-lg-9">
+                <div class="col-12 col-lg-2">
+                    @set('links', ['payments', 'users', 'units', 'countries', 'blogs', 'properties', 'contents', 'staff'])
+                    @if(!empty($links))
+                        <div class="">
+                            @foreach($links as $link)
+                                <a href="{{ route("admin.{$link}") }}" class="p-4 mb-4 icon-raduis bg-white shadow-sm d-flex align-items-center">
+                                    <div class="sm-circle rounded-circle bg-theme-color text-center mr-2">
+                                        <small class="text-white">
+                                            <i class="icofont-tick-mark"></i>
+                                        </small>
+                                    </div>
+                                    <div class="text-main-dark">
+                                        {{ ucfirst($link) }}
+                                    </div>
+                                </a>
+                            @endforeach
+                        </div>
+                    @endif
+                </div>
+                <div class="col-12 col-md-7 col-lg-7">
                     <div class="row">
                         <div class="col-12">
                             <div class="row h-100">
                                 @can('view', ['users'])
-                                    <div class="col-12 col-md-6 mb-4">
+                                    <div class="col-12 col-lg-6 mb-4">
                                         <div class="card position-relative card-raduis border-0">
                                             @set('users', \App\Models\User::where(['role' => 'user'])->get())
                                             <div class="card-header pt-5 bg-blue card-raduis" style="padding-bottom: 90px !important;">
@@ -33,7 +52,7 @@
                                             </div>
                                             <div class="card-body py-0 position-relative" style="top: -64px;">
                                                 <div class="row">
-                                                    <div class="col-12 col-lg-6 mb-4">
+                                                    <div class="col-12 col-md-6 mb-4">
                                                         <div class="alert alert-info icon-raduis m-0 p-4">
                                                             <div class="alert alert-warning rounded-circle p-0 m-0 mb-3 text-center border-white" style="height: 40px; width: 40px; line-height: 35px;">
                                                                 <small class="">
@@ -48,7 +67,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-12 col-lg-6">
+                                                    <div class="col-12 col-md-6">
                                                         <div class="alert alert-warning icon-raduis m-0 p-4">
                                                             <div class="alert alert-info rounded-circle p-0 m-0 mb-3 text-center border-white" style="height: 40px; width: 40px; line-height: 35px;">
                                                                 <small class="">
@@ -69,8 +88,7 @@
                                     </div>
                                 @endcan
                                 @can('view', ['payments'])
-                                    <!-- The current user can update the post... -->
-                                    <div class="col-12 col-md-6 mb-4">
+                                    <div class="col-12 col-lg-6 mb-4">
                                         <div class="card position-relative card-raduis border-0" >
                                             <div class="card-header pt-5 bg-pink card-raduis" style="padding-bottom: 90px !important;">
                                                 <h4 class="text-white">
@@ -85,7 +103,7 @@
                                             </div>
                                             <div class="card-body py-0 position-relative" style="top: -64px;">
                                                 <div class="row">
-                                                    <div class="col-12 col-lg-6 mb-4">
+                                                    <div class="col-12 mb-4">
                                                         <div class="alert alert-success icon-raduis m-0 p-4">
                                                             <div class="alert alert-primary rounded-circle p-0 m-0 mb-3 text-center border-white" style="height: 40px; width: 40px; line-height: 35px;">
                                                                 <small class="">
@@ -96,21 +114,6 @@
                                                             <div class="d-flex align-items-center">
                                                                 <div class="mr-2">
                                                                     NGN{{ number_format(\App\Models\Payment::where(['status' => 'paid', 'type' => 'advert'])->get()->sum('amount')) }}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12 col-lg-6">
-                                                        <div class="alert alert-primary icon-raduis m-0 p-4">
-                                                            <div class="alert alert-success rounded-circle p-0 m-0 mb-3 text-center border-white" style="height: 40px; width: 40px; line-height: 35px;">
-                                                                <small class="">
-                                                                    <i class="icofont-user-alt-3"></i>
-                                                                </small>
-                                                            </div>
-                                                            <a href="{{ route('admin.payments', ['type' => 'subscription']) }}" class="text-decoration-none d-block">Subscription</a>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="mr-2">
-                                                                    NGN{{ number_format(\App\Models\Payment::where(['status' => 'paid', 'type' => 'subscription'])->get()->sum('amount')) }}
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -126,7 +129,7 @@
                     </div>
                     @can('view', ['adverts'])
                         <div class="row">
-                            <div class="col-12 col-lg-6 mb-4">
+                            <div class="col-12 col-lg-9 mb-4">
                                 <div class="card-raduis alert alert-info">
                                     <div class="">
                                         @set('advertscount', \App\Models\Advert::count())
@@ -221,7 +224,7 @@
                         </div>
                     @endcan    
                 </div>
-                <div class="col-12 col-md-4 col-lg-3">
+                <div class="col-12 col-md-5 col-lg-3">
                     @include('admin.dashboard.partials.sidebar')  
                 </div>
             </div>
