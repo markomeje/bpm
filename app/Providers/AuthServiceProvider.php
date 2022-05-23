@@ -24,22 +24,8 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('view', function(User $user, $resource) {
-<<<<<<< HEAD
-            $permissions = [];
-            if ($user->permissions()->exists()) {
-                foreach ($user->permissions as $access) {
-                    if ($resource == $access->resource) {
-                        $permissions[] = $access->permission;
-                    }
-                }
-            }
-
-            return in_array('view', $permissions) || in_array($user->role, ['superadmin']);
-                
-=======
             $permissions = \App\Helpers\Permissions::get($user, $resource);
             return in_array('view', $permissions) || in_array($user->role, ['superadmin']);
->>>>>>> af4fe280f16f519ec766c71f2118baac453e608c
         });
 
         Gate::define('create', function(User $user, $resource) {
