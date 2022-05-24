@@ -170,30 +170,30 @@ class StaffController extends Controller
     {
         $user = User::find($id);
         if (!empty($user)) {
-            if ($user->id == auth()->id()) {
-                return response()->json([
-                    'status' => 0,
-                    'info' => 'Operation not allowed'
-                ]);
-            }
-
-            $staff = Staff::where(['user_id' => $user->id])->first();
-            if(!empty($staff)) {
-                $staff->delete();
-            }
-
-            $user->delete();
             return response()->json([
-                'status' => 1,
-                'info' => 'Operation successful',
-                'redirect' => ''
+                'status' => 0,
+                'info' => 'Invalid Operation'
             ]);
         }
-        
+
+        if ($user->id == auth()->id()) {
+            return response()->json([
+                'status' => 0,
+                'info' => 'Operation not allowed'
+            ]);
+        }
+
+        $staff = Staff::where(['user_id' => $user->id])->first();
+        if(!empty($staff)) {
+            $staff->delete();
+        }
+
+        $user->delete();
         return response()->json([
-            'status' => 0,
-            'info' => 'Operation failed'
-        ]);  
+            'status' => 1,
+            'info' => 'Operation successful',
+            'redirect' => ''
+        ]); 
             
     }
 

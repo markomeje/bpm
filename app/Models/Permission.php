@@ -23,7 +23,7 @@ class Permission extends Model
         'blogs' => ['actions' => ['create' => 'Create a blog post', 'view' => 'View all blog posts and statistics', 'update' => 'Update a blog post record', 'delete' => 'Delete a blog post'], 'description' => 'All blog posts and statistics'],
         'countries' => ['actions' => ['view' => 'View countries lists and statistics', 'delete' => 'Delete a country.'], 'description' => 'All countries data'],
         'news' => ['actions' => ['create' => 'Create daily news', 'view' => 'View all news', 'update' => 'Update any news', 'delete' => 'Delete any news.'], 'description' => 'All news posted and statistics'],
-        'contents' => ['actions' => ['update' => 'Update page content'], 'description' => 'All frontend contents'],
+        'contents' => ['actions' => ['create' => 'Add content', 'view' => 'View all content', 'update' => 'Update any content'], 'description' => 'All frontend contents'],
     ];
 
     /**
