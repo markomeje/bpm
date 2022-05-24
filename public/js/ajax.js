@@ -2,6 +2,10 @@
 
 	'use strict';
 
+    $('.delete-blog').on('click', function() {
+        handleAjax({that: $(this), button: 'blog-button', spinner: 'blog-spinner'});    
+    });
+
     $('.delete-staff').on('click', function() {
         handleAjax({that: $(this), button: 'staff-button', spinner: 'staff-spinner'});    
     });

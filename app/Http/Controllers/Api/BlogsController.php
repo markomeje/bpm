@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 use App\Models\Blog;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
+use App\Helpers\Cloudinary;
 use \Carbon\Carbon;
 use \Exception;
 use Validator;
@@ -122,6 +123,39 @@ class BlogsController extends Controller
             'redirect' => route('admin.blogs'),
         ]);
 
+    }
+
+    /*
+     * Api delete blog with its images
+     */
+    public function delete($id = 0)
+    {
+        $blog = Blog::find($id);
+        if(empty($blog)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Invalid operation',
+            ]);
+        }
+
+        try {
+            if (!empty($blog->image)) {
+                Cloudinary::delete($blog->image()->pluck('public_id')->toArray());
+            }
+
+            $blog->delete();
+            return response()->json([
+                'status' => 1, 
+                'info' => 'Operation successful',
+                'redirect' => '',
+            ]);
+        } catch (Exception $error) {
+            return response()->json([
+                'status' => 1, 
+                'info' => 'Unknown error. Try again later',
+            ]);
+        }
+            
     }
 
 }
