@@ -60,7 +60,7 @@
                                 <div class="alert mb-3 add-blog-message d-none"></div>
                                 <button type="submit" class="btn btn-lg bg-theme-color text-white add-blog-button mt-3 px-4">
                                     <img src="/images/spinner.svg" class="mr-2 d-none add-blog-spinner mb-1">
-                                    Post
+                                    Save
                                 </button>
                             </form>
                         </div>

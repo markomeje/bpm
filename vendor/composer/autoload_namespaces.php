@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Sentry\\Laravel\\' => array($vendorDir . '/sentry/sentry-laravel/src'),
     'Postmark\\' => array($vendorDir . '/wildbit/swiftmailer-postmark/src'),
     'Mockery' => array($vendorDir . '/mockery/mockery/library'),
     'JD\\Cloudder' => array($vendorDir . '/jrm2k6/cloudder/src'),

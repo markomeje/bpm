@@ -6,8 +6,7 @@
 				<div class="row mb-4">
 					<div class="col-12 mb-4">
 						<h1 class="text-white">Our Blogs</h1>
-						<div class="text-white p-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua.</div>
+						<div class="text-white p-0">Our blog pages shares information on related topics both personal and non-personal. It contains discreet information about anything in the real estate industry which in many cases will benefit our users.</div>
 					</div>
 				</div>
 			</div>

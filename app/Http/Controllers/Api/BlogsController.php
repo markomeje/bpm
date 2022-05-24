@@ -62,7 +62,7 @@ class BlogsController extends Controller
             ]);
         }
 
-        Blog::create([
+        $blog = Blog::create([
             'title' => $data['title'],
             'description' => $data['description'],
             'category' => $data['category'],
@@ -71,11 +71,18 @@ class BlogsController extends Controller
             'reference' => Str::random(64),
         ]);
 
+        if ($blog) {
+            return response()->json([
+                'status' => 1, 
+                'info' => 'Operation successful',
+                'redirect' => route('admin.blog.edit', ['id' => $blog->id]),
+            ]);
+        }
+         
         return response()->json([
-            'status' => 1, 
-            'info' => 'Operation successful',
-            'redirect' => route('admin.blogs'),
-        ]);
+            'status' => 0, 
+            'info' => 'Operation failed',
+        ]);   
 
     }
 

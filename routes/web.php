@@ -345,7 +345,7 @@ Route::middleware(['web', 'auth', 'blogger', 'revalidate'])->domain(env('BLOG_UR
     Route::get('category/{category?}', [\App\Http\Controllers\Blog\BlogController::class, 'index'])->name('blog.category');
 
     Route::prefix('image')->group(function () {
-        Route::post('/upload', [\App\Http\Controllers\Api\ImagesController::class, 'upload'])->name('admin.image.upload');
+        Route::post('/upload', [\App\Http\Controllers\Api\ImagesController::class, 'upload'])->name('blogger.image.upload');
     });
 
 });

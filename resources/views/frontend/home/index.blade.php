@@ -96,7 +96,7 @@
                                     <div style="line-height: 50px;">02</div>
                                 </div>
                                 <div class="">
-                                    <div class="text-main-dark">As a provider of services hub and building material market, our platform gives you direct access to artisans, retailers, distributors, wholesellers, factory producers and buyers.</div>
+                                    <div class="text-main-dark">As a provider of service hub and building materials market, our platform gives you direct access to artisans, retailers, distributors, wholesellers, factory producers and buyers.</div>
                                 </div>      
                             </div>
                         </div>

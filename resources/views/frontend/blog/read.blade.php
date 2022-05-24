@@ -9,6 +9,7 @@
 							@empty($blog)
 								<div class="alert alert-danger">Post No Found</div>
 							@else
+								<?php $blog->views = $blog->views + 1; $blog->update(); ?>
 								<div class="mb-4">
 									<h3 class="text-main-dark mb-3">
 										{{ ucfirst($blog->title) }}

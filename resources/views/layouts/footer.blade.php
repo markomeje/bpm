@@ -43,7 +43,7 @@
                 });
             }
 
-            @if(!empty($property) || !empty($material) || !empty($posts) || !empty($services) || !empty($profile))
+            @if(!empty($property) || !empty($material) || !empty($posts) || !empty($services) || !empty($profile) || !empty($blog))
                 FilePond.registerPlugin(FilePondPluginFileEncode, FilePondPluginFileValidateSize, FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
                 const fieldName = document.querySelector('.filepond');
