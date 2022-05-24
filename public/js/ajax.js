@@ -2,10 +2,6 @@
 
 	'use strict';
 
-    $('.delete-blog').on('click', function() {
-        handleAjax({that: $(this), button: 'blog-button', spinner: 'blog-spinner'});    
-    });
-
     $('.delete-staff').on('click', function() {
         handleAjax({that: $(this), button: 'staff-button', spinner: 'staff-spinner'});    
     });
@@ -44,6 +40,10 @@
 
     $('.delete-unit').on('click', function() {
         handleAjax({that: $(this), button: 'delete-unit-button', spinner: 'delete-unit-spinner'});    
+    });
+
+    $('.delete-blog').on('click', function() {
+        handleAjax({that: $(this), button: 'blog-button', spinner: 'blog-spinner'});    
     });
 
 })(jQuery);
