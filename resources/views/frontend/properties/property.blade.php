@@ -58,8 +58,8 @@
 								        </div>
 								        @if($property->images()->exists())
 									        @foreach($property->images()->where(['role' => 'main'])->take(1)->get() as $image)
-										       <a href="{{ $image->link }}" style="height: 340px;" class="mb-4 d-block">
-													<img src="{{ $image->link }}" class="img-fluid w-100 h-100 border object-cover" data-role="{{ $image->role }}">
+										       <a href="{{ $image->link }}" class="mb-4 d-block">
+													<img src="{{ $image->link }}" class="img-fluid w-100 border" data-role="{{ $image->role }}">
 										        </a>
 									        @endforeach
 									    @else
