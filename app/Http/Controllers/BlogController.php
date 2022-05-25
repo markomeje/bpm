@@ -12,7 +12,7 @@ class BlogController extends Controller
      */
     public function index($category = '')
     {
-        $blogs = empty($category) ? Blog::latest('created_at')->where(['published' => true])->paginate(26) : Blog::latest('created_at')->where(['published' => true])->where(['category' => Str::title(str_replace('-', ' ', $category))])->paginate(26);
+        $blogs = empty($category) ? Blog::latest('created_at')->where(['published' => true])->paginate(18) : Blog::latest('created_at')->where(['category' => Str::title(str_replace('-', ' ', $category)), 'published' => true])->paginate(18);
         return view('frontend.blog.index')->with(['title' => 'Our Blog', 'blogs' => $blogs]);
     }
 

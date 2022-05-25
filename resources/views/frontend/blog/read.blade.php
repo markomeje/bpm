@@ -19,7 +19,7 @@
 									</div>
 									<div class="mb-4">
 										<div class="text-main-dark">
-											{{ $blog->description }}
+											{!! $blog->description !!}
 										</div>
 									</div>
 									<div class="p-3 rounded border">
