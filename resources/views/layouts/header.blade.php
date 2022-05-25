@@ -3,13 +3,13 @@
     <head>
         @if(env('APP_ENV') == 'production')
             <!-- Global site tag (gtag.js) - Google Analytics -->
-            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-229940058-1"></script>
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-CR16HKJZGE"></script>
             <script>
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
 
-                gtag('config', 'UA-229940058-1');
+                gtag('config', 'G-CR16HKJZGE');
             </script>
         @endif
         <!-- COMPULSORY META TAGS -->
