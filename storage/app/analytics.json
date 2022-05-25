@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "bestpropertymarket",
+  "private_key_id": "b03babe37e7151723796cb352cf5a97c21d82c90",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCyfQ7C28RMnyLu\njUCvqZxeNK6Pzm30BgKbA/iSyIesTt/7ObncYIlAy/Q2S5o0JRFst1gW0GyMnTGT\n80TQ9OkUpzyUBeEZCKjf4UnPbQ6bplfsOuPCfHQ6X0WW7Vj+7gWc4hEyweEVofWT\nDaPlY5Z8MClzTS7kiXExzboRmU3gCcxlN2pcucGrJF8mwN73LOBMrOnosc77iUc2\noqC3yk31MG1tLF+0a7jnP1kKzl9sD3QbArIxsnubex7MVsUmw9oWiAsPtNHFPBAy\nVkpJk3qVAAvrYUhhQ8JuHLZDTfp2fRyqu+o3wZ65ILIhJYI7HVnAAV20yvSyWHSy\nw2YtYeT/AgMBAAECggEABgySxcwNiZLYUlRlALvgI4ABxuu2MnYXrx0Oo7VHH9hZ\nr/NJyl9WyrFLpaFttV6CPV7mjeAvcmglCE1PPXO0O751OtQ+Lj6EY3eiEqhKcMA0\nLG3mG5VjM20+99MzpNde4Loqq6YCR/aB7HA8aA3pfJ9kCdcJg7ZPj0jYVjgnX83d\nHcbI/Wvg9Rs37J7X1LCmVSfTmxXUtDe8Em1EJtyIGl15DUJOxPe6V84MaYm6JTqZ\nWjjR6ZRBRtYkzHZMfxGaIwfyICWa8p4P5ce11T7xy+HJJpSqobgAPNnJpYFqn3d2\n04QeMYnnR6HQk9YZYj8c0j5tJzg6KdGM+1Gxb/hs3QKBgQDaQVvTe2sCu2aySuTs\n3ri1MI2NFdiGJKKl8L7XXTLPTxkOYNn7LXQfAoyZsTTOc4rFcyioADGBG90PxJbl\nmUljqh8L7K0P4ooQO/HE/mW6x2CE1uq1TdkXqO3y40gY+xo8hdTB40HWo/PWJKT2\nWJjpG3HpawBSJUaRyDPo9z7rUwKBgQDRWyKsSGXtPMhDkOMwg/r7ugIFtcm24eRf\nQe6ZqCajUwcJiM4tPZ3/iSlBBFykiQA32FgSGaYta6nzBZgu4IiaqCaFTFjI1T5Z\nGSpHeWZb87TepTyty11wwTzn2udtIXmMNDFQRaSJCEo8zxHuSXpY28lfMNE9wKKA\nNm0lrVRWJQKBgQCnYrTgDqlVYRAz8Qh9OZsDKweEipqS1on/JhHW7d1H7OvUgSbs\nYkHKfpQCU0uigi6Nm/I0VmGhGRODQkxQLi2AyDojVRKtOhqUtMSJRmoSw1Iczw8W\nmWvDn4VOYE0tC3dlr2YqhPY7fWZGd7gkTnKHZMsKL0wBtCDZMWfOZcDVjQKBgAnd\nUXTstGDJTGZinVHb5ieWTCIYvrhvTGNwp911ntxzPRGl8JERJjC0Nc1qdzMJgYkg\nGIZBzyK0v/1Ddjg/PDCNW8NMJaLQ6W8pUGStw7TxdsRG5OULgAugD06dceoieaex\njeFKZsZOLbFP0Hh53dnyATsLAdD3ErEX32y3DhJBAoGAWycvjJbbrO787bUKXSra\npe0lxwmeY1MRVt3fHKn2I3hkadE7Zqcks5FwXx/KH8QaBvWri6TeEhge0v0JQdE2\ntOGTumBMcMv4vRzwu+CvApfnN1BuyXYFN3eEeuNdhTPtGi2cPXUKPoBklhvBvVlv\n3HjP9FRJxEbZxc4JCjx4pWk=\n-----END PRIVATE KEY-----\n",
+  "client_email": "best-property-market-analytics@bestpropertymarket.iam.gserviceaccount.com",
+  "client_id": "110058698752071516946",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/best-property-market-analytics%40bestpropertymarket.iam.gserviceaccount.com"
+}

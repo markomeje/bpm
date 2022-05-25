@@ -29,7 +29,8 @@
         "torann/currency": "^1.1",
         "torann/geoip": "^3.0",
         "wildbit/swiftmailer-postmark": "^3.3",
-        "yabacon/paystack-php": "^2.2"
+        "yabacon/paystack-php": "^2.2",
+        "spatie/laravel-analytics": "^4.0.1"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
