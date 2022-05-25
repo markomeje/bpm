@@ -14,8 +14,8 @@
 									<h3 class="text-main-dark mb-3">
 										{{ ucfirst($blog->title) }}
 									</h3>
-									<div class="mb-4" style="height: 380px;">
-										<img src="{{ empty($blog->image) ? '/images/banners/placeholder.png' : $blog->image->link }}" class="img-fluid border h-100 w-100 object-cover">
+									<div class="mb-4">
+										<img src="{{ empty($blog->image) ? '/images/banners/placeholder.png' : $blog->image->link }}" class="img-fluid border w-100">
 									</div>
 									<div class="mb-4">
 										<div class="text-main-dark">
