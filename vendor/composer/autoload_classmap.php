@@ -150,6 +150,7 @@ return array(
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\FakerServiceProvider' => $baseDir . '/app/Providers/FakerServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
+    'App\\Rules\\EmailRule' => $baseDir . '/app/Rules/EmailRule.php',
     'Artesaos\\SEOTools\\Contracts\\JsonLd' => $vendorDir . '/artesaos/seotools/src/SEOTools/Contracts/JsonLd.php',
     'Artesaos\\SEOTools\\Contracts\\JsonLdMulti' => $vendorDir . '/artesaos/seotools/src/SEOTools/Contracts/JsonLdMulti.php',
     'Artesaos\\SEOTools\\Contracts\\MetaTags' => $vendorDir . '/artesaos/seotools/src/SEOTools/Contracts/MetaTags.php',

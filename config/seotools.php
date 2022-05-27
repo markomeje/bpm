@@ -2,7 +2,7 @@
 /**
  * @see https://github.com/artesaos/seotools
  */
-
+use Illuminate\Support\Facades\URL;
 $title = 'Buy, Sell, Shop, Explore products and services, properties, Advertize, Lands, Houses, Rent, Lease';
 $description = 'Buy, Sell, Shop, Explore products and services, properties, Advertize, Lands, Houses, Rent, Lease';
 
@@ -17,7 +17,7 @@ return [
             'description'  => $description,
             'separator'    => ' - ',
             'keywords'     => [],
-            'canonical'    => url()->full(),
+            'canonical'    => URL::full(),
             'robots'       => false, // Set to 'all', 'none' or any combination of index/noindex and follow/nofollow
         ],
         /*
@@ -41,7 +41,7 @@ return [
         'defaults' => [
             'title'       => $title,
             'description' => $description,
-            'url'         => url()->current(),
+            'url'         => URL::current(),
             'type'        => false,
             'site_name'   => false,
             'images'      => [],
@@ -63,7 +63,7 @@ return [
         'defaults' => [
             'title'       => $title,
             'description' => $description,
-            'url'         => url()->current(),
+            'url'         => URL::current(),
             'type'        => 'WebPage',
             'images'      => [],
         ],
