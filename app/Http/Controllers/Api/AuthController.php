@@ -12,6 +12,7 @@ use Validator;
 use Hash;
 use Mail;
 use Exception;
+use App\Rules\EmailRule;
 
 
 /**
@@ -29,12 +30,12 @@ class AuthController extends Controller
     {
         $data = request()->all();
         $validator = Validator::make($data, [ 
-            'email' => ['nullable', 'email', 'unique:users'], 
+            'email' => ['nullable', (new EmailRule), 'unique:users'], 
             'phone' => ['required', 'unique:users'], 
             'password' => ['required', 'string'],
             'retype' => ['required', 'same:password'],
             'agree' => ['required', 'string'],
-        ], ['retype.required' => 'Please enter a password', 'agree.required' => 'You have to agree to our terms and conditions', 'phone.required' => 'Please enter your phone number.', 'retype.same:password' => 'Retype thesame password', 'unique:users' => 'The phone number is already in use.']);
+        ], ['retype.required' => 'Please enter a password', 'agree.required' => 'You have to agree to our terms and conditions', 'phone.required' => 'Please enter your phone number.', 'retype.same:password' => 'Retype thesame password', 'phone.unique:users' => 'The phone number is already in use.']);
 
         if ($validator->fails()) {
             return response()->json([

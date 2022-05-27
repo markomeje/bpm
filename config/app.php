@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Best Property Market'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://geohomes.test'),
+    'url' => env('APP_URL', 'http://bestpropertymarket.com'),
 
     'asset_url' => env('ASSET_URL', null),
 
@@ -182,6 +182,7 @@ return [
         JD\Cloudder\CloudderServiceProvider::class,
 
         Intervention\Image\ImageServiceProvider::class,
+        \Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
 
     ],
 
@@ -241,8 +242,13 @@ return [
         'Currency' => \Torann\Currency\Facades\Currency::class,
         
         'Cloudder' => JD\Cloudder\Facades\Cloudder::class,
-
         'Image' => Intervention\Image\Facades\Image::class,
+
+        'SEOMeta' => Artesaos\SEOTools\Facades\SEOMeta::class,
+        'OpenGraph' => Artesaos\SEOTools\Facades\OpenGraph::class,
+        'Twitter' => Artesaos\SEOTools\Facades\TwitterCard::class,
+        'JsonLd' => Artesaos\SEOTools\Facades\JsonLd::class,
+        'JsonLdMulti' => Artesaos\SEOTools\Facades\JsonLdMulti::class,
 
     ],
 
