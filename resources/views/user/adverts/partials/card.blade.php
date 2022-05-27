@@ -180,24 +180,12 @@
 			@elseif($status == 'expired')
 				<div class="row">
 					<div class="col-6 mb-4">
-            			<div class="dropdown">
-				            <a href="javascript:;" class="btn btn-block btn-sm btn-info" id="resume-advert-{{ $advert->id }}" data-toggle="dropdown">
-				                <small class="mr-1">
-		                			<i class="icofont-renew"></i>
-		                		</small>
-		                		<small>Renew</small>
-				            </a>
-				            <div class="dropdown-menu border-0 shadow dropdown-menu-right" aria-labelledby="resume-advert-{{ $advert->id }}" style="width: 260px !important;">
-				            	<form method="post" class="renew-advert-form p-4" action="javascript:;" data-action="{{ route('user.advert.renew', ['id' => $advert->id]) }}">
-				            		<div class="alert alert-info mb-4">This advert will be activated after renewal.</div>
-				            		<input type="hidden" name="status" value="active">
-				            		<div class="alert mb-3 renew-advert-message d-none"></div>
-				            		<button type="submit" class="btn btn-info btn-block renew-advert-button">
-				            			<img src="/images/spinner.svg" class="mr-2 d-none renew-advert-spinner mb-1">Renew
-				            		</button>
-				            	</form>
-				            </div>
-				        </div>
+			            <a href="javascript:;" class="btn border btn-block btn-sm btn-light" disabled id="expired-advert-{{ $advert->id }}" data-toggle="dropdown">
+			                <small class="mr-1 text-theme-color">
+	                			<i class="icofont-exclamation-circle"></i>
+	                		</small>
+	                		<small>Expired</small>
+			            </a>
             		</div>
 					<div class="col-6 mb-4">
 						@include('user.adverts.partials.delete')

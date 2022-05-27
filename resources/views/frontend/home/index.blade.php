@@ -69,7 +69,32 @@
                                 <div class="col-12">
                                     @include('frontend.adverts.partials.fullwidth')
                                 </div>
+                                @foreach($properties->skip(8)->take(4) as $property)
+                                    <div class="col-12 col-md-6 col-lg-3 mb-4">
+                                        @include('frontend.properties.partials.card')
+                                    </div>
+                                @endforeach
+                                <div class="col-12">
+                                    @include('frontend.adverts.partials.fullwidth')
+                                </div>
+                                @foreach($properties->skip(12)->take(4) as $property)
+                                    <div class="col-12 col-md-6 col-lg-3 mb-4">
+                                        @include('frontend.properties.partials.card')
+                                    </div>
+                                @endforeach
+                                <div class="col-12">
+                                    @include('frontend.adverts.partials.fullwidth')
+                                </div>
+                                @foreach($properties->skip(16)->take(4) as $property)
+                                    <div class="col-12 col-md-6 col-lg-3 mb-4">
+                                        @include('frontend.properties.partials.card')
+                                    </div>
+                                @endforeach
+                                <div class="col-12">
+                                    @include('frontend.adverts.partials.fullwidth')
+                                </div>
                             </div>
+                            <h1 class="text-main-dark">To see all properties, <a href="{{ route('properties') }}">Click here</a></h1>
                         @endif
                     </div>
                 </div>

@@ -202,17 +202,6 @@ class AdvertsController extends Controller
     }
 
     /**
-     * Renew Advert not ready yet
-     */
-    public function renew()
-    {
-        return response()->json([
-            'status' => 0, 
-            'info' => 'Invalid operation'
-        ]);
-    }
-
-    /**
      * Resume advert
      */
     public function resume($id = 0)
