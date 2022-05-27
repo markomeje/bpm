@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        @if(app()->enviroment('production'))
+        @if(app()->environment('production'))
             <!-- Global site tag (gtag.js) - Google Analytics -->
             <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144521349-3"></script>
             <script>
@@ -66,7 +66,7 @@
         <link rel="manifest" href="/favicon/site.webmanifest">
 
         {{-- Google fonts --}}
-        @if(app()->enviroment('production'))
+        @if(app()->environment('production'))
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
