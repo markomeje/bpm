@@ -16,7 +16,7 @@ return [
             'description'  => $description,
             'separator'    => ' - ',
             'keywords'     => [],
-            'canonical'    => Illuminate\Support\Facades\URL::full(),
+            'canonical'    => '',
             'robots'       => false, // Set to 'all', 'none' or any combination of index/noindex and follow/nofollow
         ],
         /*
@@ -40,7 +40,7 @@ return [
         'defaults' => [
             'title'       => $title,
             'description' => $description,
-            'url'         => Illuminate\Support\Facades\URL::current(),
+            'url'         => '',
             'type'        => false,
             'site_name'   => false,
             'images'      => [],
@@ -62,7 +62,7 @@ return [
         'defaults' => [
             'title'       => $title,
             'description' => $description,
-            'url'         => Illuminate\Support\Facades\URL::current(),
+            'url'         => '',
             'type'        => 'WebPage',
             'images'      => [],
         ],
