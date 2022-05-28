@@ -29,7 +29,6 @@ class Kernel extends ConsoleKernel
             $schedule->command('config:clear')->everyMinute();
             $schedule->command('view:clear')->everyMinute();
             $schedule->command('route:clear')->everyMinute();
-            $schedule->command('route:clear')->everyMinute();
         }
 
         $schedule->command('expiry:check')->everyMinute();

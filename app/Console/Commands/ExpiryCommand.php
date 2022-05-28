@@ -13,7 +13,7 @@ class ExpiryCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'expiry:check {--sleep=86400}';
+    protected $signature = 'expiry:check';
 
     /**
      * The console command description.
