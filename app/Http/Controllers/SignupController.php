@@ -1,17 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Auth\Events\Registered;
-use App\Mail\{EmailVerification, OtpLink};
-use Illuminate\Support\Facades\DB;
-use App\Models\{User, Verify};
-use App\Helpers\Sms;
-use Illuminate\Support\Str;
-use Carbon\Carbon;
-use Validator;
-use Hash;
-use Mail;
-use Exception;
 
 
 class SignupController extends Controller

@@ -5,6 +5,7 @@ use App\Mail\ContactRequest;
 use \Exception;
 use Validator;
 use Mail;
+use Artesaos\SEOTools\Facades\SEOMeta;
 
 class ContactController extends Controller
 {
@@ -13,6 +14,10 @@ class ContactController extends Controller
      */
     public function index()
     {
+        SEOMeta::setTitle('We provide Advanced Real Estate Product and Services');
+        SEOMeta::setDescription('Our page is friendly and inviting. Contact us on all Real Estate Products and Services, your satisfaction is a guarantee.');
+        SEOMeta::addKeyword(['Real Estate Products', 'Services']);
+
         return view('frontend.contact.index');
     }
 

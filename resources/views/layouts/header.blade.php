@@ -12,6 +12,7 @@
                 gtag('config', 'UA-144521349-3');
             </script>
         @endif
+        
         <!-- COMPULSORY META TAGS -->
         <meta charset="utf-8">
         <meta name="_token" content="{{ csrf_token() }}" />
@@ -66,11 +67,9 @@
         <link rel="manifest" href="/favicon/site.webmanifest">
 
         {{-- Google fonts --}}
-        @if(app()->environment('production'))
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
-        @endif
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
 
         {{-- File Pond CSS --}}
         <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css" rel="stylesheet" />

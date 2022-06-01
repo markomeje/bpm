@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\{Category, Property, Country};
 use Illuminate\Support\Str;
+use Artesaos\SEOTools\Facades\SEOMeta;
 
 class PropertiesController extends Controller
 {
@@ -11,6 +12,10 @@ class PropertiesController extends Controller
      */
     public function index()
     {
+        SEOMeta::setTitle('All kinds of properties, in All countries.');
+        SEOMeta::setDescription('BEST PROPERTY MARKET provides Real Estate solutions and access to professional Builders, Artisans, Merchants of Building materials etc. It is a free to register platform for Real Estate dealers to connect with their target market.');
+        SEOMeta::addKeyword(['Property', 'Duplexes', 'Flats', 'Semi Detached Duplexes', 'Bungalows', 'Terraces', 'Lands']);
+
         return view('frontend.properties.index')->with(['properties' => Property::latest('created_at')->where('action', '!=', 'sold')->where(['status' => 'active'])->paginate(24),]);
     }
 

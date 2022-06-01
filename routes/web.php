@@ -218,7 +218,6 @@ Route::middleware(['web', 'auth', 'admin', 'revalidate'])->domain(env('ADMIN_URL
     });
 
     Route::prefix('blogs')->group(function () {
-
         Route::post('/store', [\App\Http\Controllers\Api\BlogsController::class, 'store'])->name('admin.blog.store');
         Route::post('/status/{id}', [\App\Http\Controllers\Api\BlogsController::class, 'status'])->name('admin.blog.status.update');
         Route::post('/delete/{id}', [\App\Http\Controllers\Api\BlogsController::class, 'delete'])->name('admin.blog.delete');
