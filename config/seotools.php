@@ -2,8 +2,8 @@
 /**
  * @see https://github.com/artesaos/seotools
  */
-$title = 'Buy, Sell, Shop, Explore products and services, properties, Advertize, Lands, Houses, Rent, Lease';
-$description = 'Buy, Sell, Shop, Explore products and services, properties, Advertize, Lands, Houses, Rent, Lease';
+$title = '';
+$description = '';
 
 return [
     'meta' => [
