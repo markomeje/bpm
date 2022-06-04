@@ -217,4 +217,16 @@ class PropertiesController extends Controller
             'redirect' => '',
         ]);
     }
+
+    /**
+     * Api get all property with its images
+     */
+    public function getall()
+    {
+        return response()->json([
+            'status' => 1, 
+            'info' => 'Operation successful',
+            'properties' => Property::with(['images'])->paginate(20),
+        ]);
+    }
 }

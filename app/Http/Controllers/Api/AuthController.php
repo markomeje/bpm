@@ -118,7 +118,7 @@ class AuthController extends Controller
             ]);
         }
 
-        $user = User::where(['email' => $data['login']])->first() || User::where(['phone' => $data['login']])->first();
+        $user = User::where(['email' => $data['login']])->orWhere(['phone' => $data['login']])->first();
         if (empty($user)) {
             return response()->json([
                 'status' => 0,
@@ -126,7 +126,14 @@ class AuthController extends Controller
             ]);
         }
 
-        if (auth()->attempt(['email' => $data['login'], 'password' => $data['password']]) || auth()->attempt(['phone' => $data['login'], 'password' => $data['password']])) {
+        if(request()->get('type') === 'mobile') {
+            return response()->json([
+                'status' => 1,
+                'info' => 'Operation successful.',
+                'user' => $user,
+                'token' => $user->createToken('appToken')->plainTextToken,
+            ]);
+        }elseif (auth()->attempt(['email' => $data['login'], 'password' => $data['password']]) || auth()->attempt(['phone' => $data['login'], 'password' => $data['password']])) {
             request()->session()->regenerate();
 
             return response()->json([
