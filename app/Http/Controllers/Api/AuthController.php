@@ -87,6 +87,7 @@ class AuthController extends Controller
             return response()->json([
                 'status' => 1,
                 'info' => 'Operation successful',
+                'user' => $user,
                 'redirect' => route('phone.verify', ['reference' => $reference]),
             ]);
 

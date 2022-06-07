@@ -30,7 +30,8 @@ class ImagesController extends Controller
         if ($validator->fails()) {
             return response()->json([
                 'status' => 0, 
-                'info' => 'Invalid Operation.'
+                'info' => 'Invalid Operation.',
+                'error' => $validator->errors()
             ]);
         }
 
@@ -45,6 +46,7 @@ class ImagesController extends Controller
     public function delete()
     {
         $data = request()->all();
+        dd($data);
         $validator = Validator::make($data, [
             'model_id' => ['required'],
             'type' => ['required'],
@@ -55,7 +57,8 @@ class ImagesController extends Controller
         if ($validator->fails()) {
             return response()->json([
                 'status' => 0, 
-                'info' => 'Invalid Operation.'
+                'info' => 'Invalid Operation.',
+                'error' => $validator->errors()
             ]);
         }
 
@@ -113,11 +116,20 @@ class ImagesController extends Controller
     {
         $data = request()->all();
         $validator = Validator::make($data, [
+            'images' => ['required'],
             'model_id' => ['required'],
             'type' => ['required'],
             'folder' => ['required'],
             'role' => ['required'],
         ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Invalid Operation.',
+                'error' => $validator->errors()
+            ], 400);
+        }
 
         $maxfiles = ['property' => 4, 'material' => 3];
         $files = request()->file('images');
@@ -127,20 +139,13 @@ class ImagesController extends Controller
             'type' => $data['type']
         ])->get()->count();
 
-        if (isset($maxfiles['profile'])) {
+        if (isset($maxfiles[$data['type']])) {
             if (($count + count($files)) > $maxfiles[$data['type']]) {
                 return response()->json([
                     'status' => 0, 
                     'info' => 'Invalid Operation.'
                 ], 400);
             }
-        } 
-            
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 0, 
-                'info' => 'Invalid Operation.'
-            ], 400);
         }
 
         if($files = $files){

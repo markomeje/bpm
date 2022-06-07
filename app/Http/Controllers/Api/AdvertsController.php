@@ -139,7 +139,7 @@ class AdvertsController extends Controller
         if(empty($image->link ?? '') || empty($public_id)) {
             return response()->json([
                 'status' => 0, 
-                'info' => 'Please upload advert image first by clicking the camera icon.'
+                'info' => 'Please upload advert image first.'
             ]);
         }
             

@@ -141,4 +141,16 @@ class UnitsController extends Controller
         ]);
     }
 
+    /**
+     * Get all units
+     */
+    public function all()
+    {
+        return response()->json([
+            'status' => 1, 
+            'info' => 'Operation successfull',
+            'units' => Unit::all(),
+        ]);
+    }
+
 }

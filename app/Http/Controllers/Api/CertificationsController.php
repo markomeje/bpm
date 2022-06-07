@@ -78,7 +78,15 @@ class CertificationsController extends Controller
 
     public function delete($id)
     {
-        Certification::find($id)->delete();
+        $certificate = Certification::find($id);
+        if (empty($certificate)) {
+            return response()->json([
+                'status' => 0,
+                'info' => 'Operation failed',
+            ], 401);
+        }
+
+        $certificate->delete();
         return response()->json([
             'status' => 1,
             'info' => 'Operation successful',

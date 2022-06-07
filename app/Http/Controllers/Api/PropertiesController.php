@@ -221,12 +221,79 @@ class PropertiesController extends Controller
     /**
      * Api get all property with its images
      */
-    public function getall()
+    public function all()
     {
         return response()->json([
             'status' => 1, 
             'info' => 'Operation successful',
             'properties' => Property::with(['images'])->paginate(20),
+            'categories' => Property::distinct()->pluck('category'),
+            'groups' => Property::distinct()->pluck('group'),
+            'actions' => Property::distinct()->pluck('action'),
         ]);
+    }
+
+    /**
+     * Api filter properties by category, group or action
+     */
+    public function filter($type = '')
+    {
+        $types = ['category', 'action', 'group'];
+        if (empty($type) || !in_array($type, $types)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Invalid request type',
+                'types' => $types,
+            ]);
+        }
+
+        $count = request()->get('count') ?? 20;
+        $filter = request()->get('filter');
+        if ($filter) {
+            $filter = \Str::slug($filter);
+            switch ($type) {
+                case 'category':
+                    $properties = Property::with(['images'])->where(['category' => $filter])->paginate($count);
+                    break;
+
+                case 'action':
+                    $properties = Property::with(['images'])->where(['action' => $filter])->paginate($count);
+                    break;
+
+                case 'group':
+                    $properties = Property::with(['images'])->where(['group' => $filter])->paginate($count);
+                
+                default:
+                    $properties = Property::with(['images'])->paginate($count);
+                    break;
+            }
+        }else {
+            $properties = Property::with(['images'])->search(['group', 'category', 'action'], $type)->paginate($count);
+        }
+            
+
+        return response()->json([
+            'status' => 0, 
+            'info' => 'Operation successful',
+            'properties' => $properties,
+        ]);
+    }
+
+    /**
+     * Api search properties
+     */
+    public function search()
+    {
+        $query = request()->get('query');
+        if ($query) {
+            return response()->json([
+                'status' => 1, 
+                'info' => 'Operation successful',
+                'properties' => Property::with(['images'])->search(['price', 'additional', 'group', 'category', 'action'], $query)->paginate(15),
+                'categories' => Property::distinct()->pluck('category'),
+                'groups' => Property::distinct()->pluck('group'),
+                'actions' => Property::distinct()->pluck('action'),
+            ]);
+        }
     }
 }
