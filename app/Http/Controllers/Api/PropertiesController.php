@@ -61,6 +61,7 @@ class PropertiesController extends Controller
                 'id' => $property->id,
                 'category' => strtolower($property->category),
             ]),
+            'property' => $property,
         ]); 
 
     }
