@@ -60,7 +60,7 @@ Route::domain(env('API_URL'))->group(function() {
             Route::post('/all', [\App\Http\Controllers\Api\UserController::class, 'properties'])->name('api.property.all');
             Route::post('/add', [\App\Http\Controllers\Api\PropertiesController::class, 'add'])->name('api.property.add');
             Route::post('/action/change/{id}', [\App\Http\Controllers\Api\PropertiesController::class, 'action'])->name('api.property.action.change'); 
-            Route::post('/update/{id}', [\App\Http\Controllers\Api\PropertiesController::class, 'update'])->name('api.property.update');
+            Route::post('/update/{id}', [\App\Http\Controllers\Api\PropertiesController::class, 'update'])->name('api.property.edit');
             Route::post('/specifics/update/{id}', [\App\Http\Controllers\Api\PropertiesController::class, 'specifics'])->name('api.property.specifics.update');
             Route::post('/promote/{id}', [\App\Http\Controllers\Api\PromotionsController::class, 'promote']);
         });
