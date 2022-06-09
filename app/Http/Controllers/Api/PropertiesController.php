@@ -45,7 +45,7 @@ class PropertiesController extends Controller
             'city' => $data['city'],
             'action' => $data['action'],
             'category' => $data['category'],
-            'measurement' => $data['measurement'],
+            'measurement' => $data['measurement'] ?? '',
             'user_id' => auth()->id(),
             'additional' => $data['additional'],
             'reference' => Str::random(64),

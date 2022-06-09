@@ -33,6 +33,9 @@ class Controller extends BaseController
                     case 'reviewadmin':
                         $subdomain = 'admin';
                         break;
+                    case 'reviewapi':
+                        $subdomain = 'api';
+                        break;
                     default:
                         $subdomain = 'review';
                         break;

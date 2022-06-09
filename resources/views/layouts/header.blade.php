@@ -22,37 +22,18 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        @if(config('app.env') !== 'review')
+        @if(config('app.env') === 'review')
+            <!-- SITE TITLE -->
+            <meta name="keywords" content="Buy, Sell, Shop, Explore products and services, properties, Advertize, Lands, Houses, Rent, Lease" />
+            <meta name="image" content="/images/assets/logo.png" />
+
+            <meta name="og:site_name" content="{{ config('app.name') }}" />
+            <meta name="og:locale" content="en_US" />
+            <meta name="article:section" content="Buy, Sell, Shop, Explore products and services, properties, Advertize, Lands, Houses, Rent, Lease" />
+            <meta name="description" content="Buy, Sell, Shop, Explore products and services, properties, Advertize, Lands, Houses, Rent, Lease" />
+        @else
             {!! SEO::generate(true) !!}
         @endif
-
-        <!-- SITE TITLE -->
-        {{-- <meta name="keywords" content="Buy, Sell, Shop, Explore products and services, properties, Advertize, Lands, Houses, Rent, Lease" />
-        <meta name="image" content="/images/assets/logo.png" />
-
-        <meta name="og:site_name" content="{{ env('APP_NAME') }}" />
-        <meta name="og:locale" content="en_US" />
-        <meta name="article:section" content="Buy, Sell, Shop, Explore products and services, properties, Advertize, Lands, Houses, Rent, Lease" />
-        <meta name="description" content="Buy, Sell, Shop, Explore products and services, properties, Advertize, Lands, Houses, Rent, Lease" /> --}}
-        <!--Facebook Open Graph-->
-        {{-- <meta name="framework" content="Redux 4.3.3">
-        <meta name='robots' content='max-image-preview:large'> --}}
-
-        <!-- Facebook Open Graph -->
-        {{-- <meta property="og:image" content="/images/assets/logo.png" />
-        <meta property="og:url" content="https://geohomesgroup.com//" />
-        <meta property="og:type" content="Real Estate" />
-        <meta property="og:title" content="Geohomes Services Limited" />
-        <meta property="og:description" content="Buy, Sell, Shop, Explore products and services, properties, Advertize, Lands, Houses, Rent, Lease" /> --}}
-
-        <!--Twitter Share-->
-        {{-- <meta name="twitter:image:src" content="/images/assets/logo.png" />
-        <meta property="twitter:image" content="/images/assets/logo.png" />
-        <meta property="twitter:title" content="{{ env('APP_NAME') }}" />
-        <meta property="twitter:card" content="summary_large_card" />
-        <meta property="twitter:site" content="{{ env('APP_URL') }}" />
-        <meta property="twitter:site_name" content="{{ env('APP_NAME') }}"/>
-        <meta property="twitter:description" content="Buy, Sell, Shop, Explore products and services, properties, Advertize, Lands, Houses, Rent, Lease" /> --}}
 
         <meta charset="utf-8" name="google-site-verification" content="=8kf5mgYQhvdaG83hokZpIDyISEeWEEa6Jib6s1pjZdM">
         <meta name="msvalidate.01" content="E54BD83E87BAF1B6D2813C397CB5771D" />
