@@ -109,6 +109,7 @@ class PropertiesController extends Controller
             'status' => 1, 
             'info' => 'Operation successful',
             'redirect' => route(request()->subdomain().'.properties'),
+            'property' => $property,
         ]);
             
     }

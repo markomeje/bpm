@@ -30,7 +30,7 @@ Route::domain(env('API_URL'))->group(function() {
     Route::post('/email/verify/{token}', [\App\Http\Controllers\Api\VerifyController::class, 'verifyemail'])->name('verify.email');
 
     Route::prefix('properties')->group(function () {
-        Route::post('/all', [\App\Http\Controllers\Api\PropertiesController::class, 'all'])->name('api.property.all');
+        Route::post('/all', [\App\Http\Controllers\Api\PropertiesController::class, 'all'])->name('api.properties');
 
         Route::post('/search', [\App\Http\Controllers\Api\PropertiesController::class, 'search'])->name('api.property.search');
 
