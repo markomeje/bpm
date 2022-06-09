@@ -46,7 +46,6 @@ class ImagesController extends Controller
     public function delete()
     {
         $data = request()->all();
-        dd($data);
         $validator = Validator::make($data, [
             'model_id' => ['required'],
             'type' => ['required'],
@@ -88,7 +87,7 @@ class ImagesController extends Controller
             if (empty($image)) {
                 return response()->json([
                     'status' => 0, 
-                    'info' => 'Invalid operation'
+                    'info' => 'Image not found. Check your fields'
                 ]);
             }
 

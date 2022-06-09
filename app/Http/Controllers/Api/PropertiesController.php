@@ -99,7 +99,7 @@ class PropertiesController extends Controller
         $property->city = $data['city'];
         $property->action = $data['action'];
         $property->category = $data['category'];
-        $property->measurement = $data['measurement'];
+        $property->measurement = $data['measurement'] ?? '';
         $property->additional = $data['additional'];
         $property->price = $data['price'];
         $property->currency_id = $data['currency'] ?? 0;

@@ -82,7 +82,7 @@ Route::domain(env('API_URL'))->group(function() {
         Route::prefix('image')->group(function () {
             Route::post('/upload', [\App\Http\Controllers\Api\ImagesController::class, 'upload'])->name('api.image.upload');
             Route::post('/multiple', [\App\Http\Controllers\Api\ImagesController::class, 'multiple'])->name('api.multiple.images.upload');
-            Route::post('/delete', [\App\Http\Controllers\Api\ImagesController::class, 'delete']);
+            Route::post('/delete', [\App\Http\Controllers\Api\ImagesController::class, 'delete'])->name('api.image.delete');
         });
 
         Route::prefix('advert')->group(function () {
