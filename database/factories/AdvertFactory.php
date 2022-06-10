@@ -26,10 +26,7 @@ class AdvertFactory extends Factory
             'credit_id' => rand(1, Credit::count()),
             'reference' => Str::random(64),
             'status' => $faker->randomElement(['active']),
-            'started' => $faker->randomElement([
-                    Carbon::now(), 
-                    Carbon::now()->subDays($faker->numberBetween(10, 28))
-                ]),
+            'started' => Carbon::now()->subDays($faker->numberBetween(5, 28)),
             'expiry' => Carbon::now()->addDays($faker->numberBetween(15, 90)),
         ];
     }
