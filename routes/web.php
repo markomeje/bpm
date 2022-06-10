@@ -132,7 +132,8 @@ Route::middleware(['web', 'auth', 'admin', 'revalidate'])->domain(env('ADMIN_URL
     });
 
     Route::prefix('adverts')->group(function () {
-        Route::get('/{status?}', [\App\Http\Controllers\Admin\AdvertsController::class, 'index'])->name('admin.adverts');
+        Route::get('/', [\App\Http\Controllers\Admin\AdvertsController::class, 'index'])->name('admin.adverts');
+        Route::post('/extend/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'extend'])->name('admin.advert.extend');
     });
 
     Route::prefix('units')->group(function () {

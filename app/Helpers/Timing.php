@@ -56,11 +56,12 @@ class Timing
 	 */
 	public static function calculate(int $duration = 0, ?string $expiry = '', ?string $started = '', $paused = '') : self
 	{
-		$daysleft = ($duration - Carbon::parse($started)->diffInDays(Carbon::now()));
+		$started = Carbon::parse($started);
+		$duration = $started->diffInDays($expiry); // overridding original credit duration passed
+
+		$daysleft = ($duration - $started->diffInDays(Carbon::now()));
 		$daysleft = (empty($daysleft) || $daysleft <= 0) ? 0 : $daysleft;
-
-
-		$daysleft = empty($paused) ? $daysleft : ($duration - Carbon::parse($started)->diffInDays($paused));
+		$daysleft = empty($paused) ? $daysleft : ($duration - $started->diffInDays($paused));
 
 		$fraction = $duration >= $daysleft ? ($daysleft/($duration ?: 1)) : 0;
 		$progress = round(100 - ($fraction * 100));
@@ -101,5 +102,13 @@ class Timing
 	public function paused() : bool
 	{
 		return $this->paused;
+	}
+
+	/**
+	 * Timing duration
+	 */
+	public function duration() : int
+	{
+		return $this->duration;
 	}
 }

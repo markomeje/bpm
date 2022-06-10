@@ -286,4 +286,47 @@ class AdvertsController extends Controller
         ]);
     }
 
+    /**
+     * Extend advert expiry
+     */
+    public function extend($id = 0)
+    {
+        $advert = Advert::find($id);
+        if (empty($advert)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Invalid operation'
+            ]);
+        }
+
+        $data = request()->all();
+        $validator = Validator::make($data, [
+            'expiry' => ['required', 'string'],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 0, 
+                'error' => $validator->errors()
+            ]);
+        }
+
+        if (!in_array($advert->status, ['active', 'expired'])) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Only active or expired adverts can be extended.'
+            ]);
+        }
+
+        $advert->expiry = Carbon::parse($data['expiry']);
+        $advert->status = 'active';
+        $advert->update();
+
+        return response()->json([
+            'status' => 1, 
+            'info' => 'Operation successfull',
+            'redirect' => ''
+        ]);
+    }
+
 }

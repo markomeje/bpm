@@ -112,6 +112,11 @@
         handleForm({form: $(this), button: 'resume-advert-button', spinner: 'resume-advert-spinner', message: 'resume-advert-message'});
     });
 
+    $('.extend-advert-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'extend-advert-button', spinner: 'extend-advert-spinner', message: 'extend-advert-message'});
+    });
+
     $('.activate-advert-form').submit(function(event){
         event.preventDefault();
         handleForm({form: $(this), button: 'activate-advert-button', spinner: 'activate-advert-spinner', message: 'activate-advert-message'});
