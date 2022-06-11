@@ -47,7 +47,7 @@ class AuthController extends Controller
         try {
             DB::beginTransaction();
             $user = User::create([
-                'email' => $data['email'],
+                'email' => $data['email'] ?? null,
                 'phone' => $data['phone'],
                 'password' => Hash::make($data['password']),
                 'role' => 'user',
@@ -89,6 +89,7 @@ class AuthController extends Controller
                 'info' => 'Operation successful',
                 'user' => $user,
                 'redirect' => route('phone.verify', ['reference' => $reference]),
+                'token' => $user->createToken('appToken')->plainTextToken,
             ]);
 
         } catch (Exception $error) {
