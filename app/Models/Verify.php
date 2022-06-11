@@ -29,4 +29,16 @@ class Verify extends Model
         'phone',
         'email',
     ];
+
+    public static function scopePhone($query, $phone)
+    {
+        $verify = $query->where(['phone' => $phone])->first();
+        return empty($verify) ? false : $verify->phoneactive;
+    }
+
+    public static function scopeEmail($query, $email)
+    {
+        $verify = $query->where(['email' => $email])->first();
+        return empty($verify) ? false : $verify->emailactive;
+    }
 }

@@ -46,8 +46,9 @@ class AuthController extends Controller
 
         try {
             DB::beginTransaction();
+            $email = $data['email'] ?? '';
             $user = User::create([
-                'email' => $data['email'] ?? null,
+                'email' => $email,
                 'phone' => $data['phone'],
                 'password' => Hash::make($data['password']),
                 'role' => 'user',
@@ -62,20 +63,20 @@ class AuthController extends Controller
                 'phone' => $data['phone'],
             ]);
 
-            if (!empty($data['email'])) {
+            if (!empty($email)) {
                 $token = Str::random(64);
                 $verify->token = $token;
                 $verify->tokenexpiry = Carbon::now()->addMinutes(60);
-                $verify->email = $data['email'];
+                $verify->email = $email;
                 $verify->update();
 
                 $verifymail = new EmailVerification([
-                    'email' => $data['email'], 
+                    'email' => $email, 
                     'token' => $token,
                 ]);
 
-                Mail::to($data['email'])->send($verifymail);
-                Mail::to($data['email'])->send(new OtpLink(['reference' => $reference]));
+                Mail::to($email)->send($verifymail);
+                Mail::to($email)->send(new OtpLink(['reference' => $reference]));
             }
 
             Sms::otp([
@@ -126,7 +127,7 @@ class AuthController extends Controller
                 'status' => 0,
                 'info' => 'Invalid login details.'
             ]);
-        }
+        }   
 
         if(request()->get('type') === 'mobile') {
             return response()->json([
