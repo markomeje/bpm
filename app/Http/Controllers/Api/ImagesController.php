@@ -38,7 +38,8 @@ class ImagesController extends Controller
         $dinary = Cloudinary::save($data, request()->file('image'));
         return response()->json([
             'status' => $dinary['status'], 
-            'info' => $dinary['info']
+            'info' => $dinary['info'],
+            'image' => $dinary['image'] ?? '',
         ]);      
             
     }
@@ -154,7 +155,7 @@ class ImagesController extends Controller
                 return response()->json([
                     'status' => $status, 
                     'info' => $dinary['info']
-                ], $status == 0 ? 400 : 200);
+                ], $status == 0 ? 500 : 200);
             }
         }
     }

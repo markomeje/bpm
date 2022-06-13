@@ -40,7 +40,7 @@ class Cloudinary
                 ]);
 
                 $public_id = \Cloudder::getPublicId();
-                \App\Models\Image::create([
+                $image = \App\Models\Image::create([
                     'type' => $data['type'],
                     'public_id' => $public_id,
                     'model_id' => $data['model_id'],
@@ -52,7 +52,8 @@ class Cloudinary
 
                 return [
                     'status' => 1, 
-                    'info' => 'Operation successful.'
+                    'info' => 'Operation successful.',
+                    'image' => $image,
                 ];
             }
 
@@ -81,12 +82,14 @@ class Cloudinary
 
             return [
                 'status' => 1, 
-                'info' => 'Operation successful.'
+                'info' => 'Operation successful.',
+                'image' => $image
             ];
         } catch (Exception $error) {
             return [
                 'status' => 0, 
-                'info' => 'Unknown error. Try again.'
+                'info' => 'Unknown error. Try again.',
+                'image' => ''
             ];
         }
     }
