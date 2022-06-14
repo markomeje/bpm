@@ -130,6 +130,7 @@ class AuthController extends Controller
         }   
 
         if(request()->get('type') === 'mobile') {
+            $user->tokens()->delete();
             return response()->json([
                 'status' => 1,
                 'info' => 'Operation successful.',

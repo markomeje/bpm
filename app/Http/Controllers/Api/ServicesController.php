@@ -26,7 +26,7 @@ class ServicesController extends Controller
 
         $service = Service::where([
             'user_id' => auth()->id(), 
-            'skill_id' => $data['skill'],
+            'skill_id' => $data['skill'] ?? null,
         ])->first();
 
         if (!empty($service)) {
@@ -79,6 +79,13 @@ class ServicesController extends Controller
         }
 
         $service = Service::find($id);
+        if (empty($service)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Service not found'
+            ]);
+        }
+
         $service->description = $data['description'];
         $service->skill_id = $data['skill'];
         $service->price = $data['price'];

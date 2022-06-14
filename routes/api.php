@@ -45,7 +45,6 @@ Route::domain(env('API_URL'))->group(function() {
     Route::group(['middleware' => ['auth:sanctum'], 'prefix' => 'user'], function () {
 
         Route::post('/credits', [\App\Http\Controllers\Api\UserController::class, 'credits']);
-
         Route::post('/payments', [\App\Http\Controllers\Api\UserController::class, 'payments'])->name('api.user.payments');
         Route::post('/services', [\App\Http\Controllers\Api\UserController::class, 'services'])->name('api.user.services');
         Route::post('/certifications', [\App\Http\Controllers\Api\UserController::class, 'certifications']);
@@ -54,6 +53,12 @@ Route::domain(env('API_URL'))->group(function() {
             Route::post('/add', [\App\Http\Controllers\Api\CertificationsController::class, 'add']);
             Route::post('/edit/{id}', [\App\Http\Controllers\Api\CertificationsController::class, 'edit']);
             Route::post('/delete/{id}', [\App\Http\Controllers\Api\CertificationsController::class, 'delete']);
+        });
+
+        Route::prefix('service')->group(function () {
+            Route::post('/create', [\App\Http\Controllers\Api\ServicesController::class, 'create']);
+            Route::post('/edit/{id}', [\App\Http\Controllers\Api\ServicesController::class, 'edit']);
+            Route::post('/delete/{id}', [\App\Http\Controllers\Api\ServicesController::class, 'delete']);
         });
 
         Route::prefix('property')->group(function () {
