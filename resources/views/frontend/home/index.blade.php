@@ -35,17 +35,17 @@
                         @if(!empty($actions))
                             <div class="row">
                                 @foreach($actions as $key => $action)
-                                    @if($action !== 'sold')
-                                        <div class="col-6 col-md-3 col-lg-2 mb-4">
-                                            <a href="{{ route('properties.action', ['action' => $action]) }}" class="btn border-theme-color d-block">
-                                                <small class="text-main-dark">
-                                                    <?php $actions = \App\Models\Property::$actions; ?>
-                                                    @if(isset($actions[$action]))
+                                    <?php $actions = \App\Models\Property::$actions; ?>
+                                    @if(isset($actions[$action]))
+                                        @if($action !== 'sold')
+                                            <div class="col-6 col-md-3 col-lg-2 mb-4">
+                                                <a href="{{ route('properties.action', ['action' => $action]) }}" class="btn border-theme-color d-block">
+                                                    <small class="text-main-dark">
                                                         {{ ucwords($actions[$action]) }}
-                                                    @endif
-                                                </small>
-                                            </a>
-                                        </div>
+                                                    </small>
+                                                </a>
+                                            </div>
+                                        @endif
                                     @endif
                                 @endforeach
                             </div>
