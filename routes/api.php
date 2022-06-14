@@ -41,6 +41,7 @@ Route::domain(env('API_URL'))->group(function() {
     Route::post('/units', [\App\Http\Controllers\Api\UnitsController::class, 'all']);
     Route::post('/skills', [\App\Http\Controllers\Api\SkillsController::class, 'all']);
     Route::post('/countries', [\App\Http\Controllers\Api\CountriesController::class, 'all']);
+    Route::post('/currencies', [\App\Http\Controllers\Api\CurrencyController::class, 'all']);
 
     Route::group(['middleware' => ['auth:sanctum'], 'prefix' => 'user'], function () {
 

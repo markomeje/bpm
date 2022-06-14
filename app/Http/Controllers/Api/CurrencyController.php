@@ -1,21 +1,21 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-use App\Models\Country;
+use App\Models\Currency;
 use App\Http\Controllers\Controller;
 
-class CountriesController extends Controller
+class CurrencyController extends Controller
 {
     /**
-     * List of all countries
+     * List of all currencies
      */
     public function all()
     {
-        $countries = Country::all();
+        $currencies = Currency::all();
         return response()->json([
             'status' => 1,
             'info' => 'Operation successful',
-            'countries' => $countries,
+            'currencies' => $currencies,
         ]);
     }
 
