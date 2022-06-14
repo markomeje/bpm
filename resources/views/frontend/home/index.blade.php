@@ -39,7 +39,10 @@
                                         <div class="col-6 col-md-3 col-lg-2 mb-4">
                                             <a href="{{ route('properties.action', ['action' => $action]) }}" class="btn border-theme-color d-block">
                                                 <small class="text-main-dark">
-                                                    {{ ucwords(\App\Models\Property::$actions[$action]) }}
+                                                    <?php $actions = \App\Models\Property::$actions; ?>
+                                                    @if(isset($actions[$action]))
+                                                        {{ ucwords($actions[$action]) }}
+                                                    @endif
                                                 </small>
                                             </a>
                                         </div>
