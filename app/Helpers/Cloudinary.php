@@ -89,7 +89,7 @@ class Cloudinary
             return [
                 'status' => 0, 
                 'info' => 'Unknown error. Try again.',
-                'image' => ''
+                'image' => null
             ];
         }
     }
