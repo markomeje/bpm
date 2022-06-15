@@ -225,13 +225,14 @@ class PropertiesController extends Controller
      */
     public function all()
     {
+        $distinct = Property::distinct();
         return response()->json([
             'status' => 1, 
             'info' => 'Operation successful',
             'properties' => Property::with(['images'])->paginate(20),
-            'categories' => Property::distinct()->pluck('category'),
-            'groups' => Property::distinct()->pluck('group'),
-            'actions' => Property::distinct()->pluck('action'),
+            'categories' => $distinct->pluck('category'),
+            'groups' => $distinct->pluck('group'),
+            'actions' => $distinct->pluck('action'),
         ]);
     }
 
@@ -249,28 +250,28 @@ class PropertiesController extends Controller
             ]);
         }
 
-        $count = request()->get('count') ?? 20;
+        $limit = request()->get('limit') ?? 20;
         $filter = request()->get('filter');
         if ($filter) {
             $filter = \Str::slug($filter);
             switch ($type) {
                 case 'category':
-                    $properties = Property::with(['images'])->where(['category' => $filter])->paginate($count);
+                    $properties = Property::with(['images'])->where(['category' => $filter])->paginate($limit);
                     break;
 
                 case 'action':
-                    $properties = Property::with(['images'])->where(['action' => $filter])->paginate($count);
+                    $properties = Property::with(['images'])->where(['action' => $filter])->paginate($limit);
                     break;
 
                 case 'group':
-                    $properties = Property::with(['images'])->where(['group' => $filter])->paginate($count);
+                    $properties = Property::with(['images'])->where(['group' => $filter])->paginate($limit);
                 
                 default:
-                    $properties = Property::with(['images'])->paginate($count);
+                    $properties = Property::with(['images'])->paginate($limit);
                     break;
             }
         }else {
-            $properties = Property::with(['images'])->search(['group', 'category', 'action'], $type)->paginate($count);
+            $properties = Property::with(['images'])->search(['group', 'category', 'action'], $type)->paginate($limit);
         }
             
 
@@ -288,13 +289,14 @@ class PropertiesController extends Controller
     {
         $query = request()->get('query');
         if ($query) {
+            $distinct = Property::distinct();
             return response()->json([
                 'status' => 1, 
                 'info' => 'Operation successful',
-                'properties' => Property::with(['images'])->search(['price', 'additional', 'group', 'category', 'action'], $query)->paginate(15),
-                'categories' => Property::distinct()->pluck('category'),
-                'groups' => Property::distinct()->pluck('group'),
-                'actions' => Property::distinct()->pluck('action'),
+                'properties' => Property::with(['images'])->filterSearch(['price', 'additional', 'group', 'category', 'action', 'bedrooms', 'address', 'toilets', 'state', 'city'], $query)->paginate(15),
+                'categories' => $distinct->pluck('category'),
+                'groups' => $distinct->pluck('group'),
+                'actions' => $distinct->pluck('action'),
             ]);
         }
     }

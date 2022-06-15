@@ -50,19 +50,37 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Builder::macro('search', function ($attributes, string $searchTerm) {
+            $searchTerm = '%'.$searchTerm.'%';
             $this->where(function (Builder $query) use ($attributes, $searchTerm) {
                 foreach (Arr::wrap($attributes) as $attribute) {
+                    $contains = str_contains($attribute, '.');
                     $query->when(
-                        str_contains($attribute, '.'), function (Builder $query) use ($attribute, $searchTerm) {
+                        str_contains($attribute, '.'), 
+                        function (Builder $query) use ($attribute, $searchTerm) {
                             [$relationName, $relationAttribute] = explode('.', $attribute);
-
                             $query->orWhereHas($relationName, function (Builder $query) use ($relationAttribute, $searchTerm) {
-                                $query->where($relationAttribute, 'LIKE', "%{$searchTerm}%");
+                                $query->where($relationAttribute, 'like', $searchTerm);
                             });
-                        }, function (Builder $query) use ($attribute, $searchTerm) {
-                            $query->orWhere($attribute, 'LIKE', "%{$searchTerm}%");
+                        }, 
+                        function (Builder $query) use ($attribute, $searchTerm) {
+                            $query->orWhere($attribute, 'like', $searchTerm);
                         }
                     );
+                }
+            });
+
+            return $this;
+        });
+
+        Builder::macro('filterSearch', function ($attributes, string $searchTerms) {
+            $this->where(function (Builder $query) use ($attributes, $searchTerms) {
+                foreach (Arr::wrap($attributes) as $attribute) {
+                    $query->orWhere(function($query) use($attribute, $searchTerms) {
+                        foreach (explode(' ', $searchTerms) as $searchTerm) {
+                            $query->orWhere($attribute, 'LIKE', '%'.$searchTerm.'%');
+                        }
+                            
+                    });
                 }
             });
 

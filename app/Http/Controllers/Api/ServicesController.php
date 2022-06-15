@@ -68,7 +68,9 @@ class ServicesController extends Controller
         $validator = Validator::make($data, [
             'description' => ['required', 'string', 'max:200'],
             'skill' => ['required', 'integer',],
-            'price' => ['nullable', 'numeric'],
+            'price' => ['required', 'numeric'],
+            'currency' => ['required', 'numeric'],
+            'status' => ['required'],
         ]);
 
         if ($validator->fails()) {
