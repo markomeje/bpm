@@ -45,7 +45,12 @@ Route::domain(env('API_URL'))->group(function() {
 
     Route::group(['middleware' => ['auth:sanctum'], 'prefix' => 'user'], function () {
 
-        Route::post('/credits', [\App\Http\Controllers\Api\UserController::class, 'credits']);
+        Route::prefix('credit')->group(function () {
+            Route::post('/buy', [\App\Http\Controllers\Api\CreditsController::class, 'buy'])->name('user.credit.buy');
+            Route::post('/verify', [\App\Http\Controllers\User\CreditsController::class, 'verify'])->name('user.credit.verify');
+        });
+
+        Route::post('/credits', [\App\Http\Controllers\Api\UserController::class, 'credits'])->name('api.credits');
         Route::post('/payments', [\App\Http\Controllers\Api\UserController::class, 'payments'])->name('api.user.payments');
         Route::post('/services', [\App\Http\Controllers\Api\UserController::class, 'services'])->name('api.user.services');
         Route::post('/certifications', [\App\Http\Controllers\Api\UserController::class, 'certifications']);

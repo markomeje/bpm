@@ -304,7 +304,7 @@ Route::middleware(['web', 'auth', 'user', 'revalidate', 'profile.setup'])->domai
     Route::post('/renew/{id}', [\App\Http\Controllers\User\SubscriptionController::class, 'renew'])->name('user.subscription.renew');
     Route::post('/activate/{id}', [\App\Http\Controllers\User\SubscriptionController::class, 'activate'])->name('user.subscription.activate');
 
-    Route::post('/credits/buy', [\App\Http\Controllers\User\CreditsController::class, 'buy'])->name('user.credits.buy');
+    Route::post('/credits/buy', [\App\Http\Controllers\Api\CreditsController::class, 'buy'])->name('user.credits.buy');
 
     Route::prefix('properties')->group(function () {
         Route::get('/', [\App\Http\Controllers\User\PropertiesController::class, 'index'])->name('user.properties');
