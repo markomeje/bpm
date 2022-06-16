@@ -35,11 +35,11 @@
                 <div class="row">
                     <div class="col-12 col-md-9">
                         @if(empty($properties->count()))
-                            <div class="alert-info alert mb-4">No Properties Found for ({{ request()->get('query') }})</div>
+                            <div class="alert-danger alert mb-4">No Properties Found for ({{ request()->get('query') }})</div>
                             <?php $properties = \App\Models\Property::where('action', '!=', 'sold')->inRandomOrder('id')->paginate(25); ?>
                             <div class="row">
                                 @foreach($properties as $property)
-                                    <div class="col-12 col-md-6 col-lg-3 mb-4">
+                                    <div class="col-12 col-md-6 col-lg-4 mb-4">
                                         @include('frontend.properties.partials.card')
                                     </div>
                                 @endforeach
@@ -49,7 +49,7 @@
                             <div class="alert alert-info mb-4"> ({{ $properties->total() }}) Propertie(s) found</div>
                             <div class="row">
                                 @foreach($properties as $property)
-                                    <div class="col-12 col-md-6 col-lg-3 mb-4">
+                                    <div class="col-12 col-md-6 col-lg-4 mb-4">
                                         @include('frontend.properties.partials.card')
                                     </div>
                                 @endforeach

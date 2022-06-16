@@ -8,15 +8,19 @@ use Artesaos\SEOTools\Facades\SEOMeta;
 class PropertiesController extends Controller
 {
     /**
+     */
+    CONST SEO_DESCRIPTION = 'Best Property Market provides Real Estate solutions and access to professional Builders, Artisans, Merchants of Building materials etc. It is a free to register platform for Real Estate dealers to connect with their target market.';
+
+    /**
      * Properties home view
      */
     public function index()
     {
-        SEOMeta::setTitle('All kinds of properties, in All countries.');
-        SEOMeta::setDescription('BEST PROPERTY MARKET provides Real Estate solutions and access to professional Builders, Artisans, Merchants of Building materials etc. It is a free to register platform for Real Estate dealers to connect with their target market.');
+        SEOMeta::setTitle('All kinds of properties, in all countries.');
+        SEOMeta::setDescription(self::SEO_DESCRIPTION);
         SEOMeta::addKeyword(['Property', 'Duplexes', 'Flats', 'Semi Detached Duplexes', 'Bungalows', 'Terraces', 'Lands']);
 
-        return view('frontend.properties.index')->with(['properties' => Property::latest('created_at')->where('action', '!=', 'sold')->where(['status' => 'active'])->paginate(24),]);
+        return view('frontend.properties.index')->with(['properties' => Property::active()->latest('created_at')->where('action', '!=', 'sold')->paginate(24),]);
     }
 
     /**
@@ -24,8 +28,17 @@ class PropertiesController extends Controller
      */
     public function property($category = 'land', $id = 45, $slug = '')
     {
-        $property = Property::findOrFail($id);
-        return view('frontend.properties.property')->with(['title' => Str::headline($slug), 'property' => $property, 'related' => Property::where(['category' => $category])->orWhere(['country_id' => $property->country_id ?? 0])->paginate(6)]); 
+        SEOMeta::setDescription(self::SEO_DESCRIPTION);
+        $property = Property::find($id);
+        if (empty($property)) {
+            SEOMeta::setTitle('Property not found');
+            return view('frontend.properties.property')->with(['property' => '']);
+        }
+
+        $slug = Str::headline($slug);
+        SEOMeta::setTitle($slug);
+        SEOMeta::addKeyword(explode(' ', ucwords($property->additional)));
+        return view('frontend.properties.property')->with(['property' => $property, 'slug' => $slug]); 
     }
 
     /**
@@ -33,8 +46,11 @@ class PropertiesController extends Controller
      */
     public function category($category = 'land')
     {
-        $properties = Property::latest('created_at')->where(['category' => $category, 'status' => 'active'])->where('action', '!=', 'sold')->paginate(18);
-        return view('frontend.properties.category')->with(['title' => "$category Propertes | Best Property Market", 'properties' => $properties, 'name' => $category]);
+        SEOMeta::setDescription(self::SEO_DESCRIPTION);
+        SEOMeta::addKeyword(['Property', 'Duplexes', 'Flats', 'Semi Detached Duplexes', 'Bungalows', 'Terraces', 'Lands']);
+        SEOMeta::setTitle(ucfirst($category).' Properties');
+        $properties = Property::active()->latest('created_at')->where(['category' => $category])->where('action', '!=', 'sold')->paginate(18);
+        return view('frontend.properties.category')->with(['properties' => $properties, 'name' => $category]);
     }
 
     /**
@@ -42,6 +58,8 @@ class PropertiesController extends Controller
      */
     public function country($iso2 = 'us')
     {
+        SEOMeta::setDescription(self::SEO_DESCRIPTION);
+
         $country = Country::where(['iso2' => $iso2])->first();
         $properties = Property::where(['country_id' => $country->id])->where('action', '!=', 'sold')->paginate(16);
         return view('frontend.properties.country')->with(['properties' => $properties, 'soldProperties' => Property::where(['status' => 'sold off'])->paginate(3), 'country' => $country]);
@@ -49,14 +67,10 @@ class PropertiesController extends Controller
 
     public function search()
     {
-        $term = request()->get('query');
-        $term = '%'.request()->get('query').'%';
-        $properties = Property::where([['action', '!=', 'sold'], [
-                function($query) use($term) {
-                    $query->orWhere('city', 'LIKE', $term)->orWhere('state', 'LIKE', $term)->orWhere('group', 'LIKE', $term)->orWhere('price', 'LIKE', $term)->orWhere('address', 'LIKE', $term)->orWhere('category', 'LIKE', $term)->get();
-                }
-            ],
-        ])->orderBy('id', 'desc')->paginate(25);
+        SEOMeta::setDescription(self::SEO_DESCRIPTION);
+
+        $query = request()->get('query');
+        $properties = Property::search(['price', 'group', 'category', 'bedrooms', 'country.name', 'city', 'state'], $query)->active()->paginate();
         return view('frontend.properties.search')->with(['properties' => $properties]);
     }
 
@@ -65,8 +79,11 @@ class PropertiesController extends Controller
      */
     public function action($action = 'lease')
     {
-        $properties =  Property::where(['action' => $action, 'status' => 'active'])->paginate(16);
-        return view('frontend.properties.action')->with(['title' => Str::headline(Property::$actions[$action] ?? env('APP_NAME')), 'properties' => $properties, 'action' => $action]);
+        SEOMeta::setDescription(self::SEO_DESCRIPTION);
+        SEOMeta::setTitle('Global Properties '. ucfirst(Property::$actions[$action] ?? ''));
+
+        $properties =  Property::active()->where(['action' => $action])->paginate(16);
+        return view('frontend.properties.action')->with(['properties' => $properties, 'action' => $action]);
     }
 
     /**
@@ -74,9 +91,10 @@ class PropertiesController extends Controller
      */
     public function group($group = '')
     {
+        SEOMeta::setDescription(self::SEO_DESCRIPTION);
         $group = ucwords(Str::headline($group));
-        $properties =  Property::where(['group' => $group, 'status' => 'active'])->paginate(16);
-        return view('frontend.properties.group')->with(['title' => Str::headline($group), 'properties' => $properties, 'group' => $group]);
+        SEOMeta::setTitle(Str::plural($group));
+        return view('frontend.properties.group')->with(['properties' => Property::active()->where(['group' => $group])->paginate(16), 'group' => $group]);
     }
 
 }

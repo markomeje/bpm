@@ -35,7 +35,7 @@ class CreditsController extends Controller
             ]);
         }
 
-        try {
+        // try {
             $amount = $unit->price ?? 0;
             $reference = (string)Str::uuid();
 
@@ -69,12 +69,12 @@ class CreditsController extends Controller
                 'status' => 0, 
                 'info' => 'Payment initialization failed. Try again.',
             ]);
-        } catch (Exception $error) {
-            return response()->json([
-                'status' => 0, 
-                'info' => 'An error occured. Refresh the page and try again.'
-            ]);
-        }         
+        // } catch (Exception $error) {
+        //     return response()->json([
+        //         'status' => 0, 
+        //         'info' => 'An error occured. Refresh the page and try again.'
+        //     ]);
+        // }         
     }
 
 }

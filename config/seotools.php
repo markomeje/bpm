@@ -2,7 +2,7 @@
 /**
  * @see https://github.com/artesaos/seotools
  */
-$title = '';
+$title = 'Best Property Market';
 $description = '';
 
 return [
@@ -14,7 +14,7 @@ return [
             'title'        => $title,
             'titleBefore'  => false,
             'description'  => $description,
-            'separator'    => ' - ',
+            'separator'    => ' | ',
             'keywords'     => [],
             'canonical'    => '',
             'robots'       => false, // Set to 'all', 'none' or any combination of index/noindex and follow/nofollow

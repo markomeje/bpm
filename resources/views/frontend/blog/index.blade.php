@@ -5,7 +5,11 @@
 			<div class="container-fluid">
 				<div class="row mb-4">
 					<div class="col-12 mb-4">
-						<h1 class="text-white">Our Blogs</h1>
+						@if(empty($category))
+							<h1 class="text-white">Our Blogs</h1>
+						@else
+							<h1 class="text-white">{{ ucwords($category) }} Blogs</h1>
+						@endif
 						<div class="text-white p-0">Our blog page shares information on related topics both personal and non-personal. It contains discreet information about anything in the real estate industry which in many cases will benefit our users.</div>
 					</div>
 				</div>

@@ -48,4 +48,12 @@ class Blog extends Model
     {
         return $this->hasOne(Image::class, 'model_id')->where(['type' => 'blog']);
     }
+
+    /**
+     * Scope only published blogs
+     */
+    public function scopePublished($query)
+    {
+        return $query->where(['published' => true]);
+    }
 }

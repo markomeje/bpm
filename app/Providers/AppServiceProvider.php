@@ -49,7 +49,7 @@ class AppServiceProvider extends ServiceProvider
             );
         });
 
-        Builder::macro('search', function ($attributes, string $searchTerm) {
+        Builder::macro('search', function ($attributes, ?string $searchTerm) {
             $searchTerm = '%'.$searchTerm.'%';
             $this->where(function (Builder $query) use ($attributes, $searchTerm) {
                 foreach (Arr::wrap($attributes) as $attribute) {

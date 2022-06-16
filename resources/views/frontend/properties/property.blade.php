@@ -7,7 +7,20 @@
 					<div class="col-12 col-md-8 col-lg-9">
 						<div class="mb-4">
 							@empty($property)
-								<div class="alert alert-danger">Property No Found</div>
+								<div class="alert alert-danger mb-4">Property Not Found</div>
+								@set('properties', \App\Models\Property::active()->inRandomOrder()->paginate(18))
+								@empty($properties->count())
+									<div class="alert alert-danger">No Related Properties</div>
+								@else
+									<div class="alert alert-info mb-4">View Other Properties</div>
+									<div class="row">
+										@foreach($properties as $property)
+											<div class="col-12 col-md-6 col-lg-4 mb-4">
+												@include('frontend.properties.partials.card')
+											</div>
+										@endforeach
+									</div>
+								@endempty
 							@else
 								<?php $property->views = $property->views + 1; $property->update(); ?>
 								<div class="mb-4">
@@ -25,8 +38,9 @@
 								                </small>
 								                <?php $action = strtolower($property->action); $actions = \App\Models\Property::$actions; ?>
 								                @if(isset($actions[$action]))
-								                    <small class="bg-theme-color tiny-font text-white px-3 py-1 mr-3">{{ ucwords($actions[$action]) }}
-								                        </small></small>
+								                    <small class="bg-theme-color tiny-font text-white px-3 py-1 mr-3">
+								                    	{{ ucwords($actions[$action]) }}
+								                    </small>
 								                @endif
 								                <div class="dropdown">
 								                    <a href="javascript:;" class="d-block text-decoration-none" id="share-dropdown" data-toggle="dropdown" aria-expanded="false">
@@ -43,7 +57,7 @@
 								                                @set('categories', \App\Models\Property::$categories)
                                 								@set('last', array_values($socials))
 								                                @foreach($socials as $social)
-								                                    <div class="p-2 {{ end($last) == $social ? '' : 'mr-2' }} border-theme-color text-decoration-none  text-theme-color" data-sharer="{{ $social }}" data-title="Checkout this {{ $categories[$property->category]['name'] }}" data-hashtags="bestpropertymarket, realestate, globalproperties, lands, buildings" data-url="{{ route('property.category.id.slug', ['category' => $property->category, 'id' => $property->id ?? 0, 'slug' => \Str::slug($title)]) }}">
+								                                    <div class="p-2 {{ end($last) == $social ? '' : 'mr-2' }} border-theme-color text-decoration-none  text-theme-color" data-sharer="{{ $social }}" data-title="Checkout this {{ $categories[$property->category]['name'] }}" data-hashtags="bestpropertymarket, realestate, globalproperties, lands, buildings" data-url="{{ route('property.category.id.slug', ['category' => $property->category, 'id' => $property->id ?? 0, 'slug' => \Str::slug($slug)]) }}">
 								                                        <div class="tiny-font">
 								                                            <i class="icofont-{{ $social }}"></i>
 								                                        </div>
@@ -148,21 +162,22 @@
 							            </div>
 							        </div>
 								</div>
-							@endempty
-						</div>
-						<div class="">
-							<div class="alert alert-info mb-4">Related Properties</div>
-							@empty($related->count())
-								<div class="alert alert-danger">No Related Properties</div>
-							@else
-								<div class="row">
-									@foreach($related as $property)
-										<div class="col-12 col-md-6 col-lg-4 mb-4">
-											@include('frontend.properties.partials.card')
+								<div class="">
+									@set('properties', \App\Models\Property::active()->search(['category', 'city', 'country.name', 'state', 'group'], $slug)->paginate(6);)
+									<div class="alert alert-info mb-4">Related Properties</div>
+									@empty($properties->count())
+										<div class="alert alert-danger">No Related Properties</div>
+									@else
+										<div class="row">
+											@foreach($properties as $property)
+												<div class="col-12 col-md-6 col-lg-4 mb-4">
+													@include('frontend.properties.partials.card')
+												</div>
+											@endforeach
 										</div>
-									@endforeach
+									@endempty
 								</div>
-							@endempty
+							@endempty	
 						</div>
 					</div>
 					<div class="col-12 col-md-4 col-lg-3">
