@@ -31,11 +31,11 @@ class CreditsController extends Controller
         if (empty($unit)) {
             return response()->json([
                 'status' => 0, 
-                'info' => 'Invalid operation'
+                'info' => 'Unit not found.'
             ]);
         }
 
-        // try {
+        try {
             $amount = $unit->price ?? 0;
             $reference = (string)Str::uuid();
 
@@ -47,6 +47,15 @@ class CreditsController extends Controller
                 'status' => 'initialized',
                 'user_id' => auth()->id(),
             ]);
+
+            $type = request()->get('type');
+            if ($type === 'mobile') {
+                return response()->json([
+                    'status' => 1, 
+                    'info' => 'Please wait . . .',
+                    'payment' => $payment,
+                ]);
+            }
 
             $paystack = (new Paystack())->initialize([
                 'amount' => $amount * 100, //in kobo
@@ -69,12 +78,12 @@ class CreditsController extends Controller
                 'status' => 0, 
                 'info' => 'Payment initialization failed. Try again.',
             ]);
-        // } catch (Exception $error) {
-        //     return response()->json([
-        //         'status' => 0, 
-        //         'info' => 'An error occured. Refresh the page and try again.'
-        //     ]);
-        // }         
+        } catch (Exception $error) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'An error occured. Try again.'
+            ], 500); 
+        }         
     }
 
 }

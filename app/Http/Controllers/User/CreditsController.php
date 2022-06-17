@@ -26,7 +26,9 @@ class CreditsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function verify() {
-        $reference = request()->get('reference');
+        $data = request()->all();
+        $reference = $data['reference'] ?? '';
+        
         if(empty($reference)) {
             return response()->json([
                 'status' => 0,
@@ -49,14 +51,6 @@ class CreditsController extends Controller
         }
 
         try {
-            $verify = (new Paystack())->verify($reference);
-            if (empty($verify) || $verify === false) {
-                return response()->json([
-                    'status' => 0,
-                    'info' => 'Verification failed.'
-                ]);
-            }
-
             $unitid = $payment->product_id ?? 0;
             $unit = Unit::find($unitid);
             if (empty($unit)) {
@@ -66,35 +60,78 @@ class CreditsController extends Controller
                 ]);
             }
 
-            $amount = (int)$payment->amount ?? 0;
-            if ('success' === strtolower($verify->data->status) && 'NGN' === strtoupper($verify->data->currency) && $verify->data->customer->email === auth()->user()->email && ((int)$verify->data->amount/100) === $amount) {
+            $type = request()->get('type');
+            if ($type === 'mobile') {
+                $status = $data['status'] ?? '';
+                if($status === 'success') {
+                    $payment->status = 'paid';
+                    $payment->update();
 
-                $payment->status = 'paid';
+                    $credit = Credit::create([
+                        'payment_id' => $payment->id,
+                        'duration' => $unit->duration,
+                        'unit_id' => $unit->id,
+                        'units' => $unit->units,
+                        'reference' => $reference,
+                        'status' => 'available',
+                        'user_id' => auth()->id(),
+                    ]);
+
+                    DB::commit();
+                    return response()->json([
+                        'status' => 1, 
+                        'info' => 'Operation successful',
+                        'payment' => $payment,
+                        'credit' => $credit,
+                    ]);
+                }
+
+                $payment->status = $status;
                 $payment->update();
-
-                Credit::create([
-                    'payment_id' => $payment->id,
-                    'duration' => $unit->duration,
-                    'unit_id' => $unit->id,
-                    'units' => $unit->units,
-                    'reference' => $reference,
-                    'status' => 'available',
-                    'user_id' => auth()->id(),
-                ]);
-
-                DB::commit();
                 return response()->json([
-                    'status' => 1,
-                    'info' => 'Transaction successfull.'
+                    'status' => 0, 
+                    'info' => 'Payment verification failed',
+                    'payment' => $payment,
                 ]);
-            }
+            }else {
+                $verify = (new Paystack())->verify($reference);
+                if (empty($verify) || $verify === false) {
+                    return response()->json([
+                        'status' => 0,
+                        'info' => 'Verification failed.'
+                    ]);
+                }
 
-            $payment->status = 'failed';
-            $payment->update();
-            return response()->json([
-                'status' => 0,
-                'info' => 'Payment verification failed.'
-            ]);
+                $amount = (int)$payment->amount ?? 0;
+                if ('success' === strtolower($verify->data->status) && 'NGN' === strtoupper($verify->data->currency) && $verify->data->customer->email === auth()->user()->email && ((int)$verify->data->amount/100) === $amount) {
+
+                    $payment->status = 'paid';
+                    $payment->update();
+
+                    Credit::create([
+                        'payment_id' => $payment->id,
+                        'duration' => $unit->duration,
+                        'unit_id' => $unit->id,
+                        'units' => $unit->units,
+                        'reference' => $reference,
+                        'status' => 'available',
+                        'user_id' => auth()->id(),
+                    ]);
+
+                    DB::commit();
+                    return response()->json([
+                        'status' => 1,
+                        'info' => 'Transaction successfull.'
+                    ]);
+                }
+
+                $payment->status = 'failed';
+                $payment->update();
+                return response()->json([
+                    'status' => 0,
+                    'info' => 'Payment verification failed.'
+                ]);
+            }  
         } catch (Exception $error) {
             DB::rollback();
             return response()->json([
