@@ -16,7 +16,7 @@ class UserController extends Controller
         return response()->json([
             'status' => 1, 
             'info' => 'Operation successful',
-            'adverts' => Advert::with(['image'])->where(['user_id' => auth()->id()])->get(),
+            'adverts' => Advert::latest('created_at')->with(['image'])->where(['user_id' => auth()->id()])->get(),
         ]);      
     }
 
@@ -28,7 +28,7 @@ class UserController extends Controller
         return response()->json([
             'status' => 1, 
             'info' => 'Operation successful',
-            'properties' => Property::with(['images'])->where(['user_id' => auth()->id()])->get(),
+            'properties' => Property::latest('created_at')->with(['images'])->where(['user_id' => auth()->id()])->get(),
         ]);      
     }
 
@@ -40,7 +40,7 @@ class UserController extends Controller
         return response()->json([
             'status' => 1, 
             'info' => 'Operation successful',
-            'credits' => Credit::where(['user_id' => auth()->id()])->get(),
+            'credits' => Credit::latest('created_at')->where(['user_id' => auth()->id()])->get(),
         ]);      
     }
 
@@ -49,11 +49,10 @@ class UserController extends Controller
      */
     public function payments()
     {
-        $limit = 20;
         return response()->json([
             'status' => 1, 
             'info' => 'Operation successful',
-            'payments' => Payment::where(['user_id' => auth()->id()])->paginate($limit),
+            'payments' => Payment::latest('created_at')->where(['user_id' => auth()->id()])->get(),
         ]);      
     }
 
@@ -62,11 +61,10 @@ class UserController extends Controller
      */
     public function services()
     {
-        $limit = 20;
         return response()->json([
             'status' => 1, 
             'info' => 'Operation successful',
-            'services' => Service::where(['user_id' => auth()->id()])->paginate($limit),
+            'services' => Service::latest('created_at')->where(['user_id' => auth()->id()])->get(),
         ]);      
     }
 
