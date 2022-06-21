@@ -31,11 +31,8 @@ Route::domain(env('API_URL'))->group(function() {
 
     Route::prefix('properties')->group(function () {
         Route::post('/all', [\App\Http\Controllers\Api\PropertiesController::class, 'all'])->name('api.properties');
-
         Route::post('/search', [\App\Http\Controllers\Api\PropertiesController::class, 'search'])->name('api.property.search');
-
         Route::post('/{type}/{filter?}', [\App\Http\Controllers\Api\PropertiesController::class, 'filter']);
-
     });
 
     Route::post('/units', [\App\Http\Controllers\Api\UnitsController::class, 'all']);
@@ -107,7 +104,14 @@ Route::domain(env('API_URL'))->group(function() {
             Route::post('/resume/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'resume'])->name('api.advert.resume');
             Route::post('/activate/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'activate'])->name('api.advert.activate');
                 
-        });     
+        });
+
+        Route::post('/materials', [\App\Http\Controllers\Api\UserController::class, 'materials'])->name('api.user.materials');
+
+        Route::prefix('material')->group(function () {
+            Route::post('/add', [\App\Http\Controllers\Api\MaterialsController::class, 'add'])->name('api.material.add'); 
+            Route::post('/edit/{id}', [\App\Http\Controllers\Api\MaterialsController::class, 'edit'])->name('api.material.edit');
+        }); 
 
     });
 });

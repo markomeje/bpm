@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-use App\Models\{Advert, Credit, Property, Payment, Service, Certification};
+use App\Models\{Advert, Credit, Property, Payment, Service, Certification, Material};
 use App\Http\Controllers\Controller;
 use \Exception;
 
@@ -17,6 +17,18 @@ class UserController extends Controller
             'status' => 1, 
             'info' => 'Operation successful',
             'adverts' => Advert::latest('created_at')->with(['image'])->where(['user_id' => auth()->id()])->get(),
+        ]);      
+    }
+
+    /**
+     * All user building materials
+     */
+    public function materials()
+    {
+        return response()->json([
+            'status' => 1, 
+            'info' => 'Operation successful',
+            'materials' =>  Material::latest('created_at')->with(['images'])->where(['user_id' => auth()->id()])->get(),
         ]);      
     }
 
