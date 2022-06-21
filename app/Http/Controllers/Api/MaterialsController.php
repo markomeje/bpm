@@ -22,6 +22,8 @@ class MaterialsController extends Controller
             'city' => ['required', 'string'],
             'currency' => ['required', 'integer'],
             'additional' => ['required', 'string', 'max:500'],
+            'quantity' => ['nullable'],
+            'price' => ['nullable'],
         ]);
 
         if ($validator->fails()) {
@@ -37,21 +39,20 @@ class MaterialsController extends Controller
             'state' => $data['state'],
             'address' => $data['address'],
             'city' => $data['city'],
-            'quantity' => $data['quantity'],
+            'quantity' => $data['quantity'] ?? '',
             'user_id' => auth()->user()->id,
             'additional' => $data['additional'],
             'reference' => \Str::uuid(),
             'currency_id' => $data['currency'] ?? 0,
-            'price' => $data['price'],
+            'price' => $data['price'] ?? '',
         ]);
 
         if ($material) {
             return response()->json([
                 'status' => 1, 
                 'info' => 'Operation successful',
-                'redirect' => route(request()->subdomain().'.material.edit', [
-                    'id' => $material->id,
-                ]),
+                'redirect' => route(request()->subdomain().'.material.edit', ['id' => $material->id]),
+                'material' => $material,
             ]); 
         }else {
             return response()->json([
