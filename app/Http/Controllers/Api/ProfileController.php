@@ -40,6 +40,11 @@ class ProfileController extends Controller
         $role = $data['role'] ?? '';
         if (Str::contains($role, '|')) {
             [$role, $code] = explode('|', $role);
+        }else {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Invalid profile role.'
+            ]);
         }
 
         try {
