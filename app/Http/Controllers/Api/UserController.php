@@ -97,10 +97,11 @@ class UserController extends Controller
      */
     public function profile()
     {
+        $profile = Profile::where(['user_id' => auth()->id()])->first();
         return response()->json([
             'status' => 1, 
             'info' => 'Operation successful',
-            'profile' => Profile::where(['user_id' => auth()->id()])->first(),
+            'profile' => empty($profile) ? [] : $profile,
         ]);      
     }
 
