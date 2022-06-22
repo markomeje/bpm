@@ -50,14 +50,14 @@ class ProfileController extends Controller
                 'state' => $data['state'],
                 'address' => $data['address'],
                 'city' => $data['city'],
-                'website' => $data['website'],
-                'email' => $data['email'],
+                'website' => $data['website'] ?? null,
+                'email' => $data['email'] ?? null,
                 'user_id' => auth()->id(),
                 'designation' => $data['designation'],
                 'reference' => Str::random(64),
                 'role' => $role,
-                'phone' => $data['phone'],
-                'code' => empty($code) ? '' : $code,
+                'phone' => $data['phone'] ?? null,
+                'code' => empty($code) ? null : $code,
             ]);
 
             $user = auth()->user();
@@ -68,6 +68,7 @@ class ProfileController extends Controller
             return response()->json([
                 'status' => 1, 
                 'info' => 'Operation successful',
+                'profile' => $profile,
                 'redirect' => route('user.dashboard'),
             ]);
         } catch (Exception $error) {
@@ -77,7 +78,6 @@ class ProfileController extends Controller
                 'info' => 'Operation failed. Try again.',
             ]);
         }    
-
     }
 
     /**
@@ -112,20 +112,27 @@ class ProfileController extends Controller
         try {
             DB::beginTransaction();
             if (auth()->user()->name !== $data['name']) {
-                $user = User::find(auth()->user()->id);
+                $user = User::find(auth()->id());
                 $user->name = $data['name'];
                 $user->update();
             }
 
             $profile = Profile::find($id);
+            if (empty($profile)) {
+                return response()->json([
+                    'status' => 0, 
+                    'info' => 'User profile not found'
+                ], 500);
+            }
+
             $profile->country_id = $data['country'];
             $profile->state = $data['state'];
             $profile->address = $data['address'];
             $profile->designation = $data['designation'];
             $profile->city = $data['city'];
             $profile->description = $data['description'];
-            $profile->code = empty($code) ? '' : $code;
-            $profile->phone = $data['phone'];
+            $profile->code = empty($code) ? null : $code;
+            $profile->phone = $data['phone'] ?? null;
             $profile->role = $role;
             $profile->update();
 
@@ -134,6 +141,7 @@ class ProfileController extends Controller
                 'status' => 1, 
                 'info' => 'Operation successful',
                 'redirect' => route('user.dashboard'),
+                'profile' => $profile,
             ]);
         } catch (Exception $error) {
             DB::rollback();
@@ -145,14 +153,14 @@ class ProfileController extends Controller
     }
 
     /**
-     * Updating company specific details
+     * Updating company profile specific details
      */
     public function company($id = 0) 
     {
         $data = request()->all();
         $validator = Validator::make($data, [
-            'companyname' => ['required', 'string', 'max:300'],
             'idnumber' => ['required', 'string'],
+            'companyname' => ['required', 'string', 'max:300'],
             'document' => ['required', 'string'],
             'rcnumber' => ['required', 'string'],
         ]);
@@ -166,17 +174,31 @@ class ProfileController extends Controller
 
         try {
             $profile = Profile::find($id);
-            $profile->companyname = $data['companyname'];
+            if (empty($profile)) {
+                return response()->json([
+                    'status' => 0, 
+                    'info' => 'User profile not found'
+                ], 500);
+            }
+
             $profile->idnumber = $data['idnumber'];
+            $profile->companyname = $data['companyname'];
             $profile->document = $data['document'];
             $profile->rcnumber = $data['rcnumber'];
-            $profile->update();
+
+            if ($profile->update()) {
+                return response()->json([
+                    'status' => 1, 
+                    'info' => 'Operation successful',
+                    'redirect' => route('user.dashboard'),
+                    'profile' => $profile,
+                ]);
+            }
 
             return response()->json([
-                'status' => 1, 
-                'info' => 'Operation successful',
-                'redirect' => route('user.dashboard'),
-            ]);
+                'status' => 0, 
+                'info' => 'Operation failed.',
+            ], 500);
         } catch (Exception $error) {
             return response()->json([
                 'status' => 0, 
