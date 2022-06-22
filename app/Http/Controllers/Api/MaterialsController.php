@@ -99,10 +99,11 @@ class MaterialsController extends Controller
         $material->state = $data['state'];
         $material->address = $data['address'];
         $material->city = $data['city'];
-        $material->quantity = $data['quantity'];
+        $material->quantity = $data['quantity'] ?? '';
         $material->additional = $data['additional'];
-        $material->price = $data['price'];
+        $material->price = $data['price'] ?? '';
         $material->currency_id = $data['currency'] ?? 0;
+        
         if ($material->update()) {
             return response()->json([
                 'status' => 1, 

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-use App\Models\{Advert, Credit, Property, Payment, Service, Certification, Material};
+use App\Models\{Advert, Credit, Property, Payment, Service, Certification, Material, Profile};
 use App\Http\Controllers\Controller;
 use \Exception;
 
@@ -89,6 +89,18 @@ class UserController extends Controller
             'status' => 1, 
             'info' => 'Operation successful',
             'certifications' => Certification::where(['user_id' => auth()->id()])->get(),
+        ]);      
+    }
+
+    /**
+     * User profile
+     */
+    public function profile()
+    {
+        return response()->json([
+            'status' => 1, 
+            'info' => 'Operation successful',
+            'profile' => Profile::where(['user_id' => auth()->id()])->first(),
         ]);      
     }
 

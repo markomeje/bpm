@@ -16,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::domain(env('API_URL'))->group(function() {
     Route::post('/signup', [\App\Http\Controllers\Api\AuthController::class, 'signup'])->name('api.signup');
-
     Route::post('/login', [\App\Http\Controllers\Api\AuthController::class, 'login'])->name('api.login');
-
     Route::post('/password/reset', [\App\Http\Controllers\Api\PasswordController::class, 'reset'])->name('api.password.reset');
     Route::post('/reset/process', [\App\Http\Controllers\Api\PasswordController::class, 'process'])->name('api.reset.process');
 
@@ -26,7 +24,6 @@ Route::domain(env('API_URL'))->group(function() {
     Route::post('/otp/resend/{reference}', [\App\Http\Controllers\Api\VerifyController::class, 'resendotp'])->name('resend.otp');
 
     Route::post('/token/resend', [\App\Http\Controllers\Api\VerifyController::class, 'resendtoken'])->name('token.resend');
-
     Route::post('/email/verify/{token}', [\App\Http\Controllers\Api\VerifyController::class, 'verifyemail'])->name('verify.email');
 
     Route::prefix('properties')->group(function () {
@@ -41,7 +38,6 @@ Route::domain(env('API_URL'))->group(function() {
     Route::post('/currencies', [\App\Http\Controllers\Api\CurrencyController::class, 'all']);
 
     Route::group(['middleware' => ['auth:sanctum'], 'prefix' => 'user'], function () {
-
         Route::prefix('credit')->group(function () {
             Route::post('/buy', [\App\Http\Controllers\Api\CreditsController::class, 'buy'])->name('user.credit.buy');
             Route::post('/verify', [\App\Http\Controllers\User\CreditsController::class, 'verify'])->name('user.credit.verify');
@@ -81,6 +77,7 @@ Route::domain(env('API_URL'))->group(function() {
         });
 
         Route::prefix('profile')->group(function () {
+            Route::post('/', [\App\Http\Controllers\Api\UserController::class, 'profile'])->name('api.user.profile');
             Route::post('/add', [\App\Http\Controllers\Api\ProfileController::class, 'add'])->name('api.profile.add');
             Route::post('/update/{id}', [\App\Http\Controllers\Api\ProfileController::class, 'edit'])->name('api.profile.update');
             Route::post('/company/details/update/{id}', [\App\Http\Controllers\Api\ProfileController::class, 'company'])->name('api.profile.company.update');
@@ -103,11 +100,9 @@ Route::domain(env('API_URL'))->group(function() {
             Route::post('/pause/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'pause'])->name('api.advert.pause');
             Route::post('/resume/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'resume'])->name('api.advert.resume');
             Route::post('/activate/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'activate'])->name('api.advert.activate');
-                
         });
 
         Route::post('/materials', [\App\Http\Controllers\Api\UserController::class, 'materials'])->name('api.user.materials');
-
         Route::prefix('material')->group(function () {
             Route::post('/add', [\App\Http\Controllers\Api\MaterialsController::class, 'add'])->name('api.material.add'); 
             Route::post('/edit/{id}', [\App\Http\Controllers\Api\MaterialsController::class, 'edit'])->name('api.material.edit');
