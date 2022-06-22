@@ -79,6 +79,8 @@ Route::domain(env('API_URL'))->group(function() {
         Route::prefix('profile')->group(function () {
             Route::post('/', [\App\Http\Controllers\Api\UserController::class, 'profile'])->name('api.user.profile');
             Route::post('/add', [\App\Http\Controllers\Api\ProfileController::class, 'add'])->name('api.profile.add');
+            Route::post('/details', [\App\Http\Controllers\Api\ProfileController::class, 'details'])->name('api.profile.details');
+            
             Route::post('/update/{id}', [\App\Http\Controllers\Api\ProfileController::class, 'edit'])->name('api.profile.update');
             Route::post('/company/details/update/{id}', [\App\Http\Controllers\Api\ProfileController::class, 'company'])->name('api.profile.company.update');
         });

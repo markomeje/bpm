@@ -206,4 +206,19 @@ class ProfileController extends Controller
             ]);
         } 
     }
+
+    /**
+     * Profile setup details
+     */
+    public function details() 
+    {
+        return response()->json([
+            'status' => 1, 
+            'info' => 'Operation successful',
+            'roles' => Profile::$roles,
+            'designations' => Profile::$designations,
+            'types' => Profile::$types,
+        ]);
+    }
+
 }
