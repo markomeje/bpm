@@ -46,7 +46,7 @@ class ExpiryCommand extends Command
             if ($credits->count() > 0) {
                 foreach ($credits as $credit) {
                     $timing = Timing::calculate($credit->duration, $credit->expiry, $credit->started);
-                    if ($timing->expired()) {
+                    if ($timing->expired() && $credit->status !== 'expired') {
                         $credit->status = 'expired';
                         $credit->update();
                     }
@@ -57,7 +57,7 @@ class ExpiryCommand extends Command
             if ($adverts->count() > 0) {
                 foreach ($adverts as $advert) {
                     $timing = Timing::calculate($advert->duration, $advert->expiry, $advert->started);
-                    if ($timing->expired()) {
+                    if ($timing->expired() && $advert->status !== 'expired') {
                         $advert->status = 'expired';
                         $advert->update();
                     }
@@ -68,7 +68,7 @@ class ExpiryCommand extends Command
             if ($promotions->count() > 0) {
                 foreach ($promotions as $promotion) {
                     $timing = Timing::calculate($promotion->duration, $promotion->expiry, $promotion->started);
-                    if ($timing->expired()) {
+                    if ($timing->expired() && $promotion->status !== 'expired') {
                         $promotion->status = 'expired';
                         $promotion->update();
                     }

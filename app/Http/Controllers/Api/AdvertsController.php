@@ -183,7 +183,7 @@ class AdvertsController extends Controller
         if (empty($credit)) {
             return response()->json([
                 'status' => 0, 
-                'info' => 'Invalid operation'
+                'info' => 'Credit not found'
             ]);
         }
 
@@ -251,7 +251,7 @@ class AdvertsController extends Controller
         if (empty($advert)) {
             return response()->json([
                 'status' => 0, 
-                'info' => 'Invalid operation'
+                'info' => 'Advert not found'
             ]);
         }
 
@@ -259,7 +259,7 @@ class AdvertsController extends Controller
         if (empty($credit)) {
             return response()->json([
                 'status' => 0, 
-                'info' => 'Invalid operation'
+                'info' => 'Credit not found.'
             ]);
         }
 
@@ -267,23 +267,33 @@ class AdvertsController extends Controller
         $timing = Timing::calculate($duration, $advert->expiry, $advert->started, $advert->paused_at);
         if ($timing->expired()) {
             $credit->delete();
-        }elseif($advert->status !== 'initialized' || $advert->status !== 'expired') {
+        }else {
             $credit->inuse = false;
             $credit->duration = $timing->daysleft();
             $credit->status = 'available';
             $credit->update();
         }
 
-        if (!empty($advert->image)) {
-            Cloudinary::delete([$advert->image->public_id]);
+        if ($advert->delete()) {
+            if (!empty($advert->image)) {
+                if (!empty($advert->image->public_id)) {
+                    Cloudinary::delete([$advert->image->public_id]);
+                }
+            }
+
+            return response()->json([
+                'status' => 1, 
+                'info' => 'Operation successfull',
+                'redirect' => '',
+                'credit' => $credit,
+            ]);
         }
 
-        $advert->delete();
         return response()->json([
-            'status' => 1, 
-            'info' => 'Operation successfull',
-            'redirect' => ''
-        ]);
+            'status' => 0, 
+            'info' => 'Operation failed. Try again.',
+            'credit' => $credit,
+        ], 500);
     }
 
     /**

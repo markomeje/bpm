@@ -46,7 +46,7 @@
 		</div>
 		@set('duration', $advert->credit->duration ?? 1)
 		<div class="col-12 col-md-7 p-4">
-			@if($status == 'initialized')
+			@if($status === 'initialized')
 				<div class="row">
 					<div class="col-6 mb-4">
             			<div class="dropdown">

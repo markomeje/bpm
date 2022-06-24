@@ -18,9 +18,9 @@ class Cloudinary
 	 */
 	public static function save($data, $file)
     {
-        $type = $data['type'] ?? '';
         $format = $file->getClientOriginalExtension();
-        if ($type == 'property') {
+        $type = $data['type'] ?? '';
+        if ($type === 'property') {
             $upload = $file->store('public');
             $image = Image::make(Storage::get($upload));
             $image->insert(Storage::get('water.png'))->save(Storage::path($upload));
