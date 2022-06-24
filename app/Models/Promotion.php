@@ -42,7 +42,7 @@ class Promotion extends Model
      *
      * @var string[]
      */
-    public static $status = ['active', 'inactive'];
+    public static $status = ['active', 'inactive', 'expired'];
 
     /**
      * A promotion may belong to a user

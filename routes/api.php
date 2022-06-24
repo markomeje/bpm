@@ -66,7 +66,11 @@ Route::domain(env('API_URL'))->group(function() {
             Route::post('/action/change/{id}', [\App\Http\Controllers\Api\PropertiesController::class, 'action'])->name('api.property.action.change'); 
             Route::post('/update/{id}', [\App\Http\Controllers\Api\PropertiesController::class, 'update'])->name('api.property.edit');
             Route::post('/specifics/update/{id}', [\App\Http\Controllers\Api\PropertiesController::class, 'specifics'])->name('api.property.specifics.update');
-            Route::post('/promote/{id}', [\App\Http\Controllers\Api\PromotionsController::class, 'promote']);
+        });
+
+        Route::prefix('promotions')->group(function () {
+            Route::post('/promote', [\App\Http\Controllers\Api\PromotionsController::class, 'promote']);
+            Route::post('/types', [\App\Http\Controllers\Api\PromotionsController::class, 'types']);
         });
 
         Route::prefix('profile')->group(function () {
@@ -93,7 +97,7 @@ Route::domain(env('API_URL'))->group(function() {
         Route::prefix('advert')->group(function () {
             Route::post('/all', [\App\Http\Controllers\Api\UserController::class, 'adverts'])->name('api.advert.all');
             Route::post('/sizes', [\App\Http\Controllers\Api\AdvertsController::class, 'sizes'])->name('api.advert.sizes');
-            
+
             Route::post('/post', [\App\Http\Controllers\Api\AdvertsController::class, 'post'])->name('api.advert.post');
             Route::post('/edit/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'edit'])->name('api.advert.edit');
             Route::post('/edit/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'edit'])->name('api.advert.edit');

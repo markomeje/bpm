@@ -59,7 +59,7 @@ class PromotionsController extends Controller
             $credit->update();
 
             $days = $credit->duration ?? 0;
-            Promotion::create([
+            $promotion = Promotion::create([
                 'credit_id' => $credit->id,
                 'duration' => $days,
                 'started' => Carbon::now(),
@@ -76,6 +76,7 @@ class PromotionsController extends Controller
                 'status' => 1, 
                 'info' => 'Operation successful',
                 'redirect' => '',
+                'promotion' => $promotion,
             ]);
             
         } catch (Exception $error) {
@@ -85,5 +86,17 @@ class PromotionsController extends Controller
                 'info' => 'Operation failed',
             ]);
         }
+    }
+
+    /**
+     * Adverts types
+     */
+    public function types()
+    {
+        return response()->json([
+            'status' => 1, 
+            'info' => 'Operation successfull',
+            'types' => Advert::$types,
+        ]);
     }
 }
