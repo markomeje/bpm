@@ -65,7 +65,7 @@ class Timing
 
 		$fraction = $duration >= $daysleft ? ($daysleft/($duration ?: 1)) : 0;
 		$progress = (int)round(100 - ($fraction * 100));
-		$expired = empty($expiry) ? false : ($progress === 100 ? true : false);
+		$expired = empty($expiry) ? false : ($progress >= 100 ? true : false);
 		return new Timing($duration, $progress, $expired, $daysleft, !empty($paused));
 	}
 

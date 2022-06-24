@@ -224,7 +224,7 @@ class AdvertsController extends Controller
 
         $days = Carbon::parse($advert->paused_at)->diffInDays(Carbon::now());
         $expiry = Carbon::parse($advert->expiry)->addDays($days);
-
+        
         $advert->paused_at = null;
         $advert->expiry = $expiry;
         $advert->status = 'active';
@@ -336,6 +336,18 @@ class AdvertsController extends Controller
             'status' => 1, 
             'info' => 'Operation successfull',
             'redirect' => ''
+        ]);
+    }
+
+    /**
+     * Adverts sizes
+     */
+    public function sizes()
+    {
+        return response()->json([
+            'status' => 1, 
+            'info' => 'Operation successfull',
+            'sizes' => Advert::$sizes,
         ]);
     }
 

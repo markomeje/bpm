@@ -92,6 +92,8 @@ Route::domain(env('API_URL'))->group(function() {
 
         Route::prefix('advert')->group(function () {
             Route::post('/all', [\App\Http\Controllers\Api\UserController::class, 'adverts'])->name('api.advert.all');
+            Route::post('/sizes', [\App\Http\Controllers\Api\AdvertsController::class, 'sizes'])->name('api.advert.sizes');
+            
             Route::post('/post', [\App\Http\Controllers\Api\AdvertsController::class, 'post'])->name('api.advert.post');
             Route::post('/edit/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'edit'])->name('api.advert.edit');
             Route::post('/edit/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'edit'])->name('api.advert.edit');
