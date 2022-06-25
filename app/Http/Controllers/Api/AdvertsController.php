@@ -42,7 +42,7 @@ class AdvertsController extends Controller
         try {
             Advert::create([
                 'reference' => Str::random(64),
-                'description' => $data['description'],
+                'description' => $data['description'] ?? null,
                 'size' => $data['size'],
                 'credit_id' => $credit->id,
                 'link' => $data['link'],
@@ -69,7 +69,7 @@ class AdvertsController extends Controller
     /**
      * Api [post] edit Advert
      */
-    public function edit($id = 0)
+    public function edit($id = 0) 
     {
         $data = request()->all();
         $validator = Validator::make($data, [

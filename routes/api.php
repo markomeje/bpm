@@ -100,7 +100,7 @@ Route::domain(env('API_URL'))->group(function() {
 
             Route::post('/post', [\App\Http\Controllers\Api\AdvertsController::class, 'post'])->name('api.advert.post');
             Route::post('/edit/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'edit'])->name('api.advert.edit');
-            Route::post('/edit/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'edit'])->name('api.advert.edit');
+            Route::post('/edit/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'edit'])->name('api.advert.edit'); 
             Route::post('/delete/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'delete'])->name('api.advert.delete');
 
             Route::post('/pause/{id}', [\App\Http\Controllers\Api\AdvertsController::class, 'pause'])->name('api.advert.pause');

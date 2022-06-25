@@ -49,10 +49,12 @@ class UserController extends Controller
      */
     public function credits()
     {
+        $credits = Credit::latest('created_at')->where(['user_id' => auth()->id()]);
         return response()->json([
             'status' => 1, 
             'info' => 'Operation successful',
-            'credits' => Credit::latest('created_at')->where(['user_id' => auth()->id()])->get(),
+            'credits' => $credits->get(),
+            'available' => $credits->where(['status' => 'available', 'inuse' => false])->get(),
         ]);      
     }
 
