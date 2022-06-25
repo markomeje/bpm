@@ -33,7 +33,7 @@ class PromotionsController extends Controller
         if (!in_array($data['type'], Promotion::$types)) {
             return response()->json([
                 'status' => 0, 
-                'info' => 'Invalid operation.',
+                'info' => 'Invalid promotion type.',
             ]);
         }
 
@@ -41,11 +41,11 @@ class PromotionsController extends Controller
         if (empty($credit)) {
             return response()->json([
                 'status' => 0, 
-                'info' => 'Invalid credit.',
+                'info' => 'Credit not found.',
             ]);
         }
 
-        if ($credit->status == 'active' || $credit->inuse === true) {
+        if ($credit->status === 'active' || $credit->inuse === true) {
             return response()->json([
                 'status' => 0, 
                 'info' => 'Credit already in use.',

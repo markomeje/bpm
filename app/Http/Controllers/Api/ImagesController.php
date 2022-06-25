@@ -128,36 +128,44 @@ class ImagesController extends Controller
                 'status' => 0, 
                 'info' => 'Invalid Operation.',
                 'error' => $validator->errors()
-            ], 400);
+            ]);
         }
 
-        $maxfiles = ['property' => 4, 'material' => 3];
         $files = request()->file('images');
-        $count = Image::where([
+        if(!is_array($files) || count($files) <= 0){
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Invalid files sent.'
+            ]);
+        }
+
+        $image = Image::where([
             'model_id' => $data['model_id'], 
             'role' => $data['role'], 
             'type' => $data['type']
-        ])->get()->count();
+        ])->get();
 
+        $maxfiles = ['property' => 4, 'material' => 3];
         if (isset($maxfiles[$data['type']])) {
-            if (($count + count($files)) > $maxfiles[$data['type']]) {
+            if (($image->count() + count($files)) > $maxfiles[$data['type']]) {
                 return response()->json([
                     'status' => 0, 
-                    'info' => 'Invalid Operation.'
-                ], 400);
+                    'info' => 'Maximum file upload reached.'
+                ]);
             }
         }
 
-        if($files = $files){
-            foreach($files as $file){
-                $dinary = Cloudinary::save($data, $file);
-                $status = $dinary['status'];
-                return response()->json([
-                    'status' => $status, 
-                    'info' => $dinary['info']
-                ], $status == 0 ? 500 : 200);
-            }
+        $images = [];
+        foreach($files as $file){
+            $dinary = Cloudinary::save($data, $file);
+            $images[] = $dinary;
         }
+
+        return response()->json([
+            'status' => $dinary['status'], 
+            'info' => $dinary['info'],
+            'images' => $images,
+        ]);
     }
 
 }
