@@ -96,7 +96,7 @@ class PromotionsController extends Controller
         return response()->json([
             'status' => 1, 
             'info' => 'Operation successfull',
-            'types' => Advert::$types,
+            'types' => Promotion::$types,
         ]);
     }
 }

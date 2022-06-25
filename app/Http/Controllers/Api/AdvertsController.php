@@ -88,7 +88,7 @@ class AdvertsController extends Controller
 
         $advert = Advert::where([
             'id' => $id, 
-            'user_id' => auth()->id()
+            'user_id' => auth()->id(),
         ])->first();
 
         if (empty($advert)) {
@@ -108,7 +108,7 @@ class AdvertsController extends Controller
                 'status' => 1, 
                 'info' => 'Operation successful.',
                 'advert' => $advert,
-                'redirect' => ''
+                'redirect' => '',
             ]);
         } catch (Exception $error) {
             return response()->json([
