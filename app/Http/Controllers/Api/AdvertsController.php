@@ -40,7 +40,7 @@ class AdvertsController extends Controller
         }
 
         try {
-            Advert::create([
+            $advert = Advert::create([
                 'reference' => Str::random(64),
                 'description' => $data['description'] ?? null,
                 'size' => $data['size'],
@@ -56,6 +56,7 @@ class AdvertsController extends Controller
             return response()->json([
                 'status' => 1, 
                 'info' => 'Operation successful.',
+                'advert' => $advert,
                 'redirect' => ''
             ]);
         } catch (Exception $error) {
@@ -73,8 +74,8 @@ class AdvertsController extends Controller
     {
         $data = request()->all();
         $validator = Validator::make($data, [
-            'credit' => ['required', 'integer'],
-            'description' => ['required', 'string'],
+            'size' => ['required', 'string'],
+            'description' => ['nullable', 'string'],
             'link' => ['required', 'string'],
         ]);
 
@@ -93,19 +94,20 @@ class AdvertsController extends Controller
         if (empty($advert)) {
             return response()->json([
                 'status' => 0, 
-                'info' => 'Invalid operation'
+                'info' => 'Advert not found'
             ]);
         }
 
         try {
             $advert->link = $data['link'];
-            $advert->description = $data['description'];
+            $advert->description = $data['description'] ?? null;
             $advert->size = $data['size'];
             $advert->update();
 
             return response()->json([
                 'status' => 1, 
                 'info' => 'Operation successful.',
+                'advert' => $advert,
                 'redirect' => ''
             ]);
         } catch (Exception $error) {
