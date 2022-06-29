@@ -14,7 +14,7 @@ class ImagesController extends Controller
 {
 
     /**
-     * Upload Api for main images
+     * Upload Api for main image
      */
     public function upload()
     {
@@ -166,6 +166,41 @@ class ImagesController extends Controller
             'info' => $dinary['info'],
             'images' => $images,
         ]);
+    }
+
+    /**
+     * Upload API for Mobile
+     */
+    public function mobile()
+    {
+        try {
+            $data = request()->only(['file', 'folder']);
+            $upload = \Cloudder::upload($data['file'], \Str::uuid(), [
+                'folder' => $data['folder'],
+                'overwrite' => false,
+                'resource_type' => 'image', 
+                'responsive' => true,
+            ]);
+
+            if ($upload) {
+                return response()->json([
+                    'status' => 1, 
+                    'info' => 'Operation successful',
+                    'upload' => ['public_id' => \Cloudder::getPublicId(), 'upload' => $upload],
+                ]);
+            }
+
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Operation failed',
+            ]);
+        } catch (Exception $error) {
+            return response()->json([
+                'status' => $error->getCode(), 
+                'info' => $error->getMessage()
+            ]);
+        }
+            
     }
 
 }

@@ -96,10 +96,7 @@ class Cloudinary
 
     public static function delete(array $public_ids) {
         try {
-            if (!is_array($public_ids)) {
-                throw new Exception('Parameter must be an array');
-            }
-
+            if (!is_array($public_ids)) throw new Exception('Parameter must be an array');
             \Cloudder::destroyImages($public_ids);
             return [
                 'status' => 1, 
