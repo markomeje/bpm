@@ -40,7 +40,7 @@ class UserController extends Controller
         return response()->json([
             'status' => 1, 
             'info' => 'Operation successful',
-            'properties' => Property::latest('created_at')->with(['images'])->where(['user_id' => auth()->id()])->get(),
+            'properties' => Property::latest('created_at')->with(['images', 'promotion'])->where(['user_id' => auth()->id()])->get(),
         ]);      
     }
 

@@ -229,7 +229,7 @@ class PropertiesController extends Controller
         return response()->json([
             'status' => 1, 
             'info' => 'Operation successful',
-            'properties' => Property::with(['images'])->paginate(20),
+            'properties' => Property::with(['images'])->get(),
             'categories' => $distinct->pluck('category'),
             'groups' => $distinct->pluck('group'),
             'actions' => $distinct->pluck('action'),

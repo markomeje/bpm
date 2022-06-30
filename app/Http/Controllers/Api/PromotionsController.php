@@ -30,7 +30,8 @@ class PromotionsController extends Controller
             ]);
         }
 
-        if (!in_array($data['type'], Promotion::$types)) {
+        $type = $data['type'] ?? '';
+        if (!in_array($type, Promotion::$types)) {
             return response()->json([
                 'status' => 0, 
                 'info' => 'Invalid promotion type.',
@@ -59,6 +60,7 @@ class PromotionsController extends Controller
             $credit->update();
 
             $days = $credit->duration ?? 0;
+            $model_id = $data['model_id'] ?? 0
             $promotion = Promotion::create([
                 'credit_id' => $credit->id,
                 'duration' => $days,
@@ -68,8 +70,22 @@ class PromotionsController extends Controller
                 'status' => 'active',
                 'user_id' => auth()->id(),
                 'reference' => Str::random(64),
-                'model_id' => $data['model_id']
+                'model_id' => $model_id,
             ]);
+            
+            switch ($type) {
+                case 'property':
+                    $property = Property::find($model_id);
+                    if (!empty($property)) {
+                        $property->promoted = true;
+                        $property->update();
+                    }
+                    break;
+                
+                default:
+                    // code...
+                    break;
+            }
 
             DB::commit();
             return response()->json([
