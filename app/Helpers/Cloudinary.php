@@ -52,7 +52,7 @@ class Cloudinary
 
                 return [
                     'status' => 1, 
-                    'info' => 'Operation successful.',
+                    'info' => 'Image created successfully',
                     'image' => $image,
                 ];
             }
@@ -82,7 +82,7 @@ class Cloudinary
 
             return [
                 'status' => 1, 
-                'info' => 'Operation successful.',
+                'info' => 'Image updated successfully',
                 'image' => $image
             ];
         } catch (Exception $error) {

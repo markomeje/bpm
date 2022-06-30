@@ -35,12 +35,20 @@ class ImagesController extends Controller
             ]);
         }
 
-        $dinary = Cloudinary::save($data, request()->file('image'));
-        return response()->json([
-            'status' => $dinary['status'], 
-            'info' => $dinary['info'],
-            'image' => $dinary['image'] ?? '',
-        ]);      
+        try{
+            $dinary = Cloudinary::save($data, request()->file('image'));
+            return response()->json([
+                'status' => $dinary['status'], 
+                'info' => $dinary['info'],
+                'image' => $dinary['image'] ?? '',
+            ]); 
+
+        } catch (Exception $error) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Unknown error. Try again.'
+            ]);
+        } 
             
     }
 
@@ -139,15 +147,16 @@ class ImagesController extends Controller
             ]);
         }
 
+        $type = $data['type'] ?? '';
         $image = Image::where([
             'model_id' => $data['model_id'], 
             'role' => $data['role'], 
-            'type' => $data['type']
+            'type' => $type,
         ])->get();
 
         $maxfiles = ['property' => 4, 'material' => 3];
-        if (isset($maxfiles[$data['type']])) {
-            if (($image->count() + count($files)) > $maxfiles[$data['type']]) {
+        if (isset($maxfiles[$type])) {
+            if (($image->count() + count($files)) > $maxfiles[$type]) {
                 return response()->json([
                     'status' => 0, 
                     'info' => 'Maximum file upload reached.'
@@ -186,7 +195,10 @@ class ImagesController extends Controller
                 return response()->json([
                     'status' => 1, 
                     'info' => 'Operation successful',
-                    'upload' => ['public_id' => \Cloudder::getPublicId(), 'upload' => $upload],
+                    'upload' => [
+                        'public_id' => \Cloudder::getPublicId(), 
+                        'upload' => $upload
+                    ],
                 ]);
             }
 

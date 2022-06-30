@@ -4,26 +4,29 @@ use App\Models\Property;
 
 if (!function_exists('retitle')) {
     function retitle($property) {
-        if (empty($property)) {
-            throw new \Exception('Invalid property passed for title generation');
-        }
+        if (empty($property)) throw new Exception('Invalid property passed for title generation');
 
-        $category = Property::$categories[$property->category];
+        $categories = Property::$categories;
+        $category = empty($categories[$property->category]) ? '' : $categories[$property->category];
+        $group = $property->group;
+        $address = $property->address ? ucwords($property->address) : $property->address;
         $action = $property->action ? Property::$actions[$property->action] : '';
         switch ($property->category) {
             case 'land':
-                return (empty($property->group) ? $category['name'] : $property->group) .' '. $action.' located at '. $property->address ?? '';
+                $title = (empty($group) ? $category['name'] : $group) .' '. $action.' Located at '. $address;
                 break;
             case 'residential':
-                return (empty($property->bedrooms) ? '' : $property->bedrooms.' Bedroom').' '.(empty($property->group) ? $category['name'] : $property->group).' '.$action.' located at '.$property->address ?? '';
+                $title = (empty($property->bedrooms) ? '' : $property->bedrooms.' Bedroom').' '.(empty($group) ? $category['name'] : $group).' '.$action.' Located at '.$address;
                 break;
             case 'commercial':
-                return (empty($property->group) ? $category['name'] : $property->group).' '.$action.' located at '.$property->address ?? '';
+                $title = (empty($group) ? $category['name'] : $group).' '.$action.' Located at '.$address;
                 break;
             default:
-                return ucfirst($category['name']).' '. $action.' located at '. $property->address ?? '';
+                $title = ucfirst($category['name']).' '. $action.' Located at '. $address;
                 break;
         }
+
+        return $title;
     }
 }
 

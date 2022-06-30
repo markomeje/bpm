@@ -15,7 +15,7 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        if(env('APP_ENV') !== 'production') {
+        if(config('app.env') !== 'production') {
             $faker = Faker::create();
             $users = [
                 ['name' => $faker->name(), 'phone' => $faker->phoneNumber(), 'email' => 'admin@admin.io', 'role' => 'admin', 'password' => Hash::make('1234'), 'status' => 'active'],
@@ -29,7 +29,6 @@ class UsersSeeder extends Seeder
             foreach ($users as $user) {
                 User::create($user);
             }
-
         }
     }
 }
