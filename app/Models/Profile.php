@@ -114,7 +114,7 @@ class Profile extends Model
     ];
 
     /**
-     * A user may have a profile
+     * A profile belongs to a user
      */
     public function user()
     {

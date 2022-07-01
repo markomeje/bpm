@@ -16,7 +16,7 @@ class RealtorsController extends Controller
         SEOMeta::setDescription('The work of an agent or realtor is to help prospect buy or sell property. Internet on the other hand paves way for users to connect with more people in a split of seconds. So, as a real estate agent, broker, realtor, World Best Property Market, creates the avenue for you to market your property.');
         SEOMeta::addKeyword(['Real Estate agents', 'Land Agents', 'House Agents', 'Property Agents']);
 
-        return view('frontend.realtors.index')->with(['realtors' => Profile::latest()->where(['role' => 'realtor'])->paginate(24)]);
+        return view('frontend.realtors.index')->with(['realtors' => Profile::latest('created_at')->where(['role' => 'realtor'])->paginate(24)]);
     }
 
 }
