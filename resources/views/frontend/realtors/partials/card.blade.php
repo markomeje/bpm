@@ -7,18 +7,26 @@
 		<div class="position-absolute w-100 px-4" style="top: 20px; z-index: 2;">
 			<div class="d-flex justify-content-between">
 				<div class="">
-					@if($realtor->user->properties()->exists())
-						<div class="px-3 py-1 bg-success">
-							<small class="text-white counter">
-								{{ $realtor->user->properties()->count() }} listing(s)
-							</small>
-						</div>
-					@else
+					@if(empty($realtor->user))
 						<div class="px-3 py-1 bg-theme-color">
 							<small class="text-white">
 								No listings
 							</small>
 						</div>
+					@else
+						@if($realtor->user->properties()->exists())
+							<div class="px-3 py-1 bg-success">
+								<small class="text-white counter">
+									{{ $realtor->user->properties()->count() }} listing(s)
+								</small>
+							</div>
+						@else
+							<div class="px-3 py-1 bg-theme-color">
+								<small class="text-white">
+									No listings
+								</small>
+							</div>
+						@endif
 					@endif
 				</div>
 				@if(!empty($realtor->user))
