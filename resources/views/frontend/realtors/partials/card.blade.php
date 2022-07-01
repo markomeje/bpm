@@ -1,6 +1,6 @@
 <div class="card p-0 border-0 shadow-sm position-relative">
 	<div class="position-relative" style="height: 240px;">
-		<a href="{{ route('account.profile', ['id' => $realtor->id, 'name' => \Str::slug(empty($realtor->user) ? '' : $realtor->user->name)]) }}" class="text-decoration-none w-100 h-100 d-block">
+		<a href="{{ route('account.profile', ['id' => $realtor->id, 'name' => \Str::slug(empty($realtor->user) ? 'no-name' : $realtor->user->name)]) }}" class="text-decoration-none w-100 h-100 d-block">
 			<img src="{{ empty($realtor->image) ? '/images/assets/avatar.png' : $realtor->image->link }}" class="img-fluid object-cover h-100 w-100">
 		</a>
 		<div class="position-absolute w-100 px-4" style="top: 20px; z-index: 2;">
