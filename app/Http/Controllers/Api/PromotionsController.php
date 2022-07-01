@@ -73,18 +73,12 @@ class PromotionsController extends Controller
                 'model_id' => $model_id,
             ]);
             
-            switch ($type) {
-                case 'property':
-                    $property = Property::find($model_id);
-                    if (!empty($property)) {
-                        $property->promoted = true;
-                        $property->update();
-                    }
-                    break;
-                
-                default:
-                    // code...
-                    break;
+            if($type === 'property') {
+                $property = Property::find($model_id);
+                if (!empty($property)) {
+                    $property->promoted = true;
+                    $property->update();
+                }
             }
 
             DB::commit();
