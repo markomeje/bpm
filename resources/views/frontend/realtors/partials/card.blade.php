@@ -1,8 +1,12 @@
 <div class="card p-0 border-0 shadow-sm position-relative">
 	<div class="position-relative" style="height: 240px;">
-		<a href="{{ route('account.profile', ['id' => $realtor->id, 'name' => \Str::slug($realtor->user->name)]) }}" class="text-decoration-none w-100 h-100 d-block">
-			<img src="{{ empty($realtor->image) ? '/images/assets/avatar.png' : $realtor->image->link }}" class="img-fluid object-cover h-100 w-100">
-		</a>
+		@if(empty($realtor->user->name))
+			<a href="javascript:;" class="text-decoration-none w-100 h-100 d-block">
+		@else
+			<a href="{{ route('account.profile', ['id' => $realtor->id, 'name' => \Str::slug($realtor->user->name)]) }}" class="text-decoration-none w-100 h-100 d-block">
+		@endif
+				<img src="{{ empty($realtor->image) ? '/images/assets/avatar.png' : $realtor->image->link }}" class="img-fluid object-cover h-100 w-100">
+			</a>
 		<div class="position-absolute w-100 px-4" style="top: 20px; z-index: 2;">
 			<div class="d-flex justify-content-between">
 				<div class="">
