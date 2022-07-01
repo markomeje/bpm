@@ -43,8 +43,8 @@ class PropertiesController extends Controller
             'state' => $data['state'],
             'address' => $data['address'],
             'city' => $data['city'],
-            'action' => $data['action'],
-            'category' => $data['category'],
+            'action' => strtolower($data['action']),
+            'category' => strtolower($data['category']),
             'measurement' => $data['measurement'] ?? '',
             'user_id' => auth()->id(),
             'additional' => $data['additional'],
@@ -97,8 +97,8 @@ class PropertiesController extends Controller
         $property->state = $data['state'];
         $property->address = $data['address'];
         $property->city = $data['city'];
-        $property->action = $data['action'];
-        $property->category = $data['category'];
+        $property->action = strtolower($data['action']);
+        $property->category = strtolower($data['category']);
         $property->measurement = $data['measurement'] ?? '';
         $property->additional = $data['additional'];
         $property->price = $data['price'];
@@ -132,7 +132,7 @@ class PropertiesController extends Controller
         }
 
         $property = Property::find($id);
-        $property->action = $data['action'];
+        $property->action = strtolower($data['action']);
         $updated = $property->update();
 
         return response()->json([
@@ -174,7 +174,7 @@ class PropertiesController extends Controller
             ]);
         }
 
-        $property->group = $data['group'];
+        $property->group = strtolower($data['group']);
         $property->bedrooms = $data['bedrooms'] ?? null;
         $property->toilets = $data['toilets'] ?? null;
         $property->listed = $listed;
@@ -253,7 +253,7 @@ class PropertiesController extends Controller
         $limit = request()->get('limit') ?? 20;
         $filter = request()->get('filter');
         if ($filter) {
-            $filter = \Str::slug($filter);
+            $filter = \Str::slug(strtolower($filter));
             switch ($type) {
                 case 'category':
                     $properties = Property::with(['images'])->where(['category' => $filter])->paginate($limit);
