@@ -1,6 +1,7 @@
 <div class="card p-0 border-0 shadow-sm position-relative">
+	@set('username', empty($realtor->user) ? 'no-name' : $realtor->user->name)
 	<div class="position-relative" style="height: 240px;">
-		<a href="{{ route('account.profile', ['id' => $realtor->id, 'name' => \Str::slug(empty($realtor->user) ? 'no-name' : $realtor->user->name)]) }}" class="text-decoration-none w-100 h-100 d-block">
+		<a href="{{ route('account.profile', ['id' => $realtor->id, 'name' => \Str::slug($username)]) }}" class="text-decoration-none w-100 h-100 d-block">
 			<img src="{{ empty($realtor->image) ? '/images/assets/avatar.png' : $realtor->image->link }}" class="img-fluid object-cover h-100 w-100">
 		</a>
 		<div class="position-absolute w-100 px-4" style="top: 20px; z-index: 2;">
@@ -20,19 +21,19 @@
 						</div>
 					@endif
 				</div>
-				<div class="">
+				@if(!empty($realtor->user))
 					@if($realtor->user->socials()->exists())
-                        <div class="">
-                            @foreach($realtor->user->socials->take(4) as $social)
-                                <a href="{{ ($social->company == 'whatsapp' || $social->company == 'telegram') ? "tel:{$social->phone}" : $social->link }}" class="text-decoration-none sm-circle bg-theme-color text-center d-block mb-3">
-                                    <small class="text-white tiny-font">
-                                        <i class="icofont-{{ $social->company }}"></i>
-                                    </small>
-                                </a>
-                            @endforeach
-                        </div>
+	                    <div class="">
+	                        @foreach($realtor->user->socials->take(4) as $social)
+	                            <a href="{{ ($social->company == 'whatsapp' || $social->company == 'telegram') ? "tel:{$social->phone}" : $social->link }}" class="text-decoration-none sm-circle bg-theme-color text-center d-block mb-3">
+	                                <small class="text-white tiny-font">
+	                                    <i class="icofont-{{ $social->company }}"></i>
+	                                </small>
+	                            </a>
+	                        @endforeach
+	                    </div>
                     @endif
-				</div>
+                @endif
 			</div>
 		</div>
 		<div class="position-absolute px-4 py-2 w-100" style="bottom: 0; background-color: rgba(160, 15, 15, 0.5); z-index: 2;">
@@ -56,13 +57,13 @@
 				</div>
 			</div>
 			<div class="">
-				<a href="{{ route('account.profile', ['id' => $realtor->id, 'name' => \Str::slug($realtor->user->name)]) }}" class="text-main-dark">
-					{{ \Str::limit(ucwords($realtor->user->name), 14) }}
+				<a href="{{ route('account.profile', ['id' => $realtor->id, 'name' => \Str::slug($username)]) }}" class="text-main-dark">
+					{{ \Str::limit(ucwords($username), 14) }}
 				</a>
 			</div>
 		</div>
 		<div class="">
-			<a href="{{ route('account.profile', ['id' => $realtor->id, 'name' => \Str::slug($realtor->user->name)]) }}">
+			<a href="{{ route('account.profile', ['id' => $realtor->id, 'name' => \Str::slug($username)]) }}">
 				<small class="text-main-dark text-underline">
 					{{ \Str::limit(ucfirst($realtor->description), 34) }}
 				</small>
@@ -88,7 +89,7 @@
 			</a>
 		</div>
 		<div>
-			<a href="{{ route('account.profile', ['id' => $realtor->id, 'name' => \Str::slug($realtor->user->name)]) }}" class="text-theme-color text-decoration-none">
+			<a href="{{ route('account.profile', ['id' => $realtor->id, 'name' => \Str::slug($username)]) }}" class="text-theme-color text-decoration-none">
 				<i class="icofont-long-arrow-right"></i>
 			</a>
 		</div>
