@@ -7,22 +7,25 @@ if (!function_exists('retitle')) {
         if (empty($property)) throw new Exception('Invalid property passed for title generation');
 
         $categories = Property::$categories;
-        $category = empty($categories[$property->category]) ? '' : $categories[$property->category];
+        $category = isset($categories[$property->category]) ? $categories[$property->category] : '';
         $group = $property->group;
         $address = $property->address ? ucwords($property->address) : $property->address;
-        $action = $property->action ? Property::$actions[strtolower($property->action)] : '';
+
+        $action = strtolower($property->action);
+        $actions = Property::$actions;
+        $action = isset($actions[$action]) ? $actions[$action] : '';
         switch ($property->category) {
             case 'land':
-                $title = (empty($group) ? $category['name'] : $group) .' '. $action.' Located at '. $address;
+                $title = (empty($group) ? ($category['name'] ?? '') : $group) .' '. $action.' Located at '. $address;
                 break;
             case 'residential':
-                $title = (empty($property->bedrooms) ? '' : $property->bedrooms.' Bedroom').' '.(empty($group) ? $category['name'] : $group).' '.$action.' Located at '.$address;
+                $title = (empty($property->bedrooms) ? '' : $property->bedrooms.' Bedroom').' '.(empty($group) ? ($category['name'] ?? '') : $group).' '.$action.' Located at '.$address;
                 break;
             case 'commercial':
-                $title = (empty($group) ? $category['name'] : $group).' '.$action.' Located at '.$address;
+                $title = (empty($group) ? ($category['name'] ?? '') : $group).' '.$action.' Located at '.$address;
                 break;
             default:
-                $title = ucfirst($category['name']).' '. $action.' Located at '. $address;
+                $title = ucfirst(($category['name'] ?? '')).' '. $action.' Located at '. $address;
                 break;
         }
 
