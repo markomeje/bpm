@@ -10,7 +10,7 @@ if (!function_exists('retitle')) {
         $category = empty($categories[$property->category]) ? '' : $categories[$property->category];
         $group = $property->group;
         $address = $property->address ? ucwords($property->address) : $property->address;
-        $action = $property->action ? Property::$actions[$property->action] : '';
+        $action = $property->action ? Property::$actions[strtolower($property->action)] : '';
         switch ($property->category) {
             case 'land':
                 $title = (empty($group) ? $category['name'] : $group) .' '. $action.' Located at '. $address;
