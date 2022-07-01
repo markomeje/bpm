@@ -56,8 +56,9 @@
 								                            @else
 								                                @set('categories', \App\Models\Property::$categories)
                                 								@set('last', array_values($socials))
+                                								@set('category', strtolower($property->category))
 								                                @foreach($socials as $social)
-								                                    <div class="p-2 {{ end($last) == $social ? '' : 'mr-2' }} border-theme-color text-decoration-none  text-theme-color" data-sharer="{{ $social }}" data-title="Checkout this {{ $categories[$property->category]['name'] }}" data-hashtags="bestpropertymarket, realestate, globalproperties, lands, buildings" data-url="{{ route('property.category.id.slug', ['category' => $property->category, 'id' => $property->id ?? 0, 'slug' => \Str::slug($slug)]) }}">
+								                                    <div class="p-2 {{ end($last) == $social ? '' : 'mr-2' }} border-theme-color text-decoration-none  text-theme-color" data-sharer="{{ $social }}" data-title="Checkout this {{ $categories[$category]['name'] }}" data-hashtags="bestpropertymarket, realestate, globalproperties, lands, buildings" data-url="{{ route('property.category.id.slug', ['category' => $property->category, 'id' => $property->id ?? 0, 'slug' => \Str::slug($slug)]) }}">
 								                                        <div class="tiny-font">
 								                                            <i class="icofont-{{ $social }}"></i>
 								                                        </div>
