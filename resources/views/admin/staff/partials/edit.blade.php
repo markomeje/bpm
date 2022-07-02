@@ -29,7 +29,19 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label class="text-main-dark">Role</label>
-                            <input type="text" class="form-control role" name="role" placeholder="e.g., admin" value="{{ $staff->role }}">
+                            @set('roles', \App\Models\User::$roles)
+                            <select class="form-control custom-select role" name="role">
+                                <option>Select role</option>
+                                @if(empty($roles))
+                                    <option value="">No roles found</option>
+                                @else
+                                    @foreach($roles as $role)
+                                        <option value="{{ strtolower($role) }}" {{ strtolower($staff->role) === $role ? 'selected' : '' }}>
+                                            {{ ucwords($role) }}
+                                        </option>
+                                    @endforeach
+                                @endif
+                            </select>
                             <small class="invalid-feedback role-error"></small>
                         </div>
                     </div>

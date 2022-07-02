@@ -51,6 +51,16 @@ Comapny upgrading as partner
 
 Featured ads shows more than others
 Credit $1 costs 10units for 1week
+Higher order categories, Real Estate, Buillding Materials, Services
+Showing ads on mobile after every six properties
+
+Update password
+
+Accountant
+Manager
+Marketer
+Digital Marketer
+
 */
 
 /**

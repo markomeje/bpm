@@ -30,9 +30,9 @@ class StaffController extends Controller
         $validator = Validator::make($data, [
             'email' => ['required', 'email', 'unique:users'], 
             'phone' => ['required', 'unique:users'],
-            'role' => ['required', 'string', 'max:15', 'alpha'],
+            'role' => ['required', 'string'],
             'fullname' => ['required', 'string'],
-        ], ['alpha' => 'Only letters without white spaces allowed.']);
+        ]);
 
         if (!$validator->passes()) {
             return response()->json([
@@ -120,9 +120,9 @@ class StaffController extends Controller
         $validator = Validator::make($data, [
             'email' => ['required', 'email'], 
             'phone' => ['required'],
-            'role' => ['required', 'string', 'max:15', 'alpha'],
+            'role' => ['required', 'string'],
             'fullname' => ['required', 'string'],
-        ], ['alpha' => 'Only letters without white spaces allowed.']);
+        ]);
 
         if (!$validator->passes()) {
             return response()->json([

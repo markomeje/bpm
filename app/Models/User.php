@@ -60,6 +60,20 @@ class User extends Authenticatable
     ];
 
     /**
+     * Users roles
+     *
+     * @var array
+     */
+    public static $roles = [
+        'manager', 
+        'admin', 
+        'digital marketer', 
+        'accountant', 
+        'content creator',
+        'moderator',
+    ];
+
+    /**
      * Any user may have many permissions
      */
     public function permissions()
