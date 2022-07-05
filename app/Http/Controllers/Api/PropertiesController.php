@@ -226,10 +226,11 @@ class PropertiesController extends Controller
     public function all()
     {
         $distinct = Property::distinct();
+        $limit = request()->get('limit');
         return response()->json([
             'status' => 1, 
             'info' => 'Operation successful',
-            'properties' => Property::with(['images'])->paginate(request()->get('limit') ?? 20),
+            'properties' => Property::with(['images'])->paginate($limit ?? 20),
             'categories' => $distinct->pluck('category'),
             'groups' => $distinct->pluck('group'),
             'actions' => $distinct->pluck('action'),

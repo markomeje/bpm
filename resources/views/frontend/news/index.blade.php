@@ -6,7 +6,7 @@
 				<div class="row mb-4">
 					<div class="col-12 mb-4">
 						<h1 class="text-white">Real Estate News</h1>
-						<div class="text-white">Our news section links you directly to the detailed page where passed and recent factual informations are displayed to all users. As much as you  sell and buy, you need to have the first hand informations of what is happening in the real estate industry globally. So, we enjoin you to fed your knowledge and constantly stay ahead on your game</div>
+						<div class="text-white">Our news section links you directly to the detailed page where passed and recent factual information are displayed to all users. As much as you  sell and buy, you need to have the first hand informations of what is happening in the real estate industry globally. So, we enjoin you to fed your knowledge and constantly stay ahead on your game</div>
 					</div>
 				</div>
 			</div>
