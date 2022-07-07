@@ -2,7 +2,7 @@
 <div class="card bg-transparent p-0 border-0">
 	<div class="card-body py-0 px-4 bg-white rounded-0 position-relative">
 		<div class="position-relative rounded" style="height: 180px; top: -18px;">
-			<img src="{{ empty($advert->image->link) ? '/images/banners/placeholder.png' : $advert->image->link }}" class="img-fluid w-100 h-100 rounded border">
+			<img src="{{ empty($advert->image->link) ? '/images/banners/placeholder.png' : $advert->image->link }}" class="img-fluid w-100 h-100 object-cover rounded border">
 			<a href="{{ route('admin.user.profile', ['id' => $advert->user->id]) }}" class="md-circle mb-3 rounded-circle text-center bg-white d-block text-decoration-none position-absolute" style="top: -14px; left: 18px; border: 2px solid #F0F2E3;">
 				@if(empty($advert->user->profile->image))
                     <div class="w-100 h-100 rounded-circle" style="background-color: {{ randomrgba() }}; top: 2px;">
