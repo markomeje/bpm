@@ -2,6 +2,11 @@
 
 	'use strict';
 
+    $('.update-password-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'update-password-button', spinner: 'update-password-spinner', message: 'update-password-message'});
+    });
+
     $('.update-staff-status-form').submit(function(event){
         event.preventDefault();
         handleForm({form: $(this), button: 'update-staff-status-button', spinner: 'update-staff-status-spinner', message: 'update-staff-status-message'});

@@ -26,7 +26,7 @@
                         @include('user.dashboard.partials.panels')
                     </div>
                     {{-- Advert section starts --}}
-                    <div class="">
+                    {{-- <div class="">
                         <div class="d-flex justify-content-between align-items-center alert alert-info mb-4 icon-raduis">
                             <span class="">Recent Adverts</span>
                             <small class="">
@@ -49,7 +49,7 @@
                                 @endforeach
                             </div>
                         @endif
-                    </div>   
+                    </div>  --}}  
                 </div>
                 <div class="col-12 col-lg-6">
                     <div class="row">

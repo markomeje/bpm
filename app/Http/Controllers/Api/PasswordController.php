@@ -112,4 +112,55 @@ class PasswordController extends Controller
         }
     }
 
+    /**
+     * Api [post] Update password
+     */
+    public function update()
+    {
+        $data = request()->only(['password', 'currentpassword', 'retype']);
+        $validator = Validator::make($data, [
+            'currentpassword' => ['required'],
+            'password' => ['required'],
+            'retype' => ['required'],
+        ], ['currentpassword.required' => 'Your current password is required.']);
+
+        if (!$validator->passes()) {
+            return response()->json([
+                'status' => 0,
+                'error' => $validator->errors()
+            ]);
+        }
+
+        $password = $data['password'] ?? '';
+        $user = auth()->user();
+        if (!password_verify($data['currentpassword'], $user->password)) {
+            return response()->json([
+                'status' => 0,
+                'info' => 'Your current password is incorrect.'
+            ]);
+        }
+
+        $new_password = $data['password'] ?? '';
+        if ($new_password !== $data['retype']) {
+            return response()->json([
+                'status' => 0,
+                'info' => 'New password and retype new password do not match.'
+            ]);
+        }
+
+        $user->password = Hash::make($new_password);
+        if($user->update()) {
+            return response()->json([
+                'status' => 1,
+                'info' => 'Operation Successful',
+                'redirect' => route('logout')
+            ]);
+        }
+
+        return response()->json([
+            'status' => 0,
+            'info' => 'Operation Failed. Try Again.',
+        ]);
+    }
+
 }

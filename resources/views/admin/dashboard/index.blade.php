@@ -85,7 +85,7 @@
                                             </div>
                                             <div class="card-body py-0 position-relative" style="top: -64px;">
                                                 <div class="row">
-                                                    <div class="col-12 col-lg-6 mb-4">
+                                                    {{-- <div class="col-12 col-lg-6 mb-4">
                                                         <div class="alert alert-success icon-raduis m-0 p-4">
                                                             <div class="alert alert-primary rounded-circle p-0 m-0 mb-3 text-center border-white" style="height: 40px; width: 40px; line-height: 35px;">
                                                                 <small class="">
@@ -99,8 +99,8 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-12 col-lg-6">
+                                                    </div> --}}
+                                                    <div class="col-12">
                                                         <div class="alert alert-primary icon-raduis m-0 p-4">
                                                             <div class="alert alert-success rounded-circle p-0 m-0 mb-3 text-center border-white" style="height: 40px; width: 40px; line-height: 35px;">
                                                                 <small class="">
@@ -124,7 +124,7 @@
                             </div>
                         </div>
                     </div>
-                    @can('view', ['adverts'])
+                    {{-- @can('view', ['adverts'])
                         <div class="row">
                             <div class="col-12 col-lg-6 mb-4">
                                 <div class="card-raduis alert alert-info">
@@ -174,8 +174,8 @@
                                 </div>
                             </div>
                         </div>
-                    @endcan
-                    @can('view', ['adverts'])
+                    @endcan --}}
+                    @can('view', ['properties'])
                         <div class="row">
                             <div class="col-12">
                                 <div class="card card-raduis bg-white shadow-sm mb-4">

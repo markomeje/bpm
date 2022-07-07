@@ -12,9 +12,12 @@
 				    	</a>
 				    </div>
 				</div>
-				<ul class="d-flex align-items-baseline">
+				<ul class="d-flex align-items-center">
+					<a href="{{ route('admin.settings') }}" class="text-decoration-none text-center">
+				    	<i class="icofont-settings text-success"></i>
+				    </a>
 				    <a href="{{ route('logout') }}" class="text-decoration-none text-center">
-				    	<i class="icofont-power text-danger"></i>
+				    	<i class="icofont-power text-danger ml-3"></i>
 				    </a>
 				    <div class="dropdown ml-3">
 	                    <a href="javascript:;" class="text-decoration-none d-block cursor-pointer" id="user-{{ auth()->id() }}" data-toggle="dropdown" data-offset="0, 15">

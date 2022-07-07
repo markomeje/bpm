@@ -153,4 +153,12 @@ class Profile extends Model
         return $this->hasOne(Promotion::class, 'model_id')->where(['type' => 'profile']);
     }
 
+    /**
+     * A user profile may have many properties
+     */
+    public function properties()
+    {
+        return $this->hasMany(Property::class, 'user_id');
+    }
+
 }
