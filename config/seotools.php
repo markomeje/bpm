@@ -14,7 +14,7 @@ return [
             'title'        => $title,
             'titleBefore'  => false,
             'description'  => $description,
-            'separator'    => ' | Best Property Market',
+            'separator'    => ' | ',
             'keywords'     => [],
             'canonical'    => '',
             'robots'       => false, // Set to 'all', 'none' or any combination of index/noindex and follow/nofollow
