@@ -115,7 +115,7 @@ Route::middleware(['web', 'auth', 'admin', 'revalidate'])->domain(env('ADMIN_URL
         Route::post('/edit/{id}', [\App\Http\Controllers\Api\StaffController::class, 'edit'])->name('admin.staff.edit');
         Route::post('/delete/{id}', [\App\Http\Controllers\Api\StaffController::class, 'delete'])->name('admin.staff.delete');
         Route::post('/add', [\App\Http\Controllers\Api\StaffController::class, 'add'])->name('admin.staff.add');
-        Route::post('/status/{id}', [\App\Http\Controllers\Api\StaffController::class, 'status'])->name('admin.staff.status');
+        Route::post('/status/update/{id}', [\App\Http\Controllers\Api\StaffController::class, 'status'])->name('admin.staff.status.update');
     });
 
     Route::prefix('permissions')->group(function () {

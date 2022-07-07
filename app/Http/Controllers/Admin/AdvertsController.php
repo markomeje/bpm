@@ -12,10 +12,10 @@ class AdvertsController extends Controller
      */
     public function index($status = '')
     {
-        SEOMeta::setTitle('Admin Adverts | Best Property Market');
+        SEOMeta::setTitle('All Adverts');
         $status = request()->get('status');
         $adverts = empty($status) ? Advert::latest()->paginate(24) : Advert::where(['status' => strtolower($status)])->latest()->paginate(18);
-        return view('admin.adverts.index')->with(['title' => 'Admin Adverts | Best Property Market', 'adverts' => $adverts]);
+        return view('admin.adverts.index')->with(['adverts' => $adverts]);
     }
 
 }

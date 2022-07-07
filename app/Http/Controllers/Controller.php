@@ -8,10 +8,6 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 
-use Stevebauman\Location\Facades\Location;
-use App\Models\{Advert, Credit, Promotion};
-use App\Helpers\Timing;
-
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -45,39 +41,6 @@ class Controller extends BaseController
 
             return $subdomain;
         });
-
-        $credits = Credit::all();
-        if ($credits->count() > 0) {
-            foreach ($credits as $credit) {
-                $timing = Timing::calculate($credit->duration ?? 0, $credit->expiry, $credit->started);
-                if ($timing->expired() && $credit->status !== 'expired') {
-                    $credit->status = 'expired';
-                    $credit->update();
-                }
-            }
-        }
-
-        $adverts = Advert::all();
-        if ($adverts->count() > 0) {
-            foreach ($adverts as $advert) {
-                $timing = Timing::calculate($advert->duration ?? 0, $advert->expiry, $advert->started);
-                if ($timing->expired() && $advert->status !== 'expired') {
-                    $advert->status = 'expired';
-                    $advert->update();
-                }
-            }
-        }
-
-        $promotions = Promotion::all();
-        if ($promotions->count() > 0) {
-            foreach ($promotions as $promotion) {
-                $timing = Timing::calculate($promotion->duration ?? 0, $promotion->expiry, $promotion->started);
-                if ($timing->expired() && $promotion->status !== 'expired') {
-                    $promotion->status = 'expired';
-                    $promotion->update();
-                }
-            }
-        }
     }
     
 }

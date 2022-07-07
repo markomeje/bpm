@@ -1,23 +1,23 @@
         {{-- Jquery JS --}}
-        <script src="{{ env('APP_URL') }}/jquery/jquery.min.js"></script>
+        <script src="{{ config('app.url') }}/jquery/jquery.min.js"></script>
         {{-- Pooper JS --}}
-        <script src="{{ env('APP_URL') }}/bootstrap/popper.min.js"></script>
+        <script src="{{ config('app.url') }}/bootstrap/popper.min.js"></script>
         {{-- bootstrap JS --}}
-        <script src="{{ env('APP_URL') }}/bootstrap/bootstrap.min.js"></script>
+        <script src="{{ config('app.url') }}/bootstrap/bootstrap.min.js"></script>
         {{-- index JS --}}
-        <script src="{{ env('APP_URL') }}/js/index.js"></script>
+        <script src="{{ config('app.url') }}/js/index.js"></script>
         {{-- forms JS --}}
-        <script src="{{ env('APP_URL') }}/js/forms.js"></script>
+        <script src="{{ config('app.url') }}/js/forms.js"></script>
         {{-- Sending Ajax request --}}
-        <script src="{{ env('APP_URL') }}/js/ajax.js"></script>
+        <script src="{{ config('app.url') }}/js/ajax.js"></script>
         {{-- Social Sharing --}}
         <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
         {{-- Chartjs --}}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js" integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         {{-- Chart loading script --}}
-        <script src="{{ env('APP_URL') }}/js/charts.js"></script>
+        <script src="{{ config('app.url') }}/js/charts.js"></script>
         <!-- Summernote -->
-        <script src="{{ env('APP_URL') }}/summernote/summernote-lite.min.js" type="text/javascript"></script>
+        <script src="{{ config('app.url') }}/summernote/summernote-lite.min.js" type="text/javascript"></script>
 
         {{-- File Pond Scripts --}}
         <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js"></script>
@@ -25,7 +25,10 @@
         <script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.min.js"></script>
         <script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.min.js"></script>
         <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
-
+        {{-- Google Page --}}
+        @if(config('app.env') === 'production')
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9714205647274761" crossorigin="anonymous"></script>
+        @endif
         <script type="text/javascript">
             @if(!empty($staffs))
                 @foreach($staffs as $staff)

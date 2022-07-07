@@ -42,10 +42,10 @@
         <link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc.php.xml?rsd">
         <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="public/assets/wlwmanifest.xml">
 
-        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-        <link rel="manifest" href="/favicon/site.webmanifest">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ config('app.url') }}/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ config('app.url') }}/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ config('app.url') }}/favicon/favicon-16x16.png">
+        <link rel="manifest" href="{{ config('app.url') }}/favicon/site.webmanifest">
 
         {{-- Google fonts --}}
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,18 +57,18 @@
         <link href="https://unpkg.com/filepond/dist/filepond.min.css" rel="stylesheet" />
 
         <!-- Bootstrap CSS CDN -->
-        <link rel="stylesheet" type="text/css" href="/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="{{ config('app.url') }}/bootstrap/bootstrap.min.css">
         <!-- utility CSS -->
-        <link rel="stylesheet" type="text/css" href="/css/utility.css">
+        <link rel="stylesheet" type="text/css" href="{{ config('app.url') }}/css/utility.css">
         <!-- index CSS -->
-        <link rel="stylesheet" type="text/css" href="/css/index.css">
+        <link rel="stylesheet" type="text/css" href="{{ config('app.url') }}/css/index.css">
         <!-- dealers CSS -->
-        <link rel="stylesheet" type="text/css" href="/css/dealers.css">
+        <link rel="stylesheet" type="text/css" href="{{ config('app.url') }}/css/dealers.css">
         <!-- ico font css -->
-        <link rel="stylesheet" type="text/css" href="/icofont/icofont.min.css">
+        <link rel="stylesheet" type="text/css" href="{{ config('app.url') }}/icofont/icofont.min.css">
         <!-- fontawesome css -->
-        <link rel="stylesheet" type="text/css" href="/fontawesome/css/all.min.css">
+        <link rel="stylesheet" type="text/css" href="{{ config('app.url') }}/fontawesome/css/all.min.css">
         <!-- summernote CSS -->
-        <link rel="stylesheet" type="text/css" href="/summernote/summernote-lite.min.css">
+        <link rel="stylesheet" type="text/css" href="{{ config('app.url') }}/summernote/summernote-lite.min.css">
     </head>
     <body>

@@ -26,6 +26,19 @@ class Staff extends Model
     ];
 
     /**
+     * All staff status
+     *
+     * @var string[]
+     */
+    public static $status = [
+        'active',
+        'suspended',
+        'banned',
+        'disabled',
+        'pending'
+    ];
+
+    /**
      * A staff belongs to a user
      */
     public function user()

@@ -186,10 +186,10 @@ class User extends Authenticatable
     }
 
     /**
-     * A user belongs to a staff
+     * A user may belong to a staff
      */
     public function staff()
     {
-        return $this->belongsTo(Staff::class);
+        return $this->hasOne(Staff::class);
     }
 }

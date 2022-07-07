@@ -25,7 +25,7 @@
 			</small>
 		</div>
 		<div class="progress progress-bar-height mb-2">
-            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar m-0" aria-valuenow="{{ $timing->progress() }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $timing->progress() }}%"></div>
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-{{ $timing->expired() ? 'danger' : 'success'}}" role="progressbar m-0" aria-valuenow="{{ $timing->progress() }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $timing->progress() }}%"></div>
         </div>
         <div class="mb-4 d-flex justify-content-between align-items-center">
         	<small class="text-main-dark">

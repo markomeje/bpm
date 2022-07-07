@@ -81,7 +81,7 @@
 	<div class="card-footer d-flex justify-content-between bg-white">
 		<div class="d-flex align-items-center">
 			<a href="{{ empty($realtor->email) ? 'javascript:;' : "mailto:{$realtor->email}" }}" class="text-center mr-2 text-decoration-none sm-circle border text-center rounded-circle">
-				<small class="text-muted">
+				<small class="text-success">
 					<i class="icofont-email"></i>
 				</small>
 			</a>
@@ -91,7 +91,7 @@
 				</small>
 			</a>
 			<a href="{{ empty($realtor->website) ? 'javascript:;' : $realtor->website }}" class="text-center mr-2 text-decoration-none sm-circle border text-center rounded-circle" target="_blank">
-				<small class="text-muted">
+				<small class="text-success">
 					<i class="icofont-web"></i>
 				</small>
 			</a>

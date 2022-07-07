@@ -55,9 +55,10 @@ class StaffController extends Controller
             $user = User::create([
                 'email' => $data['email'],
                 'phone' => $data['phone'],
-                'password' => Hash::make($reference),
+                'password' => Hash::make('233410'),
                 'role' => $role,
                 'name' => $data['fullname'],
+                'status' => 'pending',
             ]);
 
             Staff::create([
@@ -169,20 +170,22 @@ class StaffController extends Controller
     public function delete($id)
     {
         $user = User::find($id);
-        if (!empty($user)) {
+        if (empty($user)) {
             return response()->json([
                 'status' => 0,
                 'info' => 'Invalid Operation'
             ]);
         }
 
-        if ($user->id == auth()->id()) {
-            return response()->json([
-                'status' => 0,
-                'info' => 'Operation not allowed'
-            ]);
+        if (!empty($user->staff)) {
+            if ($user->staff->created_by !== auth()->id() && auth()->user()->role !== 'superadmin') {
+                return response()->json([
+                    'status' => 0,
+                    'info' => 'You cannot delete staff'
+                ]);
+            }
         }
-
+        
         $staff = Staff::where(['user_id' => $user->id])->first();
         if(!empty($staff)) {
             $staff->delete();
@@ -199,13 +202,40 @@ class StaffController extends Controller
 
     public function status($id)
     {
-        $staff = User::find($id);
-        $status = $staff->status == 'active' ? 'inactive' : 'active';
-        $staff->status = $status;
-        $staff->update();
+        $data = request()->all(['status']);
+        $validator = Validator::make($data, [
+            'status' => ['required', 'string'], 
+        ]);
+
+        if (!$validator->passes()) {
+            return response()->json([
+                'status' => 0,
+                'error' => $validator->errors()
+            ]);
+        }
+
+        $user = User::find($id);
+        if (empty($user)) {
+            return response()->json([
+                'status' => 0,
+                'info' => 'An error occured.',
+            ]);
+        }
+
+        if (!empty($user->staff)) {
+            if ($user->staff->created_by !== auth()->id() && auth()->user()->role !== 'superadmin') {
+                return response()->json([
+                    'status' => 0,
+                    'info' => 'You cannot delete staff'
+                ]);
+            }
+        }
+
+        $user->status = $data['status'] ?? 'inactive';
+        $user->update();
         return response()->json([
             'status' => 1,
-            'info' => 'Operation successful',
+            'info' => 'Staff status updated.',
             'redirect' => '',
         ]);
     }

@@ -127,7 +127,17 @@ class AuthController extends Controller
                 'status' => 0,
                 'info' => 'Invalid login details.'
             ]);
-        }   
+        }
+
+        if (!empty($user->staff)) {
+            $status = strtolower($user->status ?? '');
+            if($status !== 'active') {
+                return response()->json([
+                    'status' => 0,
+                    'info' => "Your account is $status",
+                ]);
+            }
+        } 
 
         if(request()->get('type') === 'mobile') {
             $user->tokens()->delete();

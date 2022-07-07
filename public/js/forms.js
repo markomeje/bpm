@@ -2,6 +2,11 @@
 
 	'use strict';
 
+    $('.update-staff-status-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'update-staff-status-button', spinner: 'update-staff-status-spinner', message: 'update-staff-status-message'});
+    });
+
     $('.add-content-form').submit(function(event){
         event.preventDefault();
         handleForm({form: $(this), button: 'add-content-button', spinner: 'add-content-spinner', message: 'add-content-message'});
