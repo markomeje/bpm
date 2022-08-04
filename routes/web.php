@@ -216,6 +216,8 @@ Route::middleware(['web', 'auth', 'admin', 'revalidate'])->domain(env('ADMIN_URL
     Route::prefix('users')->group(function () {
         Route::get('/', [\App\Http\Controllers\Admin\UsersController::class, 'index'])->name('admin.users');
         Route::get('/search', [\App\Http\Controllers\Admin\UsersController::class, 'search'])->name('admin.users.search');
+
+        Route::post('/upgrade', [\App\Http\Controllers\Api\StaffController::class, 'upgrade'])->name('admin.user.upgrade');
         
         Route::get('/role/{role}', [\App\Http\Controllers\Admin\UsersController::class, 'role'])->name('admin.users.role');
         Route::get('/profile/{id}', [\App\Http\Controllers\Admin\UsersController::class, 'profile'])->name('admin.user.profile');

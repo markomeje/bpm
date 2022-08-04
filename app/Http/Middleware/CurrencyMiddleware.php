@@ -22,6 +22,7 @@ class CurrencyMiddleware
                 'currency' => $localCurrency,
             ]);
         }
+        
         return $next($request);
     }
 }

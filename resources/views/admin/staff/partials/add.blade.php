@@ -31,7 +31,7 @@
                             <label class="text-main-dark">Role</label>
                             @set('roles', \App\Models\User::$roles)
                             <select class="form-control custom-select role" name="role">
-                                <option>Select role</option>
+                                <option value="">Select role</option>
                                 @if(empty($roles))
                                     <option value="">No roles found</option>
                                 @else

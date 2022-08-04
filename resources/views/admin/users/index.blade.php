@@ -79,7 +79,7 @@
                     @else
                         <div class="row">
                             @foreach($users as $user)
-                                <div class="col-12 col-md-6 col-lg-3 mb-4">
+                                <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
                                     @include('admin.users.partials.card')
                                 </div>
                             @endforeach

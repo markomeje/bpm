@@ -142,6 +142,15 @@ class StaffController extends Controller
         }
 
         $user = User::find($id);
+        if (!empty($user->staff)) {
+            if ($user->staff->created_by !== auth()->id() || auth()->user()->role !== 'superadmin') {
+                return response()->json([
+                    'status' => 0,
+                    'info' => 'You cannot edit this staff'
+                ]);
+            }
+        }
+
         $user->email = $data['email'];
         $user->name = $data['fullname'];
         $user->phone = $data['phone'];
@@ -177,11 +186,18 @@ class StaffController extends Controller
             ]);
         }
 
+        if ($id == auth()->id()) {
+            return response()->json([
+                'status' => 0,
+                'info' => 'You cannot delete yourself'
+            ]);
+        }
+
         if (!empty($user->staff)) {
-            if ($user->staff->created_by !== auth()->id() && auth()->user()->role !== 'superadmin') {
+            if ($user->staff->created_by !== auth()->id() || auth()->user()->role !== 'superadmin') {
                 return response()->json([
                     'status' => 0,
-                    'info' => 'You cannot delete staff'
+                    'info' => 'You cannot delete this staff'
                 ]);
             }
         }
@@ -223,10 +239,10 @@ class StaffController extends Controller
         }
 
         if (!empty($user->staff)) {
-            if ($user->staff->created_by !== auth()->id() && auth()->user()->role !== 'superadmin') {
+            if ($user->staff->created_by !== auth()->id() || auth()->user()->role !== 'superadmin') {
                 return response()->json([
                     'status' => 0,
-                    'info' => 'You cannot delete staff'
+                    'info' => 'You cannot perform this operation'
                 ]);
             }
         }
@@ -238,6 +254,71 @@ class StaffController extends Controller
             'info' => 'Staff status updated.',
             'redirect' => '',
         ]);
+    }
+
+    /**
+     * Upgrade user to staff
+     */
+    public function upgrade()
+    {
+        $data = request()->all();
+        $validator = Validator::make($data, [
+            'role' => ['required', 'string'],
+        ]);
+
+        if (!$validator->passes()) {
+            return response()->json([
+                'status' => 0,
+                'error' => $validator->errors()
+            ]);
+        }
+
+        $role = strtolower($data['role'] ?? '');
+        if (in_array($role, self::NOT_ALLOWED_ROLES)) {
+            return response()->json([
+                'status' => 0,
+                'info' => 'Role not allowed',
+            ]);
+        }
+
+        try {
+            DB::beginTransaction();
+            $user = User::find($data['user']);
+            if (empty($user)) {
+                return response()->json([
+                    'status' => 0,
+                    'info' => 'Invalid operation. Try again.',
+                ]);
+            }
+
+            $user->role = $role;
+            $user->status = 'active';
+            $user->update();
+
+            Staff::create([
+                'user_id' => $user->id,
+                'role' => $role,
+                'created_by' => auth()->id(),
+                'description' => $data['description'] ?? '',
+                'code' => $data['code'] ?? '',
+                'status' => 'active',
+                'type' => 'staff'
+            ]);
+
+            DB::commit();
+            return response()->json([
+                'status' => 1,
+                'info' => 'Operation successful',
+                'redirect' => '',
+            ]);
+
+        } catch (Exception $error) {
+            DB::rollBack();
+            return response()->json([
+                'status' => 0,
+                'info' => 'Unknown error. Try again later',
+            ]);
+        }
     }
 
 }

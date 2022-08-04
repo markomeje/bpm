@@ -13,7 +13,7 @@ class UsersController extends Controller
     public function index()
     {
         $query = request()->get('query');
-        $users = empty($query) ? User::paginate(32) : User::search(['name', 'email', 'profile.designation', 'profile.role', 'profile.type', 'profile.description', 'profile.address'], $query)->paginate(24);
+        $users = empty($query) ? User::where(['role' => 'user'])->paginate(32) : User::where(['role' => 'user'])->search(['name', 'email', 'profile.designation', 'profile.role', 'profile.type', 'profile.description', 'profile.address'], $query)->paginate(24);
         return view('admin.users.index')->with(['users' => $users, 'roles' => User::distinct()->pluck('role')]);
     }
 
@@ -31,7 +31,7 @@ class UsersController extends Controller
     public function search()
     {
         $query = request()->get('query');
-        return view('admin.users.search')->with(['users' => User::search(['name', 'email', 'profile.designation', 'profile.role'], $query)->paginate(24), 'query' => $query]);
+        return view('admin.users.search')->with(['users' => User::where(['role' => 'user'])->search(['name', 'email', 'profile.designation', 'profile.role'], $query)->paginate(24), 'query' => $query]);
     }
 
 }

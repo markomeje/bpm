@@ -7,23 +7,53 @@
                     <i class="icofont-phone"></i>
                 </small>
             </a>
-            <a href="mailto:{{ $user->email }}" class="text-decoration-none sm-circle text-center rounded-circle border border-secondary">
-                <small class="text-secondary tiny-font">
-                    <i class="icofont-email"></i>
-                </small>
-            </a>
-        </div>
-        <div class="d-flex align-items-center">
-            <a href="{{ route('admin.user.profile', ['id' => $user->id]) }}" class="mr-2 text-decoration-none sm-circle text-center rounded-circle border border-info">
-                <small class="text-info tiny-font">
-                    <i class="icofont-user"></i>
-                </small>
-            </a>
             <a href="javascript:;" class="text-decoration-none sm-circle text-center rounded-circle border border-danger">
                 <small class="text-danger tiny-font">
                     <i class="icofont-trash"></i>
                 </small>
             </a>
+        </div>
+        <div class="d-flex align-items-center">
+            <div class="dropdown">
+                <a href="javascript:;" class="text-decoration-none
+                " id="upgrade-{{ $user->id }}" data-toggle="dropdown">
+                    <small class="px-3 py-1 text-white bg-success rounded-pill tiny-font">Upgrade</small>
+                </a>
+                <div class="dropdown-menu border-0 shadow dropdown-menu-right" aria-labelledby="upgrade-{{ $user->id }}" style="width: 240px !important;">
+                    <div class="p-4 w-100">
+                        @if(empty($user->profile))
+                            <div class="alert alert-danger m-0">No user profile setup. Cannot upgrade account without profile.</div>
+                        @else
+                        <div class="alert alert-info mb-4">Uprade a user to staff.</div>
+                        <form class="upgrade-user-to-staff-form" action="javascript:;" method="post" data-action="{{ route('admin.user.upgrade') }}">
+                            <input type="hidden" name="user" value="{{ $user->id }}">
+                            <div class="form-group">
+                                <label class="text-main-dark">Role</label>
+                                @set('roles', \App\Models\User::$roles)
+                                <select class="form-control custom-select role" name="role">
+                                    <option value="">Select role</option>
+                                    @if(empty($roles))
+                                        <option value="">No roles found</option>
+                                    @else
+                                        @foreach($roles as $role)
+                                            <option value="{{ $role }}">
+                                                {{ ucwords($role) }}
+                                            </option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                                <small class="invalid-feedback role-error"></small>
+                            </div>
+                            <div class="upgrade-user-to-staff-message alert d-none"></div>
+                            <button type="submit" class="btn btn-lg bg-theme-color icon-raduis btn-block text-white upgrade-user-to-staff-button">
+                                <img src="/images/spinner.svg" class="mr-2 d-none upgrade-user-to-staff-spinner mb-1">
+                                Upgrade
+                            </button>
+                        </form>
+                        @endif
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="bg-inverse w-100 p-1"></div>
@@ -73,7 +103,6 @@
             <small class="text-main-dark">
                 {{ empty($user->profile) ? 'No Profile' : ucfirst($user->profile->designation) }}
             </small>
-        </a>
-            
+        </a>  
     </div>
 </div>
