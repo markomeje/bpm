@@ -71,6 +71,7 @@ class User extends Authenticatable
         'accountant', 
         'content creator',
         'moderator',
+        'Software Developer',
     ];
 
     /**
