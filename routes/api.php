@@ -74,12 +74,6 @@ Route::domain(env('API_URL'))->group(function() {
         });
 
         Route::prefix('profile')->group(function () {
-            Route::post('/add', [\App\Http\Controllers\Api\ProfileController::class, 'add'])->name('api.profile.add');
-            Route::post('/update/{id}', [\App\Http\Controllers\Api\ProfileController::class, 'edit'])->name('api.profile.update');
-            Route::post('/company/details/update/{id}', [\App\Http\Controllers\Api\ProfileController::class, 'company'])->name('api.profile.company.update');
-        });
-
-        Route::prefix('profile')->group(function () {
             Route::post('/', [\App\Http\Controllers\Api\UserController::class, 'profile'])->name('api.user.profile');
             Route::post('/add', [\App\Http\Controllers\Api\ProfileController::class, 'add'])->name('api.profile.add');
             Route::post('/details', [\App\Http\Controllers\Api\ProfileController::class, 'details'])->name('api.profile.details');
@@ -115,7 +109,14 @@ Route::domain(env('API_URL'))->group(function() {
         Route::prefix('material')->group(function () {
             Route::post('/add', [\App\Http\Controllers\Api\MaterialsController::class, 'add'])->name('api.material.add'); 
             Route::post('/edit/{id}', [\App\Http\Controllers\Api\MaterialsController::class, 'edit'])->name('api.material.edit');
-        }); 
+        });
+
+        Route::prefix('socials')->group(function () {
+            Route::post('/companies', [\App\Http\Controllers\Api\SocialsController::class, 'companies'])->name('api.social.companies');
+            Route::post('/add', [\App\Http\Controllers\Api\SocialsController::class, 'add'])->name('api.social.add');
+            Route::post('/edit/{id}', [\App\Http\Controllers\Api\SocialsController::class, 'edit'])->name('api.social.edit');
+            Route::post('/delete/{id}', [\App\Http\Controllers\Api\SocialsController::class, 'delete'])->name('api.social.delete');
+        });
 
     });
 });

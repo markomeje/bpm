@@ -99,11 +99,31 @@ class SocialsController extends Controller
      */
     public function delete($id = 0)
     {
-        Social::find($id)->delete();
+        $social = Social::where(['id' => $id, 'user_id' => auth()->id()])->first();
+        if (empty($social)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Invalid social media details.',
+            ]);  
+        }
+
+        $social->delete();
         return response()->json([
             'status' => 1, 
             'info' => 'Operation successful.',
             'redirect' => '',
+        ]);        
+    }
+
+    /**
+     * Social media companies
+     */
+    public function companies()
+    {
+        return response()->json([
+            'status' => 1, 
+            'info' => 'Operation successful.',
+            'companies' => Social::$companies,
         ]);        
     }
 

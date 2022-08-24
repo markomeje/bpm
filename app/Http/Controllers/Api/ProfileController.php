@@ -26,8 +26,7 @@ class ProfileController extends Controller
             'description' => ['required', 'string', 'max:500'],
             'role' => ['required', 'string'],
             'phone' => ['nullable', 'unique:profiles'],
-            'website' => ['nullable', 'url'],
-            'email' => ['nullable', 'email', 'unique:profiles'],
+            'website' => ['nullable', 'string'],
         ]);
 
         if ($validator->fails()) {
@@ -56,7 +55,6 @@ class ProfileController extends Controller
                 'address' => $data['address'],
                 'city' => $data['city'],
                 'website' => $data['website'] ?? null,
-                'email' => $data['email'] ?? null,
                 'user_id' => auth()->id(),
                 'designation' => $data['designation'],
                 'reference' => Str::random(64),
@@ -127,7 +125,7 @@ class ProfileController extends Controller
                 return response()->json([
                     'status' => 0, 
                     'info' => 'User profile not found'
-                ], 500);
+                ]);
             }
 
             $profile->country_id = $data['country'];
@@ -147,6 +145,7 @@ class ProfileController extends Controller
                 'info' => 'Operation successful',
                 'redirect' => route('user.dashboard'),
                 'profile' => $profile,
+                'user' => auth()->user()
             ]);
         } catch (Exception $error) {
             DB::rollback();
@@ -203,7 +202,7 @@ class ProfileController extends Controller
             return response()->json([
                 'status' => 0, 
                 'info' => 'Operation failed.',
-            ], 500);
+            ]);
         } catch (Exception $error) {
             return response()->json([
                 'status' => 0, 
