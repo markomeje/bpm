@@ -227,10 +227,15 @@ class PropertiesController extends Controller
     {
         $distinct = Property::distinct();
         $limit = request()->get('limit');
+        $properties = Property::with(['images'])->paginate($limit ?? 20);
+        foreach ($properties as $property) {
+            $property->setAttribute('title', retitle($property));
+        }
+
         return response()->json([
             'status' => 1, 
             'info' => 'Operation successful',
-            'properties' => Property::with(['images'])->paginate($limit ?? 20),
+            'properties' => $properties,
             'categories' => $distinct->pluck('category'),
             'groups' => $distinct->pluck('group'),
             'actions' => $distinct->pluck('action'),
@@ -246,38 +251,90 @@ class PropertiesController extends Controller
         if (empty($type) || !in_array($type, $types)) {
             return response()->json([
                 'status' => 0, 
-                'info' => 'Invalid request type',
+                'info' => 'Invalid filter type. Must be one of the types below.',
                 'types' => $types,
             ]);
         }
 
         $limit = request()->get('limit') ?? 20;
         $filter = request()->get('filter');
+
         if ($filter) {
-            $filter = \Str::slug(strtolower($filter));
+            $filter = Str::slug($filter);
             switch ($type) {
                 case 'category':
-                    $properties = Property::with(['images'])->where(['category' => $filter])->paginate($limit);
+                    $properties = Property::with(['images'])->where(['category' => $filter])->get();
+                    $properties = $properties->count() <= $limit ? $properties : $properties->paginate($limit);
+                    foreach ($properties as $property) {
+                        $property->setAttribute('title', retitle($property));
+                    }
+
+                    if ($properties->count() <= 0) {
+                        return response()->json([
+                            'status' => 0, 
+                            'info' => 'No properties found for the category filter',
+                            'properties' => $properties,
+                        ]);
+                    }
+
                     break;
 
                 case 'action':
-                    $properties = Property::with(['images'])->where(['action' => $filter])->paginate($limit);
+                    $properties = Property::with(['images'])->where(['action' => $filter])->get();
+                    $properties = $properties->count() < $limit ? $properties : $properties->paginate($limit);
+                    foreach ($properties as $property) {
+                        $property->setAttribute('title', retitle($property));
+                    }
+
+                    if ($properties->count() <= 0) {
+                        return response()->json([
+                            'status' => 0, 
+                            'info' => 'No properties found for the action filter',
+                            'properties' => $properties,
+                        ]);
+                    }
                     break;
 
                 case 'group':
-                    $properties = Property::with(['images'])->where(['group' => $filter])->paginate($limit);
+                    $properties = Property::with(['images'])->where(['group' => $filter])->get();
+                    $properties = $properties->count() < $limit ? $properties : $properties->paginate($limit);
+                    foreach ($properties as $property) {
+                        $property->setAttribute('title', retitle($property));
+                    }
+
+                    if ($properties->count() <= 0) {
+                        return response()->json([
+                            'status' => 0, 
+                            'info' => 'No properties found for the group filter',
+                            'properties' => $properties,
+                        ]);
+                    }
                 
                 default:
                     $properties = Property::with(['images'])->paginate($limit);
+                    foreach ($properties as $property) {
+                        $property->setAttribute('title', retitle($property));
+                    }
                     break;
             }
         }else {
-            $properties = Property::with(['images'])->search(['group', 'category', 'action'], $type)->paginate($limit);
+            $properties = Property::with(['images'])->search(['group', 'category', 'action'], $type)->get();
+            $properties = $properties->count() <= $limit ? $properties : $properties->paginate($limit);
+            foreach ($properties as $property) {
+                $property->setAttribute('title', retitle($property));
+            }
+
+            if ($properties->count() <= 0) {
+                return response()->json([
+                    'status' => 0, 
+                    'info' => 'No properties found. Filter is empty',
+                    'properties' => $properties,
+                ]);
+            }
         }
             
-
         return response()->json([
-            'status' => 0, 
+            'status' => 1, 
             'info' => 'Operation successful',
             'properties' => $properties,
         ]);
@@ -289,16 +346,28 @@ class PropertiesController extends Controller
     public function search()
     {
         $query = request()->get('query');
+        $limit = request()->get('limit') ?? 20;
         if ($query) {
+            $properties = Property::with(['images'])->filterSearch(['price', 'additional', 'group', 'category', 'action', 'bedrooms', 'address', 'toilets', 'state', 'city'], $query)->paginate($limit);
+            foreach ($properties as $property) {
+                $property->setAttribute('title', retitle($property));
+            }
+
             $distinct = Property::distinct();
             return response()->json([
                 'status' => 1, 
                 'info' => 'Operation successful',
-                'properties' => Property::with(['images'])->filterSearch(['price', 'additional', 'group', 'category', 'action', 'bedrooms', 'address', 'toilets', 'state', 'city'], $query)->paginate(15),
+                'properties' => $properties,
                 'categories' => $distinct->pluck('category'),
                 'groups' => $distinct->pluck('group'),
                 'actions' => $distinct->pluck('action'),
             ]);
         }
+
+        return response()->json([
+            'status' => 1, 
+            'info' => 'No query supplied. Random properties returned',
+            'properties' => Property::with(['images'])->inRandomOrder()->paginate($limit),
+        ]);
     }
 }
