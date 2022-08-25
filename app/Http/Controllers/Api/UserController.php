@@ -78,7 +78,9 @@ class UserController extends Controller
         return response()->json([
             'status' => 1, 
             'info' => 'Operation successful',
-            'services' => Service::latest('created_at')->where(['user_id' => auth()->id()])->get(),
+            'services' => auth()->user()->services,
+            'user' => auth()->user(),
+            'profile' => auth()->user()->profile
         ]);      
     }
 

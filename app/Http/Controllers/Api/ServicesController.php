@@ -43,7 +43,7 @@ class ServicesController extends Controller
             ]);
         }
 
-        Service::create([
+        $service = Service::create([
             'description' => $data['description'],
             'skill_id' => $data['skill'],
             'price' => $data['price'],
@@ -55,6 +55,7 @@ class ServicesController extends Controller
         return response()->json([
             'status' => 1, 
             'info' => 'Operation successful',
+            'service' => $service,
             'redirect' => '',
         ]);       
     }
@@ -62,7 +63,7 @@ class ServicesController extends Controller
     /**
      * Buy ads credit
      */
-    public function edit($id)
+    public function edit($id = 0)
     {
         $data = request()->all();
         $validator = Validator::make($data, [
@@ -96,6 +97,7 @@ class ServicesController extends Controller
         return response()->json([
             'status' => 1, 
             'info' => 'Operation successful',
+            'service' => $service,
             'redirect' => '',
         ]);       
     }
