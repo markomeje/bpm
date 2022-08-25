@@ -88,7 +88,7 @@
                                                     <option value="">No Status</option>
                                                 @else
                                                     @foreach ($status as $key => $value)
-                                                        <option value="{{ (boolean)$value }}" {{ $blog->status == (boolean)$value ? 'selected' : '' }}>
+                                                        <option value="{{ (boolean)$value }}" {{ $blog->status === (boolean)$value ? 'selected' : '' }}>
                                                             {{ ucfirst($key) }}
                                                         </option>
                                                     @endforeach

@@ -39,7 +39,7 @@ class Blog extends Model
     /**
      * Blog published status
      */
-    public static $publish = ['yes' => 1, 'no' => 0];
+    public static $publish = ['yes' => true, 'no' => false];
 
     /**
      * A blog may have an image

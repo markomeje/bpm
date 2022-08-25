@@ -40,9 +40,9 @@
                 {{ \Str::limit(strip_tags($blog->title), 10) }}
             </a>
             <div class="dropdown">
-                <a href="javascript:;" class="rounded-circle d-block sm-circle bg-{{ $blog->published ? 'success' : 'danger' }} text-center" id="status-{{ $blog->id }}" data-toggle="dropdown">
+                <a href="javascript:;" class="rounded-circle d-block sm-circle bg-{{ $blog->published == true ? 'success' : 'danger' }} text-center" id="status-{{ $blog->id }}" data-toggle="dropdown">
                     <small class="text-white tiny-font position-relative" style="top: 2px;">
-                        <i class="icofont-{{ $blog->published ? 'tick-mark' : 'close' }}"></i>
+                        <i class="icofont-{{ $blog->published == true ? 'tick-mark' : 'close' }}"></i>
                     </small>
                 </a>
                 <div class="dropdown-menu border-0 shadow dropdown-menu-right" aria-labelledby="status-{{ $blog->id }}">

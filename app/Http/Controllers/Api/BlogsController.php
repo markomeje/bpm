@@ -111,10 +111,17 @@ class BlogsController extends Controller
         }
 
         $blog = Blog::find($id);
+        if (empty($blog)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Invalid operation. Try Again.',
+            ]);
+        }
+
         $blog->title = $data['title'];
         $blog->description = $data['description'];
         $blog->category = $data['category'];
-        $blog->published = (boolean)$data['status'];
+        $blog->published = (boolean)($data['status'] ?? false);
         $blog->update();
 
         return response()->json([
