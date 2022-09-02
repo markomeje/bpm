@@ -225,13 +225,13 @@ class PropertiesController extends Controller
      */
     public function all()
     {
-        $distinct = Property::distinct();
         $limit = request()->get('limit');
-        $properties = Property::with(['images'])->paginate($limit ?? 20);
+        $properties = Property::with(['images'])->active()->latest()->paginate($limit ?? 20);
         foreach ($properties as $property) {
             $property->setAttribute('title', retitle($property));
         }
 
+        $distinct = Property::distinct();
         return response()->json([
             'status' => 1, 
             'info' => 'Operation successful',
