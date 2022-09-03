@@ -60,7 +60,7 @@ class PromotionsController extends Controller
             $credit->update();
 
             $days = $credit->duration ?? 0;
-            $model_id = $data['model_id'] ?? 0
+            $model_id = $data['model_id'] ?? 0;
             $promotion = Promotion::create([
                 'credit_id' => $credit->id,
                 'duration' => $days,

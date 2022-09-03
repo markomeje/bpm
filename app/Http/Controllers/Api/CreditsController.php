@@ -65,7 +65,13 @@ class CreditsController extends Controller
                 'callback_url' => route(request()->subdomain().'.credits')
             ]);
 
-            if ($paystack) {
+            // return response()->json([
+            //     'status' => 0, 
+            //     'info' => 'Payment initialization failed. Try again.',
+            //     'payments' => $paystack
+            // ]);
+
+            if (($paystack->status ?? false)) {
                 return response()->json([
                     'status' => 1, 
                     'info' => 'Please wait . . .',

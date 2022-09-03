@@ -370,4 +370,37 @@ class PropertiesController extends Controller
             'properties' => Property::with(['images'])->inRandomOrder()->paginate($limit),
         ]);
     }
+
+    /**
+     * Api promoted properties
+     */
+    public function promoted()
+    {
+        $limit = request()->get('limit') ?? 20;
+        $promotions = Promotion::active()->where(['type' => 'property'])->get();
+        if (empty($promotions->count())) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'No promoted properties',
+            ]);
+        }
+
+        $properties = Property::with(['images'])->active()->find($promotions->pluck('model_id')->toArray());
+        if (empty($properties->count())) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Unknown error. Try again',
+            ]);
+        }
+
+        foreach ($properties as $property) {
+            $property->setAttribute('title', retitle($property));
+        }
+
+        return response()->json([
+            'status' => 1, 
+            'info' => 'Promoted properties',
+            'properties' => $properties,
+        ]);
+    }
 }

@@ -45,6 +45,14 @@ class Promotion extends Model
     public static $status = ['active', 'inactive', 'expired'];
 
     /**
+     * Scope only active promotions
+     */
+    public function scopeActive($query)
+    {
+        return $query->where(['status' => 'active']);
+    }
+
+    /**
      * A promotion may belong to a user
      */
     public function user()
@@ -58,5 +66,13 @@ class Promotion extends Model
     public function credit()
     {
         return $this->belongsTo(Credit::class);
+    }
+
+    /**
+     * Promotion may have many Properties
+     */ 
+    public function properties()
+    {
+        return $this->hasMany(Property::class, 'model_id')->where(['type' => 'property']);
     }
 }
