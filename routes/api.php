@@ -37,6 +37,8 @@ Route::domain(env('API_URL'))->group(function() {
     Route::post('/countries', [\App\Http\Controllers\Api\CountriesController::class, 'all']);
     Route::post('/currencies', [\App\Http\Controllers\Api\CurrencyController::class, 'all']);
 
+    Route::post('/views/record', [\App\Http\Controllers\Api\ClicksController::class, 'record']);
+
     Route::group(['middleware' => ['auth:sanctum'], 'prefix' => 'user'], function () {
         Route::prefix('credit')->group(function () {
             Route::post('/buy', [\App\Http\Controllers\Api\CreditsController::class, 'buy'])->name('user.credit.buy');

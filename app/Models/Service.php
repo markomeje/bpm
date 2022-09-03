@@ -19,7 +19,8 @@ class Service extends Model
         'description',
         'price',
         'status',
-        'currency_id'
+        'currency_id',
+        'clicks'
     ];
 
     /**

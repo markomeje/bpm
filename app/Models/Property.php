@@ -37,6 +37,7 @@ class Property extends Model
         'action',
         'category',
         'measurement',
+        'views',
         'user_id',
         'additional',
         'reference',

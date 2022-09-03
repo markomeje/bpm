@@ -13,10 +13,11 @@ class UserController extends Controller
      */
     public function adverts()
     {
+        $limit = request()->get('limit');
         return response()->json([
             'status' => 1, 
             'info' => 'Operation successful',
-            'adverts' => Advert::latest('created_at')->with(['image'])->where(['user_id' => auth()->id()])->get(),
+            'adverts' => Advert::latest('created_at')->with(['image'])->where(['user_id' => auth()->id()])->paginate($limit ?? 14),
         ]);      
     }
 

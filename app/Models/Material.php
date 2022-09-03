@@ -26,6 +26,7 @@ class Material extends Model
         'additional',
         'reference',
         'price',
+        'views'
     ];
 
     /**
