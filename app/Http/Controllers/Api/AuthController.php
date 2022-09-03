@@ -91,6 +91,7 @@ class AuthController extends Controller
                 'user' => $user,
                 'redirect' => route('phone.verify', ['reference' => $reference]),
                 'token' => $user->createToken('appToken')->plainTextToken,
+                'verify' => $verify
             ]);
 
         } catch (Exception $error) {
@@ -146,6 +147,7 @@ class AuthController extends Controller
                 'info' => 'Operation successful.',
                 'user' => $user,
                 'token' => $user->createToken('appToken')->plainTextToken,
+                'verify' => $user->verify ?? null;
             ]);
         }elseif (auth()->attempt(['email' => $data['login'], 'password' => $data['password']]) || auth()->attempt(['phone' => $data['login'], 'password' => $data['password']])) {
             request()->session()->regenerate();

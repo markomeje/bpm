@@ -145,7 +145,7 @@ class AdvertsController extends Controller
             ]);
         }
             
-        $credit = Credit::find($advert['credit_id']);
+        $credit = Credit::find($advert->credit_id);
         if (empty($credit)) {
             return response()->json([
                 'status' => 0, 
@@ -181,7 +181,7 @@ class AdvertsController extends Controller
             ]);
         }
 
-        $credit = Credit::find($advert['credit_id']);
+        $credit = Credit::find($advert->credit_id);
         if (empty($credit)) {
             return response()->json([
                 'status' => 0, 
@@ -216,7 +216,7 @@ class AdvertsController extends Controller
             ]);
         }
 
-        $credit = Credit::find($advert['credit_id']);
+        $credit = Credit::find($advert->credit_id);
         if (empty($credit) || $advert->status !== 'paused') {
             return response()->json([
                 'status' => 0, 
@@ -257,7 +257,7 @@ class AdvertsController extends Controller
             ]);
         }
 
-        $credit = Credit::find($advert['credit_id']);
+        $credit = Credit::find($advert->credit_id);
         if (empty($credit)) {
             return response()->json([
                 'status' => 0, 
