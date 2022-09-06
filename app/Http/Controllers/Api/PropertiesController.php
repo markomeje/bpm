@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-use App\Models\{Credit, Property, Country, Image, Promotion};
+use App\Models\{Credit, Property, Country, Image, Promotion, Social, Profile};
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use App\Helpers\Cloudinary;
@@ -229,6 +229,9 @@ class PropertiesController extends Controller
         $properties = Property::with(['images'])->active()->latest()->paginate($limit ?? 20);
         foreach ($properties as $property) {
             $property->setAttribute('title', retitle($property));
+            $user_id = $property->user->id;
+            $property->setAttribute('profile', Profile::where(['user_id' => $user_id])->first());
+            $property->setAttribute('socials', Social::where(['user_id' => $user_id])->get());
         }
 
         $distinct = Property::distinct();
@@ -349,6 +352,13 @@ class PropertiesController extends Controller
         $limit = request()->get('limit') ?? 20;
         if ($query) {
             $properties = Property::with(['images'])->filterSearch(['price', 'additional', 'group', 'category', 'action', 'bedrooms', 'address', 'toilets', 'state', 'city'], $query)->paginate($limit);
+            if (empty($properties->count())) {
+                return response()->json([
+                    'status' => 0, 
+                    'info' => 'No properties found.',
+                ]);
+            }
+
             foreach ($properties as $property) {
                 $property->setAttribute('title', retitle($property));
             }
