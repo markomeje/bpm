@@ -1,7 +1,7 @@
 <?php 
 
 namespace App\Http\Controllers\Api;
-use App\Models\Service;
+use App\Models\{Service, Profile, Social};
 use App\Http\Controllers\Controller;
 use \Carbon\Carbon;
 use \Exception;
@@ -94,6 +94,30 @@ class ServicesController extends Controller
             'info' => 'Operation failed',
         ]);
             
+    }
+
+    public function services()
+    {
+        $limit = request()->get('limit');
+        $services = Service::with(['user'])->latest()->paginate($limit ?? 20);
+        if (empty($services->count())) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'No services found.',
+            ]);
+        }
+
+        foreach ($services as $service) {
+            $user_id = empty($service->user) ? 0 : $service->user->id;
+            $service->setAttribute('profile', Profile::where(['user_id' => $user_id])->first());
+            $service->setAttribute('socials', Social::where(['user_id' => $user_id])->get());
+        }
+
+        return response()->json([
+            'status' => 1, 
+            'info' => 'Operation successful',
+            'services' => $services,
+        ]);
     }
 
     /**

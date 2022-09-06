@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-use App\Models\{Category, Material, Country, Image, Division};
+use App\Models\{Category, Material, Country, Image, Profile, Social};
 use App\Http\Controllers\Controller;
 use App\Helpers\Cloudinary;
 use \Exception;
@@ -62,6 +62,30 @@ class MaterialsController extends Controller
             ]);   
         }
 
+    }
+
+    public function materials()
+    {
+        $limit = request()->get('limit');
+        $materials = Material::with(['images'])->latest()->paginate($limit ?? 20);
+        if (empty($materials->count())) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'No materials found.',
+            ]);
+        }
+
+        foreach ($materials as $material) {
+            $user_id = empty($material->user) ? 0 : $material->user->id;
+            $material->setAttribute('profile', Profile::where(['user_id' => $user_id])->first());
+            $material->setAttribute('socials', Social::where(['user_id' => $user_id])->get());
+        }
+
+        return response()->json([
+            'status' => 1, 
+            'info' => 'Operation successful',
+            'materials' => $materials,
+        ]);
     }
 
     /**

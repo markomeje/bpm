@@ -227,9 +227,16 @@ class PropertiesController extends Controller
     {
         $limit = request()->get('limit');
         $properties = Property::with(['images'])->active()->latest()->paginate($limit ?? 20);
+        if (empty($properties->count())) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'No properties found.',
+            ]);
+        }
+            
         foreach ($properties as $property) {
             $property->setAttribute('title', retitle($property));
-            $user_id = $property->user->id;
+            $user_id = empty($property->user) ? 0 : $property->user->id;
             $property->setAttribute('profile', Profile::where(['user_id' => $user_id])->first());
             $property->setAttribute('socials', Social::where(['user_id' => $user_id])->get());
         }
