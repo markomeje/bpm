@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 use App\Models\{Category, Material, Country, Image, Division};
 use App\Http\Controllers\Controller;
+use App\Helpers\Cloudinary;
 use \Exception;
 use Validator;
 
@@ -61,6 +62,39 @@ class MaterialsController extends Controller
             ]);   
         }
 
+    }
+
+    /**
+     * Delete a building Material,
+     * With Images if any
+     */
+    public function delete($id = 0)
+    {
+        if(empty($id)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Invalid operation',
+            ]);
+        }
+
+        $material = Material::find($id);
+        if(empty($material)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Invalid operation',
+            ]);
+        }
+
+        if ($material->images()->count() > 0) {
+            Cloudinary::delete($material->images()->pluck('public_id')->toArray());
+        }
+
+        $material->delete();
+        return response()->json([
+            'status' => 1, 
+            'info' => 'Operation successful',
+            'redirect' => '',
+        ]);
     }
 
     /**

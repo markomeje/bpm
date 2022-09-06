@@ -116,6 +116,7 @@ Route::domain(env('API_URL'))->group(function() {
         Route::prefix('material')->group(function () {
             Route::post('/add', [\App\Http\Controllers\Api\MaterialsController::class, 'add'])->name('api.material.add'); 
             Route::post('/edit/{id}', [\App\Http\Controllers\Api\MaterialsController::class, 'edit'])->name('api.material.edit');
+            Route::post('/delete/{id}', [\App\Http\Controllers\Api\MaterialsController::class, 'delete'])->name('api.material.delete');
         });
 
         Route::prefix('socials')->group(function () {

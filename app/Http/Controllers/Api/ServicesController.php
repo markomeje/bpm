@@ -61,6 +61,42 @@ class ServicesController extends Controller
     }
 
     /**
+     * Delete service,
+     * With Image if any
+     */
+    public function delete($id = 0)
+    {
+        if(empty($id)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Invalid operation',
+            ]);
+        }
+
+        $service = Service::find($id);
+        if(empty($service)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Service not found',
+            ]);
+        }
+
+        if($service->delete()) {
+            return response()->json([
+                'status' => 1, 
+                'info' => 'Operation successful',
+                'redirect' => '',
+            ]);
+        }
+
+        return response()->json([
+            'status' => 0, 
+            'info' => 'Operation failed',
+        ]);
+            
+    }
+
+    /**
      * Buy ads credit
      */
     public function edit($id = 0)
@@ -101,4 +137,5 @@ class ServicesController extends Controller
             'redirect' => '',
         ]);       
     }
+
 }
