@@ -165,8 +165,15 @@ class PropertiesController extends Controller
         }
 
         $property = Property::find($id);
+        if (empty($property)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Property not found',
+            ]);
+        }
+
         $listed = $data['listed'] ?? '';
-        if (empty($property->images->count()) && $listed == 'yes') {
+        if (empty($property->images->count()) && $listed === 'yes') {
             return response()->json([
                 'status' => 0, 
                 'info' => 'You have to upload property images before activating.',
@@ -178,14 +185,21 @@ class PropertiesController extends Controller
         $property->bedrooms = $data['bedrooms'] ?? null;
         $property->toilets = $data['toilets'] ?? null;
         $property->listed = $listed;
-        $property->status = $listed == 'yes' ? 'active' : 'inactive';
-        $updated = $property->update();
+        $property->status = $listed === 'yes' ? 'active' : 'inactive';
+
+        if ($property->update()) {
+            return response()->json([
+                'status' => 1, 
+                'info' => 'Operation successful',
+                'redirect' => route(request()->subdomain().'.properties'),
+                'property' => $property,
+            ]);
+        }
 
         return response()->json([
-            'status' => 1, 
-            'info' => 'Operation successful',
-            'redirect' => route(request()->subdomain().'.properties'),
-        ]);
+            'status' => 0, 
+            'info' => 'Operation failed. Try again',
+        ]);    
     }
 
     /**
