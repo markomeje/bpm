@@ -29,6 +29,7 @@ Route::domain(env('API_URL'))->group(function() {
     Route::prefix('properties')->group(function () {
         Route::post('/all', [\App\Http\Controllers\Api\PropertiesController::class, 'all'])->name('api.properties');
         Route::post('/promoted', [\App\Http\Controllers\Api\PropertiesController::class, 'promoted']);
+        Route::post('/categories', [\App\Http\Controllers\Api\PropertiesController::class, 'categories']);
 
         Route::post('/search', [\App\Http\Controllers\Api\PropertiesController::class, 'search'])->name('api.property.search');
         Route::post('/{type}/{filter?}', [\App\Http\Controllers\Api\PropertiesController::class, 'filter']);

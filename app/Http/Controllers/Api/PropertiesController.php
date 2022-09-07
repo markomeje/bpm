@@ -434,4 +434,16 @@ class PropertiesController extends Controller
             'properties' => $properties,
         ]);
     }
+
+    /**
+     * Api promoted properties
+     */
+    public function categories()
+    {
+        return response()->json([
+            'status' => 1, 
+            'info' => 'Property categories.',
+            'categories' => Property::$categories,
+        ]);
+    }
 }
