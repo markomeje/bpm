@@ -108,6 +108,7 @@ class UserController extends Controller
             'info' => 'Operation successful',
             'profile' => empty($profile) ? [] : $profile,
             'name' => auth()->user()->name,
+            'socials' => auth()->user()->socials,
         ]);      
     }
 
