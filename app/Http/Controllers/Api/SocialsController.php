@@ -30,7 +30,7 @@ class SocialsController extends Controller
             ]);
         }
 
-        if ($data['company'] == 'whatsapp' && empty($data['company'])) {
+        if ($data['company'] == 'whatsapp' && empty($data['phone'])) {
             return response()->json([
                 'status' => 0, 
                 'info' => 'Enter your whatsapp number',
@@ -46,9 +46,9 @@ class SocialsController extends Controller
 
         Social::create([
             'company' => $data['company'],
-            'link' => $data['link'],
-            'phone' => $data['phone'],
-            'username' => $data['username'],
+            'link' => $data['link'] ?? null,
+            'phone' => $data['phone'] ?? null,
+            'username' => $data['username'] ?? null,
             'reference' => Str::random(64),
             'user_id' => auth()->id(),
         ]);
