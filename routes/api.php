@@ -36,6 +36,7 @@ Route::domain(env('API_URL'))->group(function() {
     });
 
     Route::post('/materials', [\App\Http\Controllers\Api\MaterialsController::class, 'materials']);
+    Route::post('/realtors', [\App\Http\Controllers\Api\RealtorsController::class, 'realtors']);
     Route::post('/services', [\App\Http\Controllers\Api\ServicesController::class, 'services']);
 
     Route::post('/units', [\App\Http\Controllers\Api\UnitsController::class, 'all']);
