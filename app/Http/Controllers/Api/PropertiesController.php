@@ -240,7 +240,7 @@ class PropertiesController extends Controller
     public function all()
     {
         $limit = request()->get('limit');
-        $properties = Property::with(['images'])->active()->latest()->paginate($limit ?? 20);
+        $properties = Property::with(['images'])->latest('id')->active()->paginate($limit ?? 20);
         if (empty($properties->count())) {
             return response()->json([
                 'status' => 0, 
