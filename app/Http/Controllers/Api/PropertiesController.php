@@ -356,6 +356,13 @@ class PropertiesController extends Controller
                 ]);
             }
         }
+
+        foreach ($properties as $property) {
+            $property->setAttribute('title', retitle($property));
+            $user_id = empty($property->user) ? 0 : $property->user->id;
+            $property->setAttribute('profile', Profile::where(['user_id' => $user_id])->first());
+            $property->setAttribute('socials', Social::where(['user_id' => $user_id])->get());
+        }
             
         return response()->json([
             'status' => 1, 
@@ -382,6 +389,9 @@ class PropertiesController extends Controller
 
             foreach ($properties as $property) {
                 $property->setAttribute('title', retitle($property));
+                $user_id = empty($property->user) ? 0 : $property->user->id;
+                $property->setAttribute('profile', Profile::where(['user_id' => $user_id])->first());
+                $property->setAttribute('socials', Social::where(['user_id' => $user_id])->get());
             }
 
             $distinct = Property::distinct();
@@ -396,9 +406,8 @@ class PropertiesController extends Controller
         }
 
         return response()->json([
-            'status' => 1, 
-            'info' => 'No query supplied. Random properties returned',
-            'properties' => Property::with(['images'])->inRandomOrder()->paginate($limit),
+            'status' => 0, 
+            'info' => 'No query supplied.',
         ]);
     }
 
