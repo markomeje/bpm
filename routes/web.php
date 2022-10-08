@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
     Route::get('/translate', [\App\Http\Controllers\TranslationController::class, 'index'])->name('translate');
+    Route::get('/privacy-policy', [\App\Http\Controllers\LegalController::class, 'privacy'])->name('privacy.policy');
 
     Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/about', [\App\Http\Controllers\AboutController::class, 'index'])->name('about');

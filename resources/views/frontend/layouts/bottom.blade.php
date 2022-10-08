@@ -184,7 +184,7 @@
 	</section>
 	<section class="py-4 bg-main-dark border-top-dark-500">
 		<div class="container-fluid">
-			<small class="text-white m-0">&copy Copyright {{ env('APP_NAME') }} {{ date('Y') }}</small>
+			<small class="text-white m-0">&copy Copyright {{ env('APP_NAME') }} {{ date('Y') }}. <a href="{{ route('privacy.policy') }}">Our Privacy Policy</a></small>
 		</div>
 	</section>
 </footer>
