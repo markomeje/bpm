@@ -1,7 +1,7 @@
 @include('layouts.header')
     @include('frontend.layouts.navbar')
     <div class="position-relative">
-    	<section style="padding: 180px 120px;">
+    	<section style="padding: 140px 0 120px;">
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-12 mb-4">

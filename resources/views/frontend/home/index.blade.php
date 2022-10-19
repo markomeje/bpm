@@ -57,7 +57,7 @@
                         @else
                             <div class="row">
                                 @foreach($properties->take(4) as $property)
-                                    <div class="col-12 col-md-6 col-lg-3 mb-4">
+                                    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
                                         @include('frontend.properties.partials.card')
                                     </div>
                                 @endforeach
@@ -65,7 +65,7 @@
                                     @include('frontend.adverts.partials.fullwidth')
                                 </div>
                                 @foreach($properties->skip(4)->take(4) as $property)
-                                    <div class="col-12 col-md-6 col-lg-3 mb-4">
+                                    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
                                         @include('frontend.properties.partials.card')
                                     </div>
                                 @endforeach
@@ -73,7 +73,7 @@
                                     @include('frontend.adverts.partials.fullwidth')
                                 </div>
                                 @foreach($properties->skip(8)->take(4) as $property)
-                                    <div class="col-12 col-md-6 col-lg-3 mb-4">
+                                    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
                                         @include('frontend.properties.partials.card')
                                     </div>
                                 @endforeach
@@ -81,7 +81,7 @@
                                     @include('frontend.adverts.partials.fullwidth')
                                 </div>
                                 @foreach($properties->skip(12)->take(4) as $property)
-                                    <div class="col-12 col-md-6 col-lg-3 mb-4">
+                                    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
                                         @include('frontend.properties.partials.card')
                                     </div>
                                 @endforeach
@@ -89,7 +89,7 @@
                                     @include('frontend.adverts.partials.fullwidth')
                                 </div>
                                 @foreach($properties->skip(16)->take(4) as $property)
-                                    <div class="col-12 col-md-6 col-lg-3 mb-4">
+                                    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
                                         @include('frontend.properties.partials.card')
                                     </div>
                                 @endforeach
