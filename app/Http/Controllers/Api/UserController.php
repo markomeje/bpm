@@ -112,4 +112,29 @@ class UserController extends Controller
         ]);      
     }
 
+    public function delete()
+    {
+        $user =  User::where(['user_id' => auth()->id()])->first();
+        if (empty($user)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'User not found',
+            ]);
+        }
+
+        $user->status = 'deleted';
+        if($user->update()) {
+            return response()->json([
+                'status' => 1, 
+                'info' => 'Operation successful',
+            ]);
+        }
+            
+        return response()->json([
+            'status' => 0, 
+            'info' => 'Operation failed',
+        ]);
+            
+    }
+
 }

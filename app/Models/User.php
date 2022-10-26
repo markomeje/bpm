@@ -57,6 +57,7 @@ class User extends Authenticatable
         'banned', 
         'suspended', 
         'blocked',
+        'deleted',
     ];
 
     /**
@@ -73,6 +74,13 @@ class User extends Authenticatable
         'moderator',
         'Software Developer',
     ];
+
+    /**
+     */
+    protected static function booted()
+    {
+        // static::deleting(function ($user) {});
+    }
 
     /**
      * Any user may have many permissions
