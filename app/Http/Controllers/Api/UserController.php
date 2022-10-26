@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-use App\Models\{Advert, Credit, Property, Payment, Service, Certification, Material, Profile};
+use App\Models\{Advert, Credit, Property, Payment, Service, Certification, Material, Profile, User};
 use App\Http\Controllers\Controller;
 use \Exception;
 
@@ -114,7 +114,7 @@ class UserController extends Controller
 
     public function delete()
     {
-        $user =  User::where(['user_id' => auth()->id()])->first();
+        $user =  User::find(auth()->id() || 0);
         if (empty($user)) {
             return response()->json([
                 'status' => 0, 
