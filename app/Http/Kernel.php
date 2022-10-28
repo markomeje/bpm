@@ -67,6 +67,7 @@ class Kernel extends HttpKernel
          * Ensures that user sets up profile before performaing any other operation after login.
          */
         'profile.setup' => \App\Http\Middleware\ProfileSetup::class,
+        'user.deleted' => \App\Http\Middleware\DeletedUserMiddleware::class,
 
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,

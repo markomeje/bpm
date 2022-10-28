@@ -112,9 +112,9 @@ class UserController extends Controller
         ]);      
     }
 
-    public function delete()
+    public function delete($id = 0)
     {
-        $user =  User::find(auth()->id() || 0);
+        $user =  User::find($id);
         if (empty($user)) {
             return response()->json([
                 'status' => 0, 
@@ -123,10 +123,11 @@ class UserController extends Controller
         }
 
         $user->status = 'deleted';
-        if($user->update()) {
+        if($user->update() > 0) {
             return response()->json([
                 'status' => 1, 
                 'info' => 'Operation successful',
+                'user' => $user,
             ]);
         }
             

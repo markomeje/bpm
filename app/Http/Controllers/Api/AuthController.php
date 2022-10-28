@@ -30,8 +30,8 @@ class AuthController extends Controller
     {
         $data = request()->all();
         $validator = Validator::make($data, [ 
-            'email' => ['nullable', (new EmailRule), 'unique:users'], 
-            'phone' => ['required', 'unique:users'], 
+            'email' => ['nullable', (new EmailRule)], 
+            'phone' => ['required'], 
             'password' => ['required', 'string'],
             'retype' => ['required', 'same:password'],
             'agree' => ['required', 'string'],
@@ -44,9 +44,47 @@ class AuthController extends Controller
             ]);
         }
 
+        $email = $data['email'] ?? '';
+        $user = User::where(['email' => $email])->first();
+
+        if (!empty($user)) {
+            if ($user->status == 'deleted') {
+                $user->status = 'active';
+                $user->update();
+                return response()->json([
+                    'status' => 1,
+                    'info' => 'You have activated your account again.',
+                    'redirect' => route('login', ['info' => 'activated'])
+                ]);
+            }
+
+            
+            return response()->json([
+                'status' => 0,
+                'info' => 'Email already exists'
+            ]);
+        }
+
+        $user = User::where(['phone' => $data['phone'] ?? ''])->first();
+        if (!empty($user)) {
+            if ($user->status == 'deleted') {
+                $user->status = 'active';
+                $user->update();
+                return response()->json([
+                    'status' => 1,
+                    'info' => 'You have activated your account again.',
+                    'redirect' => route('login', ['info' => 'activated'])
+                ]);
+            }
+
+            return response()->json([
+                'status' => 0,
+                'info' => 'Phone number already exists'
+            ]);
+        }
+
         try {
             DB::beginTransaction();
-            $email = $data['email'] ?? '';
             $user = User::create([
                 'email' => $email,
                 'phone' => $data['phone'],
@@ -129,6 +167,13 @@ class AuthController extends Controller
                 'info' => 'Invalid login details.'
             ]);
         }
+
+        if ($user->status === 'deleted') {
+            return response()->json([
+                'status' => 0,
+                'info' => "Invalid login details.",
+            ]);
+        } 
 
         if (!empty($user->staff)) {
             $status = strtolower($user->status ?? '');

@@ -3,7 +3,7 @@
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 
-// phpinfo();
+// die(password_hash('1234', PASSWORD_DEFAULT));
 
 define('LARAVEL_START', microtime(true));
 

@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Builder;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -76,10 +77,16 @@ class User extends Authenticatable
     ];
 
     /**
+     * The "booted" method of the model.
+     *
+     * @return void
      */
     protected static function booted()
     {
         // static::deleting(function ($user) {});
+        // static::addGlobalScope('deleted', function (Builder $builder) {
+        //     $builder->where('status', '!=', 'deleted');
+        // });
     }
 
     /**

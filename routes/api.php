@@ -52,7 +52,7 @@ Route::domain(env('API_URL'))->group(function() {
             Route::post('/verify', [\App\Http\Controllers\User\CreditsController::class, 'verify'])->name('user.credit.verify');
         });
 
-        Route::post('/account/delete', [\App\Http\Controllers\Api\UserController::class, 'delete'])->name('api.user.delete');
+        Route::post('/account/delete/{id}', [\App\Http\Controllers\Api\UserController::class, 'delete'])->name('api.user.delete');
 
         Route::post('/credits', [\App\Http\Controllers\Api\UserController::class, 'credits'])->name('api.credits');
         Route::post('/payments', [\App\Http\Controllers\Api\UserController::class, 'payments'])->name('api.user.payments');
