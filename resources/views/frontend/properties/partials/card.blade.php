@@ -84,15 +84,18 @@
                 {{ \Str::limit($title, 45) }}
             </a>
         </div>
-        <h4 class="text-theme-color">
+        <h4 class="text-theme-color mb-2">
             {{ $property->currency->symbol ?? 'NGN' }}{{ number_format($property->price) }}
         </h4>
-        <div class="geodir-card-text">
+        <div class="d-flex align-content-center justify-content-between">
             <a href="{{ route('property.category.id.slug', ['category' => $property->category->name ?? 'any', 'id' => $property->id ?? 0, 'slug' => \Str::slug($title)]) }}" class="text-underline text-main-dark">
                 <span class="">
-                    {{ \Str::limit($property->additional, 18) }}
+                    {{ \Str::limit($property->additional, 15) }}
                 </span>
             </a>
+            <div class="text-main-dark">
+                {{ $property->country ? ucwords($property->country->name) : '' }}
+            </div>
         </div>
     </div>
     <div class="card-footer d-flex justify-content-between align-items-center">
@@ -109,17 +112,7 @@
                         <img src="{{ $property->user->profile->image->link }}" class="img-fluid object-cover rounded-circle w-100 h-100 border">
                     @endif
                 </div>
-            </a>
-            <div class="ml-2">
-                <a href="{{ route('account.profile', ['id' => $property->user->profile->id ?? 0, 'name' => \Str::slug($property->user->name)]) }}" class="text-decoration-none d-block">
-                    <small class="text-main-dark">
-                        {{ $property->user ? \Str::limit(ucwords($property->user->name), 7) : 'Our Agent' }}
-                    </small>
-                </a>
-                <small class="text-muted tiny-font">
-                    {{ $property->created_at->diffForHumans() }}
-                </small>
-            </div>      
+            </a>      
         </div>
         <div class="d-flex align-items-center">
             <a href="{{ empty($property->user->email) ? 'javascript:;' : 'mailto:'.$property->user->email }}" class="text-theme-color text-decoration-none d-block md-circle rounded-circle border-theme-color text-center mr-3">

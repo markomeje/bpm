@@ -53,51 +53,41 @@
                     </div>
                     <div class="home-listing">
                         @if(empty($properties->count()))
-                            <div class="alert-info alert">No Properties Yet</div>
+                            <?php $redfinProperties = \App\Helpers\Redfin::properties(['region_id' => '30749', 'region_type' => '11', 'status' => '1', 'num_homes' => '24']); ?>
+                            @if(!empty($redfinProperties['properties']))
+                                <div class="row">
+                                    @foreach($redfinProperties['properties'] as $property)
+                                        <?php $property = $property['homeData']; $photos = $property['photosInfo']; ?>
+                                        @if(!empty($photos['posterFrameUrl']))
+                                            <div class="col-12 col-md-4 col-lg-3 mb-4">
+                                                <?php $address = $property['addressInfo'] ?? []; ?>
+                                                @include('frontend.properties.partials.redfin')
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            @endif
                         @else
-                            <div class="row">
-                                @foreach($properties->take(4) as $property)
+                            <div class="row d-flex flex-wrap flex-unordered">
+                                @foreach($properties->take(12) as $property)
                                     <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
                                         @include('frontend.properties.partials.card')
                                     </div>
                                 @endforeach
-                                <div class="col-12">
-                                    @include('frontend.adverts.partials.fullwidth')
-                                </div>
-                                @foreach($properties->skip(4)->take(4) as $property)
-                                    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-                                        @include('frontend.properties.partials.card')
-                                    </div>
-                                @endforeach
-                                <div class="col-12">
-                                    @include('frontend.adverts.partials.fullwidth')
-                                </div>
-                                @foreach($properties->skip(8)->take(4) as $property)
-                                    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-                                        @include('frontend.properties.partials.card')
-                                    </div>
-                                @endforeach
-                                <div class="col-12">
-                                    @include('frontend.adverts.partials.fullwidth')
-                                </div>
-                                @foreach($properties->skip(12)->take(4) as $property)
-                                    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-                                        @include('frontend.properties.partials.card')
-                                    </div>
-                                @endforeach
-                                <div class="col-12">
-                                    @include('frontend.adverts.partials.fullwidth')
-                                </div>
-                                @foreach($properties->skip(16)->take(4) as $property)
-                                    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-                                        @include('frontend.properties.partials.card')
-                                    </div>
-                                @endforeach
-                                <div class="col-12">
-                                    @include('frontend.adverts.partials.fullwidth')
-                                </div>
+                                <?php $redfinProperties = \App\Helpers\Redfin::properties(['region_id' => '30749', 'region_type' => '11', 'status' => '1', 'num_homes' => '12']); ?>
+                                @if(!empty($redfinProperties['properties']))
+                                    @foreach($redfinProperties['properties'] as $property)
+                                        <?php $property = $property['homeData']; $photos = $property['photosInfo']; ?>
+                                        @if(!empty($photos['posterFrameUrl']))
+                                            <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
+                                                <?php $address = $property['addressInfo'] ?? []; ?>
+                                                @include('frontend.properties.partials.redfin')
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                @endif
                             </div>
-                            <h1 class="text-main-dark">To see all properties, <a href="{{ route('properties') }}">Click here</a></h1>
+                            <h3 class="text-main-dark mb-4">To see more properties, <a href="{{ route('properties') }}">Click here</a></h3>
                         @endif
                     </div>
                 </div>

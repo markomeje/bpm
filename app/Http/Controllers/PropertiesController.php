@@ -8,6 +8,7 @@ use Artesaos\SEOTools\Facades\SEOMeta;
 class PropertiesController extends Controller
 {
     /**
+     * SEO Keywords
      */
     CONST SEO_DESCRIPTION = 'Best Property Market provides Real Estate solutions and access to professional Builders, Artisans, Merchants of Building materials etc. It is a free to register platform for Real Estate dealers to connect with their target market.';
 
@@ -20,7 +21,7 @@ class PropertiesController extends Controller
         SEOMeta::setDescription(self::SEO_DESCRIPTION);
         SEOMeta::addKeyword(['Property', 'Duplexes', 'Flats', 'Semi Detached Duplexes', 'Bungalows', 'Terraces', 'Lands']);
 
-        return view('frontend.properties.index')->with(['properties' => Property::active()->latest('created_at')->where('action', '!=', 'sold')->paginate(24),]);
+        return view('frontend.properties.index')->with(['properties' => Property::active()->latest('created_at')->where('action', '!=', 'sold')->paginate(24)]);
     }
 
     /**
@@ -95,6 +96,14 @@ class PropertiesController extends Controller
         $group = ucwords(Str::headline($group));
         SEOMeta::setTitle(Str::plural($group));
         return view('frontend.properties.group')->with(['properties' => Property::active()->where(['group' => $group])->paginate(16), 'group' => $group]);
+    }
+
+    /**
+     * Get a Property from Redfin properties API
+     */
+    public function redfin($propertyId = 0, $address = '')
+    {
+        return view('frontend.properties.redfin')->with(['property' => '']);
     }
 
 }
