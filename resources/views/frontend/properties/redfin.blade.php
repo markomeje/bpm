@@ -22,48 +22,53 @@
                                 		<?php $formattedType = strtolower(implode(' ', explode('_', $type))); ?>
                                         <div class="mb-4">
                                             <?php $address = $property['addressInfo'] ?? []; $type = $property['propertyType']; $photos = $property['photosInfo']; ?>
-                                            <h4>
+                                            <h3 class="mb-4">
                                             	{{ (ucwords($formattedType).' Located at '.$address['city'].' '.$address['state']).' '.str_replace('_', ' ', $address['countryCode']) }}
-                                            </h4>
+                                            </h3>
                                             <a href="{{ $photos['scanUrl'] }}" class="shadow d-block border mb-4" style="height: 380px;">
                                             	<img src="{{ $photos['posterFrameUrl'] }}" class="img-fluid h-100 w-100 object-cover">
                                             </a>
                                             <div class="row">
-                                            	<div class="col-12 col-md-6">
+                                            	<div class="col-12 col-lg-7">
                                             		<h3 class="text-theme-color mb-3">
                                             			Price ${{ number_format($property['priceInfo']['homePrice']['int64Value']) }}
                                             		</h3>
                                             		<div class="bg-white mb-3 p-4">
                                             			Address: {{ ucwords('Located At '.$address['city'].' '.$address['state']) }}
                                             		</div>
-                                            		<div>
+                                            		<?php $propertyMainInfo = \App\Helpers\Redfin::property($propertyId, $listingId); $mainHouseInfo = (array)$propertyMainInfo['property']['mainHouseInfo'] ?>
+                                            		<div class="mb-3">
                                             			{{ $property['beds']['value'] }} Bedrooms, {{ $property['baths']['value'] }} Bathrooms. Built {{ $property['yearBuilt']['yearBuilt']['value'] }}
                                             		</div>
+                                            		<div class="mb-4 text-dark">
+                                            			{{ $mainHouseInfo['marketingRemarks'][0]['marketingRemark'] }}
+                                            		</div>
                                             	</div>
-                                            	<div class="col-12 col-md-6">
-                                            		<?php $agentData = \App\Helpers\Redfin::agent($propertyId, $listingId); ?>
-												    @if(!empty($agentData['agent']))
-												        <?php $agent = (array)$agentData['agent']; $personalData = $agent['agent'] ?? []; ?>
-												        <div class="">
-												        	<h3 class="text-dark">Agent Details</h3>
-												        </div>
-												        <div class="mb-3">
-												        	{{ ucwords($personalData['displayName']) }} from {{ ucwords($agent['city']) }}
-												        </div>
-											            <div class="d-flex align-items-center">
-											                <a href="tel:{{ $agent['phoneNumber'] }}" class="text-decoration-none position-relative d-block md-circle rounded-circle border border-secondary text-center mr-3">
-											                    <div class="position-absolute rounded-circle bg-success" style="height: 18px; width: 18px; top: 2px; right: 80%;"></div>
-											                    <div class="text-success " style="margin-top: 2px;">
-											                        <i class="icofont-phone"></i>
-											                    </div>
-											                </a>
-											                <a href="tel:{{ $agent['profilePhoneNumber'] }}" class="text-decoration-none d-block md-circle rounded-circle border border-secondary text-center">
-											                    <div class="text-dark" style="margin-top: 2px;">
-											                        <i class="icofont-phone"></i>
-											                    </div>
-											                </a>
-											            </div>
-												    @endif
+                                            	<div class="col-12 col-lg-5">
+                                            		<div class="p-4 card-raduis bg-white">
+	                                            		<?php $agentData = \App\Helpers\Redfin::agent($propertyId, $listingId); ?>
+													    @if(!empty($agentData['agent']))
+													        <?php $agent = (array)$agentData['agent']; $personalData = $agent['agent'] ?? []; ?>
+													        <div class="">
+													        	<h4 class="text-dark">Agent Details</h4>
+													        </div>
+													        <div class="mb-3">
+													        	{{ ucwords($personalData['displayName']) }} from {{ ucwords($agent['city']) }}
+													        </div>
+												            <div class="d-flex align-items-center">
+												                <a href="tel:{{ $agent['phoneNumber'] }}" class="text-decoration-none position-relative d-block md-circle rounded-circle border border-success text-center mr-3">
+												                    <div class="text-success " style="margin-top: 3px;">
+												                        <i class="icofont-phone"></i>
+												                    </div>
+												                </a>
+												                <a href="tel:{{ $agent['profilePhoneNumber'] }}" class="text-decoration-none d-block md-circle rounded-circle border border-secondary text-center">
+												                    <div class="text-dark" style="margin-top: 3px;">
+												                        <i class="icofont-phone"></i>
+												                    </div>
+												                </a>
+												            </div>
+													    @endif
+												    </div>
                                             	</div>
                                             </div>
                                         </div>

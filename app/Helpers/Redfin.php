@@ -108,7 +108,7 @@ class Redfin
             $property = (array)$response->json();
             return [
                 'status' => 1,
-                'property' => $property['payload'] ?? null,
+                'property' => (array)($property['payload'] ?? []),
             ];
         } catch(Exception $error){
             Log::error($error->getMessage());
