@@ -53,7 +53,7 @@
                     </div>
                     <div class="home-listing">
                         @if(empty($properties->count()))
-                            <?php $redfinProperties = \App\Helpers\Redfin::properties(['region_id' => '30749', 'region_type' => '11', 'status' => '1', 'num_homes' => '24']); ?>
+                            <?php $redfinProperties = \App\Helpers\Redfin::properties(['region_id' => '30749', 'region_type' => '11', 'status' => '1', 'num_homes' => '12']); ?>
                             @if(!empty($redfinProperties['properties']))
                                 <div class="row">
                                     @foreach($redfinProperties['properties'] as $property)
@@ -69,12 +69,12 @@
                             @endif
                         @else
                             <div class="row d-flex flex-wrap flex-unordered">
-                                @foreach($properties->take(12) as $property)
+                                @foreach($properties->take(6) as $property)
                                     <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
                                         @include('frontend.properties.partials.card')
                                     </div>
                                 @endforeach
-                                <?php $region_type = 11; $region_id = 30749; $status = '1'; $limit = 12; $redfinProperties = \App\Helpers\Redfin::properties(['region_id' => $region_id, 'region_type' => $region_type, 'status' => $status, 'num_homes' => $limit]); ?>
+                                <?php $region_type = 11; $region_id = 30749; $status = '1'; $limit = 8; $redfinProperties = \App\Helpers\Redfin::properties(['region_id' => $region_id, 'region_type' => $region_type, 'status' => $status, 'num_homes' => $limit]); ?>
                                 @if(!empty($redfinProperties['properties']))
                                     @foreach($redfinProperties['properties'] as $property)
                                         <?php $property = $property['homeData']; $photos = $property['photosInfo'] ?? []; ?>
@@ -86,6 +86,11 @@
                                         @endif
                                     @endforeach
                                 @endif
+                                @foreach($properties->skip(6)->take(9) as $property)
+                                    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
+                                        @include('frontend.properties.partials.card')
+                                    </div>
+                                @endforeach
                             </div>
                             <h3 class="text-main-dark mb-4">To see more properties, <a href="{{ route('properties') }}">Click here</a></h3>
                         @endif

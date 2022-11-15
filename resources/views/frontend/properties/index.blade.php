@@ -40,30 +40,28 @@
                             <div class="alert alert-info mb-4">+{{ \App\Models\Property::count() }} Global Properties</div>
                             <div class="mb-4">
                                 <div class="row">
-                                    @foreach($properties->take(6) as $property)
+                                    @foreach($properties->take(4) as $property)
                                         <div class="col-12 col-md-6 col-lg-4 mb-4">
                                             @include('frontend.properties.partials.card')
                                         </div>
                                     @endforeach
-                                    <div class="col-12">
-                                        @include('frontend.adverts.partials.fullwidth')
-                                    </div>
-                                    @foreach($properties->skip(6)->take(6) as $property)
+                                    <?php $region_type = 11; $region_id = 30749; $status = '1'; $limit = 8; $redfinProperties = \App\Helpers\Redfin::properties(['region_id' => $region_id, 'region_type' => $region_type, 'status' => $status, 'num_homes' => $limit]); ?>
+                                    @if(!empty($redfinProperties['properties']))
+                                        @foreach($redfinProperties['properties'] as $property)
+                                            <?php $property = $property['homeData']; $photos = $property['photosInfo'] ?? []; ?>
+                                            @if(!empty($photos['posterFrameUrl']))
+                                                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                                                    <?php $address = $property['addressInfo'] ?? []; $listingId = $property['listingId']['value'] ?? 0; ?>
+                                                    @include('frontend.properties.partials.redfin')
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                    @foreach($properties->skip(4)->take(6) as $property)
                                         <div class="col-12 col-md-6 col-lg-4 mb-4">
                                             @include('frontend.properties.partials.card')
                                         </div>
                                     @endforeach
-                                    <div class="col-12">
-                                        @include('frontend.adverts.partials.fullwidth')
-                                    </div>
-                                    @foreach($properties->skip(12)->take(6) as $property)
-                                        <div class="col-12 col-md-6 col-lg-4 mb-4">
-                                            @include('frontend.properties.partials.card')
-                                        </div>
-                                    @endforeach
-                                    <div class="col-12">
-                                        @include('frontend.adverts.partials.fullwidth')
-                                    </div>
                                 </div>
                                 {{ $properties->appends(request()->query())->links('vendor.pagination.default') }}
                             </div>
