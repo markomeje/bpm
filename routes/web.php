@@ -51,7 +51,7 @@ Route::middleware(['web'])->domain(env('APP_URL'))->group(function() {
 
     Route::prefix('properties')->group(function () {
         Route::get('/', [\App\Http\Controllers\PropertiesController::class, 'index'])->name('properties');
-        Route::get('/global/{propertyId}/{address}', [\App\Http\Controllers\PropertiesController::class, 'redfin'])->name('global.properties');
+        Route::get('/global/{propertyId}', [\App\Http\Controllers\PropertiesController::class, 'redfin'])->name('global.properties');
 
         Route::post('/property/like', [\App\Http\Controllers\Api\PropertiesController::class, 'like'])->name('property.like');
 

@@ -18,6 +18,7 @@ class Redfin
      */
 	public static function properties($params = []) {
         try{
+            $params = array_merge($params, ['uipt' => '1,2,3,4,7,8']);
             $response = Http::withHeaders([
                 'X-RapidAPI-Key' => env('X_RAPID_API_KEY'),
                 'X-RapidAPI-Host' => env('X_RAPID_API_REDFIN_HOST'),
@@ -67,16 +68,53 @@ class Redfin
                 ];
             }
 
-            $data = $response->json();
+            $agent = (array)$response->json();
             return [
                 'status' => 1,
-                'agent' => $data,
+                'agent' => $agent['payload'] ?? null,
             ];
         } catch(Exception $error){
             Log::error($error->getMessage());
             return [
                 'status' => 0,
                 'agent' => null,
+                'error' => $error->getMessage()
+            ];
+        }
+          
+    }
+
+    /**
+     * @redfin
+     * Get property details
+     */
+    public static function property($propertyId = 0, $listingId = 0) 
+    {
+        try{
+            $params = ['propertyId' => $propertyId, 'listingId' => $listingId];
+            $response = Http::withHeaders([
+                'X-RapidAPI-Key' => env('X_RAPID_API_KEY'),
+                'X-RapidAPI-Host' => env('X_RAPID_API_REDFIN_HOST'),
+            ])->timeout(self::$timeout)->accept('application/json')->get('https://unofficial-redfin.p.rapidapi.com/properties/get-main-info', $params);
+
+            if ($response->failed()) {
+                return [
+                    'status' => 0,
+                    'property' => null,
+                    'error' => $response->json()
+                ];
+            }
+
+            $property = (array)$response->json();
+            return [
+                'status' => 1,
+                'property' => $property['payload'] ?? null,
+            ];
+        } catch(Exception $error){
+            Log::error($error->getMessage());
+            return [
+                'status' => 0,
+                'property' => null,
                 'error' => $error->getMessage()
             ];
         }

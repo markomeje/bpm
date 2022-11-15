@@ -1,11 +1,11 @@
 <div class="card border-0 bg-white w-100 card-raduis position-relative">
     <?php $propertyId = $property['propertyId'] ?? 0; $type = $property['propertyType']; $city = strtolower($address['city'] ?? ''); $state = strtolower($address['state'] ?? ''); $street = strtolower($address['formattedStreetLine'] ?? '') ?>
-    <a href="{{ route('global.properties', ['propertyId' => $propertyId, 'address' => \Str::slug($street)]) }}" class="card-img-top d-block position-relative" style="height: 280px;">
+    <a href="{{ route('global.properties', ['propertyId' => $propertyId, 'region_id' => $region_id ?? 30749, 'region_type' => $region_type ?? 11, 'status' => $status ?? '1', 'limit' => $limit ?? 12, 'listingId' => $listingId ?? 0]) }}" class="card-img-top d-block position-relative" style="height: 280px;">
         <img src="{{ $photos['posterFrameUrl'] }}" class="img-fluid h-100 w-100 object-cover">
     </a>
     <div class="card-body">
         <div class="position-relative d-flex mb-3">
-            <a href="{{ route('global.properties', ['propertyId' => $propertyId, 'address' => \Str::slug($street)]) }}" class="text-main-dark text-underline font-weight-bolder">
+            <a href="{{ route('global.properties', ['propertyId' => $propertyId, 'region_id' => $region_id ?? 30749, 'region_type' => $region_type ?? 11, 'status' => $status ?? '1', 'limit' => $limit ?? 12, 'listingId' => $listingId ?? 0]) }}" class="text-main-dark text-underline font-weight-bolder">
                 {{ \Str::limit((ucwords(strtolower(implode(' ', explode('_', $type)))).' Located at '.$address['formattedStreetLine'].' '.$address['city']), 45) }}
             </a>
         </div>
@@ -18,14 +18,14 @@
             <div class="text-theme-color">
                 <i class="icofont-location-pin"></i>
             </div>
-            <a href="{{ route('global.properties', ['propertyId' => $propertyId, 'address' => \Str::slug($street)]) }}" class="text-underline text-main-dark">
-                {{ ucwords($city) }}, United States
+            <a href="{{ route('global.properties', ['propertyId' => $propertyId, 'region_id' => $region_id ?? 30749, 'region_type' => $region_type ?? 11, 'status' => $status ?? '1', 'limit' => $limit ?? 12, 'listingId' => $listingId ?? 0]) }}" class="text-underline text-main-dark">
+                {{ ucwords($city) }}, {{ $address['countryCode'] ? str_replace('_', ' ', $address['countryCode']) : 'United States' }}
             </a>
         </div>
     </div>
-    <?php $agentData = \App\Helpers\Redfin::agent($propertyId, $property['listingId']['value']);; ?>
+    <?php $agentData = \App\Helpers\Redfin::agent($propertyId, $listingId); ?>
     @if(!empty($agentData['agent']))
-        <?php $agent = (array)$agentData['agent']['payload']; ?>
+        <?php $agent = (array)$agentData['agent']; ?>
         <div class="card-footer bg-dark d-flex justify-content-between align-items-center" style="border-radius: 0 0 15px 15px;">
             <div>
                 <div class="rounded-circle lg-circle m-0 d-block">

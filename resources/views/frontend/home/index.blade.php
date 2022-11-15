@@ -74,13 +74,13 @@
                                         @include('frontend.properties.partials.card')
                                     </div>
                                 @endforeach
-                                <?php $redfinProperties = \App\Helpers\Redfin::properties(['region_id' => '30749', 'region_type' => '11', 'status' => '1', 'num_homes' => '12']); ?>
+                                <?php $region_type = 11; $region_id = 30749; $status = '1'; $limit = 12; $redfinProperties = \App\Helpers\Redfin::properties(['region_id' => $region_id, 'region_type' => $region_type, 'status' => $status, 'num_homes' => $limit]); ?>
                                 @if(!empty($redfinProperties['properties']))
                                     @foreach($redfinProperties['properties'] as $property)
-                                        <?php $property = $property['homeData']; $photos = $property['photosInfo']; ?>
+                                        <?php $property = $property['homeData']; $photos = $property['photosInfo'] ?? []; ?>
                                         @if(!empty($photos['posterFrameUrl']))
                                             <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-                                                <?php $address = $property['addressInfo'] ?? []; ?>
+                                                <?php $address = $property['addressInfo'] ?? []; $listingId = $property['listingId']['value'] ?? 0; ?>
                                                 @include('frontend.properties.partials.redfin')
                                             </div>
                                         @endif

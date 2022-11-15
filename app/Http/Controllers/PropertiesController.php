@@ -101,9 +101,9 @@ class PropertiesController extends Controller
     /**
      * Get a Property from Redfin properties API
      */
-    public function redfin($propertyId = 0, $address = '')
+    public function redfin($propertyId = 0, $listingId = 0)
     {
-        return view('frontend.properties.redfin')->with(['property' => '']);
+        return view('frontend.properties.redfin')->with(['property' => '', 'propertyId' => $propertyId]);
     }
 
 }

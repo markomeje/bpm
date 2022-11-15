@@ -14,7 +14,6 @@ class HomeController extends Controller
         SEOMeta::addKeyword(['Buy', 'Rent', 'Sell', 'Real Estate', 'Properties']);
 
         $properties = Property::latest('created_at')->where('action', '!=', 'sold')->where(['status' => 'active'])->paginate(27);
-        //dd($redfin);
         return view('frontend.home.index')->with(['title' => env('APP_NAME'), 'properties' => $properties]);
     }
 }

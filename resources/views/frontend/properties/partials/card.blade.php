@@ -90,12 +90,9 @@
         <div class="d-flex align-content-center justify-content-between">
             <a href="{{ route('property.category.id.slug', ['category' => $property->category->name ?? 'any', 'id' => $property->id ?? 0, 'slug' => \Str::slug($title)]) }}" class="text-underline text-main-dark">
                 <span class="">
-                    {{ \Str::limit($property->additional, 15) }}
+                    {{ \Str::limit(ucfirst($property->additional), 20) }}
                 </span>
             </a>
-            <div class="text-main-dark">
-                {{ $property->country ? ucwords($property->country->name) : '' }}
-            </div>
         </div>
     </div>
     <div class="card-footer d-flex justify-content-between align-items-center">

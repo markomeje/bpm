@@ -7,7 +7,7 @@
 					<div class="alert alert-info">No Properties Found</div>
 				@else
 					<div class="row">
-						<div class="col-12 col-md-7 col-lg-9">
+						<div class="col-12 col-lg-9">
 							<div class="alert alert-info mb-4">
 								{{ $name == 'land' ? 'Landed' : ucfirst($name) }} Properties ({{ $properties->total() }})
 							</div>
@@ -20,7 +20,7 @@
 							</div>
 							{{ $properties->appends(request()->query())->links('vendor.pagination.default') }}
 						</div>
-						<div class="col-12 col-md-5 col-lg-3">
+						<div class="col-12 col-lg-3">
 							<div class="mb-4">
 								@include('frontend.properties.partials.categories')
 							</div>
