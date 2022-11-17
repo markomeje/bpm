@@ -17,22 +17,22 @@
 						<h5 class="text-main-dark mb-3 rounded">To send a message, <a href="{{ route('contact') }}" class="text-decoration-underline">Click Here</a>. To call us now, <a href="tel:{{ env('OFFICE_PHONE') }}" class="text-decoration-underline">Click Here</a>.</h5>
 					</div>
 					<div class="d-flex mb-4">
-						<a href="" class="d-block bg-main-dark text-center rounded md-circle  text-decoration-none mr-3">
+						<a href="https://web.facebook.com/bestpropertymarket1" class="d-block bg-main-dark text-center rounded md-circle  text-decoration-none mr-3">
 							<div class="text-white mt-1">
 								<i class="icofont-facebook"></i>
 							</div>
 						</a>
-						<a href="" class="d-block bg-main-dark text-center rounded md-circle  text-decoration-none mr-3">
+						<a href="https://www.instagram.com/bestpropertymarket/" class="d-block bg-main-dark text-center rounded md-circle  text-decoration-none mr-3">
 							<div class="text-white mt-1">
 								<i class="icofont-instagram"></i>
 							</div>
 						</a>
-						<a href="" class="d-block bg-main-dark text-center rounded md-circle  text-decoration-none mr-3">
+						<a href="https://twitter.com/Bpmarket1" class="d-block bg-main-dark text-center rounded md-circle  text-decoration-none mr-3">
 							<div class="text-white mt-1">
 								<i class="icofont-twitter"></i>
 							</div>
 						</a>
-						<a href="" class="d-block bg-main-dark text-center rounded md-circle  text-decoration-none mr-3">
+						<a href="https://wtsi.me/23409062972785" class="d-block bg-main-dark text-center rounded md-circle  text-decoration-none mr-3">
 							<div class="text-white mt-1">
 								<i class="icofont-whatsapp"></i>
 							</div>
@@ -46,7 +46,7 @@
 								</a>
 							</div>
 							<div class="col-6 col-md-5 col-lg-4">
-								<a href="javascript:;" class="d-block w-100">
+								<a href="https://play.google.com/store/apps/details?id=com.bestpropertymarket.bestpropertymarket" class="d-block w-100">
 									<img src="/images/assets/google.png" class="img-fluid object-cover w-100">
 								</a>
 							</div>

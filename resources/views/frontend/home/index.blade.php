@@ -148,9 +148,11 @@
                 @else
                     <div class="row">
                         @foreach($realtors as $realtor)
-                            <div class="col-12 col-md-4 col-lg-3 mb-4">
-                                @include('frontend.realtors.partials.card')
-                            </div>
+                            @if(!empty($realtor->image))
+                                <div class="col-12 col-md-4 col-lg-3 mb-4">
+                                    @include('frontend.realtors.partials.card')
+                                </div>
+                            @endif
                         @endforeach
                     </div>  
                 @endif
