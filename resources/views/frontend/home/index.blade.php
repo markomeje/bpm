@@ -142,17 +142,17 @@
                     <h5 class="text-theme-color">Global Realtors</h5>
                     <h2 class="text-main-dark">Meet Our Realtors</h2>
                 </div>
-                @set('realtors', \App\Models\Profile::latest()->where(['role' => 'realtor'])->take(4)->get())
+                @set('realtors', \App\Models\Profile::with(['image'])->where(['role' => 'realtor'])->inRandomOrder()->paginate(4))
+                {{-- {{ dd($realtors) }} --}}
                 @if(empty($realtors))
                     <div class="alert alert-danger">No Realtors Yet</div>
                 @else
                     <div class="row">
                         @foreach($realtors as $realtor)
-                            @if(!empty($realtor->image))
                                 <div class="col-12 col-md-4 col-lg-3 mb-4">
                                     @include('frontend.realtors.partials.card')
                                 </div>
-                            @endif
+                            {{-- @endif --}}
                         @endforeach
                     </div>  
                 @endif
