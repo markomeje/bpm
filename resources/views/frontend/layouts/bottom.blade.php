@@ -41,7 +41,7 @@
 					<div class="">
 						<div class="row">
 							<div class="col-6 col-md-5 col-lg-4">
-								<a href="javascript:;" class="d-block w-100">
+								<a href="https://apps.apple.com/ng/app/bpmarket/id6443850733" class="d-block w-100">
 									<img src="/images/assets/apple.png" class="img-fluid object-cover w-100">
 								</a>
 							</div>
