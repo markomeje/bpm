@@ -12,10 +12,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        if(config('app.env') !== 'local') {
+        // if(config('app.env') !== 'local') {
             $this->call(MembershipsSeeder::class);
             $this->call(UsersSeeder::class);  
-            $this->call(CurrenciesSeeder::class);
+            // $this->call(CurrenciesSeeder::class);
             
             $this->call(PropertiesSeeder::class);
             $this->call(BlogsSeeder::class);
@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
             $this->call(ProfilesSeeder::class);
             $this->call(SocialsSeeder::class);
             $this->call(MembershipsSeeder::class);
-        }
+        // }
 
         $this->call(UsersSeeder::class);
         $this->call(CountriesSeeder::class);
