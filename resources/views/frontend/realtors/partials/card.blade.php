@@ -1,5 +1,5 @@
 <div class="card p-0 border-0 shadow-sm position-relative">
-	@set('username', empty($realtor->user) ? 'no-name' : $realtor->user->name)
+	@set('username', empty($realtor->user) ? 'no-name' : ($realtor->user->name ?? 'no-name'))
 	<div class="position-relative" style="height: 240px;">
 		<a href="{{ route('account.profile', ['id' => $realtor->id ?? 0, 'name' => \Str::slug($username)]) }}" class="text-decoration-none w-100 h-100 d-block">
 			<img src="{{ empty($realtor->image) ? '/images/assets/avatar.png' : $realtor->image->link }}" class="img-fluid object-cover h-100 w-100">
