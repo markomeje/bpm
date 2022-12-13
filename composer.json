@@ -14,6 +14,7 @@
         "fruitcake/laravel-cors": "^2.0",
         "geoip2/geoip2": "~2.1",
         "guzzlehttp/guzzle": "^7.4",
+        "halaxa/json-machine": "^1.1",
         "intervention/image": "^2.7",
         "jrm2k6/cloudder": "0.4.*",
         "kslimani/laravel-geo": "^1.0",

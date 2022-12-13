@@ -1,6 +1,6 @@
 <?php $role = auth()->user()->profile ? auth()->user()->profile->role : null; ?>
 <div class="col-6 mb-4">
-    <div class="icon-raduis alert bg-pink position-relative m-0">
+    <div class="icon-raduis alert bg-info position-relative m-0">
         <div class="py-2">
             <div class="d-flex justify-content-between align-items-center">
                 <h5 class="text-main-dark text-shadow-white m-0">

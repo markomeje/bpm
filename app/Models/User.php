@@ -82,12 +82,7 @@ class User extends Authenticatable
      * @return void
      */
     protected static function booted()
-    {
-        // static::deleting(function ($user) {});
-        // static::addGlobalScope('deleted', function (Builder $builder) {
-        //     $builder->where('status', '!=', 'deleted');
-        // });
-    }
+    {}
 
     /**
      * Any user may have many permissions
@@ -208,4 +203,5 @@ class User extends Authenticatable
     {
         return $this->hasOne(Staff::class);
     }
+    
 }

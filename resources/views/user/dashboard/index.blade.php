@@ -10,7 +10,8 @@
                     </a>
                 @endif
             @endif
-            @if(!empty(auth()->user()->name))
+            <?php $user = auth()->user(); ?>
+            @if(!empty($user->name))
                 <div class="alert-info alert mb-4 d-flex justify-content-between al;align-items-center">
                     <div class="">
                         <span class="mr-2">Welcome</span>
@@ -25,6 +26,23 @@
                     <div class="row">
                         @include('user.dashboard.partials.panels')
                     </div>
+                    @if(empty($user->subscription))
+                        <div class="alert alert-danger">No Subscription. <a href="javascript:;">Subscribe Here</a></div>
+                    @else
+                        <?php $subscription = $user->subscription; ?>
+                        <div class="row">
+                            <div class="col-12 mb-4">
+                                <div class="icon-raduis alert bg-info position-relative m-0>
+                                    <div class="">
+                                        <h5 class="text-white">Membership Subscription</h5>
+                                        <h4 class="text-white m-0">
+                                            {{ dd($subscription) }}
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                     {{-- Advert section starts --}}
                     {{-- <div class="">
                         <div class="d-flex justify-content-between align-items-center alert alert-info mb-4 icon-raduis">
@@ -77,15 +95,15 @@
                             <div class="alert alert-warning mb-4">No properties listed yet</div>
                         @else
                             <div class="row">
-                                @foreach($properties as $property)
+                                @foreach($properties->take(4) as $property)
                                     <div class="col-12 col-md-4 col-lg-6 mb-4">
                                         @include('user.properties.partials.card')
                                     </div>
                                 @endforeach
                             </div>
-                            @if($properties->total() > 4)
-                                <a href="{{ route('user.properties') }}" class="alert alert-info mb-4 d-block">See all listed properties</a>
-                            @endif
+                            <div class="alert alert-info mb-4">
+                                <a href="{{ route('user.properties') }}" class="d-block">See All Your Properties</a>
+                            </div>
                         @endif
                     </div>   
                 </div>
