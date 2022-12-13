@@ -108,10 +108,16 @@
                         </div>
                     </li>
                     <li class="mr-3">
+                        <a href="{{ route('memberships') }}" class="text-decoration-none">
+                            <small class="text-main-dark">Membership</small>
+                        </a>
+                    </li>
+                    <li class="mr-3">
                         <a href="{{ route('news') }}" class="text-decoration-none">
                             <small class="text-main-dark">News</small>
                         </a>
                     </li>
+
                     <li class="mr-3">
                         <a href="{{ route('contact') }}" class="text-decoration-none">
                             <small class="text-main-dark">Contact</small>

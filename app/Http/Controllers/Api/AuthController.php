@@ -24,7 +24,7 @@ class AuthController extends Controller
 	/**
      * @param $request
      * 
-     * @return json
+     * @return json 
      */
     public function signup()
     {

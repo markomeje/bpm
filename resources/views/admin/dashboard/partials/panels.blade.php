@@ -142,4 +142,25 @@
         </div>
     </div>
 @endcan
+@can('view', ['staff'])
+    <div class="col-12 col-md-6 col-lg-3 mb-4">
+        <div class="card card-raduis border-0 shadow-sm" >
+            <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <small class="px-3 tiny-font py-1 bg-success rounded-pill">
+                        <small class="text-white">{{ '+5' }}</small> 
+                    </small>
+                </div>
+                <div class="">
+                    <div class="text-main-dark">
+                        <span>
+                            {{ number_format(\App\Models\Membership::count()) }}
+                        </span>
+                    </div>
+                    <a href="{{ route('admin.staff') }}" class="d-flex justify-content-between align-items-center text-main-dark text-decoration-none">Memberships</a>
+                </div>
+            </div>
+        </div>
+    </div>
+@endcan
 
