@@ -133,8 +133,7 @@ class ImagesController extends Controller
 
         if ($validator->fails()) {
             return response()->json([
-                'status' => 0, 
-                'info' => 'Invalid Operation.',
+                'status' => 0,
                 'error' => $validator->errors()
             ]);
         }

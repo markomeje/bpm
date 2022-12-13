@@ -53,24 +53,7 @@
                     </div>
                     <div class="home-listing">
                         <div class="row d-flex flex-wrap flex-unordered">
-                            @foreach($properties->take(6) as $property)
-                                <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-                                    @include('frontend.properties.partials.card')
-                                </div>
-                            @endforeach
-                            <?php $region_type = 11; $region_id = 30749; $status = '1'; $limit = 8; $redfinProperties = \App\Helpers\Redfin::properties(['region_id' => $region_id, 'region_type' => $region_type, 'status' => $status, 'num_homes' => $limit]); ?>
-                            @if(!empty($redfinProperties['properties']))
-                                @foreach($redfinProperties['properties'] as $property)
-                                    <?php $property = $property['homeData']; $photos = $property['photosInfo'] ?? []; ?>
-                                    @if(!empty($photos['posterFrameUrl']))
-                                        <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-                                            <?php $address = $property['addressInfo'] ?? []; $listingId = $property['listingId']['value'] ?? 0; ?>
-                                            @include('frontend.properties.partials.redfin')
-                                        </div>
-                                    @endif
-                                @endforeach
-                            @endif
-                            @foreach($properties->skip(6)->take(9) as $property)
+                            @foreach($properties->take(12) as $property)
                                 <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
                                     @include('frontend.properties.partials.card')
                                 </div>
