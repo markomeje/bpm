@@ -19,13 +19,6 @@ class Timing
 	public $expired = false;
 
 	/**
-	 * Expiry date
-	 * 
-	 * @type date format
-	 */
-	public $expiry = null;
-
-	/**
 	 * Timing duration (e.g., 200days)
 	 * 
 	 * @type int

@@ -68,8 +68,8 @@ class DashboardController extends Controller
 
                 $paymentid = $payment->id ?? 0;
                 $subscription = Subscription::where(['reference' => $reference])->first();
-                $planid = $payment->product_id ?? 0;
-                $plan = Membership::find($planid);
+                $plan_id = $payment->product_id ?? 0;
+                $plan = Membership::find($plan_id);
                 $duration = $plan->duration ?? 0;
                 
                 if (empty($subscription)) { // ie it's a new subscription
@@ -78,7 +78,7 @@ class DashboardController extends Controller
                         'expiry' => $now->addDays($duration)->format('Y-m-d H:i:s'),
                         'user_id' => auth()->id(),
                         'reference' => $reference,
-                        'membership_id' => $planid,
+                        'membership_id' => $plan_id,
                         'duration' => $duration,
                         'status' => 'active',
                         'payment_id' => $paymentid,
@@ -91,7 +91,7 @@ class DashboardController extends Controller
                     $subscription->expiry = $now->addDays($totaldays)->format('Y-m-d H:i:s');
                     $subscription->duration = $totaldays;
                     $subscription->renewals = $subscription->renewals + 1;
-                    $subscription->membership_id = $planid;
+                    $subscription->membership_id = $plan_id;
                     $subscription->payment_id = $paymentid;
                     $subscription->update();
                 }

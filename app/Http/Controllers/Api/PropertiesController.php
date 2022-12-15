@@ -12,11 +12,26 @@ use DB;
 
 class PropertiesController extends Controller
 {
+
+    const FREE_LISTING = 2;
 	/**
      * Api add Property
      */
     public function add()
     {
+        $user = auth()->user();
+        $listings = $user->properties()->exists() ? $user->properties->count() : 0;
+        if(empty($user->subscription)) {
+            if($listings >= self::FREE_LISTING) {
+                return response()->json([
+                    'status' => 0,
+                    'info' => 'Maximum free listing reached. Subscribe to a membership plan.'
+                ]);
+            }
+        }
+
+        // dd($user->subscription->membership);
+
         $data = request()->all();
         $validator = Validator::make($data, [
             'country' => ['required', 'integer'],

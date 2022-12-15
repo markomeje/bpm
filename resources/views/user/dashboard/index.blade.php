@@ -27,17 +27,28 @@
                         @include('user.dashboard.partials.panels')
                     </div>
                     @if(empty($user->subscription))
-                        <div class="alert alert-danger">No Subscription. <a href="javascript:;">Subscribe Here</a></div>
+                    @include('user.subscriptions.partials.subscribe')
+                        <div class="alert alert-danger">No Subscription. <a href="javascript:;" data-toggle="modal" data-target="#membership-subscription">Subscribe Here</a></div>
                     @else
-                        <?php $subscription = $user->subscription; ?>
+                        <?php $subscription = $user->subscription; $timing = \App\Helpers\Timing::calculate($subscription->duration, $subscription->expiry, $subscription->started); ?>
                         <div class="row">
                             <div class="col-12 mb-4">
-                                <div class="icon-raduis alert bg-info position-relative m-0>
-                                    <div class="">
-                                        <h5 class="text-white">Membership Subscription</h5>
-                                        <h4 class="text-white m-0">
-                                            {{ dd($subscription) }}
-                                        </h4>
+                                <div class="icon-raduis alert bg-info position-relative m-0 py-4">
+                                    <div class="mb-3">
+                                        <h5 class="text-white">{{ ucfirst($subscription->membership->name) }} Membership</h5>
+                                    </div>
+                                    <div class="p-2 border mb-3">
+                                        <div class="progress" style="height: 10px;">
+                                            <div class="progress-bar m-0 bg-{{ $timing->progress() >= 90 ? 'danger' : 'dark' }}"  role="progressbar" style="width: {{ $timing->progress() }}%;" aria-valuenow="{{ $timing->progress() }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="text-white">
+                                            {{ $timing->daysleft() }} Days Left
+                                        </div>
+                                        <div class="text-white">
+                                            {{ $timing->progress() }}% Progress
+                                        </div>
                                     </div>
                                 </div>
                             </div>
