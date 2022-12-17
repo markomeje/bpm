@@ -26,7 +26,8 @@ class Membership extends Model
      * @var array
      */
     protected $fillable = [
-        'price', 
+        'price',
+        'package_id',
         'duration', 
         'name', 
         'paidlisting', 
@@ -62,5 +63,13 @@ class Membership extends Model
     public function subscriptions()
     {
         return $this->hasMany(Subscription::class);
+    }
+
+     /**
+     * A membership plan belongs to a particular package
+     */
+    public function package()
+    {
+        return $this->belongsTo(Package::class);
     }
 }

@@ -148,7 +148,7 @@
             <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between mb-3">
                     <small class="px-3 tiny-font py-1 bg-success rounded-pill">
-                        <small class="text-white">{{ '+5' }}</small> 
+                        <small class="text-white">+{{ \App\Models\Subscription::count() }} Subs</small> 
                     </small>
                 </div>
                 <div class="">
@@ -157,7 +157,7 @@
                             {{ number_format(\App\Models\Membership::count()) }}
                         </span>
                     </div>
-                    <a href="{{ route('admin.staff') }}" class="d-flex justify-content-between align-items-center text-main-dark text-decoration-none">Memberships</a>
+                    <a href="{{ route('admin.memberships') }}" class="d-flex justify-content-between align-items-center text-main-dark text-decoration-none">Memberships</a>
                 </div>
             </div>
         </div>

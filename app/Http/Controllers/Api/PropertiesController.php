@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 use App\Models\{Credit, Property, Country, Image, Promotion, Social, Profile};
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
-use App\Helpers\Cloudinary;
+use App\Helpers\{Cloudinary, Timing};
 use \Carbon\Carbon;
 use \Exception;
 use Validator;
@@ -13,7 +13,7 @@ use DB;
 class PropertiesController extends Controller
 {
 
-    const FREE_LISTING = 2;
+    const FREE_LISTING = 5;
 	/**
      * Api add Property
      */
@@ -28,10 +28,39 @@ class PropertiesController extends Controller
                     'info' => 'Maximum free listing reached. Subscribe to a membership plan.'
                 ]);
             }
+        }else {
+            $subscription = $user->subscription;
+            if (empty($subscription->membership)) { 
+                return response()->json([
+                    'status' => 0,
+                    'info' => "Invalid membership subscription."
+                ]);
+            }
+
+            if('active' !== strtolower($subscription->status)) {
+                return response()->json([
+                    'status' => 0,
+                    'info' => "No active subscription."
+                ]);
+            }
+
+            $timing = Timing::calculate($subscription->duration, $subscription->expiry, $subscription->started);
+            if($timing->expired()) {
+                return response()->json([
+                    'status' => 0,
+                    'info' => "Subscription have expired."
+                ]);
+            }
+
+            $membership = $subscription->membership;
+            if($listings >= ($membership->freelisting + $membership->paidlisting)) {
+                return response()->json([
+                    'status' => 0,
+                    'info' => 'Maximum subscription listing reached.'
+                ]);
+            }
         }
-
-        // dd($user->subscription->membership);
-
+        
         $data = request()->all();
         $validator = Validator::make($data, [
             'country' => ['required', 'integer'],

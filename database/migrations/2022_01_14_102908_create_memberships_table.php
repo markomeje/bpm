@@ -22,7 +22,8 @@ class CreateMembershipsTable extends Migration
             $table->bigInteger('freelisting')->nullable();
             $table->text('details')->nullable();
             $table->bigInteger('freeboost')->nullable();
-            $table->text('duration');
+            $table->string('duration');
+            $table->foreignId('package_id')->nullable();
             $table->string('status')->default('active');
             $table->timestamps();
         });

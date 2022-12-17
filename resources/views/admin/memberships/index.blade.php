@@ -4,7 +4,7 @@
     <div class="section-padding pb-4">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12 col-md-8 col-lg-9">
+                <div class="col-12">
                     <div class="alert alert-info justify-content-between d-flex align-items-center mb-4">
                         <div class="mr-2">({{ \App\Models\Membership::count() }}) Membership Plans</div>
                     </div>
@@ -14,16 +14,17 @@
                         @else
                             <div class="row">
                                 @foreach($memberships as $membership)
-                                    <div class="col-12 col-md-6 col-lg-4 mb-4">
+                                    <div class="col-12 col-md-4 col-lg-3 mb-4">
                                         @include('admin.memberships.partials.card')
                                     </div>
+                                    @include('admin.memberships.partials.edit')
                                 @endforeach
                             </div>
                             {{ $memberships->links('vendor.pagination.default') }}
                         @endif
                     </div>
                 </div>
-                <div class="col-12 col-md-4 col-lg-3">
+                {{-- <div class="col-12 col-md-4 col-lg-3">
                     <div class="alert alert-info d-flex mb-4 align-items-center">
                         <span class="">Recent Subscribers</span>
                     </div>
@@ -41,7 +42,7 @@
                             </div> 
                         @endif
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

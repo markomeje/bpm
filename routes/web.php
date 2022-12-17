@@ -212,8 +212,8 @@ Route::middleware(['web', 'auth', 'admin', 'revalidate'])->domain(env('ADMIN_URL
 
     Route::prefix('memberships')->group(function () {
         Route::get('/', [\App\Http\Controllers\Admin\MembershipsController::class, 'index'])->name('admin.memberships');
-        Route::post('/add', [\App\Http\Controllers\Api\MembershipsController::class, 'add'])->name('admin.membership.add');
-        Route::post('/edit/{id}', [\App\Http\Controllers\Api\MembershipsController::class, 'edit'])->name('admin.membership.edit');
+        Route::post('/add', [\App\Http\Controllers\Admin\MembershipsController::class, 'add'])->name('admin.membership.add');
+        Route::post('/edit/{id}', [\App\Http\Controllers\Admin\MembershipsController::class, 'edit'])->name('admin.membership.edit');
     });
 
     Route::prefix('users')->group(function () {

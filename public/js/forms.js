@@ -2,6 +2,11 @@
 
 	'use strict';
 
+    $('.edit-membership-form').submit(function(event){
+        event.preventDefault();
+        handleForm({form: $(this), button: 'edit-membership-button', spinner: 'edit-membership-spinner', message: 'edit-membership-message'});
+    });
+
     $('.upgrade-user-to-staff-form').submit(function(event){
         event.preventDefault();
         handleForm({form: $(this), button: 'upgrade-user-to-staff-button', spinner: 'upgrade-user-to-staff-spinner', message: 'upgrade-user-to-staff-message'});
