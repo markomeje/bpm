@@ -18,6 +18,7 @@ class SubscriptionController extends Controller
     /**
      * initialize and Redirect the User to Paystack Payment Page
      * @return Url
+     * @web only endpoint
      */
     public function initialize()
     {

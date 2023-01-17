@@ -44,10 +44,19 @@ Route::domain(env('API_URL'))->group(function() {
     Route::post('/countries', [\App\Http\Controllers\Api\CountriesController::class, 'all']);
     Route::post('/currencies', [\App\Http\Controllers\Api\CurrencyController::class, 'all']);
 
-    Route::post('/memberships', [\App\Http\Controllers\Api\MembershipController::class, 'index']);
+    Route::post('/memberships/{package_id}', [\App\Http\Controllers\Api\MembershipController::class, 'find']);
     Route::post('/views/record', [\App\Http\Controllers\Api\ClicksController::class, 'record']);
 
+    Route::post('/packages', [\App\Http\Controllers\Api\PackagesController::class, 'index']);
+
     Route::group(['middleware' => ['auth:sanctum'], 'prefix' => 'user'], function () {
+
+        Route::prefix('subscription')->group(function () {
+            Route::post('/initialize', [\App\Http\Controllers\User\SubscriptionController::class, 'initialize'])->name('api.subscription.initialize'); 
+            Route::post('/edit/{id}', [\App\Http\Controllers\User\SubscriptionController::class, 'edit'])->name('api.subscription.edit');
+            Route::post('/delete/{id}', [\App\Http\Controllers\User\SubscriptionController::class, 'delete'])->name('api.subscription.delete');
+        });
+
         Route::prefix('credit')->group(function () {
             Route::post('/buy', [\App\Http\Controllers\Api\CreditsController::class, 'buy'])->name('user.credit.buy');
             Route::post('/verify', [\App\Http\Controllers\User\CreditsController::class, 'verify'])->name('user.credit.verify');
