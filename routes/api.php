@@ -44,12 +44,18 @@ Route::domain(env('API_URL'))->group(function() {
     Route::post('/countries', [\App\Http\Controllers\Api\CountriesController::class, 'all']);
     Route::post('/currencies', [\App\Http\Controllers\Api\CurrencyController::class, 'all']);
 
-    Route::post('/memberships/{package_id}', [\App\Http\Controllers\Api\MembershipController::class, 'find']);
+    
     Route::post('/views/record', [\App\Http\Controllers\Api\ClicksController::class, 'record']);
 
+    Route::post('/memberships/{package_id}', [\App\Http\Controllers\Api\MembershipController::class, 'find']);
     Route::post('/packages', [\App\Http\Controllers\Api\PackagesController::class, 'index']);
 
     Route::group(['middleware' => ['auth:sanctum'], 'prefix' => 'user'], function () {
+
+        Route::prefix('payment')->group(function () {
+            Route::post('/initialize', [\App\Http\Controllers\Api\PaymentController::class, 'initialize'])->name('api.subscription.initialize'); 
+            Route::post('/status/{id}', [\App\Http\Controllers\Api\PaymentController::class, 'status'])->name('api.subscription.status');
+        });
 
         Route::prefix('subscription')->group(function () {
             Route::post('/initialize', [\App\Http\Controllers\User\SubscriptionController::class, 'initialize'])->name('api.subscription.initialize'); 
@@ -66,6 +72,7 @@ Route::domain(env('API_URL'))->group(function() {
 
         Route::post('/credits', [\App\Http\Controllers\Api\UserController::class, 'credits'])->name('api.credits');
         Route::post('/payments', [\App\Http\Controllers\Api\UserController::class, 'payments'])->name('api.user.payments');
+
         Route::post('/services', [\App\Http\Controllers\Api\UserController::class, 'services'])->name('api.user.services');
         Route::post('/certifications', [\App\Http\Controllers\Api\UserController::class, 'certifications']);
 
