@@ -11,11 +11,10 @@ class MembershipController extends Controller
      */
     public function index()
     {
-        $memberships = Membership::all();
         return response()->json([
             'status' => 1,
             'info' => 'Operation successful',
-            'memberships' => $memberships,
+            'memberships' => Membership::all(),
         ]);
     }
 
