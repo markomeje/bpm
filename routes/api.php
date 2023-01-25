@@ -58,7 +58,8 @@ Route::domain(env('API_URL'))->group(function() {
         });
 
         Route::prefix('subscription')->group(function () {
-            Route::post('/initialize', [\App\Http\Controllers\User\SubscriptionController::class, 'initialize'])->name('api.subscription.initialize'); 
+            Route::post('/activate', [\App\Http\Controllers\Api\SubscriptionController::class, 'activate'])->name('api.subscription.activate');
+             
             Route::post('/edit/{id}', [\App\Http\Controllers\User\SubscriptionController::class, 'edit'])->name('api.subscription.edit');
             Route::post('/delete/{id}', [\App\Http\Controllers\User\SubscriptionController::class, 'delete'])->name('api.subscription.delete');
         });

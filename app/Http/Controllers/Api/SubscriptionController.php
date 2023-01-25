@@ -1,0 +1,85 @@
+<?php
+
+namespace App\Http\Controllers\Api;
+use Illuminate\Http\Request;
+use App\Http\Requests;
+use App\Models\{Subscription, Membership, Payment};
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use \Exception;
+use \Carbon\Carbon;
+use Validator;
+
+
+class SubscriptionController extends Controller
+{
+    /**
+     * Activate subscription after payment
+     */
+    public function activate($id = 0)
+    {
+        $data = request()->only(['payment_id']);
+        $validator = Validator::make($data, [
+            'payment_id' => ['required', 'integer'],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 0, 
+                'error' => $validator->errors()
+            ]);
+        }
+
+        $payment_id = $data['payment_id'];
+        $payment = Payment::find($payment_id);
+        if (empty($payment)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Payment not found.',
+            ]);
+        }
+
+        if ($payment->status !== 'paid') {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Invalid payment',
+            ]);
+        }
+
+        $plan = Membership::find($payment->product_id);
+        if (empty($plan)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Invalid membership plan',
+            ]);
+        }
+
+        $duration = $plan->duration ?? 0;
+        $now = Carbon::now();
+        $subscription = Subscription::create([
+            'started' => $now->format('Y-m-d H:i:s'),
+            'expiry' => $now->addDays($duration)->format('Y-m-d H:i:s'),
+            'user_id' => auth()->id(),
+            'reference' => (string)Str::uuid(),
+            'membership_id' => $plan->id,
+            'duration' => $duration,
+            'status' => 'active',
+            'payment_id' => $payment_id,
+        ]);
+
+        if (empty($subscription)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'An error occured. Try again.'
+            ]);
+        }
+
+        return response()->json([
+            'status' => 1, 
+            'info' => 'Operation successful',
+            'subscription' => $subscription
+        ]);
+    }
+
+}

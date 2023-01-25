@@ -58,6 +58,15 @@ class SubscriptionController extends Controller
                 'user_id' => auth()->user()->id,
             ]);
 
+            $type = request()->get('type');
+            if ($type === 'mobile') {
+                return response()->json([
+                    'status' => 1, 
+                    'info' => 'Please wait . . .',
+                    'payment' => $payment,
+                ]);
+            }
+
             $paystack = (new Paystack())->initialize([
                 'amount' => $amount * 100, //in kobo
                 'email' => auth()->user()->email, 

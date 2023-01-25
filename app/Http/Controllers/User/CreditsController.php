@@ -138,7 +138,6 @@ class CreditsController extends Controller
                 'status' => 0,
                 'info' => 'Unknown error. Try again.'
             ]);
-        }    
-            
+        }        
     }
 }
