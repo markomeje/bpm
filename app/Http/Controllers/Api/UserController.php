@@ -1,13 +1,36 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-use App\Models\{Advert, Credit, Property, Payment, Service, Certification, Material, Profile, User};
+use App\Models\{Advert, Credit, Property, Payment, Service, Certification, Material, Profile, User, Subscription};
 use App\Http\Controllers\Controller;
 use \Exception;
 
 
 class UserController extends Controller
 {
+    /**
+     * All user adverts
+     */
+    public function subscription()
+    {
+        $subscription = Subscription::where(['user_id' => auth()->id()])->first();
+        if (empty($subscription)) {
+            return response()->json([
+                'status' => 0, 
+                'info' => 'No subscription found',
+                'subscription' => null,
+            ]);  
+        }
+
+        $timing = \App\Helpers\Timing::calculate($subscription->duration, $subscription->expiry, $subscription->started);
+        return response()->json([
+            'status' => 1, 
+            'info' => 'Operation successful',
+            'subscription' => $subscription,
+            'timing' => ['expired' => $timing->expired(), 'daysleft' => $timing->daysleft(), 'progress' => $timing->progress()]
+        ]);      
+    }
+
 	/**
      * All user adverts
      */
