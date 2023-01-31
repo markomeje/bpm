@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-use App\Models\{Advert, Credit, Property, Payment, Service, Certification, Material, Profile, User, Subscription};
+use App\Models\{Advert, Credit, Property, Payment, Service, Certification, Material, Profile, User, Subscription, Package};
 use App\Http\Controllers\Controller;
 use \Exception;
 
@@ -27,6 +27,7 @@ class UserController extends Controller
             'status' => 1, 
             'info' => 'Operation successful',
             'subscription' => $subscription,
+            'package' => $subscription->membership->package,
             'timing' => ['expired' => $timing->expired(), 'daysleft' => $timing->daysleft(), 'progress' => $timing->progress()]
         ]);      
     }
