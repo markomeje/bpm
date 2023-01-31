@@ -12,7 +12,6 @@
                 gtag('config', 'UA-144521349-3');
             </script>
         @endif
-        
         <!-- COMPULSORY META TAGS -->
         <meta charset="utf-8">
         <meta name="_token" content="{{ csrf_token() }}" />

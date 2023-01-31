@@ -13,7 +13,7 @@ class UserController extends Controller
      */
     public function subscription()
     {
-        $subscription = Subscription::where(['user_id' => auth()->id()])->first();
+        $subscription = Subscription::with(['membership'])->where(['user_id' => auth()->id()])->first();
         if (empty($subscription)) {
             return response()->json([
                 'status' => 0, 
