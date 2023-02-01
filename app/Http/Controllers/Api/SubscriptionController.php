@@ -88,10 +88,11 @@ class SubscriptionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function renew() {
-        $data = request()->only(['payment_id', 'subscription_id']);
+        $data = request()->only(['payment_id', 'subscription_id', 'membership_id']);
         $validator = Validator::make($data, [
             'payment_id' => ['required', 'integer'],
             'subscription_id' => ['required', 'integer'],
+            'membership_id' => ['required', 'integer'],
         ]);
 
         if ($validator->fails()) {
@@ -112,7 +113,7 @@ class SubscriptionController extends Controller
 
             $amount = (int)$payment->amount;
 
-            $plan_id = $payment->product_id;
+            $plan_id = $data['membership_id'];
             $plan = Membership::find($plan_id);
             if (empty($plan)) {
                 return response()->json([
