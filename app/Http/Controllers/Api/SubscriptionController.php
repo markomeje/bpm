@@ -102,7 +102,7 @@ class SubscriptionController extends Controller
             ]);
         }
 
-        // try {
+        try {
             $payment = Payment::where(['id' => $data['payment_id']])->first();
             if (empty($payment)) {
                 return response()->json([
@@ -142,7 +142,10 @@ class SubscriptionController extends Controller
             if($subscription->update()) {
                 return response()->json([
                     'status' => 0, 
-                    'info' => 'Operation successful'
+                    'info' => 'Operation successful',
+                    'subscription' => $subscription,
+                    'membership' => $plan,
+                    'payment' => $payment
                 ]);
             }
 
@@ -150,12 +153,12 @@ class SubscriptionController extends Controller
                 'status' => 0, 
                 'info' => 'Operation failed.'
             ]);
-        // } catch (Exception $error) {
-        //     return response()->json([
-        //         'status' => 0,
-        //         'info' => 'Unknown error. Try again.'
-        //     ]);
-        // }    
+        } catch (Exception $error) {
+            return response()->json([
+                'status' => 0,
+                'info' => 'Unknown error. Try again.'
+            ]);
+        }    
             
     }
 
