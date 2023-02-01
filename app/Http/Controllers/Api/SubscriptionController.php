@@ -129,6 +129,7 @@ class SubscriptionController extends Controller
                 ]);
             }
 
+            $now = Carbon::now();
             // Check previous remaining days and add to the renewal if any
             $remainingdays = Carbon::parse($subscription->expiry)->diffInDays($now)->format('Y-m-d H:i:s');
             $totaldays = $duration + ($remainingdays <= 0 ? 0 : $remainingdays);
