@@ -60,6 +60,8 @@ Route::domain(env('API_URL'))->group(function() {
         Route::prefix('subscription')->group(function () {
             Route::post('/', [\App\Http\Controllers\Api\UserController::class, 'subscription'])->name('api.subscription');
             Route::post('/activate', [\App\Http\Controllers\Api\SubscriptionController::class, 'activate'])->name('api.subscription.activate');
+
+            Route::post('/renew', [\App\Http\Controllers\Api\SubscriptionController::class, 'renew'])->name('api.subscription.renew');
         });
 
         Route::prefix('credit')->group(function () {

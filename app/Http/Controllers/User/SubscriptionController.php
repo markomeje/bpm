@@ -147,6 +147,7 @@ class SubscriptionController extends Controller
 
             $amount = $plan->price ?? 0;
             $planid = $plan->id ?? 0;
+            
             /**
              * This method generates a unique super secure cryptographic hash token to use as transaction reference
              * @returns string

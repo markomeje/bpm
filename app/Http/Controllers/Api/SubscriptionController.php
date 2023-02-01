@@ -82,4 +82,85 @@ class SubscriptionController extends Controller
         ]);
     }
 
+    /**
+     * renew subscription
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function renew() {
+        $data = request()->only(['payment_id', 'subscription_id']);
+        $validator = Validator::make($data, [
+            'payment_id' => ['required', 'integer'],
+            'subscription_id' => ['required', 'integer'],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 0, 
+                'error' => $validator->errors()
+            ]);
+        }
+
+        try {
+            $payment = Payment::where(['id' => $data['payment_id']])->first();
+            if (empty($payment)) {
+                return response()->json([
+                    'status' => 0, 
+                    'info' => 'Invalid payment.'
+                ]);
+            }
+
+            $amount = (int)$payment->amount;
+
+            $plan_id = $payment->product_id;
+            $plan = Membership::find($plan_id);
+            if (empty($plan)) {
+                return response()->json([
+                    'status' => 0, 
+                    'info' => 'Invalid plan.'
+                ]);
+            }
+
+            $duration = $plan->duration;
+            $subscription = Subscription::where(['subscription_id' => $data['subscription_id']])->first();
+            if (empty($subscription)) {
+                return response()->json([
+                    'status' => 0, 
+                    'info' => 'Invalid subscription.'
+                ]);
+            }
+
+            // Check previous remaining days and add to the renewal if any
+            $remainingdays = Carbon::parse($subscription->expiry)->diffInDays($now)->format('Y-m-d H:i:s');
+            $totaldays = $duration + ($remainingdays <= 0 ? 0 : $remainingdays);
+
+            $subscription->expiry = $now->addDays($totaldays)->format('Y-m-d H:i:s');
+            $subscription->duration = $totaldays;
+            $subscription->renewals = $subscription->renewals + 1;
+            $subscription->membership_id = $plan_id;
+            $subscription->payment_id = $data['payment_id'];
+            if($subscription->update()) {
+                return response()->json([
+                    'status' => 0, 
+                    'info' => 'Operation successful'
+                ]);
+            }
+
+            return response()->json([
+                'status' => 0, 
+                'info' => 'Operation failed.'
+            ]);
+        } catch (Exception $error) {
+            return response()->json([
+                'status' => 0,
+                'info' => 'Unknown error. Try again.'
+            ]);
+        }    
+            
+    }
+
+
 }
+
+
+
